@@ -36,14 +36,14 @@ There are two components to the companion app.
 
 ## Code Summary
 
-`bot.js` is the main entrypoint
-`prompt.js` is where the CLI is handled
-`server.js` is where the web server is defined
-`twitch.js` is stuff dealing with the twitch integration
-`data.js` is where the "persistence" (if you can even call it that...) happens
-`loader.js` is a couple functions for loading team data manually
-`match.pug` is the main view of the web app. It is a very hastily assembled pug template. It's also my _first_ pug template, so please forgive any unusual things you see in it :)
-`public/app.js` is the javascript powering the front end. It's just a couple click handlers for now, nothing fancy.
+* `bot.js` is the main entrypoint
+* `prompt.js` is where the CLI is handled
+* `server.js` is where the web server is defined
+* `twitch.js` is stuff dealing with the twitch integration
+* `data.js` is where the "persistence" (if you can even call it that...) happens
+* `loader.js` is a couple functions for loading team data manually
+* `match.pug` is the main view of the web app. It is a very hastily assembled pug template. It's also my _first_ pug template, so please forgive any unusual things you see in it :)
+* `public/app.js` is the javascript powering the front end. It's just a couple click handlers for now, nothing fancy.
 
 I use bootstrap and jquery from cdns. I'm not planning on going too crazy with the front end. I like using templates for now.
 
