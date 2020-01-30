@@ -30,24 +30,25 @@ html
                 th= "SubSkills"
             tbody
               each unit in team.units
-                tr
-                  td
-                    .d-flex.flex-column
-                      div= unit.name
-                      div= unit.gender
-                      div.font-weight-bold= unit.class
-                      div= unit.zodiac
-                  td= unit.brave + '/' + unit.faith
-                  td
-                    .d-flex.flex-column
-                      each gear in unit.gear
-                        div= gear
-                  td= unit.activeSkill
-                  td= unit.reactSkill
-                  td= unit.supportSkill
-                  td= unit.moveSkill
-                  td= unit.mainAbilities
-                  td= unit.subAbilities
+                if unit !== undefined
+                  tr
+                    td
+                      .d-flex.flex-column
+                        div= unit.name
+                        div= unit.gender
+                        div.font-weight-bold= unit.class
+                        div= unit.zodiac
+                    td= unit.brave + '/' + unit.faith
+                    td
+                      .d-flex.flex-column
+                        each gear in unit.gear
+                          div= gear
+                    td= unit.activeSkill
+                    td= unit.reactSkill
+                    td= unit.supportSkill
+                    td= unit.moveSkill
+                    td= unit.mainAbilities
+                    td= unit.subAbilities
     h2= "Jump to Match"
       .d-flex.flex-column
         h3= "Round 1"
