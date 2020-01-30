@@ -1,0 +1,16 @@
+{
+  "name": "fftbatcompanion",
+  "version": "1.0.0",
+  "description": "Listen to the twitch chat for FFTBattleground and do stuff!",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4",
+    "tmi.js": "^1.5.0"
+  }
+}

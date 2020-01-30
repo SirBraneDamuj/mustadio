@@ -1,3 +1,9 @@
+# fftbatcompanion specific files
+log.txt
+units.json
+teams.json
+
+### Auto generated gitignore below
 # Logs
 logs
 *.log

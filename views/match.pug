@@ -1,0 +1,102 @@
+html
+  head
+    title= "FFTBattleground Helper"
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(src="/app.js")
+
+
+  body
+    h1= "FFTBattleground Helper"
+    .d-flex
+      each team in [team1, team2]
+        .team
+          h3= team.name + " team"
+          div
+            button.btn.btn-primary.team-bet-button(team-name=team.name, amount="500")= "Bet 500"
+            button.btn.btn-primary.team-bet-button(team-name=team.name, amount="1000")= "Bet 1000"
+            button.btn.btn-primary.team-allin-button(team-name=team.name)= "All In!"
+          table.table.table-bordered
+            thead
+              tr
+                th= "Basic"
+                th= "B/F"
+                th= "Gear"
+                th= "Sub"
+                th= "React"
+                th= "Support"
+                th= "Move"
+                th= "MainSkills"
+                th= "SubSkills"
+            tbody
+              each unit in team.units
+                tr
+                  td
+                    .d-flex.flex-column
+                      div= unit.name
+                      div= unit.gender
+                      div.font-weight-bold= unit.class
+                      div= unit.zodiac
+                  td= unit.brave + '/' + unit.faith
+                  td
+                    .d-flex.flex-column
+                      each gear in unit.gear
+                        div= gear
+                  td= unit.activeSkill
+                  td= unit.reactSkill
+                  td= unit.supportSkill
+                  td= unit.moveSkill
+                  td= unit.mainAbilities
+                  td= unit.subAbilities
+    h2= "Jump to Match"
+      .d-flex.flex-column
+        h3= "Round 1"
+          .d-flex
+            a.btn.btn-primary(href="/red/blue")= "Red v Blue"
+            a.btn.btn-primary(href="/green/yellow")= "Green v Yellow"
+            a.btn.btn-primary(href="/black/white")= "Black v White"
+            a.btn.btn-primary(href="/purple/brown")= "Purple v Brown"
+        h3= "Round 2"
+          .d-flex.flex-column
+            .d-flex
+              a.btn.btn-primary(href="/red/green")= "Red v Green"
+              a.btn.btn-primary(href="/red/yellow")= "Red v Yellow"
+              a.btn.btn-primary(href="/blue/green")= "Blue v Green"
+              a.btn.btn-primary(href="/blue/yellow")= "Blue v Yellow"
+            .d-flex
+              a.btn.btn-primary(href="/black/purple")= "Black v Purple"
+              a.btn.btn-primary(href="/black/brown")= "Black v Brown"
+              a.btn.btn-primary(href="/white/purple")= "White v Purple"
+              a.btn.btn-primary(href="/white/brown")= "White v Brown"
+        h3= "Round 3"
+          .d-flex.flex-column
+            .d-flex
+              a.btn.btn-primary(href="/red/black")= "Red v Black"
+              a.btn.btn-primary(href="/red/white")= "Red v White"
+              a.btn.btn-primary(href="/red/purple")= "Red v Purple"
+              a.btn.btn-primary(href="/red/brown")= "Red v Brown"
+            .d-flex
+              a.btn.btn-primary(href="/blue/black")= "Blue v Black"
+              a.btn.btn-primary(href="/blue/white")= "Blue v White"
+              a.btn.btn-primary(href="/blue/purple")= "Blue v Purple"
+              a.btn.btn-primary(href="/blue/brown")= "Blue v Brown"
+            .d-flex
+              a.btn.btn-primary(href="/green/black")= "Green v Black"
+              a.btn.btn-primary(href="/green/white")= "Green v White"
+              a.btn.btn-primary(href="/green/purple")= "Green v Purple"
+              a.btn.btn-primary(href="/green/brown")= "Green v Brown"
+            .d-flex
+              a.btn.btn-primary(href="/yellow/black")= "Yellow v Black"
+              a.btn.btn-primary(href="/yellow/white")= "Yellow v White"
+              a.btn.btn-primary(href="/yellow/purple")= "Yellow v Purple"
+              a.btn.btn-primary(href="/yellow/brown")= "Yellow v Brown"
+        h3= "Champion Round"
+          .d-flex
+            a.btn.btn-primary(href="/red/champion")= "Red v Champs"
+            a.btn.btn-primary(href="/blue/champion")= "Blue v Champs"
+            a.btn.btn-primary(href="/green/champion")= "Green v Champs"
+            a.btn.btn-primary(href="/yellow/champion")= "Yellow v Champs"
+            a.btn.btn-primary(href="/black/champion")= "Black v Champs"
+            a.btn.btn-primary(href="/white/champion")= "White v Champs"
+            a.btn.btn-primary(href="/purple/champion")= "Purple v Champs"
+            a.btn.btn-primary(href="/brown/champion")= "Brown v Champs"
