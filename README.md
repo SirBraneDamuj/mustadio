@@ -1,6 +1,8 @@
 # fftbatcompanion
 An unofficial companion app for twitch.tv/fftbattleground
 
+![a screenshot](https://i.imgur.com/1KW6llH.png)
+
 ## Background
 
 [FFTBattleground](https://twitch.tv/fftbattleground) is a twitch channel that runs live AI tournaments using a modded version of the beloved Playstation game Final Fantasy Tactics. Viewers can bet fake money on the outcome of matches.
