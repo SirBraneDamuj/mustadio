@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 
 rl.setPrompt("FFTBAT>");
 
-rl.on("line", (input) => {
+rl.on("line", async (input) => {
     if (input.startsWith("team")) {
         const tokens = input.split(" ");
         if (tokens.length !== 2) {
@@ -34,37 +34,13 @@ rl.on("line", (input) => {
         rl.prompt();
     }
     else if (input.startsWith("new")) {
-        data.reinitialize();
-        rl.prompt();
-    }
-    else if (input.startsWith("load ")) {
-        const tokens = input.split(" ");
-        if (tokens.length != 2) {
-            console.log("bad command");
-            rl.prompt();
-            return;
-        }
-        const teamName = tokens[1];
-        loader.loadTeam(teamName).then(() => rl.prompt());
-    }
-    else if (input.startsWith("loadall")) {
-        data.teamNames.reduce(
-            (chain, teamName) => chain
-                .then(() => loader.loadTeam(teamName))
-                .then(() => new Promise((resolve) => setTimeout(resolve, 4000))),
-            Promise.resolve(),
-        ).then(() => rl.prompt());
-    }
-    else if (input.startsWith("save")) {
-        data.save();
+        await data.reinitialize();
         rl.prompt();
     }
     else if (input.startsWith("exit")) {
         rl.close();
-    } else if (input.startsWith("current")) {
-        console.log(data.currentMatch());
-        rl.prompt();
-    } else {
+    }
+    else {
         console.log("what?");
         rl.prompt();
     }
@@ -72,7 +48,6 @@ rl.on("line", (input) => {
 
 rl.on("close", () => {
     console.log("see ya fella");
-    data.save();
     process.exit(0);
 });
 

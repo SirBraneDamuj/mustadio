@@ -10,27 +10,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-app.get('/', (req, res) => {
-    const currentMatch = data.currentMatch();
-    const currentState = data.currentState();
-    if (currentState === 'match') {
-        const context = {
-            team1: {
-                name: currentMatch[0],
-                units: data.unitsForTeam(currentMatch[0]),
-            },
-            team2: {
-                name: currentMatch[1],
-                units: data.unitsForTeam(currentMatch[1]),
-            },
-        };
-        res.render('match', context);
-    } else if (currentState === 'betting') {
-        res.send('coming soon');
-    }
+app.get('/', async (_, res) => {
+    await data.ready();
+    res.redirect('/red/blue');
 });
 
-app.get('/:team1/:team2', (req, res) => {
+app.get('/new', async (_, res) => {
+    await data.reinitialize();
+    res.redirect('/red/blue');
+});
+
+app.get('/:team1/:team2', async (req, res) => {
+    await data.ready();
     const context = {
         state: 'match',
         team1: {

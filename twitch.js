@@ -33,22 +33,6 @@ const onMessageHandler = ({ unitHandler, teamHandler, tournamentHandler, matchHa
     if (self) { return; }
     if (skipStrings.some(s => msg.includes(s))) { return; }
 
-    if (unitRegex.test(msg)) {
-        unitHandler(msg);
-    }
-
-    if (teamRegex.test(msg) || championRegex.test(msg)) {
-        teamHandler(msg);
-    }
-
-    if (msg.startsWith("You may now !fight to enter the tournament!")) {
-        tournamentHandler(msg);
-    }
-
-    if (msg.startsWith("Betting is open for")) {
-        matchHandler(msg);
-    }
-
     if (userstate.username === 'fftbattleground') {
         msgCallback(msg);
     }

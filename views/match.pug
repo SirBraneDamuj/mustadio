@@ -2,6 +2,7 @@ html
   head
     title= "FFTBattleground Helper"
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+    link(rel="stylesheet" href="/app.css")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
     script(src="/app.js")
 
@@ -31,7 +32,7 @@ html
             tbody
               each unit in team.units
                 if unit !== undefined
-                  tr
+                  tr.unit-row
                     td
                       .d-flex.flex-column
                         div= unit.name
@@ -47,8 +48,14 @@ html
                     td= unit.reactSkill
                     td= unit.supportSkill
                     td= unit.moveSkill
-                    td= unit.mainAbilities
-                    td= unit.subAbilities
+                    td
+                      .d-flex.flex-column
+                        each ability in unit.mainAbilities
+                          div= ability
+                    td
+                      .d-flex.flex-column
+                        each ability in unit.subAbilities
+                          div= ability
     h2= "Jump to Match"
       .d-flex.flex-column
         h3= "Round 1"
@@ -101,3 +108,6 @@ html
             a.btn.btn-primary(href="/black/champion")= "Black v Champs"
             a.btn.btn-primary(href="/purple/champion")= "Purple v Champs"
             a.btn.btn-primary(href="/brown/champion")= "Brown v Champs"
+    h2= "New Tournament?"
+      div
+        a.btn.btn-primary(href="/new")= "Load New Tournament"

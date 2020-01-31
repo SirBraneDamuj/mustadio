@@ -10,6 +10,7 @@ $(document).ready(() => {
             data: { team, amount },
         });
         $('.team-bet-button').attr('disabled', true);
+        $('.team-allin-button').attr('disabled', true);
     });
 
     $('.team-allin-button').click((e) => {
@@ -19,6 +20,7 @@ $(document).ready(() => {
         const team = target.attr('team-name');
 
         $.post(`/allin/${team}`);
+        $('.team-bet-button').attr('disabled', true);
         $('.team-allin-button').attr('disabled', true);
     });
 });

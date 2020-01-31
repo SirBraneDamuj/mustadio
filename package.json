@@ -4,12 +4,15 @@
   "description": "Listen to the twitch chat for FFTBattleground and do stuff!",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "start:debug": "node --inspect bot.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "pug": "^2.0.4",
     "tmi.js": "^1.5.0"
   }

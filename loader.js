@@ -1,3 +1,5 @@
+/* don't actually use this anymore */
+
 const twitch = require('./twitch');
 
 const sendTeamMessage = (teamName) => {
