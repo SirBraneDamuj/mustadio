@@ -1,5 +1,5 @@
 const { TEAM_NAMES } = require('./constants');
-const loader = require('./loader');
+const teamLoader = require('./team_loader');
 const strategy = process.env.DATA_STRATEGY === 'real' ? require('./real') : require('./fake');
 
 let currentTournamentId = '';
@@ -19,7 +19,7 @@ const loadCurrentTournament = async () => {
 
 const loadTeamFromStringOrDieTrying = (data, teamName) => {
     try {
-        return loader.loadTeamFromString(data);
+        return teamLoader.loadTeamFromString(data);
     } catch (error) {
         throw new Error(`Failed to load ${teamName}: ${error.message}`)
     }

@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function, no-undefined */
-const loader = require('../../src/data/loader');
+const loader = require('../../src/data/team-loader');
 const fs = require('fs');
 const path = require('path');
 
@@ -9,7 +9,7 @@ describe('loadTeamFromString', () => {
     let result = '';
 
     const getResult = (teamName) => {
-        const data = fs.readFileSync(path.join(__dirname, '..', '..', 'resources', `${teamName}.txt`), 'utf-8');
+        const data = fs.readFileSync(path.join(__dirname, '..', '..', 'resources', 'sample_teams', `${teamName}.txt`), 'utf-8');
         result = loader.loadTeamFromString(data);
     };
 

@@ -1,0 +1,32 @@
+Battle Boots: Accessory. Effect: +1 Move.
+Spike Shoes: Accessory. Effect: +1 Jump.
+Germinas Boots: Accessory. Effect: +1 Move, +1 Jump.
+Rubber Shoes: Accessory. Effect: Cancel Lightning; Strengthen Lightning; Immune Don't Move.
+Feather Boots: Accessory. Effect: Strengthen Wind; Permanent Float.
+Sprint Shoes: Accessory. Effect: +1 Speed.
+Red Shoes: Accessory. Effect: +1 MA, +1 Move.
+Power Wrist: Accessory. Effect: +1 PA; Strengthen Fire.
+Genji Gauntlet: Accessory. Effect: +2 PA, +2 MA.
+Magic Gauntlet: Accessory. Effect: +2 MA.
+Bracer: Accessory. Effect: +3 PA.
+Reflect Ring: Accessory. Effect: Half Lightning; Always Reflect.
+Defense Ring: Accessory. Effect: Half Water; Strengthen Water; Immune Sleep, Death Sentence.
+Magic Ring: Accessory. Effect: Half Ice; Strengthen Ice; Immune Silence, Berserk.
+Cursed Ring: Accessory. Effect: +1 PA, +1 MA, +1 Speed; Strengthen Dark; Permanent Undead.
+Angel Ring: Accessory. Effect: Immune Death, Darkness; Initial Reraise.
+Diamond Armlet: Accessory. Effect: +1 PA, +1 MA; Immune Slow.
+Jade Armlet: Accessory. Effect: Half Wind; Strengthen Earth; Immune Petrify, Stop.
+108 Gems: Accessory. Effect: Strengthen Fire, Lightning, Ice, Wind, Earth, Water, Holy, Dark; Immune Undead, Blood Suck, Frog, Poison.
+N-Kai Armlet: Accessory. Effect: Half Dark; Strengthen Holy; Immune Confusion, Charm.
+Defense Armlet: Accessory. Effect: Half Earth; Strengthen Wind; Immune Don't Move, Don't Act.
+Small Mantle: 10% phys evade, 10% magic evade, Accessory. Effect: +1 Speed.
+Leather Mantle: 15% phys evade, 15% magic evade, Accessory. Effect: Half Fire.
+Wizard Mantle: 18% phys evade, 18% magic evade, Accessory. Effect: +1 MA.
+Elf Mantle: 30% phys evade, 15% magic evade, Accessory.
+Dracula Mantle: 15% phys evade, 30% magic evade, Accessory.
+Feather Mantle: 25% phys evade, 25% magic evade, Accessory.
+Vanish Mantle: 35% phys evade, 0% magic evade, Accessory. Effect: Strengthen Dark; Initial Transparent.
+Chantage: Accessory. Effect: Permanent Regen; Initial Reraise.
+Cherche: Accessory. Effect: +1 PA; Permanent Float, Reflect.
+Setiemson: Accessory. Effect: +1 MA; Permanent Haste.
+Salty Rage: Accessory. Effect: Permanent Protect, Shell.
