@@ -15,31 +15,18 @@ The maintainer of the stream graciously provides a data dump of the tournament t
 
 ### Environment Variables
 
-* `TWITCH_USERNAME` should be _YOUR_ twitch username.
-* `TWITCH_AUTH_TOKEN` should be an auth token generated from [here](https://twitchapps.com/tmi/). You can also just use your regular password I think? I would suggest just using a token though.
 * `FFTBG_BASE_URL` is the base URL of the file server that hosts the data dumps. I am not sharing this publicly but it can be found.
+* `DATA_STRATEGY` determines whether to load live data from the FFTBG dump server or use the fake data that I include in source. It defaults to fake data. Set this variable to `real` to load the real data.
 * `MUSTADIO_CLI` is whether or not to run the CLI.
 
 ### Running
 
 `npm start` should start the server. Don't forget to `npm install` too.
 
-## How to use
+Once started, visit http://localhost:3000. 
 
-There are two components to the companion app.
+### Using
 
-* The command line has some very basic commands. It is mainly there to quickly inspect the data that the app has. You can use it to trigger team loads if you're missing data. That's about it.
-* The web view renders a rudimentary matchup page. The matchup shows two teams, their units, and the stats for their units. You can view a matchup by visiting `http://localhost:3000/team1/team2` once the server is running. It also has some quick bet buttons that will actually send a message, e.g., `!bet 500 purple`, to the twitch chat on your behalf. Make sure that you really do want to do that bet if you click on them, there is no confirmation.
-* Another feature of the web view is to show the "current" matchup by just visiting `http://localhost:3000/`. This hasn't been tested or developed very much and is likely prone to bugs. It tries to detect the "Betting is now open" message.
+The default route will load the current tournament if it isn't loaded yet and redirect you to `/red/blue`. Use the match buttons at the bottom to navigate to a matchup of your choosing. The match buttons only enumerate possible matchups that can occur in the tournament. You can type any two team names in the URL to show a left/right matchup how you choose.If you want to see an arbitrary matchup, type the two team names in the URL 
 
-## Code Summary
-
-* `main.js` is the main entrypoint
-* `prompt.js` is where the CLI is handled
-* `server.js` is where the web server is defined
-* `twitch.js` is stuff dealing with the twitch integration
-* `data.js` is where the "persistence" (if you can even call it that...) happens
-* `match.pug` is the main view of the web app. It is a very hastily assembled pug template. It's also my _first_ pug template, so please forgive any unusual things you see in it :)
-* `public/app.js` is the javascript powering the front end. It's just a couple click handlers for now, nothing fancy.
-
-I use bootstrap and jquery from cdns. I'm not planning on going too crazy with the front end. I like using templates for now.
+Once a tournament is over, someone has to click the New Tournament button at the bottom. That will clear the in-memory data and load the new dump from the site. You should probably wait until after `!fight` is resolved.
