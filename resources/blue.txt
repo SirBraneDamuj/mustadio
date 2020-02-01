@@ -1,0 +1,91 @@
+Player: !Blue
+Team: Blue Team
+Palettes: Blue/Purple
+
+
+
+Felbourne
+Female
+Scorpio
+65
+52
+Mime
+
+Caution
+Attack UP
+Waterbreathing
+
+
+
+Golden Hairpin
+Leather Outfit
+Defense Armlet
+
+Mimic
+
+
+
+
+RagequitSA
+Male
+Cancer
+67
+46
+Mime
+
+Distribute
+Equip Shield
+Waterwalking
+
+
+Crystal Shield
+Black Hood
+Leather Outfit
+Defense Ring
+
+Mimic
+
+
+
+
+Wackman3000
+Female
+Taurus
+76
+64
+Thief
+Elemental
+Distribute
+Equip Gun
+Levitate
+
+Assassin Dagger
+
+Flash Hat
+Black Costume
+Battle Boots
+
+Gil Taking, Steal Heart, Steal Helmet, Steal Armor, Steal Weapon, Steal Accessory, Leg Aim
+Pitfall, Hell Ivy, Hallowed Ground, Local Quake, Static Shock, Will-O-Wisp, Quicksand, Sand Storm, Blizzard, Gusty Wind, Lava Ball
+
+
+
+ChiefChiefman
+Male
+Cancer
+50
+74
+Chemist
+Elemental
+MP Restore
+Dual Wield
+Move-HP Up
+
+Romanda Gun
+Mythril Gun
+Headgear
+Chain Vest
+Dracula Mantle
+
+Potion, Hi-Potion, X-Potion, Soft, Holy Water, Phoenix Down
+Pitfall, Water Ball, Hallowed Ground, Will-O-Wisp, Blizzard
