@@ -1,5 +1,19 @@
 const fs = require('fs');
 const { EQUIPMENT_SLOTS } = require('./constants');
+const emojiForSlot = (slotName) => {
+    switch (slotName) {
+        case 'head':
+        return '&#x1F3A9;';
+        case 'hand':
+        return '&#x270B;';
+        case 'body':
+        return '&#x1F455;';
+        case 'accessory':
+        return '&#x1F48D;';
+        default:
+        return '&#x129409;'
+    }
+}
 
 const loadItemsFromDumpFile = (slot) => {
     const dump = fs.readFileSync(`${__dirname}/../../resources/dump/${slot}_items.txt`, 'utf-8');
@@ -15,16 +29,18 @@ const loadItemsFromDumpFile = (slot) => {
         return [name, { 
             name, 
             slot,
-            info 
+            info,
+            emoji: emojiForSlot(slot),
         }];
     });
 }
 
-module.exports.ITEMS = EQUIPMENT_SLOTS.reduce((accumulator, slot) => {
+const ITEMS = EQUIPMENT_SLOTS.reduce((accumulator, slot) => {
     loadItemsFromDumpFile(slot).forEach(([itemName, itemInfo]) => {
         accumulator[itemName] = itemInfo;
     });
     return accumulator;
 }, {});
 
+module.exports.getItems = () => ITEMS;
 module.exports.getItem = (itemName) => this.ITEMS[itemName];

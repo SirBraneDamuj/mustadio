@@ -4,6 +4,7 @@ html
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
     link(rel="stylesheet" href="/app.css")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js")
     script(src="/app.js")
 
 
@@ -14,10 +15,6 @@ html
       each team in [team1, team2]
         .team
           h3= team.name + " team"
-          div
-            button.btn.btn-primary.team-bet-button(team-name=team.name, amount="500")= "Bet 500"
-            button.btn.btn-primary.team-bet-button(team-name=team.name, amount="1000")= "Bet 1000"
-            button.btn.btn-primary.team-allin-button(team-name=team.name)= "All In!"
           table.table.table-bordered
             thead
               tr
@@ -44,7 +41,8 @@ html
                     td
                       .d-flex.flex-column
                         each gear in unit.gear
-                          div= gear
+                          - const gearInfo = items[gear] || { name: gear, info: '', slot: '' };
+                          div(data-toggle="tooltip" data-placement="top" title=gearInfo.info)!= `${gearInfo.emoji} - ${gearInfo.name}`
                     td= unit.activeSkill
                     td= unit.reactSkill
                     td= unit.supportSkill

@@ -1,5 +1,5 @@
 const { TEAM_NAMES } = require('./constants');
-const teamLoader = require('./team_loader');
+const teamLoader = require('./team-loader');
 const strategy = process.env.DATA_STRATEGY === 'real' ? require('./real') : require('./fake');
 
 let currentTournamentId = '';

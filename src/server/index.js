@@ -3,6 +3,7 @@ const favicon = require('serve-favicon')
 const path = require('path');
 const bodyParser = require('body-parser');
 const data = require('../data');
+const items = require('../data/items')
 const app = express();
 
 const port = process.env['PORT'];
@@ -26,7 +27,6 @@ app.get('/new', async (_, res) => {
 app.get('/:team1/:team2', async (req, res) => {
     await data.ready();
     const context = {
-        state: 'match',
         team1: {
             name: req.params['team1'],
             units: data.unitsForTeam(req.params['team1']),
@@ -35,6 +35,7 @@ app.get('/:team1/:team2', async (req, res) => {
             name: req.params['team2'],
             units: data.unitsForTeam(req.params['team2']),
         },
+        items: items.getItems(),
     };
     res.render('match', context);
 });
