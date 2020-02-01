@@ -11,6 +11,7 @@ describe('ITEMS', () => {
             name: 'Nagrarock',
             slot: 'hand',
             info: '1 WP, 1 range, 50% evade, Sword. Element: Dark. Effect: Chance to add Frog; Permanent Evil, Float.',
+            emoji: '&#x270B;',
         });
     })
 
@@ -19,6 +20,7 @@ describe('ITEMS', () => {
             name: 'Octagon Rod',
             slot: 'hand',
             info: "12 WP, 2 range, 20% evade, Stick. Effect: Chance to Cancel Darkness, Silence, Oil, Frog, Poison, Slow, Stop, Don't Move, Don't Act.",
+            emoji: '&#x270B;',
         });
     });
 
@@ -27,6 +29,7 @@ describe('ITEMS', () => {
             name: 'Thief Hat',
             slot: 'head',
             info: "+64 HP, +0 MP, Hat. Effect: +2 Speed; Immune Don't Move.",
+            emoji: '&#x1F3A9;',
         });
     });
 
@@ -35,6 +38,7 @@ describe('ITEMS', () => {
             name: 'Reflect Mail',
             slot: 'body',
             info: '+120 HP, +0 MP, Armor. Effect: Always Reflect.',
+            emoji: '&#x1F455;',
         });
     });
 
@@ -43,6 +47,7 @@ describe('ITEMS', () => {
             name: 'Salty Rage',
             slot: 'accessory',
             info: 'Accessory. Effect: Permanent Protect, Shell.',
+            emoji: '&#x1F48D;'
         });
     });
 });

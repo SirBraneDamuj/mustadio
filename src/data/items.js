@@ -43,4 +43,4 @@ const ITEMS = EQUIPMENT_SLOTS.reduce((accumulator, slot) => {
 }, {});
 
 module.exports.getItems = () => ITEMS;
-module.exports.getItem = (itemName) => this.ITEMS[itemName];
+module.exports.getItem = (itemName) => ITEMS[itemName];
