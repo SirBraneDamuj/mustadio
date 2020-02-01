@@ -16,10 +16,14 @@
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "pug": "^2.0.4",
+    "serve-favicon": "^2.5.0",
     "tmi.js": "^1.5.0"
   },
   "pkg": {
     "scripts": "src/*.js",
-    "assets": ["src/views/*", "src/public/*"]
+    "assets": [
+      "src/views/*",
+      "src/public/*"
+    ]
   }
 }

@@ -1,13 +1,13 @@
 const express = require('express');
+const favicon = require('serve-favicon')
 const path = require('path');
 const bodyParser = require('body-parser');
-require('pug');
-const data = require('./data');
-const twitch = require('./twitch');
+const data = require('../data');
 const app = express();
 
 const port = process.env['PORT'];
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, 'views'));
@@ -37,19 +37,6 @@ app.get('/:team1/:team2', async (req, res) => {
         },
     };
     res.render('match', context);
-});
-
-app.post('/bet', (req, res) => {
-    const team = req.body.data.team;
-    const amount = req.body.data.amount;
-    twitch.say(`!bet ${amount} ${team}`)
-    res.json({ success: true });
-});
-
-app.post('/allin/:team', (req, res) => {
-    const team = req.params['team'];
-    twitch.say(`!allin ${team}`);
-    res.json({ success: true });
 });
 
 module.exports = {

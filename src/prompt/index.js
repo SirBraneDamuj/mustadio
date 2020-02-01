@@ -1,5 +1,5 @@
 const readline = require("readline");
-const data = require('./data');
+const data = require('../data');
 
 const rl = readline.createInterface({
     input: process.stdin,
