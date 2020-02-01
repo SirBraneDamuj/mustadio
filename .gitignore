@@ -3,6 +3,7 @@ log.txt
 units.json
 teams.json
 /mustadio-*
+*.zip
 
 ### Auto generated gitignore below
 # Logs
