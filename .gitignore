@@ -1,7 +1,8 @@
-# fftbatcompanion specific files
+# mustadio specific files
 log.txt
 units.json
 teams.json
+/mustadio-*
 
 ### Auto generated gitignore below
 # Logs

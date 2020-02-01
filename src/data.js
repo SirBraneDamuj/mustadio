@@ -1,6 +1,5 @@
 const fs = require('fs');
 const axios = require('axios');
-const chunk = require('lodash/chunk');
 
 const client = axios.create({
     baseURL: process.env['FFTBG_BASE_URL'],
