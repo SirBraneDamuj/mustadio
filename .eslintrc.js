@@ -3,9 +3,16 @@ module.exports = {
         "browser": false,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "mocha": true,
     },
-    "extends": "eslint:recommended",
+    "plugins": [
+        "mocha",
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:mocha/recommended"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -77,7 +84,7 @@ module.exports = {
             "error",
             "expression"
         ],
-        "function-paren-newline": "error",
+        "function-paren-newline": "off",
         "generator-star-spacing": "error",
         "global-require": "error",
         "grouped-accessor-pairs": "error",
@@ -119,6 +126,7 @@ module.exports = {
         "max-params": "error",
         "max-statements": "off",
         "max-statements-per-line": "error",
+        "mocha/no-mocha-arrows": "off",
         "multiline-comment-style": "error",
         "new-parens": "error",
         "newline-after-var": "off",
