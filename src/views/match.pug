@@ -1,0 +1,91 @@
+include mixins/unit.pug
+
+mixin matchButton(team1, team2)
+    a.btn.btn-primary(href=`/${tournamentId}/${team1}/${team2}`)= `${team1.charAt(0).toUpperCase() + team1.slice(1)} v ${team2.charAt(0).toUpperCase() + team2.slice(1)}`
+
+html
+  head
+    title= "Mustadio"
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+    link(rel="stylesheet" href="/app.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js")
+    script(src="/app.js")
+
+  body
+    h1 
+      a(href="https://github.com/sirbranedamuj/mustadio")= "Mustadio"
+    .d-flex
+      each team in [team1, team2]
+        .team
+          h3= team.name + " team"
+          table.table.table-bordered
+            thead
+              tr
+                th= "Basic"
+                th= "B/F"
+                th= "Gear"
+                th= "Sub"
+                th= "React"
+                th= "Support"
+                th= "Move"
+                th= "MainSkills"
+                th= "SubSkills"
+            tbody
+              each unit in team.Units
+                if unit !== undefined
+                  +unit(unit)
+    h2= "Jump to Match"
+      .d-flex.flex-column
+        h3= "Round 1"
+          .d-flex
+            +matchButton('red', 'blue')
+            +matchButton('green', 'yellow')
+            +matchButton('white', 'black')
+            +matchButton('purple', 'brown')
+        h3= "Round 2"
+          .d-flex.flex-column
+            .d-flex
+              +matchButton('red', 'green')
+              +matchButton('red', 'yellow')
+              +matchButton('blue', 'green')
+              +matchButton('blue', 'yellow')
+            .d-flex
+              +matchButton('white', 'purple')
+              +matchButton('white', 'brown')
+              +matchButton('black', 'purple')
+              +matchButton('black', 'brown')
+        h3= "Round 3"
+          .d-flex.flex-column
+            .d-flex
+              +matchButton('red', 'white')
+              +matchButton('red', 'black')
+              +matchButton('red', 'purple')
+              +matchButton('red', 'brown')
+            .d-flex
+              +matchButton('blue', 'white')
+              +matchButton('blue', 'black')
+              +matchButton('blue', 'purple')
+              +matchButton('blue', 'brown')
+            .d-flex
+              +matchButton('green', 'white')
+              +matchButton('green', 'black')
+              +matchButton('green', 'purple')
+              +matchButton('green', 'brown')
+            .d-flex
+              +matchButton('yellow', 'white')
+              +matchButton('yellow', 'black')
+              +matchButton('yellow', 'purple')
+              +matchButton('yellow', 'brown')
+        h3= "Champion Round"
+          .d-flex
+            +matchButton('red', 'champion')
+            +matchButton('blue', 'champion')
+            +matchButton('green', 'champion')
+            +matchButton('yellow', 'champion')
+            +matchButton('white', 'champion')
+            +matchButton('black', 'champion')
+            +matchButton('purple', 'champion')
+            +matchButton('black', 'champion')
+    h2= "See latest tournament..."
+    a.btn.btn-primary(href="/latest/red/blue")= "Latest Tournament"

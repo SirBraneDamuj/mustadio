@@ -6,23 +6,21 @@ const Tournament = db.define('Tournament', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    timestamp: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
 });
 
 const Team = db.define('Team', {
-    color: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 });
 
+Tournament.hasMany(Team);
 Team.belongsTo(Tournament, {
-    allowNull: false,
+    foreignKey: {
+        allowNull: false,
+    },
 });
-
 
 const Unit = db.define('Unit', {
     name: {
@@ -49,27 +47,73 @@ const Unit = db.define('Unit', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    sub_skill: {
+    subSkill: {
         type: DataTypes.STRING,
         allowNull: true,
     },
-    react_skill: {
+    reactSkill: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    supportSkill: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    moveSkill: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    order: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+});
+
+Team.hasMany(Unit);
+Unit.belongsTo(Team, {
+    foreignKey: {
+        allowsNull: false,
+    },
+});
+
+const UnitAbility = db.define('UnitAbility', {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    support_skill: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    move_skill: {
+    mainOrSub: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 });
 
-const UnitEqupment = db.define('UnitEquipment', {
-    equipment_name: {
+Unit.hasMany(UnitAbility);
+UnitAbility.belongsTo(Unit, {
+    foreignKey: {
+        allowsNull: false,
+    },
+});
+
+const UnitEquipment = db.define('UnitEquipment', {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 });
+
+Unit.hasMany(UnitEquipment);
+UnitEquipment.belongsTo(Unit, {
+    foreignKey: {
+        allowsNull: false,
+    },
+});
+
+db.sync().then(() => console.log('Tables synced!'));
+
+module.exports = {
+    Tournament,
+    Team,
+    Unit,
+    UnitAbility,
+    UnitEquipment,
+};

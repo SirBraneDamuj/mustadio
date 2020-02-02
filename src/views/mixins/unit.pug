@@ -1,0 +1,26 @@
+mixin unit(unit)
+    tr.unit-row
+    td
+        .d-flex.flex-column
+        div= unit.name
+        div= unit.gender
+        div.font-weight-bold= unit.class
+        div= unit.zodiac
+    td= unit.brave + '/' + unit.faith
+    td
+        .d-flex.flex-column
+        each gear in unit.UnitEquipments
+            - const gearInfo = items[gear.name] || { name: gear.name, info: '', slot: '' };
+            div(data-toggle="tooltip" data-placement="top" title=gearInfo.info)!= `${gearInfo.emoji} - ${gearInfo.name}`
+    td= unit.activeSkill
+    td= unit.reactSkill
+    td= unit.supportSkill
+    td= unit.moveSkill
+    td
+        .d-flex.flex-column
+        each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'main')
+            div= ability.name
+    td
+        .d-flex.flex-column
+        each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'sub')
+            div= ability.name

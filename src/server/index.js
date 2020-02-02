@@ -11,33 +11,29 @@ const port = process.env['PORT'] || 3000;
 app.use(favicon(path.join(__dirname, '..', '..', 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 
 app.get('/', async (_, res) => {
-    await data.ready();
-    res.redirect('/red/blue');
+    const tournamentId = await data.getLatestTournamentId();
+    res.redirect(`/${tournamentId}/red/blue`);
 });
 
-app.get('/new', async (_, res) => {
-    await data.reinitialize();
-    res.redirect('/red/blue');
-});
-
-app.get('/:team1/:team2', async (req, res) => {
-    await data.ready();
-    const context = {
-        team1: {
-            name: req.params['team1'],
-            units: data.unitsForTeam(req.params['team1']),
-        },
-        team2: {
-            name: req.params['team2'],
-            units: data.unitsForTeam(req.params['team2']),
-        },
-        items: items.getItems(),
-    };
-    res.render('match', context);
+app.get('/:tournamentId/:team1/:team2', async (req, res) => {
+    const { tournamentId, team1, team2 } = req.params;
+    if (req.params.tournamentId === 'latest') {
+        const realTournamentId = await data.getLatestTournamentId();
+        res.redirect(`/${realTournamentId}/${team1}/${team2}`);
+    } else {
+        const [team1Record, team2Record] = await data.getTeamsForTournament(tournamentId, team1, team2);
+        const context = {
+            team1: team1Record,
+            team2: team2Record,
+            tournamentId,
+            items: items.getItems(),
+        };
+        res.render('match', context);
+    }
 });
 
 module.exports = {

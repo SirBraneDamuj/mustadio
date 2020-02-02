@@ -44,7 +44,7 @@ module.exports = {
         "callback-return": "error",
         "camelcase": "error",
         "capitalized-comments": [
-            "error",
+            "off",
             "never"
         ],
         "class-methods-use-this": "error",
@@ -109,7 +109,7 @@ module.exports = {
                 "before": true
             }
         ],
-        "line-comment-position": "error",
+        "line-comment-position": "off",
         "linebreak-style": "off",
         "lines-around-comment": "error",
         "lines-around-directive": "error",
@@ -156,7 +156,7 @@ module.exports = {
         "no-implicit-globals": "error",
         "no-implied-eval": "error",
         "no-import-assign": "error",
-        "no-inline-comments": "error",
+        "no-inline-comments": "off",
         "no-invalid-this": "error",
         "no-iterator": "error",
         "no-label-var": "error",

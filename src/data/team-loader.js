@@ -20,7 +20,7 @@ const unitForTokens = (unitTokens) => {
         brave: unitTokens[3],
         faith: unitTokens[4],
         class: unitTokens[5],
-        activeSkill: unitTokens[6],
+        subSkill: unitTokens[6],
         reactSkill: unitTokens[7],
         supportSkill: unitTokens[8],
         moveSkill: unitTokens[9],
