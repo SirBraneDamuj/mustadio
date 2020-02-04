@@ -4,6 +4,8 @@ units.json
 teams.json
 /mustadio-*
 *.zip
+*.sqlite
+
 
 ### Auto generated gitignore below
 # Logs

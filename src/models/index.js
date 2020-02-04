@@ -108,7 +108,9 @@ UnitEquipment.belongsTo(Unit, {
     },
 });
 
-db.sync().then(() => console.log('Tables synced!'));
+const force = process.env.FORCE_TABLE_SYNC === 'true';
+
+db.sync({ force }).then(() => console.log('Tables synced!'));
 
 module.exports = {
     Tournament,
