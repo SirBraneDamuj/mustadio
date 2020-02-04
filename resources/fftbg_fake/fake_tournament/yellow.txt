@@ -1,0 +1,91 @@
+Player: !Yellow
+Team: Yellow Team
+Palettes: Yellow/Black
+
+
+
+Oknamo
+Female
+Serpentarius
+38
+65
+Squire
+Elemental
+Dragon Spirit
+Beastmaster
+Jump+2
+
+Air Knife
+
+Black Hood
+Black Robe
+Sprint Shoes
+
+Throw Stone, Heal, Tickle
+Pitfall, Local Quake, Static Shock, Quicksand, Blizzard, Lava Ball
+
+
+
+AStatue
+Female
+Aquarius
+43
+48
+Samurai
+Summon Magic
+Abandon
+Equip Sword
+Retreat
+
+Sleep Sword
+
+Diamond Helmet
+Wizard Robe
+Bracer
+
+Asura, Muramasa
+Moogle, Ramuh, Bahamut
+
+
+
+Yayifications
+Female
+Scorpio
+61
+41
+Ninja
+Summon Magic
+Counter
+Concentrate
+Lava Walking
+
+Orichalcum
+Iga Knife
+Thief Hat
+Leather Outfit
+N-Kai Armlet
+
+Shuriken, Bomb, Sword
+Moogle, Ramuh, Titan, Golem, Bahamut, Leviathan
+
+
+
+Brojimbo
+Male
+Virgo
+64
+63
+Thief
+Yin Yang Magic
+Critical Quick
+Equip Armor
+Jump+1
+
+Blind Knife
+
+Genji Helmet
+Wizard Robe
+N-Kai Armlet
+
+Gil Taking, Steal Heart, Arm Aim, Leg Aim
+Blind, Poison, Blind Rage, Foxbird, Dispel Magic

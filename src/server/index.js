@@ -30,7 +30,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             team1: team1Record,
             team2: team2Record,
             tournamentId,
-            items: items.getItems(),
+            items: await items.getItems(),
         };
         res.render('match', context);
     }

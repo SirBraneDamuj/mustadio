@@ -1,5 +1,6 @@
-const fs = require('fs');
-const { EQUIPMENT_SLOTS } = require('./constants');
+const client = require('../client/fftbg');
+
+const { SLOTS_FOR_EQUIPMENT_TYPES } = require('./constants');
 const emojiForSlot = (slotName) => {
     switch (slotName) {
         case 'head':
@@ -15,32 +16,29 @@ const emojiForSlot = (slotName) => {
     }
 }
 
-const loadItemsFromDumpFile = (slot) => {
-    const dump = fs.readFileSync(`${__dirname}/../../resources/dump/${slot}_items.txt`, 'utf-8');
+const loadItemsFromDumpFile = async () => {
+    const { data } = await client.itemInfo();
     let delimiter = '\r\n';
-    if (dump.indexOf(delimiter) == -1) {
+    if (data.indexOf(delimiter) == -1) {
         delimiter = '\n';
     }
-    return dump.split(delimiter).map((itemLine) => {
+    return data.split(delimiter).reduce((accumulator, itemLine) => {
         const firstColon = itemLine.indexOf(':');
         const name = itemLine.slice(0, firstColon);
         const info = itemLine.slice(firstColon + 2);
-
-        return [name, { 
+        const [stats] = info.split('. ');
+        const statsTokens = stats.split(', ');
+        const type = statsTokens[statsTokens.length - 1];
+        const slot = SLOTS_FOR_EQUIPMENT_TYPES[type];
+        accumulator[name] = { 
             name, 
             slot,
             info,
             emoji: emojiForSlot(slot),
-        }];
-    });
+        }
+        return accumulator;
+    }, {});
 }
 
-const ITEMS = EQUIPMENT_SLOTS.reduce((accumulator, slot) => {
-    loadItemsFromDumpFile(slot).forEach(([itemName, itemInfo]) => {
-        accumulator[itemName] = itemInfo;
-    });
-    return accumulator;
-}, {});
-
-module.exports.getItems = () => ITEMS;
-module.exports.getItem = (itemName) => ITEMS[itemName];
+module.exports.getItems = async () => loadItemsFromDumpFile();
+module.exports.getItem = async (itemName) => (await loadItemsFromDumpFile())[itemName];

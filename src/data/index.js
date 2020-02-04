@@ -3,7 +3,7 @@ const { TEAM_NAMES } = require('./constants');
 const teamLoader = require('./team-loader');
 const { Op } = require('sequelize');
 const { Tournament, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
-const strategy = process.env.DATA_STRATEGY === 'real' ? require('./real') : require('./fake');
+const client = require('../client/fftbg');
 
 const createRecordsForTournament = async (tournamentLabel, teamData) => {
     const tournament = await Tournament.create({
@@ -41,10 +41,17 @@ const createRecordsForTournament = async (tournamentLabel, teamData) => {
     return tournament;
 }
 
+const tournamentIdRegex = /tournament_\d{13}/gm;
+
+const getCurrentTournamentId = async () => {
+    const { data } = await client.tournamentList();
+    return [...data.matchAll(tournamentIdRegex)].pop().pop();
+}
+
 const loadTournamentById = async (tournamentId) => {
     let label = tournamentId;
     if (label === 'latest') {
-        label = await strategy.getCurrentTournamentId();
+        label = await getCurrentTournamentId();
     }
     const existing = await Tournament.findOne({
         where: { label },
@@ -54,7 +61,7 @@ const loadTournamentById = async (tournamentId) => {
     }
     const teamUnits = {};
     for (const teamName of TEAM_NAMES) {
-        const data = await strategy.getTeamData(label, teamName);
+        const { data } = await client.tournamentTeam(label, teamName);
         const units = loadTeamFromStringOrDieTrying(data, teamName);
         teamUnits[teamName] = units;
     }
@@ -69,7 +76,7 @@ const loadTeamFromStringOrDieTrying = (data, teamName) => {
     }
 };
 
-module.exports.getLatestTournamentId = async () => strategy.getCurrentTournamentId();
+module.exports.getLatestTournamentId = async () => getCurrentTournamentId();
 
 module.exports.getTournamentById = async (tournamentId) => {
     return loadTournamentById(tournamentId);
