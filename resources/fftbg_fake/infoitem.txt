@@ -1,17 +1,17 @@
-Potion: Heals 100 HP.
-Hi-Potion: Heals 120 HP.
-X-Potion: Heals 150 HP.
-Ether: Heals 20 MP.
-Hi-Ether: Heals 50 MP.    
-Elixir: Heals All HP & MP.
-Antidote: Cancel Poison.
-Eye Drop: Cancel Darkness.
-Echo Grass: Cancel Silence.
-Maiden's Kiss: Cancel Frog.
-Soft: Cancel Petrify.
-Holy Water: Cancel Undead.
-Remedy: Cancel Petrify, Darkness, Confusion, Silence, Oil, Frog, Poison, Sleep.
-Phoenix Down: Cancel Death; if successful, Heal Random(1-20). Kills Undead.
+Potion: Consumable. Effect: Heals 100 HP.
+Hi-Potion: Consumable. Effect: Heals 120 HP.
+X-Potion: Consumable. Effect: Heals 150 HP.
+Ether: Consumable. Effect: Heals 20 MP.
+Hi-Ether: Consumable. Effect: Heals 50 MP.    
+Elixir: Consumable. Effect: Heals All HP & MP.
+Antidote: Consumable. Effect: Cancel Poison.
+Eye Drop: Consumable. Effect: Cancel Darkness.
+Echo Grass: Consumable. Effect: Cancel Silence.
+Maiden's Kiss: Consumable. Effect: Cancel Frog.
+Soft: Consumable. Effect: Cancel Petrify.
+Holy Water: Consumable. Effect: Cancel Undead.
+Remedy: Consumable. Effect: Cancel Petrify, Darkness, Confusion, Silence, Oil, Frog, Poison, Sleep.
+Phoenix Down: Consumable. Effect: Cancel Death; if successful, Heal Random(1-20). Kills Undead.
 Dagger: 4 WP, 1 range, 10% evade, Knife. Effect: +1 Speed.
 Mythril Knife: 6 WP, 1 range, 5% evade, Knife. Effect: +1 Speed.
 Blind Knife: 5 WP, 1 range, 5% evade, Knife. Effect: Chance to Add Darkness.

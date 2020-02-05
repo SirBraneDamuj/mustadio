@@ -51,4 +51,13 @@ describe('ITEMS', () => {
             emoji: '&#x1F48D;'
         });
     });
+
+    it('loads hunting bow correctly', async () => {
+        expect(await subject('Hunting Bow')).to.deep.eq({
+            name: 'Hunting Bow',
+            slot: 'hand',
+            info: '9 WP, 5 range, 5% evade, Crossbow.',
+            emoji: '&#x270B;'
+        });
+    });
 });

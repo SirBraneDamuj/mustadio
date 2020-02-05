@@ -6,9 +6,8 @@ const client = axios.create({
     responseType: 'text',
 });
 
-module.exports.itemInfo = async () => axios.get('/iteminfo.txt');
+module.exports.itemInfo = async () => client.get('/infoitem.txt');
 
-module.exports.tournamentTeam = async (tournamentId, teamName) => {
-    const { data } = await client.get(`/${tournamentId}/${teamName}.txt`);
-    return data;
-}
+module.exports.tournamentTeam = async (tournamentId, teamName) => client.get(`/${tournamentId}/${teamName}.txt`);
+
+module.exports.tournamentList = async () => client.get('/');
