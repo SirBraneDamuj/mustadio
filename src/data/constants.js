@@ -1,6 +1,6 @@
 module.exports.EQUIPMENT_SLOTS = ['hand', 'head', 'body', 'accessory'];
 module.exports.EQUIPMENT_TYPES_FOR_SLOT = {
-    'hand': ['Knife', 'Ninja Blade', 'Sword', 'Knight Sword', 'Katana', 'Axe', 'Rod', 'Staff', 'Flail', 'Gun', 'Crossbow', 'Bow', 'Harp', 'Book', 'Spear', 'Pole', 'Bag', 'Shield'],
+    'hand': ['Knife', 'Ninja Blade', 'Sword', 'Knight Sword', 'Katana', 'Axe', 'Rod', 'Staff', 'Flail', 'Gun', 'Crossbow', 'Bow', 'Harp', 'Book', 'Spear', 'Pole', 'Bag', 'Fabric', 'Shield'],
     'head': ['Helmet', 'Hat'],
     'body': ['Armor', 'Clothes', 'Robe'],
     'accessory': ['Accessory'],
