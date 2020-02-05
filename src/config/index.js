@@ -1,4 +1,5 @@
 const {
+    DATABASE_URL,
     DB_DATA_STRATEGY,
     FFTBG_BASE_URL,
     FFTBG_DATA_STRATEGY,
@@ -9,6 +10,7 @@ const {
 } = process.env;
 
 module.exports = {
+    DATABASE_URL,
     DB_DATA_STRATEGY,
     FFTBG_BASE_URL,
     FFTBG_DATA_STRATEGY,
