@@ -1,7 +1,8 @@
 const axios = require('axios');
+const config = require('../../config');
 
 const client = axios.create({
-    baseURL: process.env['FFTBG_BASE_URL'],
+    baseURL: config.FFTBG_BASE_URL,
     responseType: 'text',
 });
 

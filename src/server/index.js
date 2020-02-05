@@ -4,9 +4,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const data = require('../data');
 const items = require('../data/items')
+const config = require('../config');
 const app = express();
 
-const port = process.env['PORT'] || 3000;
+const port = config.PORT || 3000;
 
 app.use(favicon(path.join(__dirname, '..', '..', 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));

@@ -1,9 +1,10 @@
 const tmi = require("tmi.js");
+const config = require('../config');
  
 const opts = {
   identity: {
-    username: process.env['TWITCH_USERNAME'],
-    password: process.env['TWITCH_AUTH_TOKEN']
+    username: config.TWITCH_USERNAME,
+    password: config.TWITCH_AUTH_TOKEN,
   },
   channels: [
     "FFTBattleground"
@@ -22,7 +23,7 @@ module.exports = {
         client.connect();
     },
     say(msg) {
-        console.log(`${process.env['TWITCH_USERNAME']} says: ${msg}`)
+        console.log(`${config.TWITCH_USERNAME} says: ${msg}`)
         // client.say('FFTBattleground', msg);
     },
 };

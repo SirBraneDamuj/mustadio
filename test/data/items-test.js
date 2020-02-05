@@ -1,6 +1,7 @@
 /* eslint-disable max-lines-per-function, no-undefined */
+const mock = require('mock-require');
+mock('../../src/config', { FFTBG_DATA_STRATEGY: 'fake' });
 const items = require('../../src/data/items');
-
 const expect = require('chai').expect;
 
 describe('ITEMS', () => {

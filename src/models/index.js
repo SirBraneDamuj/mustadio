@@ -1,4 +1,5 @@
 const db = require('../db');
+const config  = require('../config');
 const { DataTypes } = require('sequelize');
 
 const Tournament = db.define('Tournament', {
@@ -108,7 +109,7 @@ UnitEquipment.belongsTo(Unit, {
     },
 });
 
-const force = process.env.FORCE_TABLE_SYNC === 'true';
+const force = config.FORCE_TABLE_SYNC === 'true';
 
 db.sync({ force }).then(() => console.log('Tables synced!'));
 

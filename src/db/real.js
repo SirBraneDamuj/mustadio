@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const config = require('../config');
 
-module.exports = new Sequelize(process.env.DATABASE_URL);
+module.exports = new Sequelize(config.DATABASE_URL);
 
