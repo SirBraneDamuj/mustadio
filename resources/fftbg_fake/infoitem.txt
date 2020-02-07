@@ -62,15 +62,15 @@ Chirijiraden: 24 WP, 1 range, 15% evade, Katana.
 Battle Axe: 10 WP, 1 range, 4% evade, Axe.
 Giant Axe: 15 WP, 1 range, 3% evade, Axe.
 Slasher: 19 WP, 1 range, 2% evade, Axe. Effect: Chance to Add Slow.
-Rod: 3 WP, 1 range, 23% evade, Rod.
-Thunder Rod: 3 WP, 1 range, 20 evade. Element: Lightning. Effect: Chance to cast Bolt; Strengthen Lightning.
-Flame Rod: 3 WP, 1 range, 20 evade. Element: Fire. Effect: Chance to cast Fire; Strengthen Fire.
-Ice Rod: 3 WP, 1 range, 20 evade. Element: Ice. Effect: Chance to cast Ice; Strengthen Ice.
+Rod: 3 WP, 1 range, 23% evade, Rod. Effect: Absorb Lightning.
+Thunder Rod: 3 WP, 1 range, 20% evade, Rod. Element: Lightning. Effect: Chance to cast Bolt; Strengthen Lightning.
+Flame Rod: 3 WP, 1 range, 20% evade, Rod. Element: Fire. Effect: Chance to cast Fire; Strengthen Fire.
+Ice Rod: 3 WP, 1 range, 20% evade, Rod. Element: Ice. Effect: Chance to cast Ice; Strengthen Ice.
 Poison Rod: 4 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Poison.
 Wizard Rod: 5 WP, 1 range, 20% evade, Rod. Effect: +2 MA.
 Dragon Rod: 6 WP, 1 range, 22% evade, Rod. Effect: Immune Silence, Frog, Innocent; Initial Reraise.
 Faith Rod: 5 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Faith; Always Faith.
-Oak Staff: 3 WP, 1 range, 18% evade, Staff.
+Oak Staff: 3 WP, 1 range, 18% evade, Staff. Effect: Absorb Water.
 White Staff: 2 WP, 1 range, 15% evade, Staff. Element: Holy. Effect: Chance to Cancel Undead, Petrify, Darkness, Confusion, Silence, Blood Suck, Float, Reraise, Berserk, Frog, Poison, Regen, Protect, Shell, Haste, Slow, Stop, Innocent, Charm, Sleep, Don't Move, Don't Act, Reflect, Death Sentence.
 Healing Staff: 4 WP (heal), 1 range, 17% evade, Staff.
 Rainbow Staff: 5 WP, 1 range, 15% evade, Staff. Element: Earth.
@@ -168,8 +168,8 @@ Circlet: +100 HP, +0 MP, Helmet.
 Crystal Helmet: +110 HP, +2 MP, Helmet. 
 Genji Helmet: +130 HP, +0 MP, Helmet. 
 Grand Helmet: +150 HP, +0 MP, Helmet. Effect: Immune Darkness, Sleep.
-Leather Hat: +28 HP, +3 MP, Hat. Effect: +1 Jump.
-Feather Hat: +32 HP, +5 MP, Hat. Effect: +1 Speed.
+Leather Hat: +28 HP, +3 MP, Hat. Effect: +1 Speed.
+Feather Hat: +32 HP, +5 MP, Hat. Effect: +1 Jump; Absorb Wind.
 Red Hood: +36 HP, +8 MP, Hat.
 Headgear: +40 HP, +0 MP, Hat. Effect: +1 PA.
 Triangle Hat: +46 HP, +12 MP, Hat. Effect: +1MA, +1 Jump.

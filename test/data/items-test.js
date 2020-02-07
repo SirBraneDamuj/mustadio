@@ -3,6 +3,7 @@ const mock = require('mock-require');
 mock('../../src/config', { FFTBG_DATA_STRATEGY: 'fake' });
 const items = require('../../src/data/items');
 const expect = require('chai').expect;
+const map = require('lodash/map');
 
 describe('ITEMS', () => {
     const subject = (itemName) => items.getItem(itemName);
@@ -59,5 +60,24 @@ describe('ITEMS', () => {
             info: '9 WP, 5 range, 5% evade, Crossbow.',
             emoji: '&#x270B;'
         });
+    });
+
+    it('loads ice rod', async () => {
+        expect(await subject('Ice Rod')).to.deep.eq({
+            name: 'Ice Rod',
+            slot: 'hand',
+            info: '3 WP, 1 range, 20% evade, Rod. Element: Ice. Effect: Chance to cast Ice; Strengthen Ice.',
+            emoji: '&#x270B;'
+        });
+    });
+
+    it('has no un-slotted items', async () => {
+        const loadedItems = await items.getItems();
+        for (const key in loadedItems) {
+            if (loadedItems[key].slot === undefined) {
+                console.log(key);
+            }
+        }
+        map(loadedItems, (item) => expect(item.slot).to.not.be.undefined);
     });
 });

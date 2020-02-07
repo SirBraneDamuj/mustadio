@@ -33,6 +33,9 @@ const loadItemsFromDumpFile = async () => {
         const [stats] = info.split('. ');
         const statsTokens = stats.split(', ');
         const type = statsTokens[statsTokens.length - 1].replace('.', '');
+        if (type === 'Shuriken' || type === 'Bomb' || type === 'Consumable') {
+            return;
+        }
         const slot = SLOTS_FOR_EQUIPMENT_TYPES[type];
         items[name] = { 
             name, 
