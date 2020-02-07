@@ -2,8 +2,17 @@ const client = require('../client/fftbg');
 
 const abilities = {};
 
-const loadAbilitiesFromDumpFile = async () => {
-    if (Object.keys(abilities).length > 0) {
+const ONE_HOUR = 1000 * 10;
+
+const reloadAbilities = () => setTimeout(() => {
+    loadAbilitiesFromDumpFile(true);
+    setTimeout(reloadAbilities, ONE_HOUR);
+}, ONE_HOUR);
+
+reloadAbilities();
+
+const loadAbilitiesFromDumpFile = async (force) => {
+    if (!force && Object.keys(abilities).length > 0) {
         return abilities;
     }
     const { data } = await client.abilityInfo();
@@ -23,5 +32,5 @@ const loadAbilitiesFromDumpFile = async () => {
     return abilities;
 }
 
-module.exports.getAbilities = async () => loadAbilitiesFromDumpFile();
-module.exports.getAbility = async (abilityName) => (await loadAbilitiesFromDumpFile())[abilityName];
+module.exports.getAbilities = async () => loadAbilitiesFromDumpFile(false);
+module.exports.getAbility = async (abilityName) => (await loadAbilitiesFromDumpFile(false))[abilityName];

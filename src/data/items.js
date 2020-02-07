@@ -15,10 +15,20 @@ const emojiForSlot = (slotName) => {
         return '&#x129409;'
     }
 }
+
+const ONE_HOUR = 1000 * 10;
+
 const items = {};
 
-const loadItemsFromDumpFile = async () => {
-    if (Object.keys(items).length > 0) {
+const reloadItems = () => setTimeout(() => {
+    loadItemsFromDumpFile(true);
+    setTimeout(reloadItems, ONE_HOUR);
+}, ONE_HOUR);
+
+reloadItems();
+
+const loadItemsFromDumpFile = async (force) => {
+    if (!force && Object.keys(items).length > 0) {
         return items;
     }
     const { data } = await client.itemInfo();
@@ -47,5 +57,7 @@ const loadItemsFromDumpFile = async () => {
     return items;
 }
 
-module.exports.getItems = async () => loadItemsFromDumpFile();
-module.exports.getItem = async (itemName) => (await loadItemsFromDumpFile())[itemName];
+setTimeout(loadItemsFromDumpFile, ONE_HOUR);
+
+module.exports.getItems = async () => loadItemsFromDumpFile(false);
+module.exports.getItem = async (itemName) => (await loadItemsFromDumpFile(false))[itemName];
