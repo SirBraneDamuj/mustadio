@@ -6,7 +6,7 @@ const expect = require('chai').expect;
 const map = require('lodash/map');
 
 describe('ITEMS', () => {
-    const subject = (itemName) => items.getItem(itemName);
+    const subject = async (itemName) => items.getItem(itemName);
 
     it('loads knight swords correctly', async () => {
         expect(await subject('Nagrarock')).to.deep.eq({
