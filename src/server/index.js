@@ -3,7 +3,8 @@ const favicon = require('serve-favicon')
 const path = require('path');
 const bodyParser = require('body-parser');
 const data = require('../data');
-const items = require('../data/items')
+const items = require('../data/items');
+const abilities = require('../data/abilities');
 const config = require('../config');
 const app = express();
 
@@ -32,6 +33,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             team2: team2Record,
             tournamentId,
             items: await items.getItems(),
+            abilities: await abilities.getAbilities(),
         };
         res.render('match', context);
     }

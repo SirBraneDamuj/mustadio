@@ -2,6 +2,23 @@ include mixins/unit.pug
 
 mixin matchButton(team1, team2)
     a.btn.btn-primary(href=`/${tournamentId}/${team1}/${team2}`)= `${team1.charAt(0).toUpperCase() + team1.slice(1)} v ${team2.charAt(0).toUpperCase() + team2.slice(1)}`
+  
+mixin teamTable(side, team)
+  .team
+    h3= team.name + " team"
+    table.table.table-bordered
+      thead
+        tr
+          th= "Basic"
+          th= "B/F"
+          th= "Gear"
+          th= "Abilities"
+          th= "Main Skills"
+          th= "Sub Skills"
+      tbody
+        each unit in team.Units
+          if unit !== undefined
+            +unit(side, unit)
 
 html
   head
@@ -15,26 +32,9 @@ html
   body
     h1 
       a(href="https://github.com/sirbranedamuj/mustadio")= "Mustadio"
-    .d-flex
-      each team in [team1, team2]
-        .team
-          h3= team.name + " team"
-          table.table.table-bordered
-            thead
-              tr
-                th= "Basic"
-                th= "B/F"
-                th= "Gear"
-                th= "Sub"
-                th= "React"
-                th= "Support"
-                th= "Move"
-                th= "MainSkills"
-                th= "SubSkills"
-            tbody
-              each unit in team.Units
-                if unit !== undefined
-                  +unit(unit)
+    .d-flex.align-items-stretch
+      +teamTable('left', team1)
+      +teamTable('right', team2)
     h2= "Jump to Match"
       .d-flex.flex-column
         h3= "Round 1"

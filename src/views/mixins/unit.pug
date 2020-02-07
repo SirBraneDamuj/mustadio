@@ -1,26 +1,55 @@
-mixin unit(unit)
+mixin tooltip(tooltipSide, tooltipText)
+    div(data-toggle="tooltip" data-placement=tooltipSide, title=tooltipText)
+        block
+
+mixin tooltippedAbility(tooltipSide, ability)
+    - const abilityNameDisplay = ability.length > 0 ? ability : '(none)';
+    - const abilityInfo = abilities[ability] || { name: ability, info: '' };
+    +tooltip(tooltipSide, abilityInfo.info)
+        div= abilityNameDisplay
+    
+
+mixin tooltippedAbilityWithSlot(tooltipSide, slot, ability)
+    - const abilityNameDisplay = ability.length > 0 ? ability : '(none)';
+    - const abilityInfo = abilities[ability] || { name: ability, info: '' };
+    +tooltip(tooltipSide, abilityInfo.info)
+        .d-inline-flex.align-items-center
+            img.ability-icon(src=`/images/${slot}.png`)
+            div= abilityNameDisplay
+
+mixin tooltippedItem(tooltipSide, gear)
+    - const gearInfo = items[gear.name] || { name: gear.name, info: '', slot: '' };
+    +tooltip(tooltipSide, gearInfo.info)
+        .d-inline-flex.align-items-center
+            img.ability-icon(src=`/images/${gearInfo.slot}.png`)
+            span= gearInfo.name
+
+mixin unit(side, unit)
+    - const tooltipSide = side === 'left' ? 'right' : 'left';
     tr.unit-row
-    td
-        .d-flex.flex-column
-        div= unit.name
-        div= unit.gender
-        div.font-weight-bold= unit.class
-        div= unit.zodiac
-    td= unit.brave + '/' + unit.faith
-    td
-        .d-flex.flex-column
-        each gear in unit.UnitEquipments
-            - const gearInfo = items[gear.name] || { name: gear.name, info: '', slot: '' };
-            div(data-toggle="tooltip" data-placement="top" title=gearInfo.info)!= `${gearInfo.emoji} - ${gearInfo.name}`
-    td= unit.subSkill
-    td= unit.reactSkill
-    td= unit.supportSkill
-    td= unit.moveSkill
-    td
-        .d-flex.flex-column
-        each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'main')
-            div= ability.name
-    td
-        .d-flex.flex-column
-        each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'sub')
-            div= ability.name
+        td
+            .d-flex.flex-column
+            div= unit.name
+            div= unit.gender
+            div.font-weight-bold= unit.class
+            div= unit.zodiac
+        td= unit.brave + '/' + unit.faith
+        td
+            .d-flex.flex-column
+            each gear in unit.UnitEquipments
+                +tooltippedItem(tooltipSide, gear)
+        td
+            if unit.gender !== 'Monster'
+                .d-flex.flex-column
+                    +tooltippedAbilityWithSlot(tooltipSide, 'active', unit.subSkill)
+                    +tooltippedAbilityWithSlot(tooltipSide, 'react', unit.reactSkill)
+                    +tooltippedAbilityWithSlot(tooltipSide, 'support', unit.supportSkill)
+                    +tooltippedAbilityWithSlot(tooltipSide, 'move', unit.moveSkill)
+        td
+            .d-flex.flex-column
+            each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'main')
+                +tooltippedAbility(tooltipSide, ability.name)
+        td
+            .d-flex.flex-column
+            each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'sub')
+                +tooltippedAbility(tooltipSide, ability.name)
