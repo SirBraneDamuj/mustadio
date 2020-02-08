@@ -1,31 +1,8 @@
 const client = require('../client/fftbg');
 
 const { SLOTS_FOR_EQUIPMENT_TYPES } = require('./constants');
-const emojiForSlot = (slotName) => {
-    switch (slotName) {
-        case 'head':
-        return '&#x1F3A9;';
-        case 'hand':
-        return '&#x270B;';
-        case 'body':
-        return '&#x1F455;';
-        case 'accessory':
-        return '&#x1F48D;';
-        default:
-        return '&#x129409;'
-    }
-}
-
-const ONE_HOUR = 1000 * 10;
 
 const items = {};
-
-const reloadItems = () => setTimeout(() => {
-    loadItemsFromDumpFile(true);
-    setTimeout(reloadItems, ONE_HOUR);
-}, ONE_HOUR);
-
-reloadItems();
 
 const loadItemsFromDumpFile = async (force) => {
     if (!force && Object.keys(items).length > 0) {
@@ -51,13 +28,11 @@ const loadItemsFromDumpFile = async (force) => {
             name, 
             slot,
             info,
-            emoji: emojiForSlot(slot),
         };
     });
     return items;
 }
 
-setTimeout(loadItemsFromDumpFile, ONE_HOUR);
-
 module.exports.getItems = async () => loadItemsFromDumpFile(false);
 module.exports.getItem = async (itemName) => (await loadItemsFromDumpFile(false))[itemName];
+module.exports.setAutoReload = (duration) => setInterval(() => loadItemsFromDumpFile(true), duration)

@@ -6,6 +6,8 @@ const client = axios.create({
     responseType: 'text',
 });
 
+module.exports.classInfo = async () => client.get('/classhelp.txt');
+
 module.exports.itemInfo = async () => client.get('/infoitem.txt');
 
 module.exports.abilityInfo = async () => client.get('/infoability.txt');

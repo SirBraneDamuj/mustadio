@@ -26,12 +26,16 @@ mixin tooltippedItem(tooltipSide, gear)
 
 mixin unit(side, unit)
     - const tooltipSide = side === 'left' ? 'right' : 'left';
+    - const spacelessClassName = unit.class === 'Floating Eye' ? unit.class : unit.class.replace(' ', '');
+    - const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
+    - const unitClassInfo = classes[className][unit.gender]
     tr.unit-row
         td
             .d-flex.flex-column
             div= unit.name
             div= unit.gender
-            div.font-weight-bold= unit.class
+            +tooltip(tooltipSide, unitClassInfo.raw)
+                div.font-weight-bold= unit.class
             div= unit.zodiac
         td= unit.brave + '/' + unit.faith
         td

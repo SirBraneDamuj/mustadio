@@ -2,15 +2,6 @@ const client = require('../client/fftbg');
 
 const abilities = {};
 
-const ONE_HOUR = 1000 * 10;
-
-const reloadAbilities = () => setTimeout(() => {
-    loadAbilitiesFromDumpFile(true);
-    setTimeout(reloadAbilities, ONE_HOUR);
-}, ONE_HOUR);
-
-reloadAbilities();
-
 const loadAbilitiesFromDumpFile = async (force) => {
     if (!force && Object.keys(abilities).length > 0) {
         return abilities;
@@ -34,3 +25,4 @@ const loadAbilitiesFromDumpFile = async (force) => {
 
 module.exports.getAbilities = async () => loadAbilitiesFromDumpFile(false);
 module.exports.getAbility = async (abilityName) => (await loadAbilitiesFromDumpFile(false))[abilityName];
+module.exports.setAutoReload = (duration) => setInterval(() => loadAbilitiesFromDumpFile(true), duration)
