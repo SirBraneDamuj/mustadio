@@ -29,6 +29,8 @@ mixin unit(side, unit)
     - const spacelessClassName = unit.class === 'Floating Eye' ? unit.class : unit.class.replace(' ', '');
     - const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
     - const unitClassInfo = classes[className][unit.gender]
+    - const activeInnates = unitClassInfo.innates.filter((innate) => !abilities[innate]);
+    - const nonActiveInnates = unitClassInfo.innates.filter((innate) => abilities[innate] && abilities[innate].type !== 'active');
     tr.unit-row
         td
             .d-flex.flex-column
@@ -43,17 +45,29 @@ mixin unit(side, unit)
             each gear in unit.UnitEquipments
                 +tooltippedItem(tooltipSide, gear)
         td
-            if unit.gender !== 'Monster'
-                .d-flex.flex-column
+            .d-flex.flex-column
+                if unit.gender !== 'Monster'
+                    if activeInnates.length > 0
+                        each innate in activeInnates
+                            +tooltippedAbilityWithSlot(tooltipSide, 'active', innate)
                     +tooltippedAbilityWithSlot(tooltipSide, 'active', unit.subSkill)
                     +tooltippedAbilityWithSlot(tooltipSide, 'react', unit.reactSkill)
                     +tooltippedAbilityWithSlot(tooltipSide, 'support', unit.supportSkill)
                     +tooltippedAbilityWithSlot(tooltipSide, 'move', unit.moveSkill)
+                if nonActiveInnates.length > 0
+                    div.font-weight-bold= "Innates:"
+                    each innate in nonActiveInnates
+                        - const innateAbilityType = abilities[innate] && abilities[innate].type;
+                        +tooltippedAbilityWithSlot(tooltipSide, innateAbilityType || 'support', innate)
+
         td
             .d-flex.flex-column
-            each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'main')
-                +tooltippedAbility(tooltipSide, ability.name)
+                if unit.gender !== 'Monster'
+                    each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'main')
+                        +tooltippedAbility(tooltipSide, ability.name)
+
         td
             .d-flex.flex-column
-            each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'sub')
-                +tooltippedAbility(tooltipSide, ability.name)
+                if unit.gender !== 'Monster'
+                    each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'sub')
+                        +tooltippedAbility(tooltipSide, ability.name)

@@ -195,11 +195,11 @@ Holy Breath: 2 range, 2 AoE (line). Element: Holy. Effect: Damage (MA * 5).
 Braver: 2 range, 0 AoE, 3 CT. Effect: Damage (MA * 12).
 Cross-slash: 2 range, 1 AoE, 4 CT. Effect: Damage (MA * 22).
 Blade Beam: 2 range, 0 AoE, 5 CT. Effect: Damage (CasterMaxHP - CasterCurrentHP).
-Climhazzard: 2 range, 0 AoE, 7 CT. Effect: Damage (TargetMaxHP - TargetCurrentHP).
-Meteorain: 3 range, 2 AoE, 10 CT. Effect: Damage (MA * 26).
-Finish Touch: 3 range, 1 AoE, 8 CT. Effect: Add Death, Petrify, Stop (Random).
-Omnislash: 3 range, 2 AoE, 13 CT. Effect: Damage (MA * 40).
-Cherry Blossom: 2 range, 2 AoE, 17 CT. Effect: Damage (MA * 60).
+Climhazzard: 2 range, 0 AoE, 6 CT. Effect: Damage (TargetMaxHP - TargetCurrentHP).
+Meteorain: 3 range, 2 AoE, 9 CT. Effect: Damage (MA * 26).
+Finish Touch: 3 range, 1 AoE, 7 CT. Effect: Add Death, Petrify, Stop (Random).
+Omnislash: 3 range, 2 AoE, 11 CT. Effect: Damage (MA * 40).
+Cherry Blossom: 2 range, 2 AoE, 15 CT. Effect: Damage (MA * 60).
 Choco Attack: 1 range, 0 AoE. Effect: Normal Attack.
 Choco Ball: 4 range, 0 AoE. Element: Water. Effect: Damage (PA / 2 * PA).
 Choco Meteor: 5 range, 0 AoE. Effect: Damage (MA * 4).
@@ -263,7 +263,7 @@ Gather Power: 0 range, 0 AoE. Effect: +2 PA.
 Blow Fire: 2 range, 2 AoE (line). Element: Fire. Effect: Damage (MA * 4).
 Tendrils: 1 range, 0 AoE. Effect: Normal Attack; Chance to Add Slow.
 Lick: 1 range, 0 AoE. Effect: Add Reflect.
-Goo: 1 range, 0 AoE. Effect: Add Don't Move.
+Goo: 1 range, 0 AoE. Effect: Add Add Stop, Don't Act, Don't Move (All).
 Bad Breath: 0 range, 2 AoE. Effect: Add Petrify, Darkness, Confusion, Silence, Oil, Frog, Poison, Sleep (Separate).
 Moldball Virus: 1 range, 0 AoE. Hit: (MA + 5)%. Effect: Transform Human into Malboro.
 Stab Up: 1 range, 0 AoE. Effect: Normal Attack.
@@ -335,7 +335,7 @@ Charge+2: weapon range, 0 AoE, 5 CT. Effect: Normal Attack with +3 WP.
 Charge+3: weapon range, 0 AoE, 6 CT. Effect: Normal Attack with +4 WP.
 Charge+4: weapon range, 0 AoE, 8 CT. Effect: Normal Attack with +5 WP.
 Charge+5: weapon range, 0 AoE, 10 CT. Effect: Normal Attack with +6 WP.
-Charge+7: weapon range, 0 AoE, 14 CT. Effect: Normal Attack with +8 WP.
+Charge+7: weapon range, 1 AoE, 14 CT. Effect: Normal Attack with +8 WP.
 Charge+10: weapon range, 0 AoE, 20 CT. Effect: Normal Attack with +11 WP.
 Charge+20: weapon range, 0 AoE, 35 CT. Effect: Normal Attack with +20 WP.
 CT: Base math algorithm on the target's CT.
@@ -345,79 +345,79 @@ Prime Number: An algorithm for targeting unit whose attribute is a prime number 
 5: An algorithm for targeting units whose attribute is a multiple of 5.
 4: An algorithm for targeting units whose attribute is a multiple of 4.
 3: An algorithm for targeting units whose attribute is a multiple of 3.
-PA Save: On damage, +1 PA.
-MA Save: On damage, +1 MA.
-Speed Save: On damage, +1 Speed.
-Sunken State: On damage, Add Transparent.
-Caution: On damage, Add Defending.
-Dragon Spirit: On damage, Add Reraise.
-Regenerator: On damage, Add Regen.
-Brave Up: On damage, +3 Brave.
-Faith Up: On damage, +3 Faith.
-HP Restore: On critical, Heal all HP.
-MP Restore: On critical, Heal all MP.
-Critical Quick: On critical, set CT to Max.
-Meatbone Slash: On critical, attack back with an attack equal to Max HP.
-Counter Magic: On hit by offensive magic, cast that spell back at the attacker.
-Counter Tackle: On attack from adjacent unit, use Dash back at the attacker.
-Counter Flood: On an attack, use Elemental back at the attacker.
-Absorb Used MP: On hit by an ability using MP, gain MP equal to the MP spent.
-Auto Potion: On damage, use a Potion (Heals 100 HP) on self.
-Counter: On an attack, attack back if within weapon's range.
-Distribute: On healing past Max HP, heal allies equal to the excess.
-Mana Shield: On damage, do MP damage instead if MP is greater than 0.
-Damage Split: On damage, Heal half and do that amount back to the attacker.
-Parry: Enables the use of equipped weapon's evasion. Stacks with class and accessory evasion.
-Earplug: On hit by Talk Skill, negate that ability.
-Abandon: Doubles class evasion.
-Catch: On hit by a Thrown weapon, negate that ability.
-Blade Grasp: On attack by a weapon or weapon ability, negate that attack.
-Arrow Guard: On attack by a bow or crossbow, negate that attack.
-Hamedo: On normal attack by a weapon, if attacker is in weapon's range, negate that attack and attack the attacker instead.
-Equip Armor: Allows user to equip Armor, Helmets, Clothing, Hats, and Robes.
-Equip Shield: Allows user to equip a Shield, even with Knight Swords.
-Equip Sword: Allows user to equip Swords, Knight Swords, and Katanas.
-Equip Knife: Allows user to equip Rods, Knives, and Ninja Blades.
-Equip Bow: Allows user to equip Bows and Crossbows.
-Equip Polearm: Allows user to equip Spears, Poles, and Fabrics.
-Equip Axe: Allows user to equip Axes, Flails, and Staves.
-Equip Gun: Allows user to equip Guns, Books, and Harps.
-Halve MP: Halves MP required for abilities.
-Attack UP: Increases physical damage by a third.
-Defense UP: Decreases damage taken by physical attacks by a third.
-Magic AttackUP: Increases magical damage by a third.
-Magic DefendUP: Decreases damage taken by magical attacks by a third.
-Concentrate: Unit bypasses accuracy and evasion checks, and is unable to miss.
-Sicken: Physical attacks by unit Add Poison.
-Secret Hunt: When unit kills or revives another unit, it gains +1 PA and +1 MA.
-Martial Arts: Increases damage from unarmed attacks by 50%.
-Monster Talk: Allows Talk Skills to work on monsters.
-Throw Item: Increases range of items to 4.
-Maintenance: Unit's items cannot be broken or stolen.
-Doublehand: Uses both of unit's hands to double damage from the weapon.
-Dual Wield: Can equip a weapon in both of the unit's hands.
-Beastmaster: Allows allied adjacent monsters to use their Hidden Ability.
-Defend: Allows the unit to do a Defend action, boosting evasion.
-Short Charge: The CT of all used abilities is halved.
-Non-charge: The CT of all used abilities is reduced to 0.
-Short Status: Unit is affected by status effects (both buffs and debuffs) half as long as other units.
-Long Status: Unit is affected by status effects (both buffs and debuffs) 50% longer than other units.
-Move+1: Increases Move by 1.
-Move+2: Increases Move by 2.
-Move+3: Increases Move by 3.
-Jump+1: Increases Jump by 1.
-Jump+2: Increases Jump by 2.
-Jump+3: Increases Jump by 3.
-Ignore Height: Jump any height.
-Move-HP Up: Heals 10% HP after moving.
-Move-MP Up: Heals 10% MP after moving.
-Teleport: Teleport directly instead of walking.
-Teleport 2: Teleport directly instead of walking with infinite range.
-Ignore Terrain: No movement penalty for difficult terrain.
-Waterwalking: Move and stand on top of water.
-Swim: Move through water without penalty.
-Lava Walking: Move and stand on top of lava.
-Waterbreathing: Move through and even stand in water without penalty.
-Levitate: Grants permanent Float.
-Fly: Fly instead of walking, ignoring height.
-Retreat: When in critical, increases Move by 4.
+PA Save: Reaction. On damage, +1 PA.
+MA Save: Reaction. On damage, +1 MA.
+Speed Save: Reaction. On damage, +1 Speed.
+Sunken State: Reaction. On damage, Add Transparent.
+Caution: Reaction. On damage, Add Defending.
+Dragon Spirit: Reaction. On damage, Add Reraise.
+Regenerator: Reaction. On damage, Add Regen.
+Brave Up: Reaction. On damage, +3 Brave.
+Faith Up: Reaction. On damage, +3 Faith.
+HP Restore: Reaction. On critical, Heal all HP.
+MP Restore: Reaction. On critical, Heal all MP.
+Critical Quick: Reaction. On critical, set CT to Max.
+Meatbone Slash: Reaction. On critical, attack back with an attack equal to Max HP.
+Counter Magic: Reaction. On hit by offensive magic, cast that spell back at the attacker.
+Counter Tackle: Reaction. On attack from adjacent unit, use Dash back at the attacker.
+Counter Flood: Reaction. On an attack, use Elemental back at the attacker.
+Absorb Used MP: Reaction. On hit by an ability using MP, gain MP equal to the MP spent.
+Auto Potion: Reaction. On damage, use a Potion (Heals 100 HP) on self.
+Counter: Reaction. On an attack, attack back if within weapon's range.
+Distribute: Reaction. On healing past Max HP, heal allies equal to the excess.
+Mana Shield: Reaction. On damage, do MP damage instead if MP is greater than 0.
+Damage Split: Reaction. On damage, Heal half and do that amount back to the attacker.
+Parry: Reaction. Enables the use of equipped weapon's evasion. Stacks with class, shield, and accessory evasion.
+Earplug: Reaction. On hit by Talk Skill, negate that ability.
+Abandon: Reaction. Doubles all evasion.
+Catch: Reaction. On hit by a Thrown weapon, negate that ability.
+Blade Grasp: Reaction. On attack by a weapon or weapon ability, negate that attack.
+Arrow Guard: Reaction. On attack by a bow or crossbow, negate that attack.
+Hamedo: Reaction. On normal attack by a weapon, if attacker is in weapon's range, negate that attack and attack the attacker instead.
+Equip Armor: Support. Allows user to equip Armor, Helmets, Clothing, Hats, and Robes.
+Equip Shield: Support. Allows user to equip a Shield, even with Knight Swords.
+Equip Sword: Support. Allows user to equip Swords, Knight Swords, and Katanas.
+Equip Knife: Support. Allows user to equip Rods, Knives, and Ninja Blades.
+Equip Bow: Support. Allows user to equip Bows and Crossbows.
+Equip Polearm: Support. Allows user to equip Spears, Poles, and Fabrics.
+Equip Axe: Support. Allows user to equip Axes, Flails, and Staves.
+Equip Gun: Support. Allows user to equip Guns, Books, and Harps.
+Halve MP: Support. Halves MP required for abilities.
+Attack UP: Support. Increases physical damage by a third.
+Defense UP: Support. Decreases damage taken by physical attacks by a third.
+Magic AttackUP: Support. Increases magical damage by a third.
+Magic DefendUP: Support. Decreases damage taken by magical attacks by a third.
+Concentrate: Support. Unit bypasses accuracy and evasion checks, and is unable to miss.
+Sicken: Support. Physical attacks by unit Add Poison.
+Secret Hunt: Support. When unit kills or revives another unit, it gains +1 PA and +1 MA.
+Martial Arts: Support. Increases damage from unarmed attacks by 50%.
+Monster Talk: Support. Allows Talk Skills to work on monsters.
+Throw Item: Support. Increases range of items to 4.
+Maintenance: Support. Unit's items cannot be broken or stolen.
+Doublehand: Support. Uses both of unit's hands to double damage from the weapon.
+Dual Wield: Support. Can equip a weapon in both of the unit's hands.
+Beastmaster: Support. Allows allied adjacent monsters to use their Hidden Ability.
+Defend: Support. Allows the unit to do a Defend action, boosting evasion.
+Short Charge: Support. The CT of all used abilities is halved.
+Non-charge: Support. The CT of all used abilities is reduced to 0.
+Short Status: Support. Unit is affected by status effects (both buffs and debuffs) half as long as other units.
+Long Status: Support. Unit is affected by status effects (both buffs and debuffs) 50% longer than other units.
+Move+1: Movement. Increases Move by 1.
+Move+2: Movement. Increases Move by 2.
+Move+3: Movement. Increases Move by 3.
+Jump+1: Movement. Increases Jump by 1.
+Jump+2: Movement. Increases Jump by 2.
+Jump+3: Movement. Increases Jump by 3.
+Ignore Height: Movement. Jump any height.
+Move-HP Up: Movement. Heals 10% HP after moving.
+Move-MP Up: Movement. Heals 10% MP after moving.
+Teleport: Movement. Teleport directly instead of walking.
+Teleport 2: Movement. Teleport directly instead of walking with infinite range.
+Ignore Terrain: Movement. No movement penalty for difficult terrain.
+Waterwalking: Movement. Move and stand on top of water.
+Swim: Movement. Move through water without penalty.
+Lava Walking: Movement. Move and stand on top of lava.
+Waterbreathing: Movement. Move through and even stand in water without penalty.
+Levitate: Movement. Grants permanent Float.
+Fly: Movement. Fly instead of walking, ignoring height.
+Retreat: Movement. When in critical, increases Move by 4.
