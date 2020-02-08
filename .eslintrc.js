@@ -81,7 +81,7 @@ module.exports = {
         "func-name-matching": "error",
         "func-names": "error",
         "func-style": [
-            "error",
+            "off",
             "expression"
         ],
         "function-paren-newline": "off",
@@ -258,7 +258,7 @@ module.exports = {
         "radix": "error",
         "require-atomic-updates": "error",
         "require-await": "off",
-        "require-jsdoc": "error",
+        "require-jsdoc": "off",
         "require-unicode-regexp": "off",
         "rest-spread-spacing": [
             "error",

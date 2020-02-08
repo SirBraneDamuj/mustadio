@@ -1,0 +1,36 @@
+Crystal: Unable to be revived. When moved on, completely heals HP / MP, and removes unit from board.
+Dead: Unable to take action. Turns into Crystal when three turns pass.
+Undead: Most healing does damage instead. Instead of crystalizing after three turns when dead, has a 50% chance to revive.
+Charging: Takes double damage from physical attacks.
+Jump: Cannot be affected by anything.
+Defending: Doubles evasion.
+Performing: Cannot evade.
+Petrify: Counts as death. Cannot do anything.
+Darkness: Lower accuracy of moves.
+Confusion: Unit does not know friend from foe, and does random actions on random targets.
+Silence: Unit cannot cast most spells or other abilities relying on sound.
+Blood Suck: Counts as death. Unit walks to nearest unit and uses Blood Suck, draining life and chance to add this status to them, too.
+Oil: Unit takes double damage from Fire attacks.
+Float: Unit hovers 0.5h over the ground, allowing them to walk over tiles with no penalty. Also provides immunity to Earth.
+Reraise: When dead, cancels Dead on the unit's next turn.
+Transparent: Removes accuracy checks on physical attacks, guarenteeing a hit.
+Berserk: Unit can only move towards enemies and execute normal attacks, but receives a 50% damage boost.
+Chicken: Automatically applied when Brave drops below 20. Runs away on every turn, gaining 1 Brave on every turn. Canceled when Unit gets back to 20 Brave.
+Frog: Unit is a weak Frog. Frogs can only do weak attacks or cast Frog, if they have it.
+Critical: Unit is near death, and will run away unless they're the last unit alive on their team.
+Poison: Unit takes 20% damage each turn.
+Regen: Unit heals 20% health each turn.
+Protect: Reduces physical damage taken by a unit by a third.
+Shell: Reduces magical damage taken by a unit by a third.
+Haste: Double the unit's speed.
+Slow: Halve the unit's speed.
+Stop: Freezes a unit's CT. Unit cannot react.
+Faith: Unit's effective Faith is 100.
+Innocent: Unit's effective Faith is 0, which provides complete immunity to Faith-based Magic.
+Charm: Unit thinks it is a member of the opposing team.
+Sleep: Freezes a unit's CT. Takes double damage from physical attacks.
+Don't Move: Unit cannot move (but can act).
+Don't Act: Unit cannot act (but can move).
+Reflect: Reflects most spells to another panel.
+Death Sentence: Unit dies in three turns.
+Quick: Sets CT to Max.

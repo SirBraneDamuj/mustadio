@@ -21,6 +21,12 @@ module.exports.abilityInfo = () => {
     };
 };
 
+module.exports.statusInfo = () => {
+    return {
+        data: readFakeFile('infostatus.txt'),
+    };
+}
+
 module.exports.tournamentTeam = async (_, teamName) => {
     return {
         data: readFakeFile(`fake_tournament/${teamName}.txt`),

@@ -12,6 +12,8 @@ module.exports.itemInfo = async () => client.get('/infoitem.txt');
 
 module.exports.abilityInfo = async () => client.get('/infoability.txt');
 
+module.exports.statusInfo = async () => client.get('/infostatus.txt');
+
 module.exports.tournamentTeam = async (tournamentId, teamName) => client.get(`/${tournamentId}/${teamName}.txt`);
 
 module.exports.tournamentList = async () => client.get('/');

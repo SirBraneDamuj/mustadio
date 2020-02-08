@@ -22,7 +22,7 @@ describe('CLASSES', () => {
                     name: className,
                     gender,
                     baseStats: {
-                        hp: 174,
+                        hp: 173,
                         mp: 47,
                         move: 4,
                         jump: 3,
@@ -32,7 +32,7 @@ describe('CLASSES', () => {
                         cEvPercent: 7
                     },
                     innates: ['Basic Skill'],
-                    raw: "Squire Male's base stats: 174 HP, 47 MP, 4 Move, 3 Jump, 9 Speed, 8 PA, 7 MA, 7% C-EV. Innates: Basic Skill. Equips: Knives, Swords, Axes, Flails, Crossbows, Hats, Helmets, Clothing, Armor.",
+                    raw: "Squire Male's base stats: 173 HP, 47 MP, 4 Move, 3 Jump, 9 Speed, 8 PA, 7 MA, 7% C-EV. Innates: Basic Skill. Equips: Knives, Swords, Axes, Flails, Crossbows, Hats, Clothing, uncommonly [Shields, Armor, and Helmets].",
                 });
             });
         });
@@ -54,7 +54,7 @@ describe('CLASSES', () => {
                         cEvPercent: 7
                     },
                     innates: ['Basic Skill'],
-                    raw: "Squire Female's base stats: 162 HP, 50 MP, 4 Move, 3 Jump, 9 Speed, 7 PA, 8 MA, 7% C-EV. Innates: Basic Skill. Equips: Knives, Swords, Axes, Flails, Crossbows, Hats, Helmets, Clothing, Armor.",
+                    raw: "Squire Female's base stats: 162 HP, 50 MP, 4 Move, 3 Jump, 9 Speed, 7 PA, 8 MA, 7% C-EV. Innates: Basic Skill. Equips: Knives, Swords, Axes, Flails, Crossbows, Hats, Clothing, uncommonly [Shields, Armor, and Helmets].",
                 });
             });
         });
@@ -133,9 +133,9 @@ describe('CLASSES', () => {
         });
     });
 
-    context('Floating Eye', () => {
+    context('FloatingEye', () => {
         it('loads correctly', async () => {
-            className = 'Floating Eye';
+            className = 'FloatingEye';
             gender = 'Monster'
             expect(await subject()).to.deep.eq({
                 name: className,
@@ -151,7 +151,7 @@ describe('CLASSES', () => {
                     cEvPercent: 22
                 },
                 innates: ['Counter', 'Fly', 'Landlocked', 'Magic Defense UP'],
-                raw: "Floating Eye's base stats: 248 HP, 17 MP, 5 Move, 5 Jump, 8 Speed, 12 PA, 34 MA, 22% C-EV. Innates: Counter, Fly, Landlocked, Magic Defense UP. Elements: Half-Ice&Wind&Earth&Water&Dark, Weak-Lightning.",
+                raw: "FloatingEye's base stats: 248 HP, 17 MP, 5 Move, 5 Jump, 8 Speed, 12 PA, 34 MA, 22% C-EV. Innates: Counter, Fly, Landlocked, Magic Defense UP. Elements: Half-Ice&Wind&Earth&Water&Dark, Weak-Lightning.",
             });
         });
     });

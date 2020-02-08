@@ -2,6 +2,12 @@ mixin tooltip(tooltipSide, tooltipText)
     div(data-toggle="tooltip" data-placement=tooltipSide, title=tooltipText)
         block
 
+mixin tooltippedStatus(tooltipSide, status)
+    +tooltip(tooltipSide, status.info)
+        .d-inline-flex.align-items-center
+            img.ability-icon(src='/images/status.png')
+            div= status.name
+
 mixin tooltippedAbility(tooltipSide, ability)
     - const abilityNameDisplay = ability.length > 0 ? ability : '(none)';
     - const abilityInfo = abilities[ability] || { name: ability, info: '' };
@@ -29,8 +35,9 @@ mixin unit(side, unit)
     - const spacelessClassName = unit.class === 'Floating Eye' ? unit.class : unit.class.replace(' ', '');
     - const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
     - const unitClassInfo = classes[className][unit.gender]
-    - const activeInnates = unitClassInfo.innates.filter((innate) => !abilities[innate]);
-    - const nonActiveInnates = unitClassInfo.innates.filter((innate) => abilities[innate] && abilities[innate].type !== 'active');
+    - const activeInnates = unitClassInfo.innates.filter((innate) => !abilities[innate] && !statuses[innate]);
+    - const nonActiveInnates = unitClassInfo.innates.filter((innate) => !statuses[innate] && abilities[innate] && abilities[innate].type !== 'active');
+    - const innateStatuses = unitClassInfo.innates.filter((innate) => statuses[innate]);
     tr.unit-row
         td
             .d-flex.flex-column
@@ -54,11 +61,13 @@ mixin unit(side, unit)
                     +tooltippedAbilityWithSlot(tooltipSide, 'react', unit.reactSkill)
                     +tooltippedAbilityWithSlot(tooltipSide, 'support', unit.supportSkill)
                     +tooltippedAbilityWithSlot(tooltipSide, 'move', unit.moveSkill)
-                if nonActiveInnates.length > 0
+                if nonActiveInnates.length > 0 || innateStatuses.length > 0
                     div.font-weight-bold= "Innates:"
                     each innate in nonActiveInnates
                         - const innateAbilityType = abilities[innate] && abilities[innate].type;
                         +tooltippedAbilityWithSlot(tooltipSide, innateAbilityType || 'support', innate)
+                    each innateStatus in innateStatuses
+                        +tooltippedStatus(tooltipSide, statuses[innateStatus])
 
         td
             .d-flex.flex-column
