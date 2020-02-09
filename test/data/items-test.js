@@ -5,6 +5,26 @@ const items = require('../../src/data/items');
 const expect = require('chai').expect;
 const map = require('lodash/map');
 
+const defaultStats = {
+    wp: 0,
+    healWp: 0,
+    absorbWp: 0,
+    range: 0,
+    evadePercent: 0,
+    physEvadePercent: 0,
+    magicEvadePercent: 0,
+    hp: 0,
+    mp: 0,
+    element: undefined,
+    speed: 0,
+    move: 0,
+    jump: 0,
+    pa: 0,
+    ma: 0,
+    initialStatuses: [],
+    permStatuses: [],
+}
+
 describe('ITEMS', () => {
     const subject = async (itemName) => items.getItem(itemName);
 
@@ -15,21 +35,12 @@ describe('ITEMS', () => {
             type: 'Sword',
             info: '1 WP, 1 range, 50% evade, Sword. Element: Dark. Effect: Chance to add Frog; Permanent Evil, Float.',
             stats: {
+                ...defaultStats,
                 wp: 1,
-                healWp: 0,
-                absorbWp: 0,
                 range: 1,
                 evadePercent: 50,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
                 element: 'Dark',
-                speed: 0,
-                move: 0,
-                jump: 0,
-                pa: 0,
-                ma: 0,
+                permStatuses: ['Evil', 'Float'],
             }
         });
     })
@@ -41,21 +52,10 @@ describe('ITEMS', () => {
             type: 'Pole',
             info: "12 WP, 2 range, 20% evade, Pole. Effect: Chance to Cancel Darkness, Silence, Oil, Frog, Poison, Slow, Stop, Don't Move, Don't Act.",
             stats: {
+                ...defaultStats,
                 wp: 12,
-                healWp: 0,
-                absorbWp: 0,
                 range: 2,
                 evadePercent: 20,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
-                element: undefined,
-                speed: 0,
-                move: 0,
-                jump: 0,
-                pa: 0,
-                ma: 0,
             },
         });
     });
@@ -67,21 +67,9 @@ describe('ITEMS', () => {
             type: 'Hat',
             info: "+64 HP, +0 MP, Hat. Effect: +2 Speed; Immune Don't Move.",
             stats: {
-                wp: 0,
-                healWp: 0,
-                absorbWp: 0,
-                range: 0,
-                evadePercent: 0,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
+                ...defaultStats,
                 hp: 64,
-                mp: 0,
-                element: undefined,
                 speed: 2,
-                move: 0,
-                jump: 0,
-                pa: 0,
-                ma: 0,
             },
         });
     });
@@ -93,21 +81,9 @@ describe('ITEMS', () => {
             type: 'Armor',
             info: '+120 HP, +0 MP, Armor. Effect: Always Reflect.',
             stats: {
-                wp: 0,
-                healWp: 0,
-                absorbWp: 0,
-                range: 0,
-                evadePercent: 0,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
+                ...defaultStats,
                 hp: 120,
-                mp: 0,
-                element: undefined,
-                speed: 0,
-                move: 0,
-                jump: 0,
-                pa: 0,
-                ma: 0,
+                permStatuses: ['Reflect'],
             },
         });
     });
@@ -119,21 +95,8 @@ describe('ITEMS', () => {
             type: 'Accessory',
             info: 'Accessory. Effect: Permanent Protect, Shell.',
             stats: {
-                wp: 0,
-                healWp: 0,
-                absorbWp: 0,
-                range: 0,
-                evadePercent: 0,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
-                element: undefined,
-                speed: 0,
-                move: 0,
-                jump: 0,
-                pa: 0,
-                ma: 0,
+                ...defaultStats,
+                permStatuses: ['Protect', 'Shell'],
             },
         });
     });
@@ -145,21 +108,10 @@ describe('ITEMS', () => {
             type: 'Crossbow',
             info: '9 WP, 5 range, 5% evade, Crossbow.',
             stats: {
+                ...defaultStats,
                 wp: 9,
-                healWp: 0,
-                absorbWp: 0,
                 range: 5,
                 evadePercent: 5,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
-                element: undefined,
-                speed: 0,
-                move: 0,
-                jump: 0,
-                pa: 0,
-                ma: 0,
             },
         });
     });
@@ -171,21 +123,11 @@ describe('ITEMS', () => {
             type: 'Rod',
             info: '3 WP, 1 range, 20% evade, Rod. Element: Ice. Effect: Chance to cast Ice; Strengthen Ice.',
             stats: {
+                ...defaultStats,
                 wp: 3,
-                healWp: 0,
-                absorbWp: 0,
                 range: 1,
                 evadePercent: 20,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
                 element: 'Ice',
-                speed: 0,
-                move: 0,
-                jump: 0,
-                pa: 0,
-                ma: 0,
             },
         });
     });
@@ -197,21 +139,11 @@ describe('ITEMS', () => {
             type: 'Accessory',
             info: 'Accessory. Effect: +1 PA, +1 MA, +1 Speed; Strengthen Dark; Permanent Undead.',
             stats: {
-                wp: 0,
-                healWp: 0,
-                absorbWp: 0,
-                range: 0,
-                evadePercent: 0,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
-                element: undefined,
+                ...defaultStats,
                 speed: 1,
-                move: 0,
-                jump: 0,
                 pa: 1,
                 ma: 1,
+                permStatuses: ['Undead'],
             },
         });
     });
@@ -223,20 +155,10 @@ describe('ITEMS', () => {
             type: 'Hat',
             info: '+88 HP, +15 MP, Hat. Effect: +1 MA, +1 Speed.',
             stats: {
-                wp: 0,
-                healWp: 0,
-                absorbWp: 0,
-                range: 0,
-                evadePercent: 0,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
+                ...defaultStats,
                 hp: 88,
                 mp: 15,
-                element: undefined,
                 speed: 1,
-                move: 0,
-                jump: 0,
-                pa: 0,
                 ma: 1,
             },
         });
@@ -249,19 +171,10 @@ describe('ITEMS', () => {
             type: 'Staff',
             info: '7 WP, 1 range, 15% evade, Staff. Effect: +2 PA, +1 MA.',
             stats: {
+                ...defaultStats,
                 wp: 7,
-                healWp: 0,
-                absorbWp: 0,
                 range: 1,
                 evadePercent: 15,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
-                element: undefined,
-                speed: 0,
-                move: 0,
-                jump: 0,
                 pa: 2,
                 ma: 1,
             },
@@ -275,21 +188,22 @@ describe('ITEMS', () => {
             type: 'Helmet',
             info: '+52 HP, +0 MP, Helmet. Effect: +1 Jump.',
             stats: {
-                wp: 0,
-                healWp: 0,
-                absorbWp: 0,
-                range: 0,
-                evadePercent: 0,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
+                ...defaultStats,
                 hp: 52,
-                mp: 0,
-                element: undefined,
-                speed: 0,
-                move: 0,
                 jump: 1,
-                pa: 0,
-                ma: 0,
+            },
+        });
+    });
+
+    it('loads angel ring', async () => {
+        expect(await subject('Angel Ring')).to.deep.eq({
+            name: 'Angel Ring',
+            slot: 'accessory',
+            type: 'Accessory',
+            info: 'Accessory. Effect: Immune Death, Darkness; Initial Reraise.',
+            stats: {
+                ...defaultStats,
+                initialStatuses: ['Reraise'],
             },
         });
     });
@@ -301,32 +215,60 @@ describe('ITEMS', () => {
             type: 'Accessory',
             info: 'Accessory. Effect: +1 Move, +1 Jump.',
             stats: {
-                wp: 0,
-                healWp: 0,
-                absorbWp: 0,
-                range: 0,
-                evadePercent: 0,
-                physEvadePercent: 0,
-                magicEvadePercent: 0,
-                hp: 0,
-                mp: 0,
-                element: undefined,
-                speed: 0,
+                ...defaultStats,
                 move: 1,
                 jump: 1,
-                pa: 0,
-                ma: 0,
+            },
+        });
+    });
+
+    it('loads secret clothes', async () => {
+        expect(await subject('Secret Clothes')).to.deep.eq({
+            name: 'Secret Clothes',
+            slot: 'body',
+            type: 'Clothes',
+            info: '+44 HP, +0 MP, Clothes. Effect: +2 Speed; Initial Transparent.',
+            stats: {
+                ...defaultStats,
+                hp: 44,
+                speed: 2,
+                initialStatuses: ['Transparent'],
+            },
+        });
+    });
+
+    it('loads healing staff', async () => {
+        expect(await subject('Healing Staff')).to.deep.eq({
+            name: 'Healing Staff',
+            slot: 'hand',
+            type: 'Staff',
+            info: '4 WP (heal), 1 range, 17% evade, Staff.',
+            stats: {
+                ...defaultStats,
+                healWp: 4,
+                range: 1,
+                evadePercent: 17,
+            },
+        });
+    });
+
+    it('loads bloody strings', async () => {
+        expect(await subject('Bloody Strings')).to.deep.eq({
+            name: 'Bloody Strings',
+            slot: 'hand',
+            type: 'Harp',
+            info: '12 WP (absorb), 3 range, 12% evade, Harp. Effect: Immune Silence.',
+            stats: {
+                ...defaultStats,
+                absorbWp: 12,
+                range: 3,
+                evadePercent: 12,
             },
         });
     });
 
     it('has no un-slotted items', async () => {
         const loadedItems = await items.getItems();
-        for (const key in loadedItems) {
-            if (loadedItems[key].slot === undefined) {
-                console.log(key);
-            }
-        }
         map(loadedItems, (item) => expect(item.slot).to.not.be.undefined);
     });
 });

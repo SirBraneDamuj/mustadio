@@ -10,10 +10,28 @@ const number = (s) => {
     return parseInt(s, 10);
 }
 
-const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal\), )?(?:(?<absorbWp>\d+) WP \(absorb\), )?(?:(?<range>\d+) range, )?(?:(?<evadePercent>\d+%) evade, )?(?:(?<physEvadePercent>\d+%) phys evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+). ?)(?:Element: (?<element>[A-Z]\w+)\. ?)?(?:Effect: (?<effect>.*))?$/;
+const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal\), )?(?:(?<absorbWp>\d+) WP \(absorb\), )?(?:(?<range>\d+) range, )?(?:(?<evadePercent>\d+%?) evade, )?(?:(?<physEvadePercent>\d+%) phys evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+). ?)(?:Element: (?<element>[A-Z]\w+)\. ?)?(?:Effect: (?<effect>.*))?$/;
 const statsRegex = /(?:(?<move>\+\d+) Move(?:, |\.|;))?(?:(?<pa>\+\d+) PA(?:, |\.|;))?(?:(?<ma>\+\d+) MA(?:, |\.|;))?(?:(?<jump>\+\d+) Jump(?:, |\.|;))?(?:(?<speed>\+\d+) Speed(?:, |\.|;))?/;
+const initialStatusRegex = /Initial (?<initialStatuses>[A-Z].+)(?:; |\.)/;
+const permanentStatusRegex = /(?:Permanent|Always) (?<permStatuses>[A-Z].+)(?:; |\.)/;
 
 const items = {};
+
+const getInitialStatuses = (effect) => {
+    const match = initialStatusRegex.exec(effect);
+    if (match) {
+        return match.groups.initialStatuses.split(', ');
+    }
+    return [];
+}
+
+const getPermStatuses = (effect) => {
+    const match = permanentStatusRegex.exec(effect);
+    if (match) {
+        return match.groups.permStatuses.split(', ');
+    }
+    return [];
+}
 
 const loadItemsFromDumpFile = async (force) => {
     if (!force && Object.keys(items).length > 0) {
@@ -74,6 +92,8 @@ const loadItemsFromDumpFile = async (force) => {
                 jump: number(jump),
                 pa: number(pa),
                 ma: number(ma),
+                initialStatuses: getInitialStatuses(effect),
+                permStatuses: getPermStatuses(effect),
             }),
         };
     });

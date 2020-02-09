@@ -7,6 +7,7 @@ const items = require('../data/items');
 const abilities = require('../data/abilities');
 const classes = require('../data/classes');
 const statuses = require('../data/statuses');
+const stats = require('../data/stats');
 const config = require('../config');
 const app = express();
 
@@ -38,6 +39,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             abilities: await abilities.getAbilities(),
             classes: await classes.getClasses(),
             statuses: await statuses.getStatuses(),
+            stats,
         };
         res.render('match', context);
     }

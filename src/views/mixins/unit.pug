@@ -1,3 +1,25 @@
+mixin unitStats(totalStats)
+    .d-flex.flex-column
+        div= `HP: ${totalStats.hp} / MP: ${totalStats.mp}`
+        div= `Speed: ${totalStats.speed}`
+        div= `Move: ${totalStats.move} / Jump: ${totalStats.jump}`
+        div= `PA: ${totalStats.pa} / MA: ${totalStats.ma}`
+        div= "Evasion:"
+        ul
+            li= `C-EV ${totalStats.cEvPercent}%`
+            li= `S-EV ${totalStats.sPhysEvPercent}% / ${totalStats.sMagEvPercent}%`
+            li= `A-EV ${totalStats.aPhysEvPercent}% / ${totalStats.aMagEvPercent}%`
+        if (totalStats.initialStatuses && totalStats.initialStatuses.length > 0)
+            div= "Initial:"
+            ul
+                each status in totalStats.initialStatuses
+                    li= status
+        if (totalStats.permStatuses && totalStats.permStatuses.length > 0)
+            div= "Permanent:"
+            ul
+                each status in totalStats.permStatuses
+                    li= status
+
 mixin tooltip(tooltipSide, tooltipText)
     div(data-toggle="tooltip" data-placement=tooltipSide, title=tooltipText)
         block
@@ -35,18 +57,22 @@ mixin unit(side, unit)
     - const spacelessClassName = unit.class === 'Floating Eye' ? unit.class : unit.class.replace(' ', '');
     - const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
     - const unitClassInfo = classes[className][unit.gender]
+    - const unitItems = unit.UnitEquipments.map((e) => items[e.name]);
+    - const totalStats = stats.totalStatsForClassAndEquipment(classes[className][unit.gender].baseStats, unitItems);
     - const activeInnates = unitClassInfo.innates.filter((innate) => !abilities[innate] && !statuses[innate]);
     - const nonActiveInnates = unitClassInfo.innates.filter((innate) => !statuses[innate] && abilities[innate] && abilities[innate].type !== 'active');
     - const innateStatuses = unitClassInfo.innates.filter((innate) => statuses[innate]);
     tr.unit-row
         td
             .d-flex.flex-column
-            div= unit.name
-            div= unit.gender
-            +tooltip(tooltipSide, unitClassInfo.raw)
-                div.font-weight-bold= unit.class
-            div= unit.zodiac
-        td= unit.brave + '/' + unit.faith
+                div= unit.name
+                div= unit.gender
+                div= `B: ${unit.brave} / F: ${unit.faith}`
+                +tooltip(tooltipSide, unitClassInfo.raw)
+                    div.font-weight-bold= unit.class
+                div= unit.zodiac
+        td
+            +unitStats(totalStats)
         td
             .d-flex.flex-column
             each gear in unit.UnitEquipments
