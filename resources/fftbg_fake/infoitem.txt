@@ -15,7 +15,7 @@ Phoenix Down: Consumable. Effect: Cancel Death; if successful, Heal Random(1-20)
 Dagger: 4 WP, 1 range, 10% evade, Knife. Effect: +1 Speed.
 Mythril Knife: 6 WP, 1 range, 5% evade, Knife. Effect: +1 Speed.
 Blind Knife: 5 WP, 1 range, 5% evade, Knife. Effect: Chance to Add Darkness.
-Mage Masher: 5 WP, 1 range, 5% evade, Knife. EffecT: Chance to Add Silence.
+Mage Masher: 5 WP, 1 range, 5% evade, Knife. Effect: Chance to Add Silence.
 Cultist Dagger: 8 WP, 1 range, 10% evade, Knife. Effect: Chance to Add Undead.
 Main Gauche: 7 WP, 1 range, 40% evade, Knife.
 Orichalcum: 9 WP, 1 range, 5% evade, Knife. Effect: Initial Haste.
@@ -55,7 +55,7 @@ Bizen Boat: 12 WP, 1 range, 15% evade, Katana.
 Murasame: 13 WP, 1 range, 15% evade, Katana.
 Heaven's Cloud: 14 WP, 1 range, 15% evade, Katana. Element: Holy.
 Kiyomori: 15 WP, 1 range, 15% evade, Katana.
-Muramasa: 16 WP, 1 range, 15% evade, Katana. Element: Dark
+Muramasa: 16 WP, 1 range, 15% evade, Katana. Element: Dark.
 Kikuichimoji: 18 WP, 1 range, 14% evade, Katana.
 Masamune: 21 WP, 1 range, 15% evade, Katana. Effect: Initial Haste.
 Chirijiraden: 24 WP, 1 range, 15% evade, Katana.
@@ -76,7 +76,7 @@ Healing Staff: 4 WP (heal), 1 range, 17% evade, Staff.
 Rainbow Staff: 5 WP, 1 range, 15% evade, Staff. Element: Earth.
 Wizard Staff: 4 WP, 1 range, 15% evade, Staff. Effect: +1 MA.
 Gold Staff: 6 WP, 1 range, 20% evade, Staff. Effect: Initial Regen.
-Mace of Zeus: 7 WP, 1 range, 15% evade, Staff. Effect: +2PA, +1 MA.
+Mace of Zeus: 7 WP, 1 range, 15% evade, Staff. Effect: +2 PA, +1 MA.
 Sage Staff: 8 WP, 1 range, 20% evade, Staff. Effect: Permanent Shell.
 Flail: 11 WP, 1 range, 2% evade, Flail.
 Flame Whip: 13 WP, 1 range, 1% evade, Flail. Element: Fire. Effect: Chance to cast Fire 2.
@@ -115,7 +115,7 @@ Spear: 9 WP, 2 range, 14% evade, Spear.
 Mythril Spear: 10 WP, 2 range, 10% evade, Spear. Effect: +1 Speed.
 Partisan: 11 WP, 2 range, 10% evade, Spear.
 Obelisk: 12 WP, 2 range, 10% evade, Spear. Element: Water.
-Holy Lance: 14 WP, 2 range, 10% evade, Spear. Element Holy: Effect: Chance to cast Holy.
+Holy Lance: 14 WP, 2 range, 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.
 Dragon Whisker: 16 WP, 2 range, 10% evade, Spear. Effect: Permanent Protect.
 Gungnir: 18 WP, 2 range, 10% evade, Spear. Element: Wind.
 Cypress Rod: 6 WP, 2 range, 25% evade, Pole.
@@ -139,22 +139,22 @@ Yagyu Shuriken: 9 WP, Shuriken. Element: Dark.
 Burst Bomb: 8 WP, Bomb. Element: Fire.
 Torrent Bomb: 8 WP, Bomb. Element: Water.
 Spark Bomb: 8 WP, Bomb. Element: Lightning.
-Escutcheon: 10% phys evasion, 5% magic evasion, Shield. Effect: +1 Speed.
-Buckler: 13% phys evasion, 35% magic evasion, Shield.  Effect: +1 PA.
-Bronze Shield: 16% phys evasion, 4% magic evasion, Shield. 
-Round Shield: 19% phys evasion, 3% magic evasion, Shield. 
-Mythril Shield: 22% phys evasion, 5% magic evasion, Shield. Effect: +1 Speed.
-Gold Shield: 25% phys evasion, 12% magic evasion, Shield. 
-Ice Shield: 28% phys evasion, 4% magic evasion, Shield. Effect: Absorb Ice; Half Fire; Weak Lightning.
-Flame Shield: 31% phys evasion, 2% magic evasion, Shield. Effect: Absorb Fire; Half Ice; Weak Water.
-Aegis Shield: 10% phys evasion, 50% magic evasion, Shield. Effect: +1 MA.
-Diamond Shield: 34% phys evasion, 15% magic evasion, Shield. 
-Platinum Shield: 37% phys evasion, 10% magic evasion, Shield. 
-Crystal Shield: 40% phys evasion, 15% magic evasion, Shield. 
-Genji Shield: 46% phys evasion, 1% magic evasion, Shield. 
-Kaiser Plate: 43% phys evasion, 25% magic evasion, Shield. Effect: Strengthen Fire, Lightning, Ice.
-Venetian Shield: 50% phys evasion, 20% magic evasion, Shield. Effect: Half Fire, Lightning, Ice.
-Hero Shield: 60% phys evasion, 35% magic evasion, Shield. 
+Escutcheon: 10% phys evade, 5% magic evade, Shield. Effect: +1 Speed.
+Buckler: 13% phys evade, 35% magic evade, Shield. Effect: +1 PA.
+Bronze Shield: 16% phys evade, 4% magic evade, Shield. 
+Round Shield: 19% phys evade, 3% magic evade, Shield. 
+Mythril Shield: 22% phys evade, 5% magic evade, Shield. Effect: +1 Speed.
+Gold Shield: 25% phys evade, 12% magic evade, Shield. 
+Ice Shield: 28% phys evade, 4% magic evade, Shield. Effect: Absorb Ice; Half Fire; Weak Lightning.
+Flame Shield: 31% phys evade, 2% magic evade, Shield. Effect: Absorb Fire; Half Ice; Weak Water.
+Aegis Shield: 10% phys evade, 50% magic evade, Shield. Effect: +1 MA.
+Diamond Shield: 34% phys evade, 15% magic evade, Shield. 
+Platinum Shield: 37% phys evade, 10% magic evade, Shield. 
+Crystal Shield: 40% phys evade, 15% magic evade, Shield. 
+Genji Shield: 46% phys evade, 1% magic evade, Shield. 
+Kaiser Plate: 43% phys evade, 25% magic evade, Shield. Effect: Strengthen Fire, Lightning, Ice.
+Venetian Shield: 50% phys evade, 20% magic evade, Shield. Effect: Half Fire, Lightning, Ice.
+Hero Shield: 60% phys evade, 35% magic evade, Shield. 
 Leather Helmet: +34 HP, +0 MP, Helmet. Effect: +1 Speed.
 Bronze Helmet: +40 HP, +0 MP, Helmet. 
 Iron Helmet: +46 HP, +0 MP, Helmet. Effect: +1 PA.
@@ -217,7 +217,7 @@ Wizard Robe: +45 HP, +22 MP, Robe. Effect: +2 MA.
 Chameleon Robe: +51 HP, +28 MP, Robe. Effect: Absorb Holy, Strengthen Water; Immune Death.
 White Robe: +58 HP, +34 MP, Robe. Effect: Half Fire, Lightning, Ice.
 Black Robe: +66 HP, +30 MP, Robe. Effect: Strengthen Fire, Lightning, Ice.
-Light Robe: +75 HP, +50 MP, Robe. Effect +1 MA; Absorb Dark; Strengthen Holy.
+Light Robe: +75 HP, +50 MP, Robe. Effect: +1 MA; Absorb Dark; Strengthen Holy.
 Robe of Lords: +100 HP, +80 MP, Robe. Effect: +2 PA, +1 MA; Permanent Protect, Shell.
 Battle Boots: Accessory. Effect: +1 Move.
 Spike Shoes: Accessory. Effect: +1 Jump.

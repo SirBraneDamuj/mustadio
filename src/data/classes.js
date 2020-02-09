@@ -5,7 +5,6 @@ const classes = {};
 
 const classAndGenderRegex = /^(?:(?<className>[A-Z]\w+)|(?<floatingEye>Floating Eye)) ?(?<gender>Male|Female)?'s/
 const classAndGenderForLine = (line) => {
-    console.log(line);
     const {
         className,
         gender,

@@ -190,7 +190,7 @@ Despair: 4 range, 0 AoE, 2 CT, 13 MP. Hit: Faith(MA + 200)%. Effect: Cancel Floa
 Refute: 4 range, 0 AoE. Hit: (MA + 72)%. Effect: Cancel Undead, Confusion, Blood Suck, Reraise, Berserk, Faith, Innocent, Charm, Sleep, Death Sentence.
 Empower: 4 range, 0 AoE, 8 CT, 13 MP. Effect: +2 PA, +2 MA, +2 Speed.
 Negotiate: 4 range, 0 AoE. Hit: (MA + 42)%. Effect: Add Slow, Stop (Random).
-Noxious Gas: 3 range, 1 AoE. Hit: Faith(MA + 213)%. Effect: Add Defending, Darkness, Oil, Poison, Slow, Don't Move (Separate).
+Noxious Gas: 3 range, 1 AoE. Hit: Faith(MA + 223)%. Effect: Add Defending, Darkness, Oil, Poison, Slow, Don't Move (Separate).
 Holy Breath: 2 range, 2 AoE (line). Element: Holy. Effect: Damage (MA * 5).
 Braver: 2 range, 0 AoE, 3 CT. Effect: Damage (MA * 12).
 Cross-slash: 2 range, 1 AoE, 4 CT. Effect: Damage (MA * 22).
@@ -335,7 +335,7 @@ Charge+2: weapon range, 0 AoE, 5 CT. Effect: Normal Attack with +3 WP.
 Charge+3: weapon range, 0 AoE, 6 CT. Effect: Normal Attack with +4 WP.
 Charge+4: weapon range, 0 AoE, 8 CT. Effect: Normal Attack with +5 WP.
 Charge+5: weapon range, 0 AoE, 10 CT. Effect: Normal Attack with +6 WP.
-Charge+7: weapon range, 1 AoE, 14 CT. Effect: Normal Attack with +8 WP.
+Charge+7: weapon range, 0 AoE, 14 CT. Effect: Normal Attack with +8 WP.
 Charge+10: weapon range, 0 AoE, 20 CT. Effect: Normal Attack with +11 WP.
 Charge+20: weapon range, 0 AoE, 35 CT. Effect: Normal Attack with +20 WP.
 CT: Base math algorithm on the target's CT.
@@ -385,8 +385,8 @@ Equip Gun: Support. Allows user to equip Guns, Books, and Harps.
 Halve MP: Support. Halves MP required for abilities.
 Attack UP: Support. Increases physical damage by a third.
 Defense UP: Support. Decreases damage taken by physical attacks by a third.
-Magic AttackUP: Support. Increases magical damage by a third.
-Magic DefendUP: Support. Decreases damage taken by magical attacks by a third.
+Magic Attack UP: Support. Increases magical damage by a third.
+Magic Defend UP: Support. Decreases damage taken by magical attacks by a third.
 Concentrate: Support. Unit bypasses accuracy and evasion checks, and is unable to miss.
 Sicken: Support. Physical attacks by unit Add Poison.
 Secret Hunt: Support. When unit kills or revives another unit, it gains +1 PA and +1 MA.
@@ -399,7 +399,7 @@ Dual Wield: Support. Can equip a weapon in both of the unit's hands.
 Beastmaster: Support. Allows allied adjacent monsters to use their Hidden Ability.
 Defend: Support. Allows the unit to do a Defend action, boosting evasion.
 Short Charge: Support. The CT of all used abilities is halved.
-Non-charge: Support. The CT of all used abilities is reduced to 0.
+Non-Charge: Support. The CT of all used abilities is reduced to 0.
 Short Status: Support. Unit is affected by status effects (both buffs and debuffs) half as long as other units.
 Long Status: Support. Unit is affected by status effects (both buffs and debuffs) 50% longer than other units.
 Move+1: Movement. Increases Move by 1.
@@ -421,3 +421,4 @@ Waterbreathing: Movement. Move through and even stand in water without penalty.
 Levitate: Movement. Grants permanent Float.
 Fly: Movement. Fly instead of walking, ignoring height.
 Retreat: Movement. When in critical, increases Move by 4.
+Landlocked: Movement. Cannot enter water.
