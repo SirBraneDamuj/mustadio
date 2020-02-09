@@ -1,4 +1,4 @@
-mixin unitStats(totalStats)
+mixin unitStats(totalStats, tooltipSide)
     .d-flex.flex-column
         div= `HP: ${totalStats.hp} / MP: ${totalStats.mp}`
         div= `Speed: ${totalStats.speed}`
@@ -13,12 +13,16 @@ mixin unitStats(totalStats)
             div= "Initial:"
             ul
                 each status in totalStats.initialStatuses
-                    li= status
+                    li
+                        +tooltip(tooltipSide, statuses[status].info)
+                            div= status
         if (totalStats.permStatuses && totalStats.permStatuses.length > 0)
             div= "Permanent:"
             ul
                 each status in totalStats.permStatuses
-                    li= status
+                    li
+                        +tooltip(tooltipSide, statuses[status].info)
+                            div= status
 
 mixin tooltip(tooltipSide, tooltipText)
     div(data-toggle="tooltip" data-placement=tooltipSide, title=tooltipText)
@@ -72,7 +76,7 @@ mixin unit(side, unit)
                     div.font-weight-bold= unit.class
                 div= unit.zodiac
         td
-            +unitStats(totalStats)
+            +unitStats(totalStats, tooltipSide)
         td
             .d-flex.flex-column
             each gear in unit.UnitEquipments
