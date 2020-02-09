@@ -4,14 +4,13 @@ const mapValues = require('lodash/mapValues');
 const { SLOTS_FOR_EQUIPMENT_TYPES } = require('./constants');
 
 const number = (s) => {
-    if (s === undefined || s === null || s === '') {
+    if (!s) {
         return 0;
-    } else {
-        return parseInt(s, 10);
     }
+    return parseInt(s, 10);
 }
 
-const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal\), )?(?:(?<absorbWp>\d+) WP \(absorb\), )?(?:(?<range>\d+) range, )?(?:(?<evadePercent>\d+%) evade, )?(?:(?<physEvadePercent>\d+%) phys evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+). ?)(?:(Element: (?<element>[A-Z]\w+))\. ?)?(?:Effect: (?<effect>.*))?$/;
+const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal\), )?(?:(?<absorbWp>\d+) WP \(absorb\), )?(?:(?<range>\d+) range, )?(?:(?<evadePercent>\d+%) evade, )?(?:(?<physEvadePercent>\d+%) phys evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+). ?)(?:Element: (?<element>[A-Z]\w+)\. ?)?(?:Effect: (?<effect>.*))?$/;
 const statsRegex = /(?:(?<move>\+\d+) Move(?:, |\.|;))?(?:(?<pa>\+\d+) PA(?:, |\.|;))?(?:(?<ma>\+\d+) MA(?:, |\.|;))?(?:(?<jump>\+\d+) Jump(?:, |\.|;))?(?:(?<speed>\+\d+) Speed(?:, |\.|;))?/;
 
 const items = {};
@@ -26,7 +25,6 @@ const loadItemsFromDumpFile = async (force) => {
         delimiter = '\n';
     }
     data.split(delimiter).forEach((itemLine) => {
-        console.log(itemLine);
         const {
             itemName,
             wp,
