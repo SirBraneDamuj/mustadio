@@ -1,8 +1,8 @@
-Cure: 5 range, 1 AoE, 3 CT, 6 MP. Effect: Heal Faith(MA * 14).
+Cure: 5 range, 1 AoE, 3 CT, 6 MP. Effect: Heal Faith(MA * 15).
 Cure 2: 5 range, 1 AoE, 4 CT, 10 MP. Effect: Heal Faith(MA * 20).
 Cure 3: 5 range, 1 AoE, 6 CT, 16 MP. Effect: Heal Faith(MA * 30).
-Cure 4: 5 range, 1 AoE, 9 CT, 20 MP. Effect: Heal Faith(MA * 40).
-Raise: 5 range, 0 AoE, 4 CT, 10 MP. Hit: Faith(MA + 180)%. Effect: Cancel Death; if successful Heal (50)%.
+Cure 4: 5 range, 1 AoE, 8 CT, 24 MP. Effect: Heal Faith(MA * 40).
+Raise: 5 range, 0 AoE, 4 CT, 10 MP. Hit: Faith(MA + 185)%. Effect: Cancel Death; if successful Heal (50)%.
 Raise 2: 5 range, 0 AoE, 10 CT, 20 MP. Hit: Faith(MA + 160)%. Effect: Cancel Death; if successful Heal (100)%.
 Reraise: 4 range, 0 AoE, 7 CT, 16 MP. Hit: Faith(MA + 140)%. Effect: Add Reraise.
 Regen: 4 range, 1 AoE, 4 CT, 8 MP. Hit: Faith(MA + 170)%. Effect: Add Regen.
@@ -13,22 +13,22 @@ Shell 2: 4 range, 1 AoE, 7 CT, 18 MP. Hit: Faith(MA + 240)%. Effect: Add Shell.
 Wall: 4 range, 1 AoE, 4 CT, 24 MP. Hit: Faith(MA + 140)%. Effect: Add Protect, Shell (All).
 Esuna: 5 range, 1 AoE, 3 CT, 16 MP. Hit: Faith(MA + 190)%. Effect: Cancel Petrify, Darkness, Confusion, Silence, Blood Suck, Berserk, Frog, Poison, Sleep, Don't Move, Don't Act.
 Holy: 5 range, 0 AoE, 6 CT, 56 MP. Element: Holy. Effect: Damage Faith(MA * 47).
-Fire: 5 range, 1 AoE, 3 CT, 6 MP. Element: Fire. Effect: Damage Faith(MA * 14).
-Fire 2: 5 range, 1 AoE, 4 CT, 12 MP. Element: Fire. Effect: Damage Faith(MA * 18).
-Fire 3: 5 range, 1 AoE, 6 CT, 24 MP. Element: Fire. Effect: Damage Faith(MA * 24).
-Fire 4: 5 range, 2 AoE, 9 CT, 48 MP. Element: Fire. Effect: Damage Faith(MA * 32).
-Bolt: 5 range, 1 AoE, 3 CT, 6 MP. Element: Lightning. Effect: Damage Faith(MA * 14).
-Bolt 2: 5 range, 1 AoE, 4 CT, 12 MP. Element: Lightning. Effect: Damage Faith(MA * 18).
-Bolt 3: 5 range, 1 AoE, 6 CT, 24 MP. Element: Lightning. Effect: Damage Faith(MA * 24).
-Bolt 4: 5 range, 2 AoE, 9 CT, 48 MP. Element: Lightning. Effect: Damage Faith(MA * 32).
-Ice: 5 range, 1 AoE, 3 CT, 6 MP. Element: Ice. Effect: Damage Faith(MA * 14).
-Ice 2: 5 range, 1 AoE, 4 CT, 12 MP. Element: Ice. Effect: Damage Faith(MA * 18).
-Ice 3: 5 range, 1 AoE, 6 CT, 24 MP. Element: Ice. Effect: Damage Faith(MA * 24).
-Ice 4: 5 range, 2 AoE, 9 CT, 48 MP. Element: Ice. Effect: Damage Faith(MA * 32).
+Fire: 5 range, 1 AoE, 3 CT, 6 MP. Element: Fire. Effect: Damage Faith(MA * 16).
+Fire 2: 5 range, 1 AoE, 4 CT, 12 MP. Element: Fire. Effect: Damage Faith(MA * 20).
+Fire 3: 5 range, 1 AoE, 6 CT, 24 MP. Element: Fire. Effect: Damage Faith(MA * 28).
+Fire 4: 5 range, 2 AoE, 8 CT, 48 MP. Element: Fire. Effect: Damage Faith(MA * 36).
+Bolt: 5 range, 1 AoE, 3 CT, 6 MP. Element: Lightning. Effect: Damage Faith(MA * 16).
+Bolt 2: 5 range, 1 AoE, 4 CT, 12 MP. Element: Lightning. Effect: Damage Faith(MA * 20).
+Bolt 3: 5 range, 1 AoE, 6 CT, 24 MP. Element: Lightning. Effect: Damage Faith(MA * 28).
+Bolt 4: 5 range, 2 AoE, 8 CT, 48 MP. Element: Lightning. Effect: Damage Faith(MA * 36).
+Ice: 5 range, 1 AoE, 3 CT, 6 MP. Element: Ice. Effect: Damage Faith(MA * 16).
+Ice 2: 5 range, 1 AoE, 4 CT, 12 MP. Element: Ice. Effect: Damage Faith(MA * 20).
+Ice 3: 5 range, 1 AoE, 6 CT, 24 MP. Element: Ice. Effect: Damage Faith(MA * 28).
+Ice 4: 5 range, 2 AoE, 8 CT, 48 MP. Element: Ice. Effect: Damage Faith(MA * 36).
 Poison: 5 range, 1 AoE, 3 CT, 16 MP. Hit: Faith(MA + 180)%. Effect: Add Poison.
 Frog: 4 range, 0 AoE, 3 CT, 16 MP. Hit: Faith(MA + 180)%. Effect: Add Frog.
 Death: 5 range, 0 AoE, 10 CT, 24 MP. Hit: Faith(MA + 100)%. Effect: Damage (100)%
-Flare: 6 range, 0 AoE, 7 CT, 60 MP. Effect: Damage Faith(MA * 48).
+Flare: 6 range, 0 AoE, 7 CT, 60 MP. Effect: Damage Faith(MA * 49).
 Haste: 4 range, 1 AoE, 2 CT, 8 MP. Hit: Faith(MA + 180)%. Effect: Add Haste.
 Haste 2: 4 range, 1 AoE, 7 CT, 20 MP. Hit: Faith(MA + 240)%. Effect: Add Haste.
 Slow: 4 range, 1 AoE, 2 CT, 8 MP. Hit: Faith(MA + 180)%. Effect: Add Slow.
@@ -104,7 +104,7 @@ Purification: 0 range, 1 AoE. Hit: (PA + 120)%. Effect: Cancel Petrify, Darkness
 Chakra: 0 range, 1 AoE. Effect: Heal (PA * 5); HealMP ((PA * 5) / 2).
 Revive: 1 range, 0 AoE. Effect: Hit: (PA + 70)%. Effect: Cancel Death; if successful Heal (20)%.
 Gil Taking: 2 range, 0 AoE. Hit: (Speed + 62)%. Effect: Add Defending, Berserk (Random).
-Steal Heart: 3 range, 0 AoE. Hit: Opposite Sex; (MA + 43)%. Effect: Add Charm.
+Steal Heart: 3 range, 0 AoE. Hit: Non-Matching Sex; (MA + 43)%. Effect: Add Charm.
 Steal Helmet: 1 range, 0 AoE. Hit: (Speed + 40)%. Effect: Steal target's head equipment.
 Steal Armor: 1 range, 0 AoE. Hit: (Speed + 35)%. Effect: Steal target's body equipment.
 Steal Shield: 1 range, 0 AoE. Hit: (Speed + 35)%. Effect: Steal target's shield.
@@ -157,7 +157,7 @@ Explosion Sword: 4 range, 4 AoE (line), 3 CT, 26 MP. Effect: Damage (PA * (WP + 
 Dark Sword: 2 range, 0 AoE, 2 CT, 18 MP. Effect: AbsorbMP (PA * WP).
 Night Sword: 2 range, 0 AoE, 3 CT, 22 MP. Effect: AbsorbHP (PA * WP).
 Dark Holy: 5 range, 0 AoE, 7 CT, 40 MP. Element: Dark. Effect: Damage Faith(MA * 37).
-Galaxy Stop: 0 range, 255 AoE, 15 CT, 66 MP. Hit: (MA + 50)%. Effect: Add Stop, Don't Act, Don't Move (All).
+Galaxy Stop: 0 range, 255 AoE, 15 CT, 66 MP. Hit: Non-Matching Zodiac; (MA + 45)%. Effect: Add Stop, Don't Act, Don't Move (All).
 Diamond Blade: 4 range, 1 AoE, 3 CT, 10 MP. Element: Wind. Hit: Random(1-9) times. Effect: Damage ((MA + 10) * MA / 2).
 Hydra Pit: 4 range, 1 AoE, 3 CT, 10 MP. Element: Water. Hit: Random(1-9) times. Effect: Damage ((MA + 10) * MA / 2).
 Space Storage: 4 range, 1 AoE, 4 CT, 20 MP. Element: Holy. Hit: Random(1-9) times. Effect: Damage ((MA + 6) * MA / 2); Chance to Add Darkness, Confusion, Silence, Frog, Poison, Slow, Sleep (Random).
@@ -166,7 +166,7 @@ Obsidian Blade: 4 range, 1 AoE, 3 CT, 10 MP. Element: Wind. Hit: Random(1-9) tim
 Dragon Pit: 4 range, 1 AoE, 3 CT, 10 MP. Element: Water. Hit: Random(1-9) times. Effect: Damage ((100 - CasterFaith) * (100 - TargetFaith) * (MA + 66) * MA / 2).
 Void Storage: 4 range, 1 AoE, 4 CT, 20 MP. Element: Dark. Hit: Random(1-9) times. Effect: Damage ((100 - CasterFaith) * (100 - TargetFaith) * (MA + 39) * MA / 2); Chance to Add Darkness, Confusion, Silence, Frog, Poison, Slow, Sleep (Random).
 Nether Demon: 4 range, 1 AoE, 3 CT, 10 MP. Element: Earth. Hit: Random(1-9) times. Effect: Damage ((100 - CasterFaith) * (100 - TargetFaith) * (MA + 66) * MA / 2).
-Tickle: 1 range, 0 AoE. Hit: (MA + 50)%. Effect: Cancel Charging, Defending, Performing, Confusion, Charm, Sleep.
+Tickle: 1 range, 0 AoE. Hit: (MA + 55)%. Effect: Cancel Charging, Defending, Performing, Confusion, Charm, Sleep.
 Vengeance: 5 range, 0 AoE. EffecT: Damage (CasterMaxHP - CasterCurrentHP).
 Manaburn: 5 range, 0 AoE. EffecT: Damage (TargetCurrentMP).
 Stabilize Time: 3 range, 1 AoE, 2 CT, 14 MP. Hit: Faith(MA + 185)%. Effect: Cancel Float, Haste, Slow, Stop, Don't Move, Reflect, Death Sentence.
@@ -246,16 +246,16 @@ Shine Lover: 1 range, 0 AoE. Hit: (PA + 50)%. Effect: DamageMP (50)%
 Feather Bomb: 4 range, 0 AoE. Element: Wind. Effect: Damage (MA * 2).
 Peck: 1 range, 0 AoE. Hit: (MA + 45)%. Effect: -2 PA.
 Straight Dash: 1 range, 0 AoE. Effect: Normal Attack.
-Snort: 1 range, 0 AoE. Hit: Opposite Sex; (MA + 40)%. Effect: Add Charm.
+Snort: 1 range, 0 AoE. Hit: Non-Matching Sex; (MA + 40)%. Effect: Add Charm.
 Oink: 1 range, 0 AoE. Hit: (PA + 71)%. Effect: Cancel Death; if successful Heal (75)%.
 Toot: 1 range, 0 AoE. Effect: Add Confusion, Sleep (Random).
 Bequeath Bacon: 1 range, 0 AoE. Effect: Heal (CasterMaxHP * 2 / 5); DamageCaster (CasterMaxHP / 5).
 Leaf Dance: 0 range, 1 AoE. Effect: Damage (MA * 5).
 Protect Spirit: 0 range, 2 AoE. Hit: (MA + 45)%. Effect: Add Defending, Protect (All).
 Calm Spirit: 0 range, 2 AoE. Hit: (MA + 45)%. Effect: Add Defending, Shell (All).
-Life Spirit: 0 range, 2 AoE. Effect: Heal (MA * 3).
-Spirit of Life: 0 range, 2 AoE. Effect: Heal (MA * 3).
-Magic Spirit: 0 range, 2 AoE. Effect: HealMP (MA).
+Life Spirit: 0 range, 2 AoE. Effect: Heal (MA * 4).
+Spirit of Life: 0 range, 2 AoE. Effect: Heal (MA * 4).
+Magic Spirit: 0 range, 2 AoE. Effect: HealMP (MA * 2).
 Shake Off: 1 range, 0 AoE. Effect: Normal Attack.
 Wave Around: 0 range, 1 AoE. Element: Lightning. Effect: Damage ((PA + 1) / 2 * PA).
 Mimic Titan: 0 range, 2 AoE. Element: Earth. Effect: Damage (MA * 3).

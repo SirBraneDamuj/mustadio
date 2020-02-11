@@ -87,7 +87,7 @@ Tiamat's base stats: 498 HP, 19 MP, 4 Move, 4 Jump, 10 Speed, 22 PA, 16 MA, 3% C
 ArchaicDemon's base stats: 319 HP, 109 MP, 4 Move, 3 Jump, 8 Speed, 15 PA, 16 MA, 6% C-EV. Innates: Counter, Landlocked, Secret Hunt, Short Charge. Elements: Cancel-Holy, Half-Lightning&Dark.
 UltimaDemon's base stats: 333 HP, 104 MP, 5 Move, 2 Jump, 7 Speed, 16 PA, 14 MA, 13% C-EV. Innates: Counter, Landlocked, Martial Arts, Short Charge. Elements: Cancel-Holy, Half-Water&Dark.
 Apanda's base stats: 408 HP, 72 MP, 4 Move, 6 Jump, 7 Speed, 13 PA, 12 MA, 11% C-EV. Innates: Counter, Landlocked, Ignore Height, Short Charge. Elements: Half-Ice, Weak-Fire.
-SteelGiant's base stats: 500 HP, 1 MP, 2 Move, 5 Jump, 8 Speed, 20 PA, 1 MA, 0% C-EV. Innates: Counter, Landlocked, Innocent, Ignore Terrain. Elements: Cancel-Ice&Wind&Holy&Dark, Half-Fire&Earth, Weak-Lightning.
+SteelGiant's base stats: 500 HP, 1 MP, 2 Move, 5 Jump, 8 Speed, 20 PA, 1 MA, 0% C-EV. Innates: Counter, Landlocked, Innocent, Ignore Terrain. Elements: Cancel-Ice&Wind&Holy&Dark, Half-Earth, Weak-Lightning.
 Byblos's base stats: 379 HP, 66 MP, 3 Move, 6 Jump, 8 Speed, 12 PA, 12 MA, 33% C-EV. Innates: Counter, Landlocked, Ignore Height, Move-HP Up. Elements: Half-Ice, Weak-Fire.
 HolyDragon's base stats: 414 HP, 25 MP, 4 Move, 3 Jump, 10 Speed, 15 PA, 42 MA, 5% C-EV. Innates: Counter, Landlocked, Beastmaster. Elements: Absorb-Holy, Weak-Dark.
 Serpentarius's base stats: 505 HP, 82 MP, 4 Move, 3 Jump, 6 Speed, 9 PA, 13 MA, 12% C-EV. Innates: Counter, Landlocked, Sicken, Move-MP Up. Elements: Cancel-Ice, Half-Holy, Weak-Earth.

@@ -267,6 +267,22 @@ describe('ITEMS', () => {
         });
     });
 
+    it('loads panther bag', async () => {
+        expect(await subject('Panther Bag')).to.deep.eq({
+            name: 'Panther Bag',
+            slot: 'hand',
+            type: 'Bag',
+            info: '12 WP, 1 range, 1% evade, Bag. Effect: Permanent Regen; Strengthen Earth.',
+            stats: {
+                ...defaultStats,
+                wp: 12,
+                range: 1,
+                evadePercent: 1,
+                permStatuses: ['Regen'],
+            },
+        });
+    });
+
     it('has no un-slotted items', async () => {
         const loadedItems = await items.getItems();
         map(loadedItems, (item) => expect(item.slot).to.not.be.undefined);

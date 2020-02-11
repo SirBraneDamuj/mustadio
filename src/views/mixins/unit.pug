@@ -21,7 +21,7 @@ mixin unitStats(totalStats, tooltipSide)
             ul
                 each status in totalStats.permStatuses
                     li
-                        +tooltip(tooltipSide, statuses[status].info)
+                        +tooltip(tooltipSide, statuses[status] && statuses[status].info)
                             div= status
 
 mixin tooltip(tooltipSide, tooltipText)
@@ -63,9 +63,9 @@ mixin unit(side, unit)
     - const unitClassInfo = classes[className][unit.gender]
     - const unitItems = unit.UnitEquipments.map((e) => items[e.name]);
     - const totalStats = stats.totalStatsForClassAndEquipment(classes[className][unit.gender].baseStats, unitItems);
-    - const activeInnates = unitClassInfo.innates.filter((innate) => !abilities[innate] && !statuses[innate]);
+    - const activeInnates = unitClassInfo.innates.filter((innate) => innate === 'Jump' || !abilities[innate] && !statuses[innate]);
     - const nonActiveInnates = unitClassInfo.innates.filter((innate) => !statuses[innate] && abilities[innate] && abilities[innate].type !== 'active');
-    - const innateStatuses = unitClassInfo.innates.filter((innate) => statuses[innate]);
+    - const innateStatuses = unitClassInfo.innates.filter((innate) => innate !== 'Jump' && statuses[innate]);
     tr.unit-row
         td
             .d-flex.flex-column
