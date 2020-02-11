@@ -1,6 +1,5 @@
+const DumpLoader = require('./dump-loader');
 const client = require('../client/fftbg');
-
-const abilities = {};
 
 const abilityTypesFromFile = ['Reaction', 'Support', 'Movement'];
 const fileAbilityTypeMapping = {
@@ -9,30 +8,21 @@ const fileAbilityTypeMapping = {
     'Movement': 'move',
 };
 
-const loadAbilitiesFromDumpFile = async (force) => {
-    if (!force && Object.keys(abilities).length > 0) {
-        return abilities;
-    }
-    const { data } = await client.abilityInfo();
-    let delimiter = '\r\n';
-    if (data.indexOf(delimiter) == -1) {
-        delimiter = '\n';
-    }
-    data.split(delimiter).forEach((itemLine) => {
-        const firstColon = itemLine.indexOf(':');
-        const name = itemLine.slice(0, firstColon);
-        const info = itemLine.slice(firstColon + 2);
-        const abilityType = abilityTypesFromFile.find((type) => info.startsWith(`${type}. `));
-        const realAbilityType = fileAbilityTypeMapping[abilityType] || 'active';
-        abilities[name] = { 
-            name, 
-            info,
-            type: realAbilityType,
-        };
-    });
-    return abilities;
+const parseAbilityLine = (data, abilityLine) => {
+    const firstColon = abilityLine.indexOf(':');
+    const name = abilityLine.slice(0, firstColon);
+    const info = abilityLine.slice(firstColon + 2);
+    const abilityType = abilityTypesFromFile.find((type) => info.startsWith(`${type}. `));
+    const realAbilityType = fileAbilityTypeMapping[abilityType] || 'active';
+    data[name] = { 
+        name, 
+        info,
+        type: realAbilityType,
+    };
 }
 
-module.exports.getAbilities = async () => loadAbilitiesFromDumpFile(false);
-module.exports.getAbility = async (abilityName) => (await loadAbilitiesFromDumpFile(false))[abilityName];
-module.exports.forceReload = async () => loadAbilitiesFromDumpFile(true);
+const myLoader = new DumpLoader(async () => client.abilityInfo(), parseAbilityLine);
+
+module.exports.getAbilities = () => myLoader.getData();
+module.exports.getAbility = (abilityName) => myLoader.getData()[abilityName];
+module.exports.reload = async (version) => myLoader.reload(version);

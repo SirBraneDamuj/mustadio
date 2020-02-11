@@ -6,6 +6,9 @@ const classes = require('../../src/data/classes');
 const expect = require('chai').expect;
 
 describe('CLASSES', () => {
+    before(async () => {
+        await classes.reload('force');
+    });
     let className = '';
     let gender = '';
     const subject = async () => classes.getClass(className, gender);

@@ -5,6 +5,9 @@ const statuses = require('../../src/data/statuses');
 const expect = require('chai').expect;
 
 describe('STATUSES', () => {
+    before(async () => {
+        await statuses.reload('force');
+    });
     const subject = async (statusName) => statuses.getStatus(statusName);
 
     it('loads Innocent correctly', async () => {

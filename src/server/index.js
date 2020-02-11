@@ -35,10 +35,10 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             team1: team1Record,
             team2: team2Record,
             tournamentId,
-            items: await items.getItems(),
-            abilities: await abilities.getAbilities(),
-            classes: await classes.getClasses(),
-            statuses: await statuses.getStatuses(),
+            items: items.getItems(),
+            abilities: abilities.getAbilities(),
+            classes: classes.getClasses(),
+            statuses: statuses.getStatuses(),
             stats,
         };
         res.render('match', context);
@@ -46,7 +46,8 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
 });
 
 module.exports = {
-    start() {
+    async start() {
+        await Promise.all([items, abilities, statuses, classes].map((it) => it.reload()));
         app.listen(port);
     }
 }

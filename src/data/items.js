@@ -1,3 +1,4 @@
+const DumpLoader = require('./dump-loader');
 const client = require('../client/fftbg');
 const mapValues = require('lodash/mapValues');
 
@@ -15,8 +16,6 @@ const statsRegex = /(?:(?<move>\+\d+) Move(?:, |\.|;))?(?:(?<pa>\+\d+) PA(?:, |\
 const initialStatusRegex = /Initial (?<initialStatuses>[A-Z].+)(?:; |\.)/;
 const permanentStatusRegex = /(?:Permanent|Always) (?<permStatuses>[A-Z][^;.]+)(?:; |\.)/;
 
-const items = {};
-
 const getInitialStatuses = (effect) => {
     const match = initialStatusRegex.exec(effect);
     if (match) {
@@ -33,73 +32,64 @@ const getPermStatuses = (effect) => {
     return [];
 }
 
-const loadItemsFromDumpFile = async (force) => {
-    if (!force && Object.keys(items).length > 0) {
-        return items;
+const parseDumpLine = (items, itemLine) => {
+    const {
+        itemName,
+        wp,
+        healWp,
+        absorbWp,
+        range,
+        evadePercent,
+        physEvadePercent,
+        magicEvadePercent,
+        hp,
+        mp,
+        itemType,
+        element,
+        effect,
+    } = theBigRegex.exec(itemLine).groups;
+    if (itemType === 'Shuriken' || itemType === 'Bomb' || itemType === 'Consumable') {
+        return;
     }
-    const { data } = await client.itemInfo();
-    let delimiter = '\r\n';
-    if (data.indexOf(delimiter) == -1) {
-        delimiter = '\n';
-    }
-    data.split(delimiter).forEach((itemLine) => {
-        const {
-            itemName,
-            wp,
-            healWp,
-            absorbWp,
-            range,
-            evadePercent,
-            physEvadePercent,
-            magicEvadePercent,
-            hp,
-            mp,
-            itemType,
+    const {
+        speed,
+        move,
+        jump,
+        pa,
+        ma
+    } = statsRegex.exec(effect).groups;
+    const slot = SLOTS_FOR_EQUIPMENT_TYPES[itemType];
+    const firstColon = itemLine.indexOf(':');
+    const info = itemLine.slice(firstColon + 2);
+    items[itemName] = { 
+        name: itemName, 
+        type: itemType,
+        slot,
+        info,
+        stats: mapValues({
+            wp: number(wp),
+            healWp: number(healWp),
+            absorbWp: number(absorbWp),
+            range: number(range),
+            evadePercent: number(evadePercent),
+            physEvadePercent: number(physEvadePercent),
+            magicEvadePercent: number(magicEvadePercent),
+            hp: number(hp),
+            mp: number(mp),
             element,
-            effect,
-        } = theBigRegex.exec(itemLine).groups;
-        if (itemType === 'Shuriken' || itemType === 'Bomb' || itemType === 'Consumable') {
-            return;
-        }
-        const {
-            speed,
-            move,
-            jump,
-            pa,
-            ma
-        } = statsRegex.exec(effect).groups;
-        const slot = SLOTS_FOR_EQUIPMENT_TYPES[itemType];
-        const firstColon = itemLine.indexOf(':');
-        const info = itemLine.slice(firstColon + 2);
-        items[itemName] = { 
-            name: itemName, 
-            type: itemType,
-            slot,
-            info,
-            stats: mapValues({
-                wp: number(wp),
-                healWp: number(healWp),
-                absorbWp: number(absorbWp),
-                range: number(range),
-                evadePercent: number(evadePercent),
-                physEvadePercent: number(physEvadePercent),
-                magicEvadePercent: number(magicEvadePercent),
-                hp: number(hp),
-                mp: number(mp),
-                element,
-                speed: number(speed),
-                move: number(move),
-                jump: number(jump),
-                pa: number(pa),
-                ma: number(ma),
-                initialStatuses: getInitialStatuses(effect),
-                permStatuses: getPermStatuses(effect),
-            }),
-        };
-    });
-    return items;
+            speed: number(speed),
+            move: number(move),
+            jump: number(jump),
+            pa: number(pa),
+            ma: number(ma),
+            initialStatuses: getInitialStatuses(effect),
+            permStatuses: getPermStatuses(effect),
+        }),
+    };
 }
 
-module.exports.getItems = async () => loadItemsFromDumpFile(false);
-module.exports.getItem = async (itemName) => (await loadItemsFromDumpFile(false))[itemName];
-module.exports.forceReload = async () => loadItemsFromDumpFile(true);
+const myLoader = new DumpLoader(client.itemInfo, parseDumpLine)
+
+module.exports.getItems = () => myLoader.getData();
+module.exports.getItem = (itemName) => myLoader.getData()[itemName];
+module.exports.reload = async (version) => myLoader.reload(version);

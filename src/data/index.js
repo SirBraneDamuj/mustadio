@@ -4,10 +4,6 @@ const teamLoader = require('./team-loader');
 const { Op } = require('sequelize');
 const { Tournament, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
 const client = require('../client/fftbg');
-const items = require('./items');
-const abilities = require('./items');
-const statuses = require('./items');
-const classes = require('./items');
 
 const createRecordsForTournament = async (tournamentLabel, teamData) => {
     const tournament = await Tournament.create({
@@ -62,14 +58,6 @@ const loadTournamentById = async (tournamentId) => {
     });
     if (existing !== null) {
         return existing;
-    } else if (tournamentId === 'latest') { // someone just tried to load the latest tournament...
-        // so let's make sure we have the latest data!
-        await Promise.all([
-            items.forceReload(),
-            abilities.forceReload(),
-            classes.forceReload(),
-            statuses.forceReload(),
-        ]);
     }
     const teamUnits = {};
     for (const teamName of TEAM_NAMES) {

@@ -26,6 +26,9 @@ const defaultStats = {
 }
 
 describe('ITEMS', () => {
+    before(async () => {
+        await items.reload('force');
+    });
     const subject = async (itemName) => items.getItem(itemName);
 
     it('loads knight swords correctly', async () => {
