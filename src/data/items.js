@@ -102,4 +102,4 @@ const loadItemsFromDumpFile = async (force) => {
 
 module.exports.getItems = async () => loadItemsFromDumpFile(false);
 module.exports.getItem = async (itemName) => (await loadItemsFromDumpFile(false))[itemName];
-module.exports.setAutoReload = (duration) => setInterval(() => loadItemsFromDumpFile(true), duration)
+module.exports.forceReload = async () => loadItemsFromDumpFile(true);

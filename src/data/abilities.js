@@ -35,4 +35,4 @@ const loadAbilitiesFromDumpFile = async (force) => {
 
 module.exports.getAbilities = async () => loadAbilitiesFromDumpFile(false);
 module.exports.getAbility = async (abilityName) => (await loadAbilitiesFromDumpFile(false))[abilityName];
-module.exports.setAutoReload = (duration) => setInterval(() => loadAbilitiesFromDumpFile(true), duration)
+module.exports.forceReload = async () => loadAbilitiesFromDumpFile(true);

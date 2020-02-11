@@ -25,4 +25,4 @@ const loadStatusesFromDumpFile = async (force) => {
 
 module.exports.getStatuses = async () => loadStatusesFromDumpFile(false);
 module.exports.getStatus = async (statusName) => (await loadStatusesFromDumpFile(false))[statusName];
-module.exports.setAutoReload = (duration) => setInterval(() => loadStatusesFromDumpFile(true), duration)
+module.exports.forceReload = async () => loadStatusesFromDumpFile(true);

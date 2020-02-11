@@ -54,4 +54,4 @@ const loadClassesFromDumpFile = async (force) => {
 
 module.exports.getClasses = async () => loadClassesFromDumpFile(false);
 module.exports.getClass = async (className, gender) => (await loadClassesFromDumpFile(false))[className][gender];
-module.exports.setAutoReload = (duration) => setInterval(() => loadClassesFromDumpFile(true), duration);
+module.exports.forceReload = async () => loadClassesFromDumpFile(true);
