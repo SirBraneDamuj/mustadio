@@ -1,0 +1,91 @@
+Player: !Black
+Team: Black Team
+Palettes: Black/Red
+
+
+
+MixReveal
+Female
+Cancer
+54
+59
+Calculator
+Ghost Skill
+HP Restore
+Magic Attack UP
+Move+2
+
+Battle Bamboo
+
+Black Hood
+Clothes
+Jade Armlet
+
+Blue Magic
+Throw Spirit, Drain Touch, Zombie Touch, Sleep Touch, Grease Touch
+
+
+
+WhiteTigress
+Female
+Pisces
+69
+51
+Chemist
+Basic Skill
+Earplug
+Dual Wield
+Jump+2
+
+Orichalcum
+Hydra Bag
+Barette
+Rubber Costume
+Battle Boots
+
+Potion, Hi-Ether, Antidote, Holy Water, Remedy
+Heal, Cheer Up, Wish, Scream
+
+
+
+Tursup
+Male
+Aries
+57
+70
+Lancer
+Draw Out
+Counter
+Equip Bow
+Jump+3
+
+Dragon Whisker
+Gold Shield
+Genji Helmet
+Diamond Armor
+108 Gems
+
+Level Jump8, Vertical Jump3
+Koutetsu, Heaven's Cloud
+
+
+
+DerangedShadow
+Female
+Capricorn
+68
+74
+Knight
+Punch Art
+Parry
+Attack UP
+Ignore Height
+
+Broad Sword
+Diamond Shield
+Diamond Helmet
+Linen Robe
+Reflect Ring
+
+Shield Break, Mind Break, Dark Sword
+Purification, Revive

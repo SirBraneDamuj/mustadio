@@ -1,4 +1,6 @@
 /* eslint-disable max-lines-per-function, no-undefined */
+const mock = require('mock-require');
+mock('../../src/config', { FFTBG_DATA_STRATEGY: 'fake' });
 const loader = require('../../src/data/team-loader');
 const fs = require('fs');
 const path = require('path');
@@ -23,7 +25,7 @@ describe('loadTeamFromString', () => {
                 brave: '72',
                 faith: '44',
                 class: 'Porky',
-                activeSkill: undefined,
+                subSkill: undefined,
                 reactSkill: undefined,
                 supportSkill: undefined,
                 moveSkill: undefined,
@@ -38,7 +40,7 @@ describe('loadTeamFromString', () => {
                 brave: '62',
                 faith: '64',
                 class: 'Ultima Demon',
-                activeSkill: undefined,
+                subSkill: undefined,
                 reactSkill: undefined,
                 supportSkill: undefined,
                 moveSkill: undefined,
@@ -53,7 +55,7 @@ describe('loadTeamFromString', () => {
                 brave: '42',
                 faith: '50',
                 class: 'Sekhret',
-                activeSkill: undefined,
+                subSkill: undefined,
                 reactSkill: undefined,
                 supportSkill: undefined,
                 moveSkill: undefined,
@@ -68,7 +70,7 @@ describe('loadTeamFromString', () => {
                 brave: '65',
                 faith: '68',
                 class: 'Priest',
-                activeSkill: 'Time Magic',
+                subSkill: 'Time Magic',
                 reactSkill: 'Absorb Used MP',
                 supportSkill: 'Beastmaster',
                 moveSkill: 'Jump+3',
@@ -90,7 +92,7 @@ describe('loadTeamFromString', () => {
                 brave: '65',
                 faith: '52',
                 class: 'Mime',
-                activeSkill: '',
+                subSkill: '',
                 reactSkill: 'Caution',
                 supportSkill: 'Attack UP',
                 moveSkill: 'Waterbreathing',
@@ -105,7 +107,7 @@ describe('loadTeamFromString', () => {
                 brave: '67',
                 faith: '46',
                 class: 'Mime',
-                activeSkill: '',
+                subSkill: '',
                 reactSkill: 'Distribute',
                 supportSkill: 'Equip Shield',
                 moveSkill: 'Waterwalking',
@@ -120,7 +122,7 @@ describe('loadTeamFromString', () => {
                 brave: '76',
                 faith: '64',
                 class: 'Thief',
-                activeSkill: 'Elemental',
+                subSkill: 'Elemental',
                 reactSkill: 'Distribute',
                 supportSkill: 'Equip Gun',
                 moveSkill: 'Levitate',
@@ -135,7 +137,7 @@ describe('loadTeamFromString', () => {
                 brave: '50',
                 faith: '74',
                 class: 'Chemist',
-                activeSkill: 'Elemental',
+                subSkill: 'Elemental',
                 reactSkill: 'MP Restore',
                 supportSkill: 'Dual Wield',
                 moveSkill: 'Move-HP Up',

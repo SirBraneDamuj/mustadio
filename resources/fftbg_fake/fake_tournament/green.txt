@@ -1,0 +1,85 @@
+Player: !Green
+Team: Green Team
+Palettes: Green/White
+
+
+
+Kithmar796
+Female
+Libra
+67
+70
+Geomancer
+Item
+Faith Up
+Magic Defense UP
+Levitate
+
+Sleep Sword
+Crystal Shield
+Golden Hairpin
+White Robe
+Wizard Mantle
+
+Pitfall, Water Ball, Hell Ivy, Local Quake, Sand Storm, Blizzard, Gusty Wind, Lava Ball
+Potion, Hi-Potion, X-Potion, Antidote, Eye Drop, Echo Grass, Maiden's Kiss, Soft, Phoenix Down
+
+
+
+Dirty Naise
+Monster
+Aries
+66
+75
+Ochu
+
+
+
+
+
+
+
+
+
+
+HughJeffner
+Female
+Aries
+59
+63
+Ninja
+Draw Out
+Counter
+Concentrate
+Retreat
+
+Dagger
+Ninja Edge
+Twist Headband
+Clothes
+Power Wrist
+
+Bomb, Knife
+Asura, Koutetsu, Bizen Boat, Kiyomori
+
+
+
+Tikotikotiko
+Female
+Gemini
+46
+74
+Chemist
+Yin Yang Magic
+PA Save
+Dual Wield
+Jump+1
+
+Main Gauche
+Panther Bag
+Twist Headband
+Adaman Vest
+Magic Gauntlet
+
+Potion, Ether, Hi-Ether, Antidote, Maiden's Kiss, Phoenix Down
+Poison, Confusion Song, Dispel Magic, Paralyze, Sleep, Dark Holy

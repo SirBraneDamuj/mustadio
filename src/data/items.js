@@ -1,46 +1,105 @@
-const fs = require('fs');
-const { EQUIPMENT_SLOTS } = require('./constants');
-const emojiForSlot = (slotName) => {
-    switch (slotName) {
-        case 'head':
-        return '&#x1F3A9;';
-        case 'hand':
-        return '&#x270B;';
-        case 'body':
-        return '&#x1F455;';
-        case 'accessory':
-        return '&#x1F48D;';
-        default:
-        return '&#x129409;'
+const client = require('../client/fftbg');
+const mapValues = require('lodash/mapValues');
+
+const { SLOTS_FOR_EQUIPMENT_TYPES } = require('./constants');
+
+const number = (s) => {
+    if (!s) {
+        return 0;
     }
+    return parseInt(s, 10);
 }
 
-const loadItemsFromDumpFile = (slot) => {
-    const dump = fs.readFileSync(`${__dirname}/../../resources/dump/${slot}_items.txt`, 'utf-8');
+const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal\), )?(?:(?<absorbWp>\d+) WP \(absorb\), )?(?:(?<range>\d+) range, )?(?:(?<evadePercent>\d+%?) evade, )?(?:(?<physEvadePercent>\d+%) phys evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+). ?)(?:Element: (?<element>[A-Z]\w+)\. ?)?(?:Effect: (?<effect>.*))?$/;
+const statsRegex = /(?:(?<move>\+\d+) Move(?:, |\.|;))?(?:(?<pa>\+\d+) PA(?:, |\.|;))?(?:(?<ma>\+\d+) MA(?:, |\.|;))?(?:(?<jump>\+\d+) Jump(?:, |\.|;))?(?:(?<speed>\+\d+) Speed(?:, |\.|;))?/;
+const initialStatusRegex = /Initial (?<initialStatuses>[A-Z].+)(?:; |\.)/;
+const permanentStatusRegex = /(?:Permanent|Always) (?<permStatuses>[A-Z][^;.]+)(?:; |\.)/;
+
+const items = {};
+
+const getInitialStatuses = (effect) => {
+    const match = initialStatusRegex.exec(effect);
+    if (match) {
+        return match.groups.initialStatuses.split(', ');
+    }
+    return [];
+}
+
+const getPermStatuses = (effect) => {
+    const match = permanentStatusRegex.exec(effect);
+    if (match) {
+        return match.groups.permStatuses.split(', ');
+    }
+    return [];
+}
+
+const loadItemsFromDumpFile = async (force) => {
+    if (!force && Object.keys(items).length > 0) {
+        return items;
+    }
+    const { data } = await client.itemInfo();
     let delimiter = '\r\n';
-    if (dump.indexOf(delimiter) == -1) {
+    if (data.indexOf(delimiter) == -1) {
         delimiter = '\n';
     }
-    return dump.split(delimiter).map((itemLine) => {
+    data.split(delimiter).forEach((itemLine) => {
+        const {
+            itemName,
+            wp,
+            healWp,
+            absorbWp,
+            range,
+            evadePercent,
+            physEvadePercent,
+            magicEvadePercent,
+            hp,
+            mp,
+            itemType,
+            element,
+            effect,
+        } = theBigRegex.exec(itemLine).groups;
+        if (itemType === 'Shuriken' || itemType === 'Bomb' || itemType === 'Consumable') {
+            return;
+        }
+        const {
+            speed,
+            move,
+            jump,
+            pa,
+            ma
+        } = statsRegex.exec(effect).groups;
+        const slot = SLOTS_FOR_EQUIPMENT_TYPES[itemType];
         const firstColon = itemLine.indexOf(':');
-        const name = itemLine.slice(0, firstColon);
         const info = itemLine.slice(firstColon + 2);
-
-        return [name, { 
-            name, 
+        items[itemName] = { 
+            name: itemName, 
+            type: itemType,
             slot,
             info,
-            emoji: emojiForSlot(slot),
-        }];
+            stats: mapValues({
+                wp: number(wp),
+                healWp: number(healWp),
+                absorbWp: number(absorbWp),
+                range: number(range),
+                evadePercent: number(evadePercent),
+                physEvadePercent: number(physEvadePercent),
+                magicEvadePercent: number(magicEvadePercent),
+                hp: number(hp),
+                mp: number(mp),
+                element,
+                speed: number(speed),
+                move: number(move),
+                jump: number(jump),
+                pa: number(pa),
+                ma: number(ma),
+                initialStatuses: getInitialStatuses(effect),
+                permStatuses: getPermStatuses(effect),
+            }),
+        };
     });
+    return items;
 }
 
-const ITEMS = EQUIPMENT_SLOTS.reduce((accumulator, slot) => {
-    loadItemsFromDumpFile(slot).forEach(([itemName, itemInfo]) => {
-        accumulator[itemName] = itemInfo;
-    });
-    return accumulator;
-}, {});
-
-module.exports.getItems = () => ITEMS;
-module.exports.getItem = (itemName) => ITEMS[itemName];
+module.exports.getItems = async () => loadItemsFromDumpFile(false);
+module.exports.getItem = async (itemName) => (await loadItemsFromDumpFile(false))[itemName];
+module.exports.forceReload = async () => loadItemsFromDumpFile(true);

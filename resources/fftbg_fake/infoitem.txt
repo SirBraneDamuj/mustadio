@@ -1,0 +1,253 @@
+Potion: Consumable. Effect: Heals 100 HP.
+Hi-Potion: Consumable. Effect: Heals 120 HP.
+X-Potion: Consumable. Effect: Heals 150 HP.
+Ether: Consumable. Effect: Heals 20 MP.
+Hi-Ether: Consumable. Effect: Heals 50 MP.    
+Elixir: Consumable. Effect: Heals All HP & MP.
+Antidote: Consumable. Effect: Cancel Poison.
+Eye Drop: Consumable. Effect: Cancel Darkness.
+Echo Grass: Consumable. Effect: Cancel Silence.
+Maiden's Kiss: Consumable. Effect: Cancel Frog.
+Soft: Consumable. Effect: Cancel Petrify.
+Holy Water: Consumable. Effect: Cancel Undead.
+Remedy: Consumable. Effect: Cancel Petrify, Darkness, Confusion, Silence, Oil, Frog, Poison, Sleep.
+Phoenix Down: Consumable. Effect: Cancel Death; if successful, Heal Random(1-20). Kills Undead.
+Dagger: 4 WP, 1 range, 10% evade, Knife. Effect: +1 Speed.
+Mythril Knife: 6 WP, 1 range, 5% evade, Knife. Effect: +1 Speed.
+Blind Knife: 5 WP, 1 range, 5% evade, Knife. Effect: Chance to Add Darkness.
+Mage Masher: 5 WP, 1 range, 5% evade, Knife. Effect: Chance to Add Silence.
+Cultist Dagger: 8 WP, 1 range, 10% evade, Knife. Effect: Chance to Add Undead.
+Main Gauche: 7 WP, 1 range, 40% evade, Knife.
+Orichalcum: 9 WP, 1 range, 5% evade, Knife. Effect: Initial Haste.
+Assassin Dagger: 8 WP, 1 range, 5% evade, Knife. Effect: Chance to Add Death Sentence.
+Air Knife: 10 WP, 1 range, 5% evade, Knife. Element: Wind.
+Zorlin Shape: 12 WP, 1 range, 10% evade, Knife. Effect: Chance to Add Sleep.
+Hidden Knife: 9 WP, 1 range, 10% evade, Ninja Blade.
+Kunai: 7 WP, 1 range, 5% evade, Ninja Blade. Effect: +1 Move.
+Short Edge: 10 WP, 1 range, 8% evade, Ninja Blade.
+Ninja Edge: 11 WP, 1 range, 7% evade, Ninja Blade.
+Spell Edge: 12 WP, 1 range, 5% evade, Ninja Blade. Effect: Chance to add Don't Act.
+Sasuke Knife: 14 WP, 1 range, 15% evade, Ninja Blade.
+Iga Knife: 16 WP, 1 range, 10% evade, Ninja Blade.
+Koga Knife: 17 WP, 1 range, 5% evade, Ninja Blade.
+Broad Sword: 5 WP, 1 range, 12% evade, Sword.
+Long Sword: 6 WP, 1 range, 10% evade, Sword.
+Iron Sword: 7 WP, 1 range, 5% evade, Sword.
+Mythril Sword: 8 WP, 1 range, 8% evade, Sword. Effect: +1 Speed.
+Blood Sword: 9 WP (absorb), 1 range, 3% evade, Sword.
+Coral Sword: 10 WP, 1 range, 5% evade, Sword. Element: Lightning.
+Ancient Sword: 11 WP, 1 range, 5% evade, Sword. Effect: Chance to add Don't Move.
+Sleep Sword: 9 WP, 1 range, 6% evade, Sword. Effect: Chance to add Sleep.
+Platinum Sword: 13 WP, 1 range, 10% evade, Sword.
+Diamond Sword: 12 WP, 1 range, 11% evade, Sword.
+Ice Brand: 13 WP, 1 range, 10% evade, Sword. Element: Ice. Effect: Chance to cast Ice 2.
+Rune Blade: 14 WP, 1 range, 15% evade, Sword. Effect: +2 MA.
+Nagrarock: 1 WP, 1 range, 50% evade, Sword. Element: Dark. Effect: Chance to add Frog; Permanent Evil, Float.
+Materia Blade: 15 WP, 1 range, 10% evade, Sword. Effect: Strengthens Wind, Earth, Water.
+Defender: 17 WP, 1 range, 60% evade, Knight Sword.
+Save the Queen: 19 WP, 1 range, 30% evade, Knight Sword. Effect: Permanent Protect.
+Excalibur: 22 WP, 1 range, 35% evade, Knight Sword. Effect: Initial Haste; Absorb Holy; Strengthen Holy.
+Ragnarok: 20 WP, 1 range, 20% evade, Knight Sword. Effect: Permanent Shell.
+Chaos Blade: 25 WP, 1 range, 20% evade, Knight Sword. Effect: Chance to Add Petrify; Permanent Regen; Absorb Dark; Strengthen Dark.
+Asura Knife: 10 WP, 1 range, 15% evade, Katana.
+Koutetsu Knife: 11 WP, 1 range, 15% evade, Katana.
+Bizen Boat: 12 WP, 1 range, 15% evade, Katana.
+Murasame: 13 WP, 1 range, 15% evade, Katana.
+Heaven's Cloud: 14 WP, 1 range, 15% evade, Katana. Element: Holy.
+Kiyomori: 15 WP, 1 range, 15% evade, Katana.
+Muramasa: 16 WP, 1 range, 15% evade, Katana. Element: Dark.
+Kikuichimoji: 18 WP, 1 range, 14% evade, Katana.
+Masamune: 21 WP, 1 range, 15% evade, Katana. Effect: Initial Haste.
+Chirijiraden: 24 WP, 1 range, 15% evade, Katana.
+Battle Axe: 10 WP, 1 range, 4% evade, Axe.
+Giant Axe: 15 WP, 1 range, 3% evade, Axe.
+Slasher: 19 WP, 1 range, 2% evade, Axe. Effect: Chance to Add Slow.
+Rod: 3 WP, 1 range, 23% evade, Rod. Effect: Absorb Lightning.
+Thunder Rod: 3 WP, 1 range, 20% evade, Rod. Element: Lightning. Effect: Chance to cast Bolt; Strengthen Lightning.
+Flame Rod: 3 WP, 1 range, 20% evade, Rod. Element: Fire. Effect: Chance to cast Fire; Strengthen Fire.
+Ice Rod: 3 WP, 1 range, 20% evade, Rod. Element: Ice. Effect: Chance to cast Ice; Strengthen Ice.
+Poison Rod: 4 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Poison.
+Wizard Rod: 5 WP, 1 range, 20% evade, Rod. Effect: +2 MA.
+Dragon Rod: 6 WP, 1 range, 22% evade, Rod. Effect: Immune Silence, Frog, Innocent; Initial Reraise.
+Faith Rod: 5 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Faith; Always Faith.
+Oak Staff: 3 WP, 1 range, 18% evade, Staff. Effect: Absorb Water.
+White Staff: 2 WP, 1 range, 15% evade, Staff. Element: Holy. Effect: Chance to Cancel Undead, Petrify, Darkness, Confusion, Silence, Blood Suck, Float, Reraise, Berserk, Frog, Poison, Regen, Protect, Shell, Haste, Slow, Stop, Innocent, Charm, Sleep, Don't Move, Don't Act, Reflect, Death Sentence.
+Healing Staff: 4 WP (heal), 1 range, 17% evade, Staff.
+Rainbow Staff: 5 WP, 1 range, 15% evade, Staff. Element: Earth.
+Wizard Staff: 4 WP, 1 range, 15% evade, Staff. Effect: +1 MA.
+Gold Staff: 6 WP, 1 range, 20% evade, Staff. Effect: Initial Regen.
+Mace of Zeus: 7 WP, 1 range, 15% evade, Staff. Effect: +2 PA, +1 MA.
+Sage Staff: 8 WP, 1 range, 20% evade, Staff. Effect: Permanent Shell.
+Flail: 11 WP, 1 range, 2% evade, Flail.
+Flame Whip: 13 WP, 1 range, 1% evade, Flail. Element: Fire. Effect: Chance to cast Fire 2.
+Morning Star: 16 WP, 1 range, 2% evade, Flail.
+Scorpion Tail: 23 WP, 1 range, 1% evade, Flail. Element: Earth. Effect: Chance to add Oil.
+Romanda Gun: 7 WP, 9 range, 6% evade, Gun.
+Mythril Gun: 8 WP, 8 range, 5% evade, Gun. Effect: +1 Speed.
+Stone Gun: 13 WP, 7 range, 9% evade, Gun. Effect: Immune Petrify, Float; Initial Slow.
+Blaze Gun: 15 WP, 8 range, 4% evade, Gun. Element: Fire.
+Glacier Gun: 15 WP, 8 range, 4% evade, Gun. Element: Ice.
+Blast Gun: 15 WP, 8 range, 4% evade, Gun. Element: Lightning.
+Bow Gun: 5 WP, 4 range, 5% evade, Crossbow. Element: Fire. Effect: +1 Speed.
+Night Killer: 6 WP, 4 range, 5% evade, Crossbow. Effect: Chance to Add Darkness.
+Cross Bow: 8 WP, 5 range, 5% evade, Crossbow.
+Poison Bow: 7 WP, 5 range, 5% evade, Crossbow. Effect: Chance to Add Poison.
+Hunting Bow: 9 WP, 5 range, 5% evade, Crossbow.
+Gastrafitis: 13 WP, 5 range, 8% evade, Crossbow.
+Long Bow: 6 WP, 6 range, 1% evade, Bow.
+Silver Bow: 7 WP, 5 range, 1% evade, Bow. Effect: +1 MA.
+Ice Bow: 8 WP, 5 range, 1% evade, Bow. Element: Ice.
+Lightning Bow: 7 WP, 5 range, 3% evade, Bow. Element: Lightning. Effect: Chance to cast Bolt 2.
+Windslash Bow: 10 WP, 5 range, 5% evade, Bow. Element: Wind.
+Mythril Bow: 9 WP, 5 range, 1% evade, Bow. Effect: +1 Speed.
+Ultimus Bow: 12 WP, 5 range, 2% evade, Bow.
+Yoichi Bow: 14 WP, 5 range, 1% evade, Bow. Effect: +1 Move.
+Perseus Bow: 16 WP, 5 range, 1% evade, Bow.
+Ramia Harp: 9 WP, 3 range, 10% evade, Harp. Effect: Chance to Add Confusion; Immune Silence.
+Bloody Strings: 12 WP (absorb), 3 range, 12% evade, Harp. Effect: Immune Silence.
+Fairy Harp: 14 WP, 3 range, 14% evade, Harp. Effect: Chance to Add Charm; Immune Silence.
+Battle Folio: 7 WP, 3 range, 20% evade, Book. Effect: +1 PA.
+Bestiary: 8 WP, 3 range, 15% evade, Book. Effect: +1 MA.
+Papyrus Codex: 9 WP, 3 range, 15% evade, Book. Element: Water. Effect: Chance to Add Oil.
+Madlemgen: 11 WP, 3 range, 13% evade, Book. Element: Dark. Effect: Chance to cast Dark Holy.
+Javelin: 8 WP, 2 range, 12% evade, Spear.
+Spear: 9 WP, 2 range, 14% evade, Spear.
+Mythril Spear: 10 WP, 2 range, 10% evade, Spear. Effect: +1 Speed.
+Partisan: 11 WP, 2 range, 10% evade, Spear.
+Obelisk: 12 WP, 2 range, 10% evade, Spear. Element: Water.
+Holy Lance: 14 WP, 2 range, 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.
+Dragon Whisker: 16 WP, 2 range, 10% evade, Spear. Effect: Permanent Protect.
+Gungnir: 18 WP, 2 range, 10% evade, Spear. Element: Wind.
+Cypress Rod: 6 WP, 2 range, 25% evade, Pole.
+Battle Bamboo: 7 WP, 2 range, 22% evade, Pole. Effect: +1 PA.
+Musk Rod: 8 WP, 2 range, 20% evade, Pole. Element: Earth.
+Iron Fan: 9 WP, 2 range, 20% evade, Pole.
+Gokuu Rod: 10 WP, 2 range, 20% evade, Pole. Effect: Chance to Add Innocent.
+Ivory Rod: 11 WP, 2 range, 20% evade, Pole.
+Octagon Rod: 12 WP, 2 range, 20% evade, Pole. Effect: Chance to Cancel Darkness, Silence, Oil, Frog, Poison, Slow, Stop, Don't Move, Don't Act.
+Whale Whisker: 16 WP, 2 range, 20% evade, Pole. Element: Water.
+Cute Bag: 10 WP, 1 range, 2% evade, Bag. Effect: +1 MA; Strengthen Water.
+Star Bag: 20 WP, 1 range, 1% evade, Bag.
+Panther Bag: 12 WP, 1 range, 1% evade, Bag. Effect: Permanent Regen; Strengthen Earth.
+Hydra Bag: 14 WP, 1 range, 1% evade, Bag. Effect: +1 Speed; Strengthen Wind.
+Persia: 8 WP, 2 range, 55% evade, Fabric. Effect: +1 Speed.
+Cashmere: 10 WP, 2 range, 60% evade, Fabric. Effect: Initial Haste.
+Ryozan Silk: 15 WP, 2 range, 50% evade, Fabric. Effect: +1 Speed.
+Shuriken: 4 WP, Shuriken.
+Magic Shuriken: 7 WP, Shuriken.
+Yagyu Shuriken: 9 WP, Shuriken. Element: Dark.
+Burst Bomb: 8 WP, Bomb. Element: Fire.
+Torrent Bomb: 8 WP, Bomb. Element: Water.
+Spark Bomb: 8 WP, Bomb. Element: Lightning.
+Escutcheon: 10% phys evade, 5% magic evade, Shield. Effect: +1 Speed.
+Buckler: 13% phys evade, 35% magic evade, Shield. Effect: +1 PA.
+Bronze Shield: 16% phys evade, 4% magic evade, Shield. 
+Round Shield: 19% phys evade, 3% magic evade, Shield. 
+Mythril Shield: 22% phys evade, 5% magic evade, Shield. Effect: +1 Speed.
+Gold Shield: 25% phys evade, 12% magic evade, Shield. 
+Ice Shield: 28% phys evade, 4% magic evade, Shield. Effect: Absorb Ice; Half Fire; Weak Lightning.
+Flame Shield: 31% phys evade, 2% magic evade, Shield. Effect: Absorb Fire; Half Ice; Weak Water.
+Aegis Shield: 10% phys evade, 50% magic evade, Shield. Effect: +1 MA.
+Diamond Shield: 34% phys evade, 15% magic evade, Shield. 
+Platinum Shield: 37% phys evade, 10% magic evade, Shield. 
+Crystal Shield: 40% phys evade, 15% magic evade, Shield. 
+Genji Shield: 46% phys evade, 1% magic evade, Shield. 
+Kaiser Plate: 43% phys evade, 25% magic evade, Shield. Effect: Strengthen Fire, Lightning, Ice.
+Venetian Shield: 50% phys evade, 20% magic evade, Shield. Effect: Half Fire, Lightning, Ice.
+Hero Shield: 60% phys evade, 35% magic evade, Shield. 
+Leather Helmet: +34 HP, +0 MP, Helmet. Effect: +1 Speed.
+Bronze Helmet: +40 HP, +0 MP, Helmet. 
+Iron Helmet: +46 HP, +0 MP, Helmet. Effect: +1 PA.
+Barbuta: +52 HP, +0 MP, Helmet. Effect: +1 Jump.
+Mythril Helmet: +58 HP, +4 MP, Helmet. Effect: +1 Speed.
+Gold Helmet: +66 HP, +8 MP, Helmet. 
+Cross Helmet: +74 HP, +0 MP, Helmet. Effect: +1 MA.
+Diamond Helmet: +82 HP, +6 MP, Helmet. 
+Platinum Helmet: +90 HP, +0 MP, Helmet. 
+Circlet: +100 HP, +0 MP, Helmet. 
+Crystal Helmet: +110 HP, +2 MP, Helmet. 
+Genji Helmet: +130 HP, +0 MP, Helmet. 
+Grand Helmet: +150 HP, +0 MP, Helmet. Effect: Immune Darkness, Sleep.
+Leather Hat: +28 HP, +3 MP, Hat. Effect: +1 Speed.
+Feather Hat: +32 HP, +5 MP, Hat. Effect: +1 Jump; Absorb Wind.
+Red Hood: +36 HP, +8 MP, Hat.
+Headgear: +40 HP, +0 MP, Hat. Effect: +1 PA.
+Triangle Hat: +46 HP, +12 MP, Hat. Effect: +1 MA, +1 Jump.
+Green Beret: +52 HP, +0 MP, Hat. Effect: Speed +1; Immune Slow.
+Twist Headband: +58 HP, +0 MP, Hat. Effect: +2 PA.
+Holy Miter: +72 HP, +20 MP, Hat. Effect: +1 MA.
+Black Hood: +100 HP, +0 MP, Hat.
+Golden Hairpin: +80 HP, +50 MP, Hat. Effect: Immune Silence.
+Flash Hat: +88 HP, +15 MP, Hat. Effect: +1 MA, +1 Speed.
+Thief Hat: +64 HP, +0 MP, Hat. Effect: +2 Speed; Immune Don't Move.
+Cachusha: +25 HP, +5 MP, Hat. Effect: Immune Undead, Darkness, Silence, Oil, Frog, Poison, Slow, Don't Move, Don't Act.
+Barette: +27 HP, +3 MP, Hat. Effect: Immune Death, Petrify, Confusion, Blood Suck, Berserk, Stop, Charm, Sleep, Death Sentence.
+Ribbon: +20 HP, +4 MP, Hat. Effect: Immune Death, Undead, Petrify, Darkness, Confusion, Silence, Blood Suck, Oil, Berserk, Frog, Poison, Slow, Stop, Charm, Sleep, Don't Move, Don't Act, Death Sentence.
+Leather Armor: +38 HP, +0 MP, Armor. Effect: +1 Speed.
+Linen Cuirass: +44 HP, +0 MP, Armor. Effect: Initial Regen.
+Bronze Armor: +50 HP, +0 MP, Armor.
+Chain Mail: +56 HP, +0 MP, Armor. Effect: +1 Jump.
+Mythril Armor: +62 HP, +4 MP, Armor. Effect: +1 Speed.
+Plate Mail: +68 HP, +0 MP, Armor. Effect: +1 PA.
+Gold Armor: +76 HP, +8 MP, Armor.
+Diamond Armor: +84 HP, +6 MP, Armor.
+Platinum Armor: +92 HP, +0 MP, Armor.
+Carabini Mail: +100 HP, +0 MP, Armor.
+Crystal Mail: +110 HP, +2 MP, Armor.
+Genji Armor: +140 HP, +0 MP, Armor.
+Reflect Mail: +120 HP, +0 MP, Armor. Effect: Always Reflect.
+Maximillian: +170 HP, +0 MP, Armor.
+Clothes: +32 HP, +1 MP, Clothes. Effect: +1 Move.
+Leather Outfit: +36 HP, +0 MP, Clothes. Effect: +1 Speed.
+Leather Vest: +40 HP, +0 MP, Clothes. Effect: +1 Speed.
+Chain Vest: +36 HP, +0 MP, Clothes. Effect: +1 Jump.
+Mythril Vest: +56 HP, +4 MP, Clothes. Effect: +1 Speed.
+Adaman Vest: +62 HP, +0 MP, Clothes. Effect: +1 PA.
+Wizard Outfit: +68 HP, +15 MP, Clothes. Effect: +1 MA.
+Brigandine: +74 HP, +6 MP, Clothes.
+Judo Outfit: +80 HP, +2 MP, Clothes. Effect: +1 PA; Immune Death.
+Power Sleeve: +86 HP, +0 MP, Clothes. Effect: +2 PA
+Earth Clothes: +92 HP, +10 MP, Clothes. Effect: Absorb Earth; Strengthen Earth.
+Secret Clothes: +44 HP, +0 MP, Clothes. Effect: +2 Speed; Initial Transparent.
+Black Costume: +100 HP, +0 MP, Clothes. Effect: Immune Stop.
+Rubber Costume: +115 HP, +30 MP, Clothes. Effect: Cancel Lightning; Immune Don't Act.
+Linen Robe: +36 HP, +12 MP, Robe. Effect: +1 MA.
+Silk Robe: +40 HP, +16 MP, Robe. Effect: +1 Speed.
+Wizard Robe: +45 HP, +22 MP, Robe. Effect: +2 MA.
+Chameleon Robe: +51 HP, +28 MP, Robe. Effect: Absorb Holy, Strengthen Water; Immune Death.
+White Robe: +58 HP, +34 MP, Robe. Effect: Half Fire, Lightning, Ice.
+Black Robe: +66 HP, +30 MP, Robe. Effect: Strengthen Fire, Lightning, Ice.
+Light Robe: +75 HP, +50 MP, Robe. Effect: +1 MA; Absorb Dark; Strengthen Holy.
+Robe of Lords: +100 HP, +80 MP, Robe. Effect: +2 PA, +1 MA; Permanent Protect, Shell.
+Battle Boots: Accessory. Effect: +1 Move.
+Spike Shoes: Accessory. Effect: +1 Jump.
+Germinas Boots: Accessory. Effect: +1 Move, +1 Jump.
+Rubber Shoes: Accessory. Effect: Cancel Lightning; Strengthen Lightning; Immune Don't Move.
+Feather Boots: Accessory. Effect: Strengthen Wind; Permanent Float.
+Sprint Shoes: Accessory. Effect: +1 Speed.
+Red Shoes: Accessory. Effect: +1 MA, +1 Move.
+Power Wrist: Accessory. Effect: +1 PA; Strengthen Fire.
+Genji Gauntlet: Accessory. Effect: +2 PA, +2 MA.
+Magic Gauntlet: Accessory. Effect: +2 MA.
+Bracer: Accessory. Effect: +3 PA.
+Reflect Ring: Accessory. Effect: Half Lightning; Always Reflect.
+Defense Ring: Accessory. Effect: Half Water; Strengthen Water; Immune Sleep, Death Sentence.
+Magic Ring: Accessory. Effect: Half Ice; Strengthen Ice; Immune Silence, Berserk.
+Cursed Ring: Accessory. Effect: +1 PA, +1 MA, +1 Speed; Strengthen Dark; Permanent Undead.
+Angel Ring: Accessory. Effect: Immune Death, Darkness; Initial Reraise.
+Diamond Armlet: Accessory. Effect: +1 PA, +1 MA; Immune Slow.
+Jade Armlet: Accessory. Effect: Half Wind; Strengthen Earth; Immune Petrify, Stop.
+108 Gems: Accessory. Effect: Strengthen Fire, Lightning, Ice, Wind, Earth, Water, Holy, Dark; Immune Undead, Blood Suck, Frog, Poison.
+N-Kai Armlet: Accessory. Effect: Half Dark; Strengthen Holy; Immune Confusion, Charm.
+Defense Armlet: Accessory. Effect: Half Earth; Strengthen Wind; Immune Don't Move, Don't Act.
+Small Mantle: 10% phys evade, 10% magic evade, Accessory. Effect: +1 Speed.
+Leather Mantle: 15% phys evade, 15% magic evade, Accessory. Effect: Half Fire.
+Wizard Mantle: 18% phys evade, 18% magic evade, Accessory. Effect: +1 MA.
+Elf Mantle: 30% phys evade, 15% magic evade, Accessory.
+Dracula Mantle: 15% phys evade, 30% magic evade, Accessory.
+Feather Mantle: 25% phys evade, 25% magic evade, Accessory.
+Vanish Mantle: 35% phys evade, 0% magic evade, Accessory. Effect: Strengthen Dark; Initial Transparent.
+Chantage: Accessory. Effect: Permanent Regen; Initial Reraise.
+Cherche: Accessory. Effect: +1 PA; Permanent Float, Reflect.
+Setiemson: Accessory. Effect: +1 MA; Permanent Haste.
+Salty Rage: Accessory. Effect: Permanent Protect, Shell.
