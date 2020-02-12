@@ -1,5 +1,4 @@
 const pick = require('lodash/pick');
-const forOwn = require('lodash/forOwn');
 const indexLoader = require('./index-loader');
 const { TEAM_NAMES } = require('./constants');
 const teamLoader = require('./team-loader');
@@ -48,7 +47,7 @@ const createRecordsForTournament = async (tournamentLabel, teamData) => {
 }
 
 const loaderForFileName = (filename) => {
-    switch(filename) {
+    switch (filename) {
         case 'infoitem.txt':
             return items;
         case 'infoability.txt':
@@ -70,9 +69,8 @@ const getCurrentTournamentId = async () => {
             const loader = loaderForFileName(name);
             if (loader) {
                 return loader.reload(timestamp);
-            } else {
-                return Promise.resolve();
             }
+            return Promise.resolve();
         }),
     );
     return latestTournament;

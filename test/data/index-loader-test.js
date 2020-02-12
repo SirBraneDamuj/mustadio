@@ -3,7 +3,7 @@ const fakeClient = require('../../src/client/fftbg/fake');
 const expect = require('chai').expect;
 
 describe('indexloader', () => {
-    let html;
+    let html = '';
 
     before(async () => {
         html = await fakeClient.tournamentList();
