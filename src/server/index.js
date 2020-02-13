@@ -8,6 +8,7 @@ const abilities = require('../data/abilities');
 const classes = require('../data/classes');
 const statuses = require('../data/statuses');
 const stats = require('../data/stats');
+const monsterSkills = require('../data/monster-skills');
 const config = require('../config');
 const app = express();
 
@@ -39,6 +40,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             abilities: abilities.getAbilities(),
             classes: classes.getClasses(),
             statuses: statuses.getStatuses(),
+            monsterSkills,
             stats,
         };
         res.render('match', context);
@@ -47,7 +49,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
 
 module.exports = {
     async start() {
-        await Promise.all([items, abilities, statuses, classes].map((it) => it.reload()));
+        await Promise.all([items, abilities, statuses, classes, monsterSkills].map((it) => it.reload()));
         app.listen(port);
     }
 }

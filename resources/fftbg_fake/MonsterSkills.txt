@@ -1,0 +1,55 @@
+Choco Attack|Choco Cure|Choco Esuna|Choco Ball*
+Choco Attack|Choco Ball|Choco Esuna|Choco Meteor*
+Choco Attack|Choco Meteor|Choco Ball|Choco Cure*
+Tackle|Eye Gouge|Goblin Punch|Turn Punch*
+Tackle|Turn Punch|Goblin Punch|Mutilate*
+Tackle|Eye Gouge|Mutilate|Goblin Punch*
+Bite|Self Destruct|Flame Attack|Spark*
+Bite|Self Destruct|Small Bomb|Flame Attack*
+Bite|Self Destruct|Spark|Small Bomb*
+Scratch|Poison Nail|Cat Kick|Accumulate*
+Scratch|Cat Kick|Blaster|Poison Nail*
+Scratch|Blaster|Blood Suck|Cat Kick*
+Tentacle|Black Ink|Level Blast|Odd Soundwave*
+Tentacle|Black Ink|Odd Soundwave|Mind Blast*
+Tentacle|Black Ink|Mind Blast|Level Blast*
+Knife Hand|Thunder Soul|Ice Soul|Aqua Soul*
+Knife Hand|Aqua Soul|Ice Soul|Wind Soul*
+Knife Hand|Wind Soul|Thunder Soul|Ice Soul*
+Throw Spirit|Sleep Touch|Grease Touch*
+Throw Spirit|Grease Touch|Drain Touch|Zombie Touch*
+Throw Spirit|Zombie Touch|Drain Touch|Sleep Touch*
+Wing Attack|Look of Fright|Beam|Look of Devil*
+Wing Attack|Look of Devil|Look of Fright|Doom*
+Wing Attack|Look of Devil|Doom|Beam*
+Scratch Up|Feather Bomb|Shine Lover*
+Scratch Up|Peck|Shine Lover|Feather Bomb*
+Scratch Up|Beak|Feather Bomb|Peck*
+Straight Dash|Oink|Bequeath Bacon|Toot*
+Straight Dash|Toot|Bequeath Bacon|Snort*
+Straight Dash|Snort|Bequeath Bacon|Oink*
+Leaf Dance|Protect Spirit|Calm Spirit|Life Spirit*
+Leaf Dance|Life Spirit|Protect Spirit|Calm Spirit*
+Leaf Dance|Life Spirit|Magic Spirit|Magic Barrier*
+Shake Off|Wave Around|Blow Fire*
+Shake Off|Blow Fire|Gather Power*
+Shake Off|Mimic Titan|Gather Power|Blow Fire*
+Tendrils|Lick|Noxious Gas|Bad Breath*
+Tendrils|Goo|Lick|Noxious Gas*
+Tendrils|Bad Breath|Moldball Virus|Goo*
+Stab Up|Sudden Cry|Giga Flare*
+Stab Up|Sudden Cry|Hurricane*
+Stab Up|Sudden Cry|Ulmaguest*
+Dash|Thunder Breath|Tail Swing|Ice Breath*
+Dash|Ice Breath|Tail Swing|Fire Breath*
+Dash|Fire Breath|Tail Swing|Thunder Breath*
+Triple Attack|Noxious Gas|Triple Breath*
+Triple Attack|Triple Flame|Triple Thunder*
+Triple Attack|Triple Thunder|Triple Breath|Dark Whisper*
+Lifebreak|Dark Holy|Giga Flare|Empower|Despair|Despair 2
+Nanoflare|Dark Holy|Ultima|Hurricane|Ulmaguest|Empower
+Bio Tenebris|Bio Venenum|Bio Oleum|Bio Ranae|Bio Sanctus|Bio Silentium|Bio Lapis|Bio Immortuos|Bio Mortem|Bio Insanis
+Destroy|Compress|Dispose|Repair
+Energize|Parasite|Vengeance|Manaburn|Chicken
+Holy Breath|Fire Breath|Ice Breath|Thunder Breath
+Snake Carrier|Toxic Frog|Midgar Swarm|Scream

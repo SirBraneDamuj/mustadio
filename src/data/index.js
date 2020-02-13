@@ -2,13 +2,13 @@ const pick = require('lodash/pick');
 const indexLoader = require('./index-loader');
 const { TEAM_NAMES } = require('./constants');
 const teamLoader = require('./team-loader');
-const { Op } = require('sequelize');
 const { Tournament, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
 const client = require('../client/fftbg');
 const items = require('./items');
 const abilities = require('./abilities');
 const statuses = require('./statuses');
 const classes = require('./classes');
+const monsterSkills = require('./monster-skills');
 
 const createRecordsForTournament = async (tournamentLabel, teamData) => {
     const tournament = await Tournament.create({
@@ -56,6 +56,10 @@ const loaderForFileName = (filename) => {
             return classes;
         case 'infostatus.txt':
             return statuses;
+        case 'Monsters.txt':
+            return monsterSkills;
+        case 'MonsterSkills.txt':
+            return monsterSkills;
         default:
             return null;
     }
@@ -110,33 +114,34 @@ module.exports.getTournamentById = async (tournamentId) => {
     return loadTournamentById(tournamentId);
 };
 
+const getTeamForTeamName = async (tournamentId, teamName) => Team.findOne({
+    where: {
+        name: teamName,
+    },
+    include: [{
+        model: Unit,
+        include: [{
+            model: UnitAbility,
+        }, {
+            model: UnitEquipment,
+        }],
+    }, {
+        model: Tournament,
+        attributes: [],
+        where: {
+            label: tournamentId,
+        },
+    }],
+    order: [
+        [Unit, 'createdAt', 'ASC'],
+        [Unit, UnitEquipment, 'createdAt', 'ASC']
+    ]
+});
+
 module.exports.getTeamsForTournament = async (tournamentId, team1, team2) => {
     await loadTournamentById(tournamentId);
-    const result = await Team.findAll({
-        where: {
-            [Op.or]: [
-                { name: team1 },
-                { name: team2 },
-            ],
-        },
-        include: [{
-            model: Unit,
-            include: [{
-                model: UnitAbility,
-            }, {
-                model: UnitEquipment,
-            }],
-        }, {
-            model: Tournament,
-            attributes: [],
-            where: {
-                label: tournamentId,
-            },
-        }],
-        order: [
-            [Unit, 'createdAt', 'ASC'],
-            [Unit, UnitEquipment, 'createdAt', 'ASC']
-        ]
-    });
-    return result;
+    return Promise.all([
+        getTeamForTeamName(tournamentId, team1),
+        getTeamForTeamName(tournamentId, team2),
+    ]);
 };
