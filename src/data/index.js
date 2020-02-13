@@ -2,7 +2,6 @@ const pick = require('lodash/pick');
 const indexLoader = require('./index-loader');
 const { TEAM_NAMES } = require('./constants');
 const teamLoader = require('./team-loader');
-const { Op } = require('sequelize');
 const { Tournament, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
 const client = require('../client/fftbg');
 const items = require('./items');
