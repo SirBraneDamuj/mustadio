@@ -110,33 +110,34 @@ module.exports.getTournamentById = async (tournamentId) => {
     return loadTournamentById(tournamentId);
 };
 
+const getTeamForTeamName = async (tournamentId, teamName) => Team.findOne({
+    where: {
+        name: teamName,
+    },
+    include: [{
+        model: Unit,
+        include: [{
+            model: UnitAbility,
+        }, {
+            model: UnitEquipment,
+        }],
+    }, {
+        model: Tournament,
+        attributes: [],
+        where: {
+            label: tournamentId,
+        },
+    }],
+    order: [
+        [Unit, 'createdAt', 'ASC'],
+        [Unit, UnitEquipment, 'createdAt', 'ASC']
+    ]
+});
+
 module.exports.getTeamsForTournament = async (tournamentId, team1, team2) => {
     await loadTournamentById(tournamentId);
-    const result = await Team.findAll({
-        where: {
-            [Op.or]: [
-                { name: team1 },
-                { name: team2 },
-            ],
-        },
-        include: [{
-            model: Unit,
-            include: [{
-                model: UnitAbility,
-            }, {
-                model: UnitEquipment,
-            }],
-        }, {
-            model: Tournament,
-            attributes: [],
-            where: {
-                label: tournamentId,
-            },
-        }],
-        order: [
-            [Unit, 'createdAt', 'ASC'],
-            [Unit, UnitEquipment, 'createdAt', 'ASC']
-        ]
-    });
-    return result;
+    return Promise.all([
+        getTeamForTeamName(tournamentId, team1),
+        getTeamForTeamName(tournamentId, team2),
+    ]);
 };
