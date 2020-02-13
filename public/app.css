@@ -3,7 +3,11 @@
 }
 
 .unit-row {
-    height: 25%;
+    height: auto;
+}
+
+.unit-row > td {
+    height: 100%;
 }
 
 .gear-icon {
@@ -14,4 +18,10 @@
     width: 32px;
     height: 32px;
     padding: 5px;
+}
+
+.beastmaster-note {
+    font-style: italic;
+    position: relative;
+    bottom: 0;
 }

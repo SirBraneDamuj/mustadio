@@ -25,7 +25,19 @@ module.exports.statusInfo = () => {
     return {
         data: readFakeFile('infostatus.txt'),
     };
-}
+};
+
+module.exports.monsters = () => {
+    return {
+        data: readFakeFile('Monsters.txt'),
+    };
+};
+
+module.exports.monsterSkills = () => {
+    return {
+        data: readFakeFile('MonsterSkills.txt'),
+    };
+};
 
 module.exports.tournamentTeam = async (_, teamName) => {
     return {

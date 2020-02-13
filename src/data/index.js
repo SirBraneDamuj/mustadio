@@ -9,6 +9,7 @@ const items = require('./items');
 const abilities = require('./abilities');
 const statuses = require('./statuses');
 const classes = require('./classes');
+const monsterSkills = require('./monster-skills');
 
 const createRecordsForTournament = async (tournamentLabel, teamData) => {
     const tournament = await Tournament.create({
@@ -56,6 +57,10 @@ const loaderForFileName = (filename) => {
             return classes;
         case 'infostatus.txt':
             return statuses;
+        case 'Monsters.txt':
+            return monsterSkills;
+        case 'MonsterSkills.txt':
+            return monsterSkills;
         default:
             return null;
     }
