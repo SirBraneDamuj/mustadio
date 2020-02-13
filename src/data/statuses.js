@@ -1,28 +1,18 @@
+const DumpLoader = require('./dump-loader');
 const client = require('../client/fftbg');
 
-const statuses = {};
-
-const loadStatusesFromDumpFile = async (force) => {
-    if (!force && Object.keys(statuses).length > 0) {
-        return statuses;
-    }
-    const { data } = await client.statusInfo();
-    let delimiter = '\r\n';
-    if (data.indexOf(delimiter) == -1) {
-        delimiter = '\n';
-    }
-    data.split(delimiter).forEach((statusLine) => {
-        const firstColon = statusLine.indexOf(':');
-        const name = statusLine.slice(0, firstColon);
-        const info = statusLine.slice(firstColon + 2);
-        statuses[name] = { 
-            name, 
-            info,
-        };
-    });
-    return statuses;
+const parseStatusLine = (statuses, statusLine) => {
+    const firstColon = statusLine.indexOf(':');
+    const name = statusLine.slice(0, firstColon);
+    const info = statusLine.slice(firstColon + 2);
+    statuses[name] = { 
+        name, 
+        info,
+    };
 }
 
-module.exports.getStatuses = async () => loadStatusesFromDumpFile(false);
-module.exports.getStatus = async (statusName) => (await loadStatusesFromDumpFile(false))[statusName];
-module.exports.forceReload = async () => loadStatusesFromDumpFile(true);
+const myLoader = new DumpLoader(client.statusInfo, parseStatusLine);
+
+module.exports.getStatuses = () => myLoader.getData();
+module.exports.getStatus = (statusName) => myLoader.getData()[statusName];
+module.exports.reload = async (version) => myLoader.reload(version);

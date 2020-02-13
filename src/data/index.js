@@ -1,13 +1,14 @@
 const pick = require('lodash/pick');
+const indexLoader = require('./index-loader');
 const { TEAM_NAMES } = require('./constants');
 const teamLoader = require('./team-loader');
 const { Op } = require('sequelize');
 const { Tournament, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
 const client = require('../client/fftbg');
 const items = require('./items');
-const abilities = require('./items');
-const statuses = require('./items');
-const classes = require('./items');
+const abilities = require('./abilities');
+const statuses = require('./statuses');
+const classes = require('./classes');
 
 const createRecordsForTournament = async (tournamentLabel, teamData) => {
     const tournament = await Tournament.create({
@@ -45,11 +46,34 @@ const createRecordsForTournament = async (tournamentLabel, teamData) => {
     return tournament;
 }
 
-const tournamentIdRegex = /tournament_\d{13}/gm;
+const loaderForFileName = (filename) => {
+    switch (filename) {
+        case 'infoitem.txt':
+            return items;
+        case 'infoability.txt':
+            return abilities;
+        case 'classhelp.txt':
+            return classes;
+        case 'infostatus.txt':
+            return statuses;
+        default:
+            return null;
+    }
+}
 
 const getCurrentTournamentId = async () => {
     const { data } = await client.tournamentList();
-    return [...data.matchAll(tournamentIdRegex)].pop().pop();
+    const { dumpFiles, latestTournament } = indexLoader.load(data);
+    await Promise.all(
+        dumpFiles.map(async ({ name, timestamp }) => {
+            const loader = loaderForFileName(name);
+            if (loader) {
+                return loader.reload(timestamp);
+            }
+            return Promise.resolve();
+        }),
+    );
+    return latestTournament;
 }
 
 const loadTournamentById = async (tournamentId) => {
@@ -62,14 +86,6 @@ const loadTournamentById = async (tournamentId) => {
     });
     if (existing !== null) {
         return existing;
-    } else if (tournamentId === 'latest') { // someone just tried to load the latest tournament...
-        // so let's make sure we have the latest data!
-        await Promise.all([
-            items.forceReload(),
-            abilities.forceReload(),
-            classes.forceReload(),
-            statuses.forceReload(),
-        ]);
     }
     const teamUnits = {};
     for (const teamName of TEAM_NAMES) {

@@ -24,6 +24,12 @@ const defaultStats = {
 }
 
 describe('STATS', () => {
+    before(async () => {
+        await Promise.all([
+            items.reload(),
+            classes.reload(),
+        ]);
+    });
     const subject = async (className, gender, itemNames) => {
         const clazz = await classes.getClass(className, gender);
         const theseItems = [];

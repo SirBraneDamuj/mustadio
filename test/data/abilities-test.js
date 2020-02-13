@@ -4,6 +4,9 @@ const abilities = require('../../src/data/abilities');
 const expect = require('chai').expect;
 
 describe('ABILITIES', () => {
+    before(async () => {
+        await abilities.reload('force');
+    });
     const subject = async (abilityName) => abilities.getAbility(abilityName);
 
     it('loads usable abilities correctly', async () => {

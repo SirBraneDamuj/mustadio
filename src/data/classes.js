@@ -1,7 +1,6 @@
+const DumpLoader = require('./dump-loader');
 const client = require('../client/fftbg');
 const mapValues = require('lodash/mapValues');
-
-const classes = {};
 
 const classAndGenderRegex = /^(?:(?<className>[A-Z]\w+)|(?<floatingEye>Floating Eye)) ?(?<gender>Male|Female)?'s/
 const classAndGenderForLine = (line) => {
@@ -25,33 +24,24 @@ const innatesForLine = (line) => {
     return innatesString.split(', ');
 }
 
-const loadClassesFromDumpFile = async (force) => {
-    if (!force && Object.keys(classes).length > 0) {
-        return classes;
-    }
-    const { data } = await client.classInfo();
-    let delimiter = '\r\n';
-    if (data.indexOf(delimiter) == -1) {
-        delimiter = '\n';
-    }
-    data.split(delimiter).forEach((classLine) => {
-        const { className, gender } = classAndGenderForLine(classLine)
-        const baseStats = baseStatsForLine(classLine);
-        const innates = innatesForLine(classLine);
-        classes[className] = { 
-            ...classes[className],
-            [gender]: {
-                name: className,
-                gender,
-                baseStats,
-                innates,
-                raw: classLine,
-            },
-        };
-    });
-    return classes;
+const parseClassLine = (classes, classLine) => {
+    const { className, gender } = classAndGenderForLine(classLine)
+    const baseStats = baseStatsForLine(classLine);
+    const innates = innatesForLine(classLine);
+    classes[className] = { 
+        ...classes[className],
+        [gender]: {
+            name: className,
+            gender,
+            baseStats,
+            innates,
+            raw: classLine,
+        },
+    };
 }
 
-module.exports.getClasses = async () => loadClassesFromDumpFile(false);
-module.exports.getClass = async (className, gender) => (await loadClassesFromDumpFile(false))[className][gender];
-module.exports.forceReload = async () => loadClassesFromDumpFile(true);
+const myLoader = new DumpLoader(client.classInfo, parseClassLine);
+
+module.exports.getClasses = () => myLoader.getData();
+module.exports.getClass = (className, gender) => myLoader.getData()[className][gender];
+module.exports.reload = async (version) => myLoader.reload(version);
