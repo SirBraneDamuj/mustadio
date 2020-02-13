@@ -1,0 +1,55 @@
+Chocobo
+Black Chocobo
+Red Chocobo
+Goblin
+Black Goblin
+Gobbledeguck
+Bomb
+Grenade
+Explosive
+Red Panther
+Coeurl
+Vampire
+Pisco Demon
+Squidraken
+Mindflayer
+Skeleton
+Draugr
+Reaper
+Ghoul
+Ghost
+Revenant
+Floating Eye
+Ahriman
+Plague
+Juravis
+Iron Hawk
+Cockatrice
+Swine
+Porky
+Wild Boar
+Dryad
+Trent
+Taiju
+Bull Demon
+Minotaur
+Sekhret
+Malboro
+Ochu
+Great Malboro
+Behemoth
+King Behemoth
+Dark Behemoth
+Dragon
+Blue Dragon
+Red Dragon
+Wyvern
+Hydra
+Tiamat
+Archaic Demon
+Ultima Demon
+Apanda
+Steel Giant
+Byblos
+Holy Dragon
+Ophiuchus

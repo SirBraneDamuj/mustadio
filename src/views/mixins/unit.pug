@@ -36,9 +36,14 @@ mixin tooltippedStatus(tooltipSide, status)
 
 mixin tooltippedAbility(tooltipSide, ability)
     - const abilityNameDisplay = ability.length > 0 ? ability : '(none)';
-    - const abilityInfo = abilities[ability] || { name: ability, info: '' };
+    - const abilityInfo = abilities[ability.replace('*', '')] || { name: ability, info: '' };
+    - const beastmasterSide = tooltipSide === 'left' ? 'right' : 'left';
     +tooltip(tooltipSide, abilityInfo.info)
-        div= abilityNameDisplay
+        if (ability.includes('*'))
+            +tooltip(beastmasterSide, 'Beastmaster Required')
+                div= abilityNameDisplay
+        else
+            div= abilityNameDisplay
     
 
 mixin tooltippedAbilityWithSlot(tooltipSide, slot, ability)
@@ -99,8 +104,11 @@ mixin unit(side, unit)
                     each innateStatus in innateStatuses
                         +tooltippedStatus(tooltipSide, statuses[innateStatus])
 
-        td
+        td.main-abilities-cell
             .d-flex.flex-column
+                if unit.gender === 'Monster'
+                    each ability in monsterSkills.getSkillsForMonster(unit.class)
+                        +tooltippedAbility(tooltipSide, ability)
                 if unit.gender !== 'Monster'
                     each ability in unit.UnitAbilities.filter(a => a.mainOrSub === 'main')
                         +tooltippedAbility(tooltipSide, ability.name)
