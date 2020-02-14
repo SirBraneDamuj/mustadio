@@ -145,3 +145,12 @@ module.exports.getTeamsForTournament = async (tournamentId, team1, team2) => {
         getTeamForTeamName(tournamentId, team2),
     ]);
 };
+
+module.exports.getFullTournament = async (tournamentId) => {
+    await loadTournamentById(tournamentId);
+    const teams = await Promise.all(TEAM_NAMES.map(async (teamName) => getTeamForTeamName(tournamentId, teamName)))
+    return {
+        id: tournamentId,
+        teams,
+    };
+}
