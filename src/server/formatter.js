@@ -6,6 +6,8 @@ const pick = require('lodash/pick');
 const pickBy = require('lodash/pickBy');
 const omit = require('lodash/omit');
 
+const isAnEmptyArray = (it) => Array.isArray(it) && it.length === 0;
+
 class ApiFormatter {
     constructor(showInfo, showStats) {
         this.showInfo = showInfo;
@@ -32,17 +34,17 @@ class ApiFormatter {
             }).filter((it) => it !== null);
             return {
                 ...clazz,
-                ...(this.showStats && !this.isAnEmptyArray(innates) && { innates }),
-                ...({ baseStats: this.showStats ? clazz.baseStats : undefined }),
+                ...this.showStats && !isAnEmptyArray(innates) && { innates },
+                ...{ baseStats: this.showStats ? clazz.baseStats : undefined },
                 ...({ raw: this.showInfo ? clazz.raw : undefined }),
             };
         } else {
             return {
                 ...omit(clazz, 'innates', 'baseStats'),
-                ...({ raw: this.showInfo ? clazz.raw : undefined }),
+                ...{ raw: this.showInfo ? clazz.raw : undefined },
             };
         }
-    };
+    }
 
     formatUnitActiveAbilityForApiResponse(abilityName, learned) {
         return {
@@ -55,7 +57,7 @@ class ApiFormatter {
                 }
             }),
         };
-    };
+    }
 
     formatUnitNonActiveAbilityForApiResponse(abilityName) {
         const ability = abilities.getAbility(abilityName);
@@ -63,7 +65,7 @@ class ApiFormatter {
             name: abilityName,
             ...(this.showInfo && ability && { info: ability.info }),
         };
-    };
+    }
 
     formatUnitAbilitiesForApiResponse(unit) {
         return {
@@ -75,23 +77,19 @@ class ApiFormatter {
         };
     }
 
-    isAnEmptyArray(it) {
-        return Array.isArray(it) && it.length === 0;
-    }
-
-    formatUnitEquipmentForApiResponse = (equipments) => {
+    formatUnitEquipmentForApiResponse(equipments) {
         return equipments.map((equipment) => {
             const item = items.getItem(equipment.name)
             const initialStatuses = item.stats.initialStatuses.map((status) => statuses.getStatus(status));
             const permStatuses = item.stats.permStatuses.map((status) => statuses.getStatus(status));
             if (this.showStats) {
                 const stats = {
-                    ...pickBy(item.stats, (stat) => stat !== 0 && !this.isAnEmptyArray(stat)),
+                    ...pickBy(item.stats, (stat) => stat !== 0 && !isAnEmptyArray(stat)),
                 };
-                if (!this.isAnEmptyArray(initialStatuses)) {
+                if (!isAnEmptyArray(initialStatuses)) {
                     stats.initialStatuses = initialStatuses;
                 }
-                if (!this.isAnEmptyArray(permStatuses)) {
+                if (!isAnEmptyArray(permStatuses)) {
                     stats.permStatuses = permStatuses;
                 }
                 return {

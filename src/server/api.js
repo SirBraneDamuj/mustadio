@@ -16,8 +16,7 @@ router.get('/tournaments/:tournamentId', async (req, res) => {
     const result = await data.getFullTournament(tournamentId);
     const formatter = new ApiFormatter(include.includes('info'), include.includes('stats'))
 
-    body = formatter.formatTournament(result);
-    console.log(include);
+    const body = formatter.formatTournament(result);
     res.json(body);
 });
 
