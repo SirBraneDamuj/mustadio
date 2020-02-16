@@ -12,7 +12,7 @@ router.get('/swagger', swaggerUi.setup(swaggerDocument));
 
 router.get('/tournaments/:tournamentId', async (req, res) => {
     const tournamentId = req.params.tournamentId === 'latest' ? await data.getLatestTournamentId() : req.params.tournamentId;
-    const include = [].concat(req.query.include);
+    const include = String(req.query.include);
     const result = await data.getFullTournament(tournamentId);
     const formatter = new ApiFormatter(include.includes('info'), include.includes('stats'))
 

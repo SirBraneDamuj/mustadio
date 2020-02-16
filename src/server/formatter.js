@@ -34,9 +34,9 @@ class ApiFormatter {
             }).filter((it) => it !== null);
             return {
                 ...clazz,
-                ...this.showStats && !isAnEmptyArray(innates) && { innates },
+                ...{ innates: !isAnEmptyArray(innates) ? innates : undefined },
                 ...{ baseStats: this.showStats ? clazz.baseStats : undefined },
-                ...({ raw: this.showInfo ? clazz.raw : undefined }),
+                ...{ raw: this.showInfo ? clazz.raw : undefined },
             };
         } else {
             return {
