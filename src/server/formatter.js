@@ -15,9 +15,9 @@ class ApiFormatter {
     }
 
     formatTournament(tournament) {
-        const tournamentId = tournament.label;
+        const tournamentId = tournament.id;
         return {
-            id: tournament.label,
+            id: tournamentId,
             teams: tournament.teams.map((team) => this.formatTeamForApiResponse(tournamentId, team)),
         };
     }
