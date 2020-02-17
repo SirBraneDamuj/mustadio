@@ -114,7 +114,7 @@ module.exports.getTournamentById = async (tournamentId) => {
     return loadTournamentById(tournamentId);
 };
 
-const getTeamForTeamName = async (tournamentId, teamName) => Team.findOne({
+module.exports.getTeamForTeamName = async (tournamentId, teamName) => Team.findOne({
     where: {
         name: teamName,
     },
@@ -141,14 +141,14 @@ const getTeamForTeamName = async (tournamentId, teamName) => Team.findOne({
 module.exports.getTeamsForTournament = async (tournamentId, team1, team2) => {
     await loadTournamentById(tournamentId);
     return Promise.all([
-        getTeamForTeamName(tournamentId, team1),
-        getTeamForTeamName(tournamentId, team2),
+        this.getTeamForTeamName(tournamentId, team1),
+        this.getTeamForTeamName(tournamentId, team2),
     ]);
 };
 
 module.exports.getFullTournament = async (tournamentId) => {
     await loadTournamentById(tournamentId);
-    const teams = await Promise.all(TEAM_NAMES.map(async (teamName) => getTeamForTeamName(tournamentId, teamName)))
+    const teams = await Promise.all(TEAM_NAMES.map(async (teamName) => this.getTeamForTeamName(tournamentId, teamName)))
     return {
         id: tournamentId,
         teams,

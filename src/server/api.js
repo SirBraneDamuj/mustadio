@@ -28,6 +28,16 @@ router.get('/tournaments/:tournamentId', async (req, res) => {
     res.json(body);
 });
 
+router.get('/tournaments/:tournamentId/teams/:teamName', async (req, res) => {
+    const tournamentId = req.params.tournamentId === 'latest' ? await data.getLatestTournamentId() : req.params.tournamentId;
+    const result = await data.getTeamForTeamName(tournamentId, req.params.teamName);
+    const formatter = getFormatter(req.query);
+
+    const body = formatter.formatTeamForApiResponse(tournamentId, result);
+    res.json(body);
+});
+
+
 router.get('/items', (req, res) => {
     const formatter = getFormatter(req.query);
     res.json({

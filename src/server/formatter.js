@@ -71,7 +71,7 @@ class ApiFormatter {
     }
 
     formatUnitNonActiveAbilityForApiResponse(abilityName) {
-        const ability = abilities.getAbility(abilityName);
+        const ability = abilities.getAbility(abilityName) || { name: abilityName, info: '' };
         return this.formatAbilityForApiResponse(ability);
     }
 

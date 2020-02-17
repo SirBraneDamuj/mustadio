@@ -11,8 +11,8 @@ servers:
 tags:
 - name: tournaments
   description: Get the full tournament data model
-- name: teams
-  description: Retrieve info just about a particular team
+- name: dumps
+  description: Get the raw data for items, classes, and abilities
 paths:
   /tournaments/{tournamentId}:
     get:
