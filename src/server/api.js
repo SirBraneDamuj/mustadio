@@ -4,6 +4,9 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./resources/openapi.yaml');
 const data = require('../data');
 const items = require('../data/items');
+const abilities = require('../data/abilities');
+const classes = require('../data/classes');
+const { GENDERS } = require('../data/constants');
 const values = require('lodash/values');
 const ApiFormatter = require('./formatter');
 
@@ -29,6 +32,27 @@ router.get('/items', (req, res) => {
     const formatter = getFormatter(req.query);
     res.json({
         items: values(items.getItems()).map((item) => formatter.formatItemForApiResponse(item)),
+    });
+});
+
+router.get('/abilities', (req, res) => {
+    const formatter = getFormatter(req.query);
+    res.json({
+        abilities: values(abilities.getAbilities()).map((ability) => formatter.formatAbilityForApiResponse(ability)),
+    });
+});
+
+router.get('/classes', (req, res) => {
+    const formatter = getFormatter(req.query);
+    res.json({
+        classes: values(classes.getClasses()).flatMap((clazz) => {
+            return GENDERS.reduce((genderClasses, gender) => {
+                if (clazz[gender]) {
+                    genderClasses.push(formatter.formatClassGenderForApiResponse(clazz[gender]));
+                }
+                return genderClasses;
+            }, []);
+        })
     });
 });
 

@@ -22,9 +22,7 @@ class ApiFormatter {
         };
     }
 
-    formatUnitClassForApiResponse(className, gender) {
-        const realClassName = (className.includes('Calculator') ? 'Calculator' : className).replace(' ', '');
-        const clazz = classes.getClass(realClassName, gender);
+    formatClassGenderForApiResponse(clazz) {
         if (this.showStats) {
             const innates = clazz.innates.map((innate) => {
                 if (innate === 'Jump') {
@@ -46,6 +44,12 @@ class ApiFormatter {
         }
     }
 
+    formatUnitClassForApiResponse(className, gender) {
+        const realClassName = (className.includes('Calculator') ? 'Calculator' : className).replace(' ', '');
+        const clazz = classes.getClass(realClassName, gender);
+        return this.formatClassGenderForApiResponse(clazz);
+    }
+
     formatUnitActiveAbilityForApiResponse(abilityName, learned) {
         return {
             name: abilityName,
@@ -59,12 +63,16 @@ class ApiFormatter {
         };
     }
 
+    formatAbilityForApiResponse(ability) {
+        return {
+            name: ability.name,
+            ...(this.showInfo && ability && { info: ability.info, type: ability.type, }),
+        };
+    }
+
     formatUnitNonActiveAbilityForApiResponse(abilityName) {
         const ability = abilities.getAbility(abilityName);
-        return {
-            name: abilityName,
-            ...(this.showInfo && ability && { info: ability.info }),
-        };
+        return this.formatAbilityForApiResponse(ability);
     }
 
     formatUnitAbilitiesForApiResponse(unit) {
