@@ -29,7 +29,7 @@ html
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js")
     script(src="/app.js")
 
-  body
+  body.p-3
     h1 
       a(href="https://github.com/sirbranedamuj/mustadio")= "Mustadio"
     .d-flex.align-items-stretch
@@ -89,3 +89,5 @@ html
             +matchButton('black', 'champion')
     h2= "See latest tournament..."
     a.btn.btn-primary(href="/latest/red/blue")= "Latest Tournament"
+    h2= "Check out the API!"
+    a.btn.btn-primary(href="/api/swagger")= "API Docs"
