@@ -77,37 +77,41 @@ class ApiFormatter {
         };
     }
 
+    formatItemForApiResponse(item) {
+        const initialStatuses = item.stats.initialStatuses.map((status) => statuses.getStatus(status));
+        const permStatuses = item.stats.permStatuses.map((status) => statuses.getStatus(status));
+        if (this.showStats) {
+            const stats = {
+                ...pickBy(item.stats, (stat) => stat !== 0 && !isAnEmptyArray(stat)),
+            };
+            if (!isAnEmptyArray(initialStatuses)) {
+                stats.initialStatuses = initialStatuses;
+            }
+            if (!isAnEmptyArray(permStatuses)) {
+                stats.permStatuses = permStatuses;
+            }
+            return {
+                ...item,
+                stats,
+                ...({ info: this.showInfo ? item.info : undefined }),
+                ...({ type: this.showInfo ? item.type : undefined }),
+                ...({ slot: this.showInfo ? item.slot : undefined }),
+            };
+        } else {
+            return {
+                ...item,
+                stats: undefined,
+                ...({ info: this.showInfo ? item.info : undefined }),
+                ...({ type: this.showInfo ? item.type : undefined }),
+                ...({ slot: this.showInfo ? item.slot : undefined }),
+            };
+        }
+    }
+
     formatUnitEquipmentForApiResponse(equipments) {
         return equipments.map((equipment) => {
             const item = items.getItem(equipment.name)
-            const initialStatuses = item.stats.initialStatuses.map((status) => statuses.getStatus(status));
-            const permStatuses = item.stats.permStatuses.map((status) => statuses.getStatus(status));
-            if (this.showStats) {
-                const stats = {
-                    ...pickBy(item.stats, (stat) => stat !== 0 && !isAnEmptyArray(stat)),
-                };
-                if (!isAnEmptyArray(initialStatuses)) {
-                    stats.initialStatuses = initialStatuses;
-                }
-                if (!isAnEmptyArray(permStatuses)) {
-                    stats.permStatuses = permStatuses;
-                }
-                return {
-                    ...item,
-                    stats,
-                    ...({ info: this.showInfo ? item.info : undefined }),
-                    ...({ type: this.showInfo ? item.type : undefined }),
-                    ...({ slot: this.showInfo ? item.slot : undefined }),
-                };
-            } else {
-                return {
-                    ...item,
-                    stats: undefined,
-                    ...({ info: this.showInfo ? item.info : undefined }),
-                    ...({ type: this.showInfo ? item.type : undefined }),
-                    ...({ slot: this.showInfo ? item.slot : undefined }),
-                };
-            }
+            return this.formatItemForApiResponse(item);
         });
     }
 
