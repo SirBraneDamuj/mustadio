@@ -10,6 +10,7 @@ const statuses = require('../data/statuses');
 const stats = require('../data/stats');
 const monsterSkills = require('../data/monster-skills');
 const config = require('../config');
+const apiRouter = require('./api');
 const app = express();
 
 const port = config.PORT || 3000;
@@ -19,6 +20,8 @@ app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
+
+app.use('/api/', apiRouter);
 
 app.get('/', async (_, res) => {
     const tournamentId = await data.getLatestTournamentId();

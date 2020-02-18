@@ -1,0 +1,372 @@
+openapi: 3.0.1
+info:
+  title: Mustadio API
+  description: Mustadio is an unofficial companion app for FFTBG.
+  version: 1.0.0
+externalDocs:
+  description: Github
+  url: http://github.com/sirbranedamuj/mustadio
+servers:
+- url: /api/
+tags:
+- name: tournaments
+  description: Get the full tournament data model
+- name: dumps
+  description: Get the raw data for items, classes, and abilities
+paths:
+  /tournaments/{tournamentId}:
+    get:
+      tags:
+      - tournaments
+      summary: Get a single tournament and all its teams
+      operationId: getTournament
+      parameters:
+      - name: tournamentId
+        in: path
+        description: The ID of the tournament to fetch. Use the word "latest" to specify
+          the current tournament
+        required: true
+        schema:
+          type: string
+      - name: include
+        in: query
+        description: Include stats and/or info in the response. Do not include these
+          unless you want the info dumps and the stats parsed out for everything.
+          It's all or nothing.
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - stats
+            - info
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tournament'
+  /tournaments/{tournamentId}/teams/{teamName}:
+    get:
+      tags:
+      - tournaments
+      summary: Get a single team.
+      parameters:
+      - name: tournamentId
+        in: path
+        description: The ID of the tournament to fetch. Use the word "latest" to specify
+          the current tournament
+        required: true
+        schema:
+          type: string
+      - name: teamName
+        in: path
+        description: The ID of the tournament to fetch. Use the word "latest" to specify
+          the current tournament
+        required: true
+        schema:
+          type: string
+      - name: include
+        in: query
+        description: Include stats and/or info in the response. Do not include these
+          unless you want the info dumps and the stats parsed out for everything.
+          It's all or nothing.
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - stats
+            - info
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Team'
+  /items:
+    get:
+      tags:
+      - dumps
+      summary: Get a list of all items.
+      parameters:
+      - name: include
+        in: query
+        description: Include stats and/or info in the response. Do not include these
+          unless you want the info dumps and the stats parsed out for everything.
+          It's all or nothing.
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - stats
+            - info
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UnitEquipment'
+  /abilities:
+    get:
+      tags:
+      - dumps
+      summary: Get a list of all abilities.
+      parameters:
+      - name: include
+        in: query
+        description: Include stats and/or info in the response. Do not include these
+          unless you want the info dumps and the stats parsed out for everything.
+          It's all or nothing.
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - stats
+            - info
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UnitNonActiveAbility'
+  /classes:
+    get:
+      tags:
+      - dumps
+      summary: Get a list of all classes.
+      parameters:
+      - name: include
+        in: query
+        description: Include stats and/or info in the response. Do not include these
+          unless you want the info dumps and the stats parsed out for everything.
+          It's all or nothing.
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - stats
+            - info
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UnitClass'
+components:
+  schemas:
+    Tournament:
+      type: object
+      properties:
+        id:
+          type: string
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+    Team:
+      type: object
+      properties:
+        tournamentId:
+          type: string
+        teamName:
+          type: string
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/Unit'
+    Unit:
+      type: object
+      properties:
+        name:
+          type: string
+        tournamentId:
+          type: string
+        teamName:
+          type: string
+        gender:
+          type: string
+          enum:
+          - Male
+          - Female
+          - Monster
+        class:
+          $ref: '#/components/schemas/UnitClass'
+        brave:
+          type: integer
+        zodiac:
+          type: string
+        faith:
+          type: integer
+        abilities:
+          $ref: '#/components/schemas/UnitAbilities'
+        equipment:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitEquipment'
+    UnitClass:
+      type: object
+      properties:
+        name:
+          type: string
+        gender:
+          type: string
+        raw:
+          type: string
+        baseStats:
+          $ref: '#/components/schemas/UnitClassStats'
+        innates:
+          type: array
+          items:
+            oneOf:
+              - $ref: "#/components/schemas/UnitNonActiveAbility"
+              - $ref: "#/components/schemas/UnitStatus"
+    UnitClassStats:
+      type: object
+      properties:
+        hp:
+          type: integer
+        mp:
+          type: integer
+        move:
+          type: integer
+        jump:
+          type: integer
+        speed:
+          type: integer
+        pa:
+          type: integer
+        ma:
+          type: integer
+        classEvadePercent:
+          type: integer
+    UnitAbilities:
+      type: object
+      properties:
+        mainActive:
+          $ref: '#/components/schemas/UnitActiveAbility'
+        subActive:
+          $ref: '#/components/schemas/UnitActiveAbility'
+        react:
+          $ref: '#/components/schemas/UnitNonActiveAbility'
+        support:
+          $ref: '#/components/schemas/UnitNonActiveAbility'
+        move:
+          $ref: '#/components/schemas/UnitNonActiveAbility'
+    UnitActiveAbility:
+      type: object
+      properties:
+        name:
+          type: string
+        learned:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitLearnedActiveAbility'
+    UnitLearnedActiveAbility:
+      type: object
+      properties:
+        name:
+          type: string
+        info:
+          type: string
+    UnitNonActiveAbility:
+      type: object
+      properties:
+        name:
+          type: string
+        info:
+          type: string
+    UnitEquipment:
+      type: object
+      properties:
+        name:
+          type: string
+        info:
+          type: string
+        type:
+          type: string
+        slot:
+          type: string
+        stats:
+          $ref: '#/components/schemas/EquipmentStats'
+    EquipmentStats:
+      type: object
+      properties:
+        wp:
+          type: integer
+        healWp:
+          type: integer
+        absorbWp:
+          type: integer
+        range:
+          type: integer
+        weaponEvadePercent:
+          type: integer
+        physEvadePercent:
+          type: integer
+        magEvadePercent:
+          type: integer
+        element:
+          type: integer
+        hp:
+          type: integer
+        mp:
+          type: integer
+        speed:
+          type: integer
+        move:
+          type: integer
+        jump:
+          type: integer
+        pa:
+          type: integer
+        ma:
+          type: integer
+        initialStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitStatus'
+        permStatuses:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitStatus'
+    UnitStatus:
+      type: object
+      properties:
+        name:
+          type: string
+        info:
+          type: string
