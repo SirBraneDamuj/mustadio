@@ -27,16 +27,12 @@ html
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js")
     script(src="/app.js")
 
-  body.p-3
-    h1 
-      a(href="https://github.com/sirbranedamuj/mustadio")= "Mustadio"
-    if matchNumber !== -1
-      +map_link(maps[matchNumber])
-    .d-flex.align-items-stretch
-      +teamTable('left', team1)
-      +teamTable('right', team2)
+  body
     +tournament_nav(matchups, maps)
-    h2= "See latest tournament..."
-    a.btn.btn-primary(href="/latest/red/blue")= "Latest Tournament"
-    h2= "Check out the API!"
-    a.btn.btn-primary(href="/api/swagger")= "API Docs"
+    div.p-3
+      h2= `Tournament ${tournamentId}: ${team1.name} vs ${team2.name}`
+      if matchNumber !== -1
+        +map_link(maps[matchNumber])
+      .d-flex.flex-xl-row.flex-column
+        +teamTable('left', team1)
+        +teamTable('right', team2)
