@@ -2,7 +2,8 @@ const pick = require('lodash/pick');
 const indexLoader = require('./index-loader');
 const { TEAM_NAMES } = require('./constants');
 const teamLoader = require('./team-loader');
-const { Tournament, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
+const mapsLoader = require('./maps-loader');
+const { Tournament, TournamentMap, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
 const client = require('../client/fftbg');
 const items = require('./items');
 const abilities = require('./abilities');
@@ -10,10 +11,13 @@ const statuses = require('./statuses');
 const classes = require('./classes');
 const monsterSkills = require('./monster-skills');
 
-const createRecordsForTournament = async (tournamentLabel, teamData) => {
+const createRecordsForTournament = async (tournamentLabel, maps, teamData) => {
     const tournament = await Tournament.create({
         label: tournamentLabel,
     });
+    await Promise.all(
+        maps.map((tournamentMap) => tournament.createTournamentMap(tournamentMap)),
+    );
     for (const teamName of TEAM_NAMES) {
         const team = await tournament.createTeam({
             name: teamName,
@@ -97,7 +101,8 @@ const loadTournamentById = async (tournamentId) => {
         const units = loadTeamFromStringOrDieTrying(data, teamName);
         teamUnits[teamName] = units;
     }
-    return createRecordsForTournament(label, teamUnits);
+    const maps = await mapsLoader.getMaps(label);
+    return createRecordsForTournament(label, maps, teamUnits);
 };
 
 const loadTeamFromStringOrDieTrying = (data, teamName) => {
@@ -145,6 +150,19 @@ module.exports.getTeamsForTournament = async (tournamentId, team1, team2) => {
         this.getTeamForTeamName(tournamentId, team2),
     ]);
 };
+
+module.exports.getMapsForTournament = async (tournamentId) => {
+    await loadTournamentById(tournamentId);
+    return TournamentMap.findAll({
+        include: [{
+            model: Tournament,
+            attributes: [],
+            where: {
+                label: tournamentId
+            },
+        }],
+    });
+}
 
 module.exports.getFullTournament = async (tournamentId) => {
     await loadTournamentById(tournamentId);

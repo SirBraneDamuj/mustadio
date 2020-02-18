@@ -45,6 +45,12 @@ module.exports.tournamentTeam = async (_, teamName) => {
     };
 };
 
+module.exports.tournamentMaps = async () => {
+    return {
+        data: readFakeFile(`fake_tournament/maps.txt`),
+    };
+};
+
 module.exports.tournamentList = async () => {
     return {
         data: readFakeFile('index.html'),

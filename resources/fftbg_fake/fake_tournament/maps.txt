@@ -1,0 +1,13 @@
+Map(s):
+98) Gate of Lesalia Castle
+115) Banished Fort
+58) Underground Book Storage Second Floor
+102) Tutorial Bridge
+
+4) Lesalia Castle
+36) Church Outside of Town
+
+86) Doguola Pass
+47) Zarghidas Trade City
+
+Skill Drop: Serpentarius

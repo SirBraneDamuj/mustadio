@@ -23,6 +23,24 @@ Team.belongsTo(Tournament, {
     },
 });
 
+const TournamentMap = db.define('TournamentMap', {
+    number: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+});
+
+Tournament.hasMany(TournamentMap);
+TournamentMap.belongsTo(Tournament, {
+    foreignKey: {
+        allowNull: false,
+    },
+});
+
 const Unit = db.define('Unit', {
     name: {
         type: DataTypes.STRING,
@@ -115,6 +133,7 @@ db.sync({ force }).then(() => console.log('Tables synced!'));
 
 module.exports = {
     Tournament,
+    TournamentMap,
     Team,
     Unit,
     UnitAbility,

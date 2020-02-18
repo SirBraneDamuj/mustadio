@@ -8,6 +8,7 @@ const abilities = require('../data/abilities');
 const classes = require('../data/classes');
 const statuses = require('../data/statuses');
 const stats = require('../data/stats');
+const { MATCHUPS, matchNumberForMatchup } = require('../data/constants');
 const monsterSkills = require('../data/monster-skills');
 const config = require('../config');
 const apiRouter = require('./api');
@@ -34,11 +35,15 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
         const realTournamentId = await data.getLatestTournamentId();
         res.redirect(`/${realTournamentId}/${team1}/${team2}`);
     } else {
+        const maps = await data.getMapsForTournament(tournamentId);
         const [team1Record, team2Record] = await data.getTeamsForTournament(tournamentId, team1, team2);
         const context = {
             team1: team1Record,
             team2: team2Record,
             tournamentId,
+            matchNumber: matchNumberForMatchup(team1, team2),
+            matchups: MATCHUPS,
+            maps,
             items: items.getItems(),
             abilities: abilities.getAbilities(),
             classes: classes.getClasses(),
