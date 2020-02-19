@@ -30,22 +30,22 @@ describe('STATS', () => {
             classes.reload(),
         ]);
     });
-    const subject = async (className, gender, itemNames) => {
-        const clazz = await classes.getClass(className, gender);
+    const subject = (className, gender, itemNames, movementSkill) => {
+        const clazz = classes.getClass(className, gender);
         const theseItems = [];
         for (const itemName of itemNames) {
-            theseItems.push(await items.getItem(itemName));
+            theseItems.push(items.getItem(itemName));
         }
-        return stats.totalStatsForClassAndEquipment(clazz.baseStats, theseItems);
+        return stats.totalStatsForClassAndEquipment(clazz.baseStats, theseItems, movementSkill);
     }
 
-    it('squire male with a full loadout', async () => {
-        expect(await subject('Squire', 'Male', ['Blood Sword', 'Aegis Shield', 'Triangle Hat', 'Reflect Mail', 'Germinas Boots'])).to.deep.eq({
+    it('squire male with a full loadout', () => {
+        expect(subject('Squire', 'Male', ['Blood Sword', 'Aegis Shield', 'Triangle Hat', 'Reflect Mail', 'Germinas Boots'], 'Jump+2')).to.deep.eq({
             ...defaultStats,
             hp: 173 + 46 + 120,
             mp: 47 + 12,
             move: 5,
-            jump: 5,
+            jump: 4 + 1 + 2,
             speed: 9,
             pa: 8,
             ma: 9,
@@ -56,8 +56,8 @@ describe('STATS', () => {
         });
     });
 
-    it('a monster', async () => {
-        expect(await subject('KingBehemoth', 'Monster', [])).to.deep.eq({
+    it('a monster', () => {
+        expect(subject('KingBehemoth', 'Monster', [], 'Teleport')).to.deep.eq({
             ...defaultStats,
             hp: 515,
             mp: 30,
@@ -70,12 +70,12 @@ describe('STATS', () => {
         });
     });
 
-    it('timemage female dual wielding with some stuff', async () => {
-        expect(await subject('TimeMage', 'Female', ['Ice Rod', 'Mythril Spear', 'Cross Helmet', 'Linen Cuirass', 'Reflect Ring'])).to.deep.eq({
+    it('timemage female dual wielding with some stuff and a move skill', () => {
+        expect(subject('TimeMage', 'Female', ['Ice Rod', 'Mythril Spear', 'Cross Helmet', 'Linen Cuirass', 'Reflect Ring'], 'Move+3')).to.deep.eq({
             ...defaultStats,
             hp: 124 + 74 + 44,
             mp: 101,
-            move: 3,
+            move: 3 + 3,
             jump: 3,
             speed: 8 + 1,
             pa: 4,

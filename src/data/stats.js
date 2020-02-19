@@ -17,7 +17,7 @@ const baseStats = {
     permStatuses: [],
 };
 
-module.exports.totalStatsForClassAndEquipment = (classStats, items) => {
+module.exports.totalStatsForClassAndEquipment = (classStats, items, movementAbility) => {
     const totalStats = {
         ...baseStats,
         initialStatuses: [],
@@ -47,5 +47,13 @@ module.exports.totalStatsForClassAndEquipment = (classStats, items) => {
             totalStats[stat] += value;
         }
     });
+    if (movementAbility) {
+        if (movementAbility.startsWith('Move+')) {
+            totalStats.move += parseInt(movementAbility.slice(-1), 10);
+        }
+        if (movementAbility.startsWith('Jump+')) {
+            totalStats.jump += parseInt(movementAbility.slice(-1), 10);
+        }
+    }
     return totalStats;
 };
