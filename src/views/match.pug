@@ -1,7 +1,5 @@
 include mixins/unit.pug
-
-mixin matchButton(team1, team2)
-    a.btn.btn-primary(href=`/${tournamentId}/${team1}/${team2}`)= `${team1.charAt(0).toUpperCase() + team1.slice(1)} v ${team2.charAt(0).toUpperCase() + team2.slice(1)}`
+include mixins/tournament_nav.pug
   
 mixin teamTable(side, team)
   .team
@@ -29,65 +27,12 @@ html
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js")
     script(src="/app.js")
 
-  body.p-3
-    h1 
-      a(href="https://github.com/sirbranedamuj/mustadio")= "Mustadio"
-    .d-flex.align-items-stretch
-      +teamTable('left', team1)
-      +teamTable('right', team2)
-    h2= "Jump to Match"
-      .d-flex.flex-column
-        h3= "Round 1"
-          .d-flex
-            +matchButton('red', 'blue')
-            +matchButton('green', 'yellow')
-            +matchButton('white', 'black')
-            +matchButton('purple', 'brown')
-        h3= "Round 2"
-          .d-flex.flex-column
-            .d-flex
-              +matchButton('red', 'green')
-              +matchButton('red', 'yellow')
-              +matchButton('blue', 'green')
-              +matchButton('blue', 'yellow')
-            .d-flex
-              +matchButton('white', 'purple')
-              +matchButton('white', 'brown')
-              +matchButton('black', 'purple')
-              +matchButton('black', 'brown')
-        h3= "Round 3"
-          .d-flex.flex-column
-            .d-flex
-              +matchButton('red', 'white')
-              +matchButton('red', 'black')
-              +matchButton('red', 'purple')
-              +matchButton('red', 'brown')
-            .d-flex
-              +matchButton('blue', 'white')
-              +matchButton('blue', 'black')
-              +matchButton('blue', 'purple')
-              +matchButton('blue', 'brown')
-            .d-flex
-              +matchButton('green', 'white')
-              +matchButton('green', 'black')
-              +matchButton('green', 'purple')
-              +matchButton('green', 'brown')
-            .d-flex
-              +matchButton('yellow', 'white')
-              +matchButton('yellow', 'black')
-              +matchButton('yellow', 'purple')
-              +matchButton('yellow', 'brown')
-        h3= "Champion Round"
-          .d-flex
-            +matchButton('red', 'champion')
-            +matchButton('blue', 'champion')
-            +matchButton('green', 'champion')
-            +matchButton('yellow', 'champion')
-            +matchButton('white', 'champion')
-            +matchButton('black', 'champion')
-            +matchButton('purple', 'champion')
-            +matchButton('black', 'champion')
-    h2= "See latest tournament..."
-    a.btn.btn-primary(href="/latest/red/blue")= "Latest Tournament"
-    h2= "Check out the API!"
-    a.btn.btn-primary(href="/api/swagger")= "API Docs"
+  body
+    +tournament_nav(matchups, maps)
+    div.p-3
+      h2= `Tournament ${tournamentId}: ${team1.name} vs ${team2.name}`
+      if matchNumber !== -1
+        +map_link(maps[matchNumber])
+      .d-flex.flex-xl-row.flex-column
+        +teamTable('left', team1)
+        +teamTable('right', team2)
