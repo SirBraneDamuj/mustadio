@@ -13,7 +13,7 @@ const number = (s) => {
 
 const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal\), )?(?:(?<absorbWp>\d+) WP \(absorb\), )?(?:(?<range>\d+) range, )?(?:(?<evadePercent>\d+%?) evade, )?(?:(?<physEvadePercent>\d+%) phys evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+). ?)(?:Element: (?<element>[A-Z]\w+)\. ?)?(?:Effect: (?<effect>.*))?$/;
 const statsRegex = /(?:(?<move>\+\d+) Move(?:, |\.|;))?(?:(?<pa>\+\d+) PA(?:, |\.|;))?(?:(?<ma>\+\d+) MA(?:, |\.|;))?(?:(?<jump>\+\d+) Jump(?:, |\.|;))?(?:(?<speed>\+\d+) Speed(?:, |\.|;))?/;
-const initialStatusRegex = /Initial (?<initialStatuses>[A-Z].+)(?:; |\.)/;
+const initialStatusRegex = /Initial (?<initialStatuses>[A-Z][^;.]+)(?:; |\.)/;
 const permanentStatusRegex = /(?:Permanent|Always) (?<permStatuses>[A-Z][^;.]+)(?:; |\.)/;
 
 const getInitialStatuses = (effect) => {

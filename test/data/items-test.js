@@ -29,10 +29,10 @@ describe('ITEMS', () => {
     before(async () => {
         await items.reload('force');
     });
-    const subject = async (itemName) => items.getItem(itemName);
+    const subject = (itemName) => items.getItem(itemName);
 
-    it('loads knight swords correctly', async () => {
-        expect(await subject('Nagrarock')).to.deep.eq({
+    it('loads knight swords correctly', () => {
+        expect(subject('Nagrarock')).to.deep.eq({
             name: 'Nagrarock',
             slot: 'hand',
             type: 'Sword',
@@ -48,8 +48,8 @@ describe('ITEMS', () => {
         });
     })
 
-    it('loads sticks correctly', async () => {
-        expect(await subject('Octagon Rod')).to.deep.eq({
+    it('loads sticks correctly', () => {
+        expect(subject('Octagon Rod')).to.deep.eq({
             name: 'Octagon Rod',
             slot: 'hand',
             type: 'Pole',
@@ -63,8 +63,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads hats correctly', async () => {
-        expect(await subject('Thief Hat')).to.deep.eq({
+    it('loads hats correctly', () => {
+        expect(subject('Thief Hat')).to.deep.eq({
             name: 'Thief Hat',
             slot: 'head',
             type: 'Hat',
@@ -77,8 +77,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads armor correctly', async () => {
-        expect(await subject('Reflect Mail')).to.deep.eq({
+    it('loads armor correctly', () => {
+        expect(subject('Reflect Mail')).to.deep.eq({
             name: 'Reflect Mail',
             slot: 'body',
             type: 'Armor',
@@ -91,8 +91,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads accessories correctly', async () => {
-        expect(await subject('Salty Rage')).to.deep.eq({
+    it('loads accessories correctly', () => {
+        expect(subject('Salty Rage')).to.deep.eq({
             name: 'Salty Rage',
             slot: 'accessory',
             type: 'Accessory',
@@ -104,8 +104,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads hunting bow correctly', async () => {
-        expect(await subject('Hunting Bow')).to.deep.eq({
+    it('loads hunting bow correctly', () => {
+        expect(subject('Hunting Bow')).to.deep.eq({
             name: 'Hunting Bow',
             slot: 'hand',
             type: 'Crossbow',
@@ -119,8 +119,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads ice rod', async () => {
-        expect(await subject('Ice Rod')).to.deep.eq({
+    it('loads ice rod', () => {
+        expect(subject('Ice Rod')).to.deep.eq({
             name: 'Ice Rod',
             slot: 'hand',
             type: 'Rod',
@@ -135,8 +135,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads cursed ring', async () => {
-        expect(await subject('Cursed Ring')).to.deep.eq({
+    it('loads cursed ring', () => {
+        expect(subject('Cursed Ring')).to.deep.eq({
             name: 'Cursed Ring',
             slot: 'accessory',
             type: 'Accessory',
@@ -151,8 +151,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads flash hat', async () => {
-        expect(await subject('Flash Hat')).to.deep.eq({
+    it('loads flash hat', () => {
+        expect(subject('Flash Hat')).to.deep.eq({
             name: 'Flash Hat',
             slot: 'head',
             type: 'Hat',
@@ -167,8 +167,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads mace of zeus', async () => {
-        expect(await subject('Mace of Zeus')).to.deep.eq({
+    it('loads mace of zeus', () => {
+        expect(subject('Mace of Zeus')).to.deep.eq({
             name: 'Mace of Zeus',
             slot: 'hand',
             type: 'Staff',
@@ -184,8 +184,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads barbuta', async () => {
-        expect(await subject('Barbuta')).to.deep.eq({
+    it('loads barbuta', () => {
+        expect(subject('Barbuta')).to.deep.eq({
             name: 'Barbuta',
             slot: 'head',
             type: 'Helmet',
@@ -198,8 +198,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads angel ring', async () => {
-        expect(await subject('Angel Ring')).to.deep.eq({
+    it('loads angel ring', () => {
+        expect(subject('Angel Ring')).to.deep.eq({
             name: 'Angel Ring',
             slot: 'accessory',
             type: 'Accessory',
@@ -211,8 +211,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads germinas boots', async () => {
-        expect(await subject('Germinas Boots')).to.deep.eq({
+    it('loads germinas boots', () => {
+        expect(subject('Germinas Boots')).to.deep.eq({
             name: 'Germinas Boots',
             slot: 'accessory',
             type: 'Accessory',
@@ -225,8 +225,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads secret clothes', async () => {
-        expect(await subject('Secret Clothes')).to.deep.eq({
+    it('loads secret clothes', () => {
+        expect(subject('Secret Clothes')).to.deep.eq({
             name: 'Secret Clothes',
             slot: 'body',
             type: 'Clothes',
@@ -240,8 +240,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads healing staff', async () => {
-        expect(await subject('Healing Staff')).to.deep.eq({
+    it('loads healing staff', () => {
+        expect(subject('Healing Staff')).to.deep.eq({
             name: 'Healing Staff',
             slot: 'hand',
             type: 'Staff',
@@ -255,8 +255,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads bloody strings', async () => {
-        expect(await subject('Bloody Strings')).to.deep.eq({
+    it('loads bloody strings', () => {
+        expect(subject('Bloody Strings')).to.deep.eq({
             name: 'Bloody Strings',
             slot: 'hand',
             type: 'Harp',
@@ -270,8 +270,8 @@ describe('ITEMS', () => {
         });
     });
 
-    it('loads panther bag', async () => {
-        expect(await subject('Panther Bag')).to.deep.eq({
+    it('loads panther bag', () => {
+        expect(subject('Panther Bag')).to.deep.eq({
             name: 'Panther Bag',
             slot: 'hand',
             type: 'Bag',
@@ -286,8 +286,24 @@ describe('ITEMS', () => {
         });
     });
 
-    it('has no un-slotted items', async () => {
-        const loadedItems = await items.getItems();
+    it('loads excalibur', () => {
+        expect(subject('Excalibur')).to.deep.eq({
+            name: 'Excalibur',
+            slot: 'hand',
+            type: 'Knight Sword',
+            info: '22 WP, 1 range, 35% evade, Knight Sword. Effect: Initial Haste; Absorb Holy; Strengthen Holy.',
+            stats: {
+                ...defaultStats,
+                wp: 22,
+                range: 1,
+                evadePercent: 35,
+                initialStatuses: ['Haste'],
+            },
+        });
+    });
+
+    it('has no un-slotted items', () => {
+        const loadedItems = items.getItems();
         map(loadedItems, (item) => expect(item.slot).to.not.be.undefined);
     });
 });
