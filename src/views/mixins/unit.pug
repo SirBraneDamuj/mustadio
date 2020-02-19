@@ -1,3 +1,7 @@
+mixin unitPortrait(className, gender, side)
+    - const fileName = gender === 'Monster' ? className : (className + gender.charAt(0));
+    img(class=`unit-portrait-${side}` src=`/images/units/${fileName}.gif`)
+
 mixin unitStats(totalStats, tooltipSide)
     .d-flex.flex-column
         div= `HP: ${totalStats.hp} / MP: ${totalStats.mp}`
@@ -80,6 +84,7 @@ mixin unit(side, unit)
                 +tooltip(tooltipSide, unitClassInfo.raw)
                     div.font-weight-bold= unit.class
                 div= unit.zodiac
+                +unitPortrait(className, unit.gender, side)
         td
             +unitStats(totalStats, tooltipSide)
         td
