@@ -71,7 +71,7 @@ mixin unit(side, unit)
     - const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
     - const unitClassInfo = classes[className][unit.gender]
     - const unitItems = unit.UnitEquipments.map((e) => items[e.name]);
-    - const totalStats = stats.totalStatsForClassAndEquipment(classes[className][unit.gender].baseStats, unitItems);
+    - const totalStats = stats.totalStatsForClassAndEquipment(classes[className][unit.gender].baseStats, unitItems, unit.moveSkill);
     - const activeInnates = unitClassInfo.innates.filter((innate) => innate === 'Jump' || !abilities[innate] && !statuses[innate]);
     - const nonActiveInnates = unitClassInfo.innates.filter((innate) => !statuses[innate] && abilities[innate] && abilities[innate].type !== 'active');
     - const innateStatuses = unitClassInfo.innates.filter((innate) => innate !== 'Jump' && statuses[innate]);
