@@ -1,0 +1,8 @@
+red
+green
+black
+purple
+green
+black
+green
+champion

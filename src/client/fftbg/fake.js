@@ -51,6 +51,20 @@ module.exports.tournamentMaps = async () => {
     };
 };
 
+module.exports.tournamentWinners = async (tournamentId) => {
+    let filename = '';
+    if (tournamentId === 'start') {
+        filename = 'winner_start.txt';
+    } else if (tournamentId === 'half') {
+        filename = 'winner_half.txt';
+    } else {
+        filename = 'winner_complete.txt';
+    }
+    return {
+        data: readFakeFile(`fake_tournament/${filename}`),
+    };
+};
+
 module.exports.tournamentList = async () => {
     return {
         data: readFakeFile('index.html'),

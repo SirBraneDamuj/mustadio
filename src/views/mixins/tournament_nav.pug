@@ -12,12 +12,11 @@ mixin tournament_nav(matchups, maps)
         a.navbar-brand= "Mustadio"
         ul.navbar-nav
             li.nav-item
-                a.nav-link(href="/latest/red/blue")= "Latest Tournament"
-            li.nav-item
                 a.nav-link(href="/api/swagger")= "API Docs"
             li.nav-item
                 a.nav-link(href="https://github.com/sirbranedamuj/mustadio")= "Github"
-        button.btn.btn-outline-secondary(data-toggle="modal" data-target="#tournament-nav-modal")= "Go to Match"
+        a.btn.btn-secondary.ml-5.mr-5(href=`/`)= "Latest Tournament"
+        button.btn.btn-outline-secondary(data-toggle="modal" data-target="#tournament-nav-modal")= "Choose Match..."
         #tournament-nav-modal.modal.fade
             .modal-dialog.modal-lg
                 .modal-content
