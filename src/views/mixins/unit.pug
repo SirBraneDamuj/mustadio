@@ -63,6 +63,7 @@ mixin tooltippedItem(tooltipSide, gear)
     +tooltip(tooltipSide, gearInfo.info)
         .d-inline-flex.align-items-center
             img.ability-icon(src=`/images/${gearInfo.slot}.png`)
+            img.gear-icon(src=`/images/items/${gearInfo.name}.png`)
             span= gearInfo.name
 
 mixin unit(side, unit)
