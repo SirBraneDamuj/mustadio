@@ -15,9 +15,9 @@ const createRecordsForTournament = async (tournamentLabel, maps, teamData) => {
     const tournament = await Tournament.create({
         label: tournamentLabel,
     });
-    await Promise.all(
-        maps.map((tournamentMap) => tournament.createTournamentMap(tournamentMap)),
-    );
+    for (const tournamentMap of maps) {
+        await tournament.createTournamentMap(tournamentMap);
+    }
     for (const teamName of TEAM_NAMES) {
         const team = await tournament.createTeam({
             name: teamName,
@@ -161,6 +161,9 @@ module.exports.getMapsForTournament = async (tournamentId) => {
                 label: tournamentId
             },
         }],
+        order: [
+            ['createdAt', 'ASC'],
+        ],
     });
 }
 
