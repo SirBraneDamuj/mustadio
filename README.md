@@ -16,8 +16,7 @@ The maintainer of the stream graciously provides a data dump of the tournament t
 ### Environment Variables
 
 * `FFTBG_BASE_URL` is the base URL of the file server that hosts the data dumps. I am not sharing this publicly but it can be found.
-* `DATA_STRATEGY` determines whether to load live data from the FFTBG dump server or use the fake data that I include in source. It defaults to fake data. Set this variable to `real` to load the real data.
-* `MUSTADIO_CLI` is whether or not to run the CLI.
+* `FFTBG_DATA_STRATEGY` determines whether to load live data from the FFTBG dump server or use the fake data that I include in source. It defaults to fake data. Set this variable to `real` to load the real data.
 
 ### Running
 
@@ -27,6 +26,6 @@ Once started, visit http://localhost:3000.
 
 ### Using
 
-The default route will load the current tournament if it isn't loaded yet and redirect you to `/red/blue`. Use the match buttons at the bottom to navigate to a matchup of your choosing. The match buttons only enumerate possible matchups that can occur in the tournament. You can type any two team names in the URL to show a left/right matchup how you choose.If you want to see an arbitrary matchup, type the two team names in the URL 
+The default route will load the current tournament if it isn't loaded yet and redirect you to `/red/blue`. Use the match buttons at the bottom to navigate to a matchup of your choosing. The match buttons only enumerate possible matchups that can occur in the tournament. You can type any two team names in the URL to show a left/right matchup how you choose. If you want to see an arbitrary matchup, type the two team names in the URL 
 
-Once a tournament is over, someone has to click the New Tournament button at the bottom. That will clear the in-memory data and load the new dump from the site. You should probably wait until after `!fight` is resolved.
+Once a tournament is over, someone has to click the New Tournament button in the menu bar. That will load the newest tournament ID and take you to the first matchup.
