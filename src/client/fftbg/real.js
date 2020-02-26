@@ -22,4 +22,14 @@ module.exports.tournamentTeam = async (tournamentId, teamName) => client.get(`/$
 
 module.exports.tournamentMaps = async (tournamentId) => client.get(`/${tournamentId}/maps.txt`);
 
+module.exports.tournamentWinners = async (tournamentId) => {
+    try {
+        return await client.get(`/${tournamentId}/winner.txt`);
+    } catch (err) {
+        return Promise.resolve({
+            data: '',
+        });
+    }
+};
+
 module.exports.tournamentList = async () => client.get('/');

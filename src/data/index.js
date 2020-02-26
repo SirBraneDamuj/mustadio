@@ -3,12 +3,13 @@ const indexLoader = require('./index-loader');
 const { TEAM_NAMES } = require('./constants');
 const teamLoader = require('./team-loader');
 const mapsLoader = require('./maps-loader');
-const { Tournament, TournamentMap, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
+const { Tournament, TournamentMap, TournamentWinner, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
 const client = require('../client/fftbg');
 const items = require('./items');
 const abilities = require('./abilities');
 const statuses = require('./statuses');
 const classes = require('./classes');
+const matchups = require('./matchups');
 const monsterSkills = require('./monster-skills');
 
 const createRecordsForTournament = async (tournamentLabel, maps, teamData) => {
@@ -85,14 +86,12 @@ const getCurrentTournamentId = async () => {
 }
 
 const loadTournamentById = async (tournamentId) => {
-    let label = tournamentId;
-    if (label === 'latest') {
-        label = await getCurrentTournamentId();
-    }
+    const label = tournamentId; // TODO fix this
     const existing = await Tournament.findOne({
         where: { label },
+        include: TournamentWinner,
     });
-    if (existing !== null) {
+    if (existing) {
         return existing;
     }
     const teamUnits = {};
@@ -165,7 +164,13 @@ module.exports.getMapsForTournament = async (tournamentId) => {
             ['createdAt', 'ASC'],
         ],
     });
-}
+};
+
+module.exports.getLatestMatchForTournamentId = async (tournamentId) => {
+    const tournament = await loadTournamentById(tournamentId);
+    const tournamentWinners = ((await tournament.getTournamentWinners()) || []).map((winner) => winner.name);
+    return matchups.getLatestMatchForTournament(tournamentWinners);
+};
 
 module.exports.getFullTournament = async (tournamentId) => {
     await loadTournamentById(tournamentId);
@@ -174,4 +179,4 @@ module.exports.getFullTournament = async (tournamentId) => {
         id: tournamentId,
         teams,
     };
-}
+};
