@@ -3,7 +3,7 @@ mixin unitPortrait(className, gender, side)
     img(class=`unit-portrait-${side}` src=`/images/units/${fileName}.gif`)
 
 mixin zodiacIcon(zodiac, tooltipSide)
-    +tooltip(tooltipSide, zodiacs.getZodiac(zodiac.toLowerCase()).info)
+    +tooltip(tooltipSide, 'Same background = Min/Max; Same Border Color = Good; Same Border Style = Bad')
         img(class=`zodiac ${zodiac}` src=`/images/zodiac/${zodiac.toLowerCase()}.png`)
 
 mixin unitStats(totalStats, tooltipSide)
@@ -88,7 +88,8 @@ mixin unit(side, unit)
                 div= `B: ${unit.brave} / F: ${unit.faith}`
                 +tooltip(tooltipSide, unitClassInfo.raw)
                     div.font-weight-bold= unit.class
-                div= unit.zodiac
+                +tooltip(tooltipSide, zodiacs.getZodiac(unit.zodiac.toLowerCase()).info)
+                    div= unit.zodiac
                 +unitPortrait(className, unit.gender, side)
                 +zodiacIcon(unit.zodiac, tooltipSide)
         td
