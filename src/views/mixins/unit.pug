@@ -83,7 +83,7 @@ mixin unit(side, unit)
     tr.unit-row
         td
             .d-flex.flex-column
-                div= unit.name
+                a(href=`https://fftbg.bryanching.net/player/${unit.name}`)= unit.name
                 div= unit.gender
                 div= `B: ${unit.brave} / F: ${unit.faith}`
                 +tooltip(tooltipSide, unitClassInfo.raw)
