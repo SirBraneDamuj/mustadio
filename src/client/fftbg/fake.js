@@ -27,6 +27,12 @@ module.exports.statusInfo = () => {
     };
 };
 
+module.exports.zodiacInfo  = () => {
+    return {
+        data: readFakeFile('zodiachelp.txt'),
+    };
+};
+
 module.exports.monsters = () => {
     return {
         data: readFakeFile('Monsters.txt'),

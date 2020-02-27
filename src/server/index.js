@@ -8,6 +8,7 @@ const abilities = require('../data/abilities');
 const classes = require('../data/classes');
 const statuses = require('../data/statuses');
 const stats = require('../data/stats');
+const zodiacs = require('../data/zodiacs');
 const { MATCHUPS, matchNumberForMatchup } = require('../data/constants');
 const monsterSkills = require('../data/monster-skills');
 const config = require('../config');
@@ -57,6 +58,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             statuses: statuses.getStatuses(),
             monsterSkills,
             stats,
+            zodiacs,
         };
         res.render('match', context);
     }
@@ -64,7 +66,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
 
 module.exports = {
     async start() {
-        await Promise.all([items, abilities, statuses, classes, monsterSkills].map((it) => it.reload()));
+        await Promise.all([items, abilities, statuses, classes, monsterSkills, zodiacs].map((it) => it.reload()));
         app.listen(port);
     }
 }

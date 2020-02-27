@@ -14,6 +14,8 @@ module.exports.abilityInfo = async () => client.get('/infoability.txt');
 
 module.exports.statusInfo = async () => client.get('/infostatus.txt');
 
+module.exports.zodiacInfo = async () => client.get('/zodiachelp.txt');
+
 module.exports.monsters = async () => client.get('/Monsters.txt');
 
 module.exports.monsterSkills = async () => client.get('/MonsterSkills.txt');
