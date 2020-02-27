@@ -40,8 +40,9 @@
 .zodiac {
     align-self: start;
     margin-top: 3px;
-    border-width: 5px;
+    border-width: 7px;
     padding: 3px;
+    margin: 3px;
 }
 
 .zodiac.aries, .zodiac.libra {
@@ -49,11 +50,11 @@
 }
 
 .zodiac.taurus, .zodiac.scorpio {
-    background-color: blue;
+    background-color: green;
 }
 
 .zodiac.gemini, .zodiac.sagittarius {
-    background-color: green;
+    background-color: cyan;
 }
 
 .zodiac.cancer, .zodiac.capricorn {
@@ -73,21 +74,29 @@
 }
 
 .zodiac.aries, .zodiac.leo, .zodiac.sagittarius {
-    border-color: yellow;
-    border-style: dotted;
+    border-color: green;
 }
 
 .zodiac.taurus, .zodiac.virgo, .zodiac.capricorn {
-    border-color: purple;
-    border-style: double;
+    border-color: magenta;
 }
 
 .zodiac.gemini, .zodiac.libra, .zodiac.aquarius {
     border-color: white;
-    border-style: dashed;
 }
 
 .zodiac.cancer, .zodiac.scorpio, .zodiac.pisces {
-    border-color: green;
-    border-style: solid;
+    border-color: black;
+}
+
+.zodiac.aries, .zodiac.cancer, .zodiac.capricorn, .zodiac.libra {
+    border-style: dashed;
+}
+
+.zodiac.taurus, .zodiac.leo, .zodiac.scorpio, .zodiac.aquarius {
+    border-style: double;
+}
+
+.zodiac.gemini, .zodiac.sagittarius, .zodiac.virgo, .zodiac.pisces {
+    border-style: dotted;
 }

@@ -27,7 +27,7 @@ module.exports.statusInfo = () => {
     };
 };
 
-module.exports.zodiacInfo  = () => {
+module.exports.zodiacInfo = () => {
     return {
         data: readFakeFile('zodiachelp.txt'),
     };
