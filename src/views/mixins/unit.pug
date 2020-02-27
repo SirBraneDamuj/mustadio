@@ -68,7 +68,7 @@ mixin tooltippedItem(tooltipSide, gear)
 
 mixin unit(side, unit)
     - const tooltipSide = side === 'left' ? 'right' : 'left';
-    - const spacelessClassName = unit.class === 'Floating Eye' ? unit.class : unit.class.replace(' ', '');
+    - const spacelessClassName = unit.class.replace(' ', '');
     - const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
     - const unitClassInfo = classes[className][unit.gender]
     - const unitItems = unit.UnitEquipments.map((e) => items[e.name]);
