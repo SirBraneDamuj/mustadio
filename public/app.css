@@ -36,3 +36,67 @@
     transform: scaleX(-1);
     height: 96 !important;
 }
+
+.zodiac {
+    align-self: start;
+    margin-top: 3px;
+    border-width: 7px;
+    padding: 3px;
+    margin: 3px;
+}
+
+.zodiac.aries, .zodiac.libra {
+    background-color: red;
+}
+
+.zodiac.taurus, .zodiac.scorpio {
+    background-color: green;
+}
+
+.zodiac.gemini, .zodiac.sagittarius {
+    background-color: cyan;
+}
+
+.zodiac.cancer, .zodiac.capricorn {
+    background-color: yellow;
+}
+
+.zodiac.leo, .zodiac.aquarius {
+    background-color: purple;
+}
+
+.zodiac.virgo, .zodiac.pisces {
+    background-color: brown;
+}
+
+.zodiac.serpentarius {
+    background-color: gray;
+}
+
+.zodiac.aries, .zodiac.leo, .zodiac.sagittarius {
+    border-color: green;
+}
+
+.zodiac.taurus, .zodiac.virgo, .zodiac.capricorn {
+    border-color: magenta;
+}
+
+.zodiac.gemini, .zodiac.libra, .zodiac.aquarius {
+    border-color: white;
+}
+
+.zodiac.cancer, .zodiac.scorpio, .zodiac.pisces {
+    border-color: black;
+}
+
+.zodiac.aries, .zodiac.cancer, .zodiac.capricorn, .zodiac.libra {
+    border-style: dashed;
+}
+
+.zodiac.taurus, .zodiac.leo, .zodiac.scorpio, .zodiac.aquarius {
+    border-style: double;
+}
+
+.zodiac.gemini, .zodiac.sagittarius, .zodiac.virgo, .zodiac.pisces {
+    border-style: dotted;
+}

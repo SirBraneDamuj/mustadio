@@ -1,0 +1,13 @@
+Aries compatibility: Best/Worst - Libra; Good - Sagittarius, Leo; Bad - Cancer, Capricorn
+Taurus compatibility: Best/Worst - Scorpio; Good - Virgo, Capricorn; Bad - Leo, Aquarius
+Gemini compatibility: Best/Worst - Sagittarius; Good - Libra, Aquarius; Bad - Virgo, Pisces
+Cancer compatibility: Best/Worst - Capricorn; Good - Scorpio, Leo; Bad - Libra, Aries
+Leo compatibility: Best/Worst - Aquarius; Good - Sagittarius, Aries; Bad - Scorpio, Taurus
+Virgo compatibility: Best/Worst - Pisces; Good - Capricorn, Taurus; Bad - Sagittarius, Gemini
+Libra compatibility: Best/Worst - Aries; Good - Aquarius, Gemini; Bad - Capricorn, Cancer
+Scorpio compatibility: Best/Worst - Taurus; Good - Pisces, Cancer; Bad - Aquarius, Leo
+Sagittarius compatibility: Best/Worst - Gemini; Good - Aries, Leo; Bad - Pisces, Virgo
+Capricorn compatibility: Best/Worst - Cancer; Good - Taurus, Virgo; Bad - Libra, Aries
+Aquarius compatibility: Best/Worst - Leo; Good - Gemini, Libra; Bad - Taurus, Scorpio
+Pisces compatibility: Best/Worst - Virgo; Good - Cancer, Scorpio; Bad - Sagittarius, Gemini
+Serpentarius compatibility: Neutral to all

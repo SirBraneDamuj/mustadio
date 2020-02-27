@@ -2,6 +2,10 @@ mixin unitPortrait(className, gender, side)
     - const fileName = gender === 'Monster' ? className : (className + gender.charAt(0));
     img(class=`unit-portrait-${side}` src=`/images/units/${fileName}.gif`)
 
+mixin zodiacIcon(zodiac, tooltipSide)
+    +tooltip(tooltipSide, 'Same background = Min/Max; Same Border Color = Good; Same Border Style = Bad')
+        img(class=`zodiac ${zodiac}` src=`/images/zodiac/${zodiac.toLowerCase()}.png`)
+
 mixin unitStats(totalStats, tooltipSide)
     .d-flex.flex-column
         div= `HP: ${totalStats.hp} / MP: ${totalStats.mp}`
@@ -18,7 +22,7 @@ mixin unitStats(totalStats, tooltipSide)
             ul
                 each status in totalStats.initialStatuses
                     li
-                        +tooltip(tooltipSide, statuses[status].info)
+                        +tooltip(tooltipSide, statuses[status] && statuses[status].info)
                             div= status
         if (totalStats.permStatuses && totalStats.permStatuses.length > 0)
             div= "Permanent:"
@@ -79,13 +83,15 @@ mixin unit(side, unit)
     tr.unit-row
         td
             .d-flex.flex-column
-                div= unit.name
+                a(href=`https://fftbg.bryanching.net/player/${unit.name}`)= unit.name
                 div= unit.gender
                 div= `B: ${unit.brave} / F: ${unit.faith}`
                 +tooltip(tooltipSide, unitClassInfo.raw)
                     div.font-weight-bold= unit.class
-                div= unit.zodiac
+                +tooltip(tooltipSide, zodiacs.getZodiac(unit.zodiac.toLowerCase()).info)
+                    div= unit.zodiac
                 +unitPortrait(className, unit.gender, side)
+                +zodiacIcon(unit.zodiac, tooltipSide)
         td
             +unitStats(totalStats, tooltipSide)
         td

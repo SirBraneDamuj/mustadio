@@ -9,6 +9,7 @@ const items = require('./items');
 const abilities = require('./abilities');
 const statuses = require('./statuses');
 const classes = require('./classes');
+const zodiacs = require('./zodiacs');
 const matchups = require('./matchups');
 const monsterSkills = require('./monster-skills');
 
@@ -65,6 +66,8 @@ const loaderForFileName = (filename) => {
             return monsterSkills;
         case 'MonsterSkills.txt':
             return monsterSkills;
+        case 'zodiachelp.txt':
+            return zodiacs;
         default:
             return null;
     }
