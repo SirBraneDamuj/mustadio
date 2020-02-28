@@ -8,7 +8,8 @@
     "start": "node src/main.js",
     "start:debug": "node --inspect src/main.js",
     "test": "mocha test --recursive",
-    "build": "npm test && npx eslint src test"
+    "build": "npm test && npx eslint src test",
+    "loadMapImages": "node src/script/map-thumbs-loader.js"
   },
   "author": "",
   "license": "MIT",
