@@ -17,6 +17,8 @@ mixin tournament_nav(matchups, maps)
         a.nav-link(href="/api/swagger")= "API Docs"
       li.nav-item
         a.nav-link(href="https://github.com/sirbranedamuj/mustadio")= "Github"
+      li.nav-item
+        div.cursor-pointer.nav-link(data-toggle="modal" data-target="#contact-modal")= "Contact"
     a.btn.btn-secondary.ml-5.mr-5(href=`/`)= "Latest Tournament"
     button.btn.btn-outline-secondary(data-toggle="modal" data-target="#tournament-nav-modal")= "Choose Match..."
     #tournament-nav-modal.modal.fade
@@ -47,3 +49,16 @@ mixin tournament_nav(matchups, maps)
               +map_link(maps[7])
               each matchup in matchups[7]
                 +matchButton(matchup)
+    #contact-modal.modal.fade
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            h1= "Contact"
+            button.close(data-dismiss="modal")
+              span!= "&times;"
+          .modal-body
+            p
+              | Mustadio is open source, but primarily maintained and hosted by SirBraneDamuj<br/>
+              | If you have any issues using the site or have feature requests, feel free to create issues on github.<br/>
+              | You can also usually find me on the official FFTBG discord #development channel. Ping me @SirBraneDamuj#0001<br/>
+              | If all else fails, you can email me zpthacker@gmail.com
