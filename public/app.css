@@ -37,6 +37,12 @@
     height: 96 !important;
 }
 
+.map-preview {
+    height: 100px;
+    width: auto;
+    padding-right: 5px;
+}
+
 .zodiac {
     align-self: start;
     margin-top: 3px;

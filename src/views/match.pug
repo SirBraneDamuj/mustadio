@@ -18,6 +18,12 @@ mixin teamTable(side, team)
           if unit !== undefined
             +unit(side, unit)
 
+mixin map_preview(map)
+    if map
+      div
+        each index in [1, 2, 3, 4]
+          img(class='map-preview' src=`${mapImageBase}/${map.number}_${index}.gif` title='Map images courtesy of https://ffthacktics.com')
+
 html
   head
     title= "Mustadio"
@@ -30,10 +36,13 @@ html
   body
     +tournament_nav(matchups, maps)
     div.p-3
-      h2= `${team1.name} vs ${team2.name}`
-      a.btn.btn-primary(href=`/${tournamentId}`)= "Latest Match"
-      if matchNumber !== -1
-        +map_link(maps[matchNumber])
+      .d-flex.flex-column
+        div
+          h2= `${team1.name} vs ${team2.name}`
+          a.btn.btn-primary(href=`/${tournamentId}`)= "Latest Match"
+          if matchNumber !== -1
+            +map_link(maps[matchNumber])
+        +map_preview(maps[matchNumber])
       .d-flex.flex-xl-row.flex-column
         +teamTable('left', team1)
         +teamTable('right', team2)
