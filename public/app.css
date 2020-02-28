@@ -106,3 +106,7 @@
 .zodiac.gemini, .zodiac.sagittarius, .zodiac.virgo, .zodiac.pisces {
     border-style: dotted;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
