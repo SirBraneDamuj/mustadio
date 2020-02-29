@@ -27,7 +27,7 @@ app.use('/api/', apiRouter);
 
 app.get('/', async (_, res) => {
     const tournamentId = await data.getLatestTournamentId();
-    const [team1, team2] = await data.getLatestMatchForTournamentId(tournamentId);
+    const [team1, team2] = (await data.getLatestMatchForTournamentId(tournamentId)) || ['red', 'blue'];
     res.redirect(`/${tournamentId}/${team1}/${team2}`);
 });
 
