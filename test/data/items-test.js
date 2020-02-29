@@ -302,6 +302,20 @@ describe('ITEMS', () => {
         });
     });
 
+    it('loads red shoes', () => {
+        expect(subject('Red Shoes')).to.deep.eq({
+            name: 'Red Shoes',
+            slot: 'accessory',
+            type: 'Accessory',
+            info: 'Accessory. Effect: +1 MA, +1 Move.',
+            stats: {
+                ...defaultStats,
+                ma: 1,
+                move: 1,
+            },
+        });
+    });
+
     it('has no un-slotted items', () => {
         const loadedItems = items.getItems();
         map(loadedItems, (item) => expect(item.slot).to.not.be.undefined);
