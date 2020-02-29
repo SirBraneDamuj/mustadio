@@ -41,7 +41,7 @@ mixin tooltip(tooltipSide, tooltipText)
 mixin tooltippedStatus(tooltipSide, status)
     +tooltip(tooltipSide, status.info)
         .d-inline-flex.align-items-center
-            img.ability-icon(src=`${imageUrlBase}/status.png`)
+            img.ability-icon(src=`${imageUrlBase}/icons/status.png`)
             div= status.name
 
 mixin tooltippedAbility(tooltipSide, ability)
