@@ -1,7 +1,7 @@
 const { MATCHUPS } = require('./constants');
 const countBy = require('lodash/countBy');
 
-const DEFAULT = ['red', 'blue'];
+const DEFAULT = [];
 
 module.exports.getLatestMatchForTournament = (winners) => {
     const latestMatchNum = winners.length;

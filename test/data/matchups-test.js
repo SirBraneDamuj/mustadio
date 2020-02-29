@@ -77,4 +77,18 @@ describe('matchups', () => {
         ];
         expect(subject(winners)).to.eql(['brown', 'champion']);
     });
+
+    it('returns an empty list for a completed tournament', () => {
+        const winners = [
+            'red',
+            'yellow',
+            'white',
+            'brown',
+            'yellow',
+            'brown',
+            'brown',
+            'champion',
+        ];
+        expect(subject(winners)).to.eql([]);
+    });
 });
