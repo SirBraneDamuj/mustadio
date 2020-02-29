@@ -173,7 +173,7 @@ Feather Hat: +32 HP, +5 MP, Hat. Effect: +1 Jump; Absorb Wind.
 Red Hood: +36 HP, +8 MP, Hat.
 Headgear: +40 HP, +0 MP, Hat. Effect: +1 PA.
 Triangle Hat: +46 HP, +12 MP, Hat. Effect: +1 MA, +1 Jump.
-Green Beret: +52 HP, +0 MP, Hat. Effect: Speed +1; Immune Slow.
+Green Beret: +52 HP, +0 MP, Hat. Effect: +1 Speed; Immune Slow.
 Twist Headband: +58 HP, +0 MP, Hat. Effect: +2 PA.
 Holy Miter: +72 HP, +20 MP, Hat. Effect: +1 MA.
 Black Hood: +100 HP, +0 MP, Hat.

@@ -39,7 +39,6 @@ html
       .d-flex.flex-column
         div
           h2= `${team1.name} vs ${team2.name}`
-          a.btn.btn-primary(href=`/${tournamentId}`)= "Latest Match"
           if matchNumber !== -1
             +map_link(maps[matchNumber])
         +map_preview(maps[matchNumber])
