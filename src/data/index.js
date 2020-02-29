@@ -11,6 +11,7 @@ const statuses = require('./statuses');
 const classes = require('./classes');
 const zodiacs = require('./zodiacs');
 const matchups = require('./matchups');
+const winners = require('./winners');
 const monsterSkills = require('./monster-skills');
 
 const createRecordsForTournament = async (tournamentLabel, maps, teamData) => {
@@ -20,6 +21,7 @@ const createRecordsForTournament = async (tournamentLabel, maps, teamData) => {
     for (const tournamentMap of maps) {
         await tournament.createTournamentMap(tournamentMap);
     }
+    await winners.loadWinnersForTournament(tournamentLabel);
     for (const teamName of TEAM_NAMES) {
         const team = await tournament.createTeam({
             name: teamName,

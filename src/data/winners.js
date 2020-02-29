@@ -14,6 +14,20 @@ const parseWinners = (winnersData) => {
         delimiter = '\n'
     }
     return winnersData.split(delimiter).filter((s) => s !== '');
+};
+
+const loadTournamentWinners = async (tournament) => {
+    const { data } = await client.tournamentWinners(tournament.label);
+    const winners = parseWinners(data);
+    for (const [index, winner] of winners.entries()) {
+        await TournamentWinner.findOrCreate({
+            where: {
+                TournamentId: tournament.id,
+                name: winner,
+                matchNum: index,
+            },
+        });
+    }
 }
 
 const checkWinners = async () => {
@@ -33,23 +47,22 @@ const checkWinners = async () => {
             }],
         });
         for (const tournament of unfinishedTournaments) {
-            const { data } = await client.tournamentWinners(tournament.label);
-            const winners = parseWinners(data);
-            for (const [index, winner] of winners.entries()) {
-                await TournamentWinner.findOrCreate({
-                    where: {
-                        TournamentId: tournament.id,
-                        name: winner,
-                        matchNum: index,
-                    },
-                });
-            }
+            await loadTournamentWinners(tournament);
         } 
     } catch (err) {
         console.log(err);
     }
     setTimeout(checkWinners, CADENCE);
 };
+
+module.exports.loadWinnersForTournament = async (label) => {
+    const tournament = await Tournament.findOne({
+        where: {
+            label,
+        },
+    });
+    await loadTournamentWinners(tournament);
+}
 
 module.exports.monitorWinners = () => {
     setTimeout(
