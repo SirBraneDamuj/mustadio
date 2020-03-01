@@ -78,7 +78,7 @@ describe('matchups', () => {
         expect(subject(winners)).to.eql(['brown', 'champion']);
     });
 
-    it('returns the champion matchup for a completed tournament', () => {
+    it('returns double champion if the match is over', () => {
         const winners = [
             'red',
             'yellow',
@@ -89,7 +89,7 @@ describe('matchups', () => {
             'brown',
             'champion',
         ];
-        expect(subject(winners)).to.eql(['brown', 'champion']);
+        expect(subject(winners)).to.eql(['champion', 'champion']);
     });
 
     it('returns the default red blue matchup for anything strange', () => {

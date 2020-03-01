@@ -34,12 +34,18 @@ app.get('/', async (_, res) => {
 app.get('/:tournamentId', async (req, res) => {
     const { tournamentId } = req.params;
     const [team1, team2] = await data.getLatestMatchForTournamentId(tournamentId);
-    if (!team1 || !team2) {
+    res.redirect(`/${tournamentId}/${team1}/${team2}`);
+});
+
+app.get('/:tournamentId/latest', async (req, res) => {
+    const { tournamentId } = req.params;
+    const [team1, team2] = await data.getLatestMatchForTournamentId(tournamentId);
+    if (team1 === 'champion' && team2 === 'champion') {
         res.redirect(`/`);
     } else {
         res.redirect(`/${tournamentId}/${team1}/${team2}`);
     }
-});
+})
 
 app.get('/:tournamentId/:team1/:team2', async (req, res) => {
     const { tournamentId, team1, team2 } = req.params;

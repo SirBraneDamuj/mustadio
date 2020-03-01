@@ -19,7 +19,7 @@ mixin tournament_nav(matchups, maps)
         a.nav-link(href="https://github.com/sirbranedamuj/mustadio")= "Github"
       li.nav-item
         div.cursor-pointer.nav-link(data-toggle="modal" data-target="#contact-modal")= "Contact"
-    a.btn.btn-primary.ml-5.mr-5(href=`/${tournamentId}`)= "Latest Match"
+    a.btn.btn-primary.ml-5.mr-5(href=`/${tournamentId}/latest`)= "Latest Match"
     button.btn.btn-outline-secondary(data-toggle="modal" data-target="#tournament-nav-modal")= "Choose Matchup..."
     #tournament-nav-modal.modal.fade
       .modal-dialog.modal-lg
