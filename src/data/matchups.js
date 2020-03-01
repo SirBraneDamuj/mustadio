@@ -6,7 +6,7 @@ const DEFAULT = ['red', 'blue'];
 module.exports.getLatestMatchForTournament = (winners) => {
     const latestMatchNum = winners.length;
     if (latestMatchNum === 8) {
-        return [winners[6], 'champion'];
+        return ['champion', 'champion'];
     }
     if (latestMatchNum < 4) {
         return MATCHUPS[latestMatchNum][0];
