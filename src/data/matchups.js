@@ -1,12 +1,12 @@
 const { MATCHUPS } = require('./constants');
 const countBy = require('lodash/countBy');
 
-const DEFAULT = [];
+const DEFAULT = ['red', 'blue'];
 
 module.exports.getLatestMatchForTournament = (winners) => {
     const latestMatchNum = winners.length;
-    if (latestMatchNum === 9) {
-        return DEFAULT;
+    if (latestMatchNum === 8) {
+        return [winners[6], 'champion'];
     }
     if (latestMatchNum < 4) {
         return MATCHUPS[latestMatchNum][0];
