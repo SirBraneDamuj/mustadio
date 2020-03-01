@@ -4,6 +4,57 @@ mixin unitPortrait(className, gender, side)
     - const fileName = gender === 'Monster' ? className : (className + gender.charAt(0));
     img(class=`unit-portrait-${side}` src=`${imageUrlBase}/units/${fileName}.gif`)
 
+mixin compat(unit, team)
+    each u in team.Units
+        +compareCompat(unit, u)
+
+mixin compareCompat(unit, unit2)
+    if (unit.zodiac === 'Capricorn')
+        +zodiacCompare(unit, unit2, 'Cancer', 'Tarus', 'Virgo', 'Libra', 'Aries')  
+    if (unit.zodiac === 'Aquarius')
+        +zodiacCompare(unit, unit2, 'Leo', 'Gemini', 'Libra', 'Taurus', 'Scorpio')
+    if (unit.zodiac === 'Pisces')
+        +zodiacCompare(unit, unit2, 'Virgo', 'Cancer', 'Scorpio', 'Sagittarius', 'Gemini')  
+    if (unit.zodiac === 'Aries')
+        +zodiacCompare(unit, unit2, 'Libra', 'Sagittarius', 'Leo', 'Cancer', 'Capricorn')
+    if (unit.zodiac === 'Taurus')
+        +zodiacCompare(unit, unit2, 'Scorpio', 'Virgo', 'Capricorn', 'Leo', 'Aquarius')  
+    if (unit.zodiac === 'Gemini')
+        +zodiacCompare(unit, unit2, 'Sagittarius', 'Libra', 'Aquarius', 'Virgo', 'Pisces')
+    if (unit.zodiac === 'Cancer')
+        +zodiacCompare(unit, unit2, 'Capricorn', 'Scorpio', 'Leo', 'Libra', 'Aries')  
+    if (unit.zodiac === 'Leo')
+        +zodiacCompare(unit, unit2, 'Aquarius', 'Sagittarius', 'Aries', 'Scorpio', 'Taurus')
+    if (unit.zodiac === 'Virgo')
+        +zodiacCompare(unit, unit2, 'Pisces', 'Capricorn', 'Taurus', 'Sagittarius', 'Gemini')  
+    if (unit.zodiac === 'Libra')
+        +zodiacCompare(unit, unit2, 'Aries', 'Aquarius', 'Gemini', 'Capricorn', 'Cancer')
+    if (unit.zodiac === 'Scorpio')
+        +zodiacCompare(unit, unit2, 'Taurus', 'Pisces', 'Cancer', 'Aquarius', 'Leo')  
+    if (unit.zodiac === 'Sagittarius')
+        +zodiacCompare(unit, unit2, 'Gemini', 'Aries', 'Leo', 'Pisces', 'Virgo')
+    if (unit.zodiac === 'Serpentarius')
+        img.compat-icon(src=`/images/3star.png`)
+        br 
+
+mixin zodiacCompare(unit1, unit2, bestworst, good1, good2, bad1, bad2)
+    - var star = 3
+    if (unit2.zodiac === bestworst)
+        if (unit1.gender === 'Monster' || unit2.gender === 'Monster')
+            -star = 2
+        else
+            if  (unit1.gender === unit2.gender)
+                -star = 1
+            else
+                -star = 5
+    if (unit2.zodiac === good1 || unit2.zodiac === good2)
+        -star = 4
+    if (unit2.zodiac === bad1 || unit2.zodiac === bad2)
+        -star = 2
+    img.compat-icon(src=`${imageUrlBase}/zodiac/${star}star.png`)
+    br 
+
+
 mixin zodiacIcon(zodiac, tooltipSide)
     +tooltip(tooltipSide, 'Same shape = min/max; Same pattern = good; Same color = bad')
         img(class=`zodiac-icon` src=`${imageUrlBase}/zodiac/${zodiac.toLowerCase()}.png`)
@@ -72,7 +123,7 @@ mixin tooltippedItem(tooltipSide, gear)
             img.gear-icon(src=`${imageUrlBase}/items/${gearInfo.name.replace(' ', '+')}.png`)
             span= gearInfo.name
 
-mixin unit(side, unit)
+mixin unit(side, unit, team, team2)
     - const tooltipSide = side === 'left' ? 'right' : 'left';
     - const spacelessClassName = unit.class.replace(' ', '');
     - const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
@@ -92,8 +143,22 @@ mixin unit(side, unit)
                     div.font-weight-bold= unit.class
                 +tooltip(tooltipSide, zodiacs.getZodiac(unit.zodiac.toLowerCase()).info)
                     div= unit.zodiac
-                +unitPortrait(className, unit.gender, side)
-                +zodiacIcon(unit.zodiac, tooltipSide)
+                table(class="unit-portrait-table")
+                    tr
+                        td
+                            if (side === 'left')
+                                +compat(unit, team)
+                            else
+                                +compat(unit, team2)  
+                        td
+                            +unitPortrait(className, unit.gender, side)
+                            +zodiacIcon(unit.zodiac, tooltipSide)
+                        td
+                            if (side === 'right')
+                                +compat(unit, team)
+                            else
+                                +compat(unit, team2) 
+                
         td
             +unitStats(totalStats, tooltipSide)
         td

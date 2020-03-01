@@ -1,5 +1,6 @@
 - const mapImageBase = 'https://mustadio-images.s3.amazonaws.com/maps';
 
+
 mixin matchButton(matchup)
   - const [team1, team2] = matchup;
   a.btn.btn-primary(href=`/${tournamentId}/${team1}/${team2}`)= `${team1.charAt(0).toUpperCase() + team1.slice(1)} v ${team2.charAt(0).toUpperCase() + team2.slice(1)}`
@@ -20,7 +21,8 @@ mixin tournament_nav(matchups, maps)
       li.nav-item
         div.cursor-pointer.nav-link(data-toggle="modal" data-target="#contact-modal")= "Contact"
     a.btn.btn-primary.ml-5.mr-5(href=`/${tournamentId}/latest`)= "Latest Match"
-    button.btn.btn-outline-secondary(data-toggle="modal" data-target="#tournament-nav-modal")= "Choose Matchup..."
+    button.btn.btn-outline-secondary.ml-5.mr-5(data-toggle="modal" data-target="#tournament-nav-modal")= "Choose Matchup..."
+    button.btn.btn-outline-secondary(id='toggleLayout' onclick='changeLayout()')= "Light Mode"
     #tournament-nav-modal.modal.fade
       .modal-dialog.modal-lg
         .modal-content
@@ -62,3 +64,21 @@ mixin tournament_nav(matchups, maps)
               | If you have any issues using the site or have feature requests, feel free to create issues on github.<br/>
               | You can also usually find me on the official FFTBG discord #development channel. Ping me @SirBraneDamuj#0001<br/>
               | If all else fails, you can email me zpthacker@gmail.com
+
+    script.
+      function changeLayout() { 
+        var layout = document.getElementById('bigdiv')
+        var layoutButton = document.getElementById('toggleLayout')
+        var currentLayout = layout.classList[1]
+        if (currentLayout == 'layout-light') {
+          layout.classList.add('layout-dark')
+          layout.classList.remove('layout-light')
+          layoutButton.innerText = 'Light Mode'
+        }
+        else {
+          layout.classList.add('layout-light')
+          layout.classList.remove('layout-dark')
+          layoutButton.innerText = 'Dark Mode'
+        }
+      }
+
