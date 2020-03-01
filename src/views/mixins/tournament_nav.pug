@@ -67,18 +67,19 @@ mixin tournament_nav(matchups, maps)
 
     script.
       function changeLayout() { 
-        var layout = document.getElementById('bigdiv')
+        var layout = document.getElementById('layout')
         var layoutButton = document.getElementById('toggleLayout')
         var currentLayout = layout.classList[1]
         if (currentLayout == 'layout-light') {
           layout.classList.add('layout-dark')
           layout.classList.remove('layout-light')
           layoutButton.innerText = 'Light Mode'
+          localStorage.setItem('theme', 'dark')
         }
         else {
           layout.classList.add('layout-light')
           layout.classList.remove('layout-dark')
           layoutButton.innerText = 'Dark Mode'
+          localStorage.setItem('theme', 'light')
         }
       }
-

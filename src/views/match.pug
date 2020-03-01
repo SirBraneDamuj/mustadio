@@ -35,7 +35,7 @@ html
 
   body
     +tournament_nav(matchups, maps)
-    div.p-3(id="bigdiv" class="layout-dark")
+    div.p-3(id="layout" class="layout-dark")
       .d-flex.flex-column
         div
           h2= `${team1.name} vs ${team2.name}`
@@ -45,6 +45,21 @@ html
       .d-flex.flex-xl-row.flex-column
         +teamTable('left', team1, team2)
         +teamTable('right', team2, team1)
+        
+        script.
+          function currentTheme() {
+            var currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+            if (currentTheme) {
+              if (currentTheme === 'light') {
+                var layout = document.getElementById('layout')
+                var layoutButton = document.getElementById('toggleLayout')
+                layout.classList.add('layout-light')
+                layout.classList.remove('layout-dark')
+                layoutButton.innerText = 'Dark Mode'
+                }
+              }
+            }
+          currentTheme()
       //- .d-flex
       //-   +zodiacIcon('aries', 'right')
       //-   +zodiacIcon('libra', 'right')
@@ -62,3 +77,4 @@ html
       //-   +zodiacIcon('pisces', 'right')
       //- .d-flex
       //-   +zodiacIcon('serpentarius', 'left', 'right')
+  

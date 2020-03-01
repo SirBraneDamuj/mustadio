@@ -34,7 +34,7 @@ mixin compareCompat(unit, unit2)
     if (unit.zodiac === 'Sagittarius')
         +zodiacCompare(unit, unit2, 'Gemini', 'Aries', 'Leo', 'Pisces', 'Virgo')
     if (unit.zodiac === 'Serpentarius')
-        img.compat-icon(src=`/images/3star.png`)
+        img.compat-icon(src=`${imageUrlBase}/zodiac/3star.png`)
         br 
 
 mixin zodiacCompare(unit1, unit2, bestworst, good1, good2, bad1, bad2)
