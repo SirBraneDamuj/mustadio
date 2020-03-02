@@ -34,7 +34,7 @@ mixin compareCompat(unit, unit2, side)
     if (unit.zodiac === 'Sagittarius')
         +zodiacCompare(unit, unit2, side, 'Gemini', 'Aries', 'Leo', 'Pisces', 'Virgo')
     if (unit.zodiac === 'Serpentarius')
-        +tooltip(side, `Compat with ${side} side. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`)
+        +tooltip(side, `Zodiac compatibility with ${side} side. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`)
             img.compat-icon(src=`${imageUrlBase}/zodiac/3star.png`)
             br 
 
@@ -52,7 +52,7 @@ mixin zodiacCompare(unit1, unit2, side, bestworst, good1, good2, bad1, bad2)
         -star = 4
     if (unit2.zodiac === bad1 || unit2.zodiac === bad2)
         -star = 2
-    +tooltip(side, `Compat with ${side} side. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`)
+    +tooltip(side, `Zodiac compatibility with ${side} side. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`)
         img.compat-icon(src=`${imageUrlBase}/zodiac/${star}star.png`)
         br 
 

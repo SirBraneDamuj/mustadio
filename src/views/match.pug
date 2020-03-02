@@ -35,7 +35,7 @@ html
 
   body
     +tournament_nav(matchups, maps)
-    div.p-3(id="layout" class="layout-dark")
+    div.p-3(id="layout" class="layout-light")
       .d-flex.flex-column
         div
           h2= `${team1.name} vs ${team2.name}`
@@ -50,12 +50,12 @@ html
           function currentTheme() {
             var currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
             if (currentTheme) {
-              if (currentTheme === 'light') {
+              if (currentTheme === 'dark') {
                 var layout = document.getElementById('layout')
                 var layoutButton = document.getElementById('toggleLayout')
-                layout.classList.add('layout-light')
-                layout.classList.remove('layout-dark')
-                layoutButton.innerText = 'Dark Mode'
+                layout.classList.add('layout-dark')
+                layout.classList.remove('layout-light')
+                layoutButton.innerText = 'Light Mode'
                 }
               }
             }

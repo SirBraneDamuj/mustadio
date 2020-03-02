@@ -22,7 +22,7 @@ mixin tournament_nav(matchups, maps)
         div.cursor-pointer.nav-link(data-toggle="modal" data-target="#contact-modal")= "Contact"
     a.btn.btn-primary.ml-5.mr-5(href=`/${tournamentId}/latest`)= "Latest Match"
     button.btn.btn-outline-secondary.ml-5.mr-5(data-toggle="modal" data-target="#tournament-nav-modal")= "Choose Matchup..."
-    button.btn.btn-outline-secondary(id='toggleLayout' onclick='changeLayout()')= "Light Mode"
+    button.btn.btn-outline-secondary(id='toggleLayout' onclick='changeLayout()')= "Dark Mode"
     #tournament-nav-modal.modal.fade
       .modal-dialog.modal-lg
         .modal-content
