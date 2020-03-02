@@ -1,7 +1,7 @@
 # Mustadio
 An unofficial companion app for twitch.tv/fftbattleground
 
-![a screenshot](https://i.imgur.com/1KW6llH.png)
+![a screenshot](https://imgur.com/0BE7V4g.png)
 
 ## Background
 
@@ -26,6 +26,8 @@ Once started, visit http://localhost:3000.
 
 ### Using
 
-The default route will load the current tournament if it isn't loaded yet and redirect you to `/red/blue`. Use the match buttons at the bottom to navigate to a matchup of your choosing. The match buttons only enumerate possible matchups that can occur in the tournament. You can type any two team names in the URL to show a left/right matchup how you choose. If you want to see an arbitrary matchup, type the two team names in the URL 
+Click the "Latest Match" button to view the currently live matchup. There may be about a 10 second delay between matches.
 
-Once a tournament is over, someone has to click the New Tournament button in the menu bar. That will load the newest tournament ID and take you to the first matchup.
+If you want to view a prior tournament, just visit that tournament's route (`/${tournamentId}`). Use the Choose Matchup button to inspect specific matchups, or just add the two teams to compare to the URL (`/${tournamentId}/${team1}/${team2}`).
+
+Take a look at the API docs! They don't get nearly as much TLC as the web but there's still a ton of data there!
