@@ -4,40 +4,41 @@ mixin unitPortrait(className, gender, side)
     - const fileName = gender === 'Monster' ? className : (className + gender.charAt(0));
     img(class=`unit-portrait-${side}` src=`${imageUrlBase}/units/${fileName}.gif`)
 
-mixin compat(unit, team)
+mixin compat(unit, team, side)
     each u in team.Units
-        +compareCompat(unit, u)
+        +compareCompat(unit, u, side)
 
-mixin compareCompat(unit, unit2)
+mixin compareCompat(unit, unit2, side)
     if (unit.zodiac === 'Capricorn')
-        +zodiacCompare(unit, unit2, 'Cancer', 'Tarus', 'Virgo', 'Libra', 'Aries')  
+        +zodiacCompare(unit, unit2, side, 'Cancer', 'Tarus', 'Virgo', 'Libra', 'Aries')  
     if (unit.zodiac === 'Aquarius')
-        +zodiacCompare(unit, unit2, 'Leo', 'Gemini', 'Libra', 'Taurus', 'Scorpio')
+        +zodiacCompare(unit, unit2, side, 'Leo', 'Gemini', 'Libra', 'Taurus', 'Scorpio')
     if (unit.zodiac === 'Pisces')
-        +zodiacCompare(unit, unit2, 'Virgo', 'Cancer', 'Scorpio', 'Sagittarius', 'Gemini')  
+        +zodiacCompare(unit, unit2, side, 'Virgo', 'Cancer', 'Scorpio', 'Sagittarius', 'Gemini')  
     if (unit.zodiac === 'Aries')
-        +zodiacCompare(unit, unit2, 'Libra', 'Sagittarius', 'Leo', 'Cancer', 'Capricorn')
+        +zodiacCompare(unit, unit2, side, 'Libra', 'Sagittarius', 'Leo', 'Cancer', 'Capricorn')
     if (unit.zodiac === 'Taurus')
-        +zodiacCompare(unit, unit2, 'Scorpio', 'Virgo', 'Capricorn', 'Leo', 'Aquarius')  
+        +zodiacCompare(unit, unit2, side, 'Scorpio', 'Virgo', 'Capricorn', 'Leo', 'Aquarius')  
     if (unit.zodiac === 'Gemini')
-        +zodiacCompare(unit, unit2, 'Sagittarius', 'Libra', 'Aquarius', 'Virgo', 'Pisces')
+        +zodiacCompare(unit, unit2, side, 'Sagittarius', 'Libra', 'Aquarius', 'Virgo', 'Pisces')
     if (unit.zodiac === 'Cancer')
-        +zodiacCompare(unit, unit2, 'Capricorn', 'Scorpio', 'Leo', 'Libra', 'Aries')  
+        +zodiacCompare(unit, unit2, side, 'Capricorn', 'Scorpio', 'Leo', 'Libra', 'Aries')  
     if (unit.zodiac === 'Leo')
-        +zodiacCompare(unit, unit2, 'Aquarius', 'Sagittarius', 'Aries', 'Scorpio', 'Taurus')
+        +zodiacCompare(unit, unit2, side, 'Aquarius', 'Sagittarius', 'Aries', 'Scorpio', 'Taurus')
     if (unit.zodiac === 'Virgo')
-        +zodiacCompare(unit, unit2, 'Pisces', 'Capricorn', 'Taurus', 'Sagittarius', 'Gemini')  
+        +zodiacCompare(unit, unit2, side, 'Pisces', 'Capricorn', 'Taurus', 'Sagittarius', 'Gemini')  
     if (unit.zodiac === 'Libra')
-        +zodiacCompare(unit, unit2, 'Aries', 'Aquarius', 'Gemini', 'Capricorn', 'Cancer')
+        +zodiacCompare(unit, unit2, side, 'Aries', 'Aquarius', 'Gemini', 'Capricorn', 'Cancer')
     if (unit.zodiac === 'Scorpio')
-        +zodiacCompare(unit, unit2, 'Taurus', 'Pisces', 'Cancer', 'Aquarius', 'Leo')  
+        +zodiacCompare(unit, unit2, side, 'Taurus', 'Pisces', 'Cancer', 'Aquarius', 'Leo')  
     if (unit.zodiac === 'Sagittarius')
-        +zodiacCompare(unit, unit2, 'Gemini', 'Aries', 'Leo', 'Pisces', 'Virgo')
+        +zodiacCompare(unit, unit2, side, 'Gemini', 'Aries', 'Leo', 'Pisces', 'Virgo')
     if (unit.zodiac === 'Serpentarius')
-        img.compat-icon(src=`${imageUrlBase}/zodiac/3star.png`)
-        br 
+        +tooltip(side, `Compat with ${side} side. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`)
+            img.compat-icon(src=`${imageUrlBase}/zodiac/3star.png`)
+            br 
 
-mixin zodiacCompare(unit1, unit2, bestworst, good1, good2, bad1, bad2)
+mixin zodiacCompare(unit1, unit2, side, bestworst, good1, good2, bad1, bad2)
     - var star = 3
     if (unit2.zodiac === bestworst)
         if (unit1.gender === 'Monster' || unit2.gender === 'Monster')
@@ -51,8 +52,9 @@ mixin zodiacCompare(unit1, unit2, bestworst, good1, good2, bad1, bad2)
         -star = 4
     if (unit2.zodiac === bad1 || unit2.zodiac === bad2)
         -star = 2
-    img.compat-icon(src=`${imageUrlBase}/zodiac/${star}star.png`)
-    br 
+    +tooltip(side, `Compat with ${side} side. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`)
+        img.compat-icon(src=`${imageUrlBase}/zodiac/${star}star.png`)
+        br 
 
 
 mixin zodiacIcon(zodiac, tooltipSide)
@@ -147,17 +149,17 @@ mixin unit(side, unit, team, team2)
                     tr
                         td
                             if (side === 'left')
-                                +compat(unit, team)
+                                +compat(unit, team, side)
                             else
-                                +compat(unit, team2)  
+                                +compat(unit, team2, 'left')  
                         td
                             +unitPortrait(className, unit.gender, side)
                             +zodiacIcon(unit.zodiac, tooltipSide)
                         td
                             if (side === 'right')
-                                +compat(unit, team)
+                                +compat(unit, team, side)
                             else
-                                +compat(unit, team2) 
+                                +compat(unit, team2, 'right') 
                 
         td
             +unitStats(totalStats, tooltipSide)
