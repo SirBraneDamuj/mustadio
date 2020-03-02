@@ -58,7 +58,7 @@ mixin zodiacCompare(unit1, unit2, side, bestworst, good1, good2, bad1, bad2)
 
 
 mixin zodiacIcon(zodiac, tooltipSide)
-    +tooltip(tooltipSide, 'Same shape = min/max; Same pattern = good; Same color = bad')
+    +tooltip(tooltipSide, 'Same shape = min/max; Same color = good; Same pattern = bad')
         img(class=`zodiac-icon` src=`${imageUrlBase}/zodiac/${zodiac.toLowerCase()}.png`)
 
 mixin unitStats(totalStats, tooltipSide)
