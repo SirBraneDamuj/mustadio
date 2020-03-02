@@ -1,7 +1,7 @@
 include mixins/unit.pug
 include mixins/tournament_nav.pug
   
-mixin teamTable(side, team)
+mixin teamTable(side, team, team2)
   .team
     h3= team.name + " team"
     table.table.table-bordered
@@ -16,7 +16,7 @@ mixin teamTable(side, team)
       tbody
         each unit in team.Units
           if unit !== undefined
-            +unit(side, unit)
+            +unit(side, unit, team, team2)
 
 mixin map_preview(map)
     if map
@@ -35,7 +35,7 @@ html
 
   body
     +tournament_nav(matchups, maps)
-    div.p-3
+    div.p-3(id="layout" class="layout-dark")
       .d-flex.flex-column
         div
           h2= `${team1.name} vs ${team2.name}`
@@ -43,8 +43,23 @@ html
             +map_link(maps[matchNumber])
         +map_preview(maps[matchNumber])
       .d-flex.flex-xl-row.flex-column
-        +teamTable('left', team1)
-        +teamTable('right', team2)
+        +teamTable('left', team1, team2)
+        +teamTable('right', team2, team1)
+        
+        script.
+          function currentTheme() {
+            var currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+            if (currentTheme) {
+              if (currentTheme === 'light') {
+                var layout = document.getElementById('layout')
+                var layoutButton = document.getElementById('toggleLayout')
+                layout.classList.add('layout-light')
+                layout.classList.remove('layout-dark')
+                layoutButton.innerText = 'Dark Mode'
+                }
+              }
+            }
+          currentTheme()
       //- .d-flex
       //-   +zodiacIcon('aries', 'right')
       //-   +zodiacIcon('libra', 'right')
@@ -62,3 +77,4 @@ html
       //-   +zodiacIcon('pisces', 'right')
       //- .d-flex
       //-   +zodiacIcon('serpentarius', 'left', 'right')
+  

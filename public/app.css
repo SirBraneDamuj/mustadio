@@ -10,6 +10,12 @@
     height: 100%;
 }
 
+.compat-icon {
+    width: 32px;
+    height: 32px;
+    padding: 1px;
+}
+
 .gear-icon {
     padding: 5px;
 }
@@ -37,18 +43,30 @@
     height: 96 !important;
 }
 
+.unit-portrait-table {
+    border-style: hidden;
+}
+
+.unit-portrait-table td {
+    padding: 1px;
+    border-style: hidden;
+}
+
+.unit-portrait-table tr {
+    padding: 1px;
+    border-style: hidden;
+}
+
+
 .map-preview {
     height: 100px;
     width: auto;
     padding-right: 5px;
 }
 
-.zodiac {
-    align-self: start;
+.zodiac-icon {
     margin-top: 3px;
-    border-width: 7px;
-    padding: 3px;
-    margin: 3px;
+    background-color: white;
 }
 
 .zodiac.aries, .zodiac.libra {
@@ -110,3 +128,22 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.layout-light {
+    background-color: white(85, 85, 85);
+    color: black;
+}
+
+.layout-light tr {
+    color: black;
+}
+
+.layout-dark {
+    background-color: rgb(56, 56, 56);
+    color: white;
+}
+
+.layout-dark tr {
+    color: white;
+}
+
