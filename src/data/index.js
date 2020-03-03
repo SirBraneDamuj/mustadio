@@ -19,9 +19,12 @@ const createRecordsForTournament = async (tournamentLabel, maps, teamData) => {
         label: tournamentLabel,
     });
     for (const [index, map] of maps.entries()) {
-        await tournament.createTournamentMap({
-            ...map,
-            order: index,
+        await TournamentMap.findOrCreate({
+            where: {
+                ...map,
+                order: index,
+                TournamentId: tournament.id,
+            },
         });
     }
     await winners.loadWinnersForTournament(tournamentLabel);
