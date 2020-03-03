@@ -6,7 +6,8 @@
   "bin": "src/main.js",
   "scripts": {
     "start": "node src/main.js",
-    "start:loader": "node src/loader.js",
+    "start:loader": "node src/loader/index.js",
+    "start:loader:debug": "node --inspect src/loader/index.js",
     "start:debug": "node --inspect src/main.js",
     "test": "mocha test --recursive",
     "build": "npm test && npx eslint src test",

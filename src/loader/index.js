@@ -1,3 +1,5 @@
-require('./models');
-const winners = require('./data/winners');
+require('../models');
+const winners = require('./winners');
 winners.monitorWinners();
+const tournaments = require('./tournaments');
+tournaments.monitorTournaments();
