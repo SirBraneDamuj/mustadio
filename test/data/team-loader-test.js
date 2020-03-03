@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function, no-undefined */
 const mock = require('mock-require');
 mock('../../src/config', { FFTBG_DATA_STRATEGY: 'fake' });
-const loader = require('../../src/data/team-loader');
+const loader = require('../../src/loader/team-loader');
 const fs = require('fs');
 const path = require('path');
 
