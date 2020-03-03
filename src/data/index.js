@@ -1,133 +1,8 @@
-const pick = require('lodash/pick');
-const indexLoader = require('./index-loader');
 const { TEAM_NAMES } = require('./constants');
-const teamLoader = require('./team-loader');
-const mapsLoader = require('./maps-loader');
-const { Tournament, TournamentMap, TournamentWinner, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
-const client = require('../client/fftbg');
-const items = require('./items');
-const abilities = require('./abilities');
-const statuses = require('./statuses');
-const classes = require('./classes');
-const zodiacs = require('./zodiacs');
+const { Tournament, TournamentMap, Team, Unit, UnitAbility, UnitEquipment } = require('../models');
 const matchups = require('./matchups');
-const winners = require('./winners');
-const monsterSkills = require('./monster-skills');
 
-const createRecordsForTournament = async (tournamentLabel, maps, teamData) => {
-    const tournament = await Tournament.create({
-        label: tournamentLabel,
-    });
-    for (const [index, map] of maps.entries()) {
-        await TournamentMap.findOrCreate({
-            where: {
-                ...map,
-                order: index,
-                TournamentId: tournament.id,
-            },
-        });
-    }
-    await winners.loadWinnersForTournament(tournamentLabel);
-    for (const teamName of TEAM_NAMES) {
-        const team = await tournament.createTeam({
-            name: teamName,
-        });
-        const units = teamData[teamName];
-        let index = 0;
-        for (const unit of units) {
-            const unitRecord = await team.createUnit({
-                ...pick(unit, 'name', 'gender', 'zodiac', 'brave', 'faith', 'class', 'subSkill', 'reactSkill', 'supportSkill', 'moveSkill'),
-                order: index,
-            });
-            index += 1;
-            for (const name of unit.mainAbilities) {
-                await unitRecord.createUnitAbility({
-                    name,
-                    mainOrSub: 'main',
-                });
-            }
-            for (const name of unit.subAbilities) {
-                await unitRecord.createUnitAbility({
-                    name,
-                    mainOrSub: 'sub',
-                });
-            }
-            for (const name of unit.gear) {
-                await unitRecord.createUnitEquipment({ name });
-            }
-        }
-    }
-    return tournament;
-}
-
-const loaderForFileName = (filename) => {
-    switch (filename) {
-        case 'infoitem.txt':
-            return items;
-        case 'infoability.txt':
-            return abilities;
-        case 'classhelp.txt':
-            return classes;
-        case 'infostatus.txt':
-            return statuses;
-        case 'Monsters.txt':
-            return monsterSkills;
-        case 'MonsterSkills.txt':
-            return monsterSkills;
-        case 'zodiachelp.txt':
-            return zodiacs;
-        default:
-            return null;
-    }
-}
-
-const getCurrentTournamentId = async () => {
-    const { data } = await client.tournamentList();
-    const { dumpFiles, latestTournament } = indexLoader.load(data);
-    await Promise.all(
-        dumpFiles.map(async ({ name, timestamp }) => {
-            const loader = loaderForFileName(name);
-            if (loader) {
-                return loader.reload(timestamp);
-            }
-            return Promise.resolve();
-        }),
-    );
-    return latestTournament;
-}
-
-const loadTournamentById = async (tournamentId) => {
-    const label = tournamentId; // TODO fix this
-    const existing = await Tournament.findOne({
-        where: { label },
-        include: TournamentWinner,
-    });
-    if (existing) {
-        return existing;
-    }
-    const teamUnits = {};
-    for (const teamName of TEAM_NAMES) {
-        const { data } = await client.tournamentTeam(label, teamName);
-        const units = loadTeamFromStringOrDieTrying(data, teamName);
-        teamUnits[teamName] = units;
-    }
-    const maps = await mapsLoader.getMaps(label);
-    return createRecordsForTournament(label, maps, teamUnits);
-};
-
-const loadTeamFromStringOrDieTrying = (data, teamName) => {
-    try {
-        return teamLoader.loadTeamFromString(data);
-    } catch (error) {
-        throw new Error(`Failed to load ${teamName}: ${error.message}`)
-    }
-};
-
-module.exports.getLatestTournamentId = async () => getCurrentTournamentId();
-
-module.exports.getTournamentById = async (tournamentId) => {
-    return loadTournamentById(tournamentId);
-};
+module.exports.getLatestTournamentId = async () => Tournament.max('label');
 
 module.exports.getTeamForTeamName = async (tournamentId, teamName) => Team.findOne({
     where: {
@@ -154,7 +29,6 @@ module.exports.getTeamForTeamName = async (tournamentId, teamName) => Team.findO
 });
 
 module.exports.getTeamsForTournament = async (tournamentId, team1, team2) => {
-    await loadTournamentById(tournamentId);
     return Promise.all([
         this.getTeamForTeamName(tournamentId, team1),
         this.getTeamForTeamName(tournamentId, team2),
@@ -162,7 +36,6 @@ module.exports.getTeamsForTournament = async (tournamentId, team1, team2) => {
 };
 
 module.exports.getMapsForTournament = async (tournamentId) => {
-    await loadTournamentById(tournamentId);
     return TournamentMap.findAll({
         include: [{
             model: Tournament,
@@ -178,13 +51,16 @@ module.exports.getMapsForTournament = async (tournamentId) => {
 };
 
 module.exports.getLatestMatchForTournamentId = async (tournamentId) => {
-    const tournament = await loadTournamentById(tournamentId);
+    const tournament = await Tournament.findOne({
+        where: {
+            label: tournamentId,
+        },
+    });
     const tournamentWinners = ((await tournament.getTournamentWinners()) || []).map((winner) => winner.name);
     return matchups.getLatestMatchForTournament(tournamentWinners);
 };
 
 module.exports.getFullTournament = async (tournamentId) => {
-    await loadTournamentById(tournamentId);
     const teams = await Promise.all(TEAM_NAMES.map(async (teamName) => this.getTeamForTeamName(tournamentId, teamName)))
     return {
         id: tournamentId,

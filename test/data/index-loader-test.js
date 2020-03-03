@@ -1,4 +1,4 @@
-const indexLoader = require('../../src/data/index-loader');
+const indexLoader = require('../../src/loader/index-loader');
 const fakeClient = require('../../src/client/fftbg/fake');
 const expect = require('chai').expect;
 
