@@ -32,6 +32,10 @@ const TournamentMap = db.define('TournamentMap', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    order: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 });
 
 Tournament.hasMany(TournamentMap);

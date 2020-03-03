@@ -316,6 +316,27 @@ describe('ITEMS', () => {
         });
     });
 
+    it('loads faith rod', () => {
+        expect(subject('Faith Rod')).to.deep.eq({
+            name: 'Faith Rod',
+            slot: 'hand',
+            type: 'Rod',
+            info: '5 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Faith; +1 Speed, +1 Move, +1 Jump; Immune Innocent; Initial Faith.',
+            stats: {
+                ...defaultStats,
+                wp: 5,
+                range: 1,
+                evadePercent: 20,
+                speed: 1,
+                move: 1,
+                jump: 1,
+                initialStatuses: [
+                    'Faith'
+                ]
+            },
+        });
+    });
+
     it('has no un-slotted items', () => {
         const loadedItems = items.getItems();
         map(loadedItems, (item) => expect(item.slot).to.not.be.undefined);

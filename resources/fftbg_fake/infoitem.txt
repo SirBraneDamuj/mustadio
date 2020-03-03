@@ -69,7 +69,7 @@ Ice Rod: 3 WP, 1 range, 20% evade, Rod. Element: Ice. Effect: Chance to cast Ice
 Poison Rod: 4 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Poison.
 Wizard Rod: 5 WP, 1 range, 20% evade, Rod. Effect: +2 MA.
 Dragon Rod: 6 WP, 1 range, 22% evade, Rod. Effect: Immune Silence, Frog, Innocent; Initial Reraise.
-Faith Rod: 5 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Faith; Always Faith.
+Faith Rod: 5 WP, 1 range, 20% evade, Rod. Effect: Chance to Add Faith; +1 Speed, +1 Move, +1 Jump; Immune Innocent; Initial Faith.
 Oak Staff: 3 WP, 1 range, 18% evade, Staff. Effect: Absorb Water.
 White Staff: 2 WP, 1 range, 15% evade, Staff. Element: Holy. Effect: Chance to Cancel Undead, Petrify, Darkness, Confusion, Silence, Blood Suck, Float, Reraise, Berserk, Frog, Poison, Regen, Protect, Shell, Haste, Slow, Stop, Innocent, Charm, Sleep, Don't Move, Don't Act, Reflect, Death Sentence.
 Healing Staff: 4 WP (heal), 1 range, 17% evade, Staff.
