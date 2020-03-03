@@ -1,9 +1,9 @@
-const items = require('./items');
-const abilities = require('./abilities');
-const statuses = require('./statuses');
-const classes = require('./classes');
-const zodiacs = require('./zodiacs');
-const monsterSkills = require('./monster-skills');
+const items = require('../data/items');
+const abilities = require('../data/abilities');
+const statuses = require('../data/statuses');
+const classes = require('../data/classes');
+const zodiacs = require('../data/zodiacs');
+const monsterSkills = require('../data/monster-skills');
 
 module.exports.loaderForFileName = (filename) => {
     switch (filename) {
