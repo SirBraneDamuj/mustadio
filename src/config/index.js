@@ -6,6 +6,7 @@ const {
     FORCE_TABLE_SYNC,
     HACKTICS_BASE_URL,
     PORT,
+    PRUNE_DATABASE,
     TWITCH_USERNAME,
     TWITCH_AUTH_TOKEN,
 } = process.env;
@@ -18,6 +19,7 @@ module.exports = {
     FORCE_TABLE_SYNC,
     HACKTICS_BASE_URL,
     PORT,
+    PRUNE_DATABASE,
     TWITCH_USERNAME,
     TWITCH_AUTH_TOKEN,
 }
