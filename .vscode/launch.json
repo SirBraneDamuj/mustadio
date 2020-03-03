@@ -8,7 +8,10 @@
       "program": "${workspaceFolder}/src/loader/index.js",
       "skipFiles": [
         "<node_internals>/**"
-      ]
+      ],
+      "env": {
+        "PRUNE_DATABASE": "true"
+      }
     },
     {
       "type": "node",
