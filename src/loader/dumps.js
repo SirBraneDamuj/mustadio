@@ -1,3 +1,5 @@
+const client = require('../client/fftbg');
+const indexLoader = require('./index-loader');
 const items = require('../data/items');
 const abilities = require('../data/abilities');
 const statuses = require('../data/statuses');
@@ -5,7 +7,9 @@ const classes = require('../data/classes');
 const zodiacs = require('../data/zodiacs');
 const monsterSkills = require('../data/monster-skills');
 
-module.exports.loaderForFileName = (filename) => {
+const CADENCE = 60 * 1000; // one minute
+
+const loaderForFileName = (filename) => {
     switch (filename) {
         case 'infoitem.txt':
             return items;
@@ -24,4 +28,32 @@ module.exports.loaderForFileName = (filename) => {
         default:
             return null;
     }
+};
+
+const loadDumps = async () => {
+    const { data } = await client.tournamentList();
+    const { dumpFiles } = indexLoader.load(data);
+    await Promise.all(
+        dumpFiles.map(async ({ name, timestamp }) => {
+            const loader = loaderForFileName(name);
+            if (loader) {
+                return loader.reload(timestamp);
+            }
+            return Promise.resolve();
+        }),
+    );
+};
+
+const monitor = async () => {
+    console.log('Loading latest dumps');
+    try {
+        await loadDumps();
+    } catch (err) {
+        console.log(err);
+    }
+    setTimeout(monitor, CADENCE);
+};
+
+module.exports.monitorDumps = () => {
+    setTimeout(monitor, 50);
 };

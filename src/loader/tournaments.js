@@ -2,7 +2,6 @@ const indexLoader = require('./index-loader');
 const teamLoader = require('./team-loader');
 const mapsLoader = require('./maps-loader');
 const client = require('../client/fftbg');
-const dumps = require('./dumps');
 const db = require('../db');
 const { TEAM_NAMES } = require('../data/constants');
 const { Tournament, TournamentWinner } = require('../models');
@@ -12,16 +11,7 @@ const CADENCE = 10 * 1000;
 
 const getCurrentTournamentId = async () => {
     const { data } = await client.tournamentList();
-    const { dumpFiles, latestTournament } = indexLoader.load(data);
-    await Promise.all(
-        dumpFiles.map(async ({ name, timestamp }) => {
-            const loader = dumps.loaderForFileName(name);
-            if (loader) {
-                return loader.reload(timestamp);
-            }
-            return Promise.resolve();
-        }),
-    );
+    const { latestTournament } = indexLoader.load(data);
     return latestTournament;
 };
 
