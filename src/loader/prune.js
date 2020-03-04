@@ -9,7 +9,7 @@ const {
     UnitAbility,
     UnitEquipment,
 } = require('../models');
-const CADENCE = 10 * 60 * 1000; // 10 minutes
+const CADENCE = 90 * 1000; // 10 minutes
 
 const models = [
     Tournament,
@@ -22,12 +22,14 @@ const models = [
 ];
 
 const prune = async () => {
+    const threshold = moment().subtract(4, 'hours').toDate();
+    console.log(`Pruning database before ${threshold}`);
     try {
         for (const model of models) {
-            model.destroy({
+            await model.destroy({
                 where: {
                     createdAt: {
-                        [Op.lt]: moment().subtract(4, 'hours'),
+                        [Op.lt]: threshold,
                     },
                 },
             })
