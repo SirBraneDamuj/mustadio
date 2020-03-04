@@ -6,6 +6,8 @@
   "bin": "src/main.js",
   "scripts": {
     "start": "node src/main.js",
+    "start:loader": "node src/loader/index.js",
+    "start:loader:debug": "node --inspect src/loader/index.js",
     "start:debug": "node --inspect src/main.js",
     "test": "mocha test --recursive",
     "build": "npm test && npx eslint src test",
@@ -18,6 +20,7 @@
     "express": "^4.17.1",
     "jsdom": "^16.1.0",
     "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "pg": "^7.18.1",
     "pug": "^2.0.4",
     "sequelize": "^5.21.3",

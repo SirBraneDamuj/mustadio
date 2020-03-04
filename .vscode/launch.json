@@ -4,25 +4,19 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Mocha Tests",
-      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-      "args": [
-        "-u",
-        "tdd",
-        "--timeout",
-        "999999",
-        "--colors",
-        "${workspaceFolder}/test"
-      ],
-      "internalConsoleOptions": "openOnSessionStart",
+      "name": "Launch Loader",
+      "program": "${workspaceFolder}/src/loader/index.js",
       "skipFiles": [
         "<node_internals>/**"
-      ]
+      ],
+      "env": {
+        "PRUNE_DATABASE": "true"
+      }
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch Web",
       "program": "${workspaceFolder}/src/main.js",
       "skipFiles": [
         "<node_internals>/**"

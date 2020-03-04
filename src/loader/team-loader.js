@@ -1,4 +1,4 @@
-const { GENDERS } = require('./constants');
+const { GENDERS } = require('../data/constants');
 
 const unitForTokens = (unitTokens) => {
     const gender = unitTokens[1];
