@@ -23,5 +23,5 @@ module.exports.load = (html) => {
     return {
         dumpFiles,
         latestTournament: latestTournament.slice(0, -1),
-    }
+    };
 };

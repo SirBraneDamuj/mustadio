@@ -1,17 +1,39 @@
 const { Op } = require('sequelize');
 const moment = require('moment');
-const { Tournament } = require('../models');
-const CADENCE = 10 * 60 * 1000; // 10 minutes
+const {
+    Tournament,
+    TournamentMap,
+    TournamentWinner,
+    Team,
+    Unit,
+    UnitAbility,
+    UnitEquipment,
+} = require('../models');
+const CADENCE = 90 * 1000; // 10 minutes
+
+const models = [
+    Tournament,
+    TournamentMap,
+    TournamentWinner,
+    Team,
+    Unit,
+    UnitAbility,
+    UnitEquipment,
+];
 
 const prune = async () => {
+    const threshold = moment().subtract(4, 'hours').toDate();
+    console.log(`Pruning database before ${threshold}`);
     try {
-        Tournament.destroy({
-            where: {
-                createdAt: {
-                    [Op.lt]: moment().subtract(4, 'hours'),
+        for (const model of models) {
+            await model.destroy({
+                where: {
+                    createdAt: {
+                        [Op.lt]: threshold,
+                    },
                 },
-            },
-        });
+            })
+        }
     } catch (err) {
         console.log(err);
     }
@@ -20,4 +42,4 @@ const prune = async () => {
 
 module.exports.pruneData = () => {
     setTimeout(prune, CADENCE);
-}
+};
