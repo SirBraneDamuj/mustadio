@@ -49,6 +49,8 @@ app.get('/:tournamentId/latest', async (req, res) => {
 
 app.get('/:tournamentId/:team1/:team2', async (req, res) => {
     const { tournamentId, team1, team2 } = req.params;
+    console.log(team1);
+    console.log(team2);
     if (req.params.tournamentId === 'latest') {
         const realTournamentId = await data.getLatestTournamentId();
         res.redirect(`/${realTournamentId}/${team1}/${team2}`);

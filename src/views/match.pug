@@ -1,5 +1,6 @@
 include mixins/unit.pug
 include mixins/tournament_nav.pug
+include mixins/map-renderer.pug
   
 mixin teamTable(side, team, team2)
   .team
@@ -19,10 +20,12 @@ mixin teamTable(side, team, team2)
             +unit(side, unit, team, team2)
 
 mixin map_preview(map)
-    if map
-      div
-        each index in [1, 2, 3, 4]
-          img(class='map-preview' src=`${mapImageBase}/${map.number}_${index}.gif` title='Map images courtesy of https://ffthacktics.com')
+  if map
+    span.map-preview-container
+      each index in [1, 2, 3, 4]
+        img(class='map-preview' src=`${mapImageBase}/${map.number}_${index}.gif` title='Map images courtesy of https://ffthacktics.com')
+      button.btn.btn-outline-info.render-button(title="Ladies and Gentlemen, please put on your 3D glasses now.")= "3D!"
+    +map_renderer(map.number)
 
 html
   head
@@ -31,9 +34,13 @@ html
     link(rel="stylesheet" href="/app.css")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js")
+    script(src="/GLTFLoader.js")
+    script(src="/OrbitControls.js")
     script(src="/app.js")
 
   body
+    .three-target= ""
     +tournament_nav(matchups, maps)
     div.p-3(id="layout" class="layout-light")
       .d-flex.flex-column
