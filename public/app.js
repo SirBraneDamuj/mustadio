@@ -9,9 +9,17 @@ $(() => {
 
   const domElement = $('#map-renderer-target')[0];
   const myScene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera( 75, 640 / 480, 0.1, 1000 );
+  window.scene = myScene;
+  const width = 640;
+  const height = 480;
+  const camera = new THREE.OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, 1, 1000 );
+  window.camera = camera;
+  camera.zoom = 75;
+  camera.position.set(-2.5, 1.5, -2.0);
+  camera.rotation.set(-2.5, -1, -2.5);
+  camera.updateProjectionMatrix();
   const renderer = new THREE.WebGLRenderer({ alpha: true });
-  renderer.setSize(640, 480);
+  renderer.setSize(width, height);
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.setClearColor(0xffffff, 1);
   renderer.gammaFactor = 2.2;
@@ -20,7 +28,6 @@ $(() => {
   const loader = new THREE.GLTFLoader();
   const controls = new THREE.OrbitControls(camera, domElement);
   // controls.screenSpacePanning = true;
-  camera.position.z = 3.5;
   const mapNumber = `MAP${domElement.dataset.mapNumber.padStart(3, '0')}`;
   let animationId;
   function animate() {
