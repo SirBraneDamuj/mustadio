@@ -1,7 +1,8 @@
 - const imageUrlBase = 'https://mustadio-images.s3.amazonaws.com';
 
-mixin unitPortrait(className, gender, side)
-    - const fileName = gender === 'Monster' ? className : (className + gender.charAt(0));
+mixin unitPortrait(className, gender, team, side)
+    - const teamString = team === 'champion' ? '' : `_${team.replace(/^\w/, c => c.toUpperCase())}`;
+    - const fileName = gender === 'Monster' ? className : (className + gender.charAt(0) + teamString);
     img(class=`unit-portrait-${side}` src=`${imageUrlBase}/units/${fileName}.gif`)
 
 mixin compat(unit, team, side, word)
@@ -9,7 +10,6 @@ mixin compat(unit, team, side, word)
         +compareCompat(unit, u, side, word)
 
 mixin compareCompat(unit, unit2, side, word)
-    //- - var word = side ? === 'left' ? 'allies' : 'enemies'
     if (unit.zodiac === 'Capricorn')
         +zodiacCompare(unit, unit2, side, word, 'Cancer', 'Tarus', 'Virgo', 'Libra', 'Aries')  
     if (unit.zodiac === 'Aquarius')
@@ -154,7 +154,7 @@ mixin unit(side, unit, team, team2)
                             else
                                 +compat(unit, team2, 'left', 'enemies')  
                         td
-                            +unitPortrait(className, unit.gender, side)
+                            +unitPortrait(className, unit.gender, team.name, side)
                             +zodiacIcon(unit.zodiac, tooltipSide)
                         td
                             if (side === 'right')

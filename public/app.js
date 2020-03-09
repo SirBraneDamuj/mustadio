@@ -8,6 +8,9 @@ $(() => {
   });
 
   const domElement = $('#map-renderer-target')[0];
+  if (!domElement) {
+    return;
+  }
   const myScene = new THREE.Scene();
   window.scene = myScene;
   const width = 640;
