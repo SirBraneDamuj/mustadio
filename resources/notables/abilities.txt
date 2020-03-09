@@ -52,3 +52,4 @@ Equip Bow
 Equip Polearm
 Equip Axe
 Equip Gun
+Doublehand

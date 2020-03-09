@@ -2,6 +2,7 @@
 
 const badMaps = new Set([
   'MAP009',
+  'MAP014',
   'MAP016',
   'MAP095',
   'MAP111',
@@ -49,25 +50,32 @@ $(() => {
   $('#map-renderer-modal').on('shown.bs.modal', (e) => {
     loader.load(`https://mustadio-maps.s3.amazonaws.com/${mapNumber}/${mapNumber}.gltf`, (result) => {
       myScene.add.apply(myScene, result.scene.children);
-      const [skirt, terrain] = myScene.children;
+      let [skirt, terrain] = myScene.children;
+      if (!terrain) {
+        terrain = skirt; // some maps use a single mesh called "tex"
+        skirt = undefined;
+      } else {
+        skirt.material.color = new THREE.Color('black');
+        skirt.scale.x = -1;
+      }
       terrain.scale.x = -1;
-      skirt.scale.x = -1;
-      skirt.material.color = new THREE.Color('black');
 
       if (badMaps.has(mapNumber)) {
         terrain.material = new THREE.MeshNormalMaterial();
       }
 
-      const box = new THREE.Box3().setFromObject(terrain);
-      const center = box.getCenter(new THREE.Vector3());
       controls.target = terrain.position.clone();
 
+      const box = new THREE.Box3().setFromObject(terrain);
+      const center = box.getCenter(new THREE.Vector3());
+      if (skirt) {
+        skirt.position.x += (skirt.position.x - center.x);
+        skirt.position.y += (skirt.position.y - center.y);
+        skirt.position.z += (skirt.position.z - center.z);
+      }
       terrain.position.x += (terrain.position.x - center.x);
       terrain.position.y += (terrain.position.y - center.y);
       terrain.position.z += (terrain.position.z - center.z);
-      skirt.position.x += (skirt.position.x - center.x);
-      skirt.position.y += (skirt.position.y - center.y);
-      skirt.position.z += (skirt.position.z - center.z);
       controls.update();
       animate();
     });
