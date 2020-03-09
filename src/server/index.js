@@ -9,6 +9,7 @@ const classes = require('../data/classes');
 const statuses = require('../data/statuses');
 const stats = require('../data/stats');
 const zodiacs = require('../data/zodiacs');
+const notables = require('../data/notables');
 const { MATCHUPS, matchNumberForMatchup } = require('../data/constants');
 const monsterSkills = require('../data/monster-skills');
 const config = require('../config');
@@ -71,6 +72,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             monsterSkills,
             stats,
             zodiacs,
+            notables,
         };
         res.render('match', context);
     }

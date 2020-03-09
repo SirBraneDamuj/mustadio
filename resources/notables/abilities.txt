@@ -1,0 +1,54 @@
+Cure 4
+Raise
+Raise 2
+Holy
+Fire 4
+Bolt 4
+Ice 4
+Death
+Flare
+Demi 2
+Meteor
+Petrify
+Carbunkle
+Bahamut
+Zodiac
+Kiyomori
+Kikuichimonji
+Chirijiraden
+Last Song
+Wiznaibus
+Nameless Dance
+Earth Slash
+Revive
+Steal Heart
+Invitation
+Death Sentence
+Mimic Daravon
+Water Ball
+Hallowed Ground
+Ultima
+Stasis Sword
+Justice Sword
+Surging Sword
+Explosion Sword
+Night Sword
+Phoenix Down
+X-Potion
+Remedy
+Dragon Spirit
+Auto Potion
+Blade Grasp
+Hamedo
+Dual Wield
+Short Charge
+Move+3
+Jump+3
+Teleport 2
+Equip Shield
+Equip Sword
+Equip Knife
+Equip Bow
+Equip Polearm
+Equip Axe
+Equip Gun

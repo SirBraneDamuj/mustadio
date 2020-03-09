@@ -102,29 +102,32 @@ mixin tooltippedAbility(tooltipSide, ability)
     - const abilityNameDisplay = ability.length > 0 ? ability : '(none)';
     - const abilityInfo = abilities[ability.replace('*', '')] || { name: ability, info: '' };
     - const beastmasterSide = tooltipSide === 'left' ? 'right' : 'left';
+    - const clazz = notables.abilities.has(ability) ? 'notable' : '';
     +tooltip(tooltipSide, abilityInfo.info)
         if (ability.includes('*'))
             +tooltip(beastmasterSide, 'Beastmaster Required')
-                div= abilityNameDisplay
+                div(class=clazz)= abilityNameDisplay
         else
-            div= abilityNameDisplay
+            div(class=clazz)= abilityNameDisplay
     
 
 mixin tooltippedAbilityWithSlot(tooltipSide, slot, ability)
     - const abilityNameDisplay = ability.length > 0 ? ability : '(none)';
     - const abilityInfo = abilities[ability] || { name: ability, info: '' };
+    - const clazz = notables.abilities.has(ability) ? 'notable' : '';
     +tooltip(tooltipSide, abilityInfo.info)
         .d-inline-flex.align-items-center
             img.ability-icon(src=`${imageUrlBase}/icons/${slot}.png`)
-            div= abilityNameDisplay
+            div(class=clazz)= abilityNameDisplay
 
 mixin tooltippedItem(tooltipSide, gear)
     - const gearInfo = items[gear.name] || { name: gear.name, info: '', slot: '' };
+    - const clazz = notables.items.has(gear.name) ? 'notable' : '';
     +tooltip(tooltipSide, gearInfo.info)
         .d-inline-flex.align-items-center
             img.ability-icon(src=`${imageUrlBase}/icons/${gearInfo.slot}.png`)
             img.gear-icon(src=`${imageUrlBase}/items/${gearInfo.name.replace(' ', '+')}.png`)
-            span= gearInfo.name
+            span(class=clazz)= gearInfo.name
 
 mixin unit(side, unit, team, team2)
     - const tooltipSide = side === 'left' ? 'right' : 'left';
@@ -141,7 +144,11 @@ mixin unit(side, unit, team, team2)
             .d-flex.flex-column
                 a(href=`https://fftbg.bryanching.net/player/${unit.name}`)= unit.name
                 div= unit.gender
-                div= `B: ${unit.brave} / F: ${unit.faith}`
+                div
+                    - const bClass = notables.brave(unit.brave) ? 'notable' : '';
+                    - const fClass = notables.faith(unit.faith) ? 'notable' : '';
+                    span(class=bClass)= `B: ${unit.brave} / `
+                    span(class=fClass)= `F: ${unit.faith}`
                 +tooltip(tooltipSide, unitClassInfo.raw)
                     div.font-weight-bold= unit.class
                 +tooltip(tooltipSide, zodiacs.getZodiac(unit.zodiac.toLowerCase()).info)

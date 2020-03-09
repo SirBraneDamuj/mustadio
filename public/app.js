@@ -1,5 +1,13 @@
 /* eslint-disable */
 
+const badMaps = new Set([
+  'MAP009',
+  'MAP016',
+  'MAP095',
+  'MAP111',
+  'MAP113',
+]);
+
 $(() => {
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -45,6 +53,11 @@ $(() => {
       terrain.scale.x = -1;
       skirt.scale.x = -1;
       skirt.material.color = new THREE.Color('black');
+
+      if (badMaps.has(mapNumber)) {
+        terrain.material = new THREE.MeshNormalMaterial();
+      }
+
       const box = new THREE.Box3().setFromObject(terrain);
       const center = box.getCenter(new THREE.Vector3());
       controls.target = terrain.position.clone();
