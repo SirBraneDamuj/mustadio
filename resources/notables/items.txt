@@ -16,6 +16,7 @@ Dragon Rod
 Healing Staff
 Mace of Zeus
 Scorpion Tail
+Stone Gun
 Blaze Gun
 Glacier Gun
 Blast Gun
@@ -30,7 +31,7 @@ Gungnir
 Dragon Whisker
 Whale Whisker
 Star Bag
-Ryozan
+Ryozan Silk
 Venetian Shield
 Hero Shield
 Genji Helmet
@@ -38,9 +39,9 @@ Grand Helmet
 Cachusha
 Barette
 Ribbon
-Black hood
+Black Hood
 Twist Headband
-Holy Miter
+Flash Hat
 Reflect Mail
 Maximillian
 Wizard Outfit
@@ -53,3 +54,7 @@ Genji Gauntlet
 Magic Gauntlet
 Bracer
 Cursed Ring
+Setiemson
+Chantage
+Serpentarius
+Vanish Mantle
