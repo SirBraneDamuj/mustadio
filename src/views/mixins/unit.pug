@@ -147,7 +147,8 @@ mixin unit(side, unit, team, team2)
                 div
                     - const bClass = notables.brave(unit.brave) ? 'notable' : '';
                     - const fClass = notables.faith(unit.faith) ? 'notable' : '';
-                    span(class=bClass)= `B: ${unit.brave} / `
+                    span(class=bClass)= `B: ${unit.brave}`
+                    span= " / "
                     span(class=fClass)= `F: ${unit.faith}`
                 +tooltip(tooltipSide, unitClassInfo.raw)
                     div.font-weight-bold= unit.class
