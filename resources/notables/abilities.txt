@@ -45,3 +45,10 @@ Short Charge
 Move+3
 Jump+3
 Teleport 2
+Equip Shield
+Equip Sword
+Equip Knife
+Equip Bow
+Equip Polearm
+Equip Axe
+Equip Gun
