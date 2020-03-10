@@ -1,0 +1,7 @@
+.unit-row > * {
+    padding-right: 1rem;
+}
+
+.unit-row > * {
+    border-right: 1px black solid;
+}
