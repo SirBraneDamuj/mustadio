@@ -4,9 +4,11 @@ const badMaps = new Set([
   'MAP009',
   'MAP014',
   'MAP016',
+  'MAP033',
   'MAP095',
   'MAP111',
   'MAP113',
+  'MAP114',
 ]);
 
 $(() => {
@@ -40,14 +42,13 @@ $(() => {
   const loader = new THREE.GLTFLoader();
   const controls = new THREE.OrbitControls(camera, domElement);
   // controls.screenSpacePanning = true;
-  const mapNumber = `MAP${domElement.dataset.mapNumber.padStart(3, '0')}`;
   let animationId;
   function animate() {
     animationId = requestAnimationFrame(animate);
     renderer.render(myScene, camera);
   }
-  
-  $('#map-renderer-modal').on('shown.bs.modal', (e) => {
+
+  const renderMap = (mapNumber) => {
     loader.load(`https://mustadio-maps.s3.amazonaws.com/${mapNumber}/${mapNumber}.gltf`, (result) => {
       myScene.add.apply(myScene, result.scene.children);
       let [skirt, terrain] = myScene.children;
@@ -59,6 +60,9 @@ $(() => {
         skirt.scale.x = -1;
       }
       terrain.scale.x = -1;
+      if (mapNumber === 'MAP033') {
+        myScene.remove(skirt);
+      }
 
       if (badMaps.has(mapNumber)) {
         terrain.material = new THREE.MeshNormalMaterial();
@@ -79,10 +83,25 @@ $(() => {
       controls.update();
       animate();
     });
+  };
+
+  const unloadMap = () => {
+    cancelAnimationFrame(animationId);
+    myScene.remove.apply(myScene, myScene.children);
+  }
+  
+  $('#map-renderer-modal').on('shown.bs.modal', () => {
+    const mapNumber = `MAP${domElement.dataset.mapNumber.padStart(3, '0')}`;
+    renderMap(mapNumber);
   });
 
   $('#map-renderer-modal').on('hidden.bs.modal', (e) => {
-    cancelAnimationFrame(animationId);
-    myScene.remove.apply(myScene, myScene.children);
+  });
+
+  const mapSelect = $('#map-select');
+
+  mapSelect.on('change', () => {
+    unloadMap();
+    renderMap(mapSelect[0].value);
   });
 });

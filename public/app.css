@@ -150,3 +150,7 @@
 .notable {
     font-weight: bold;
 }
+
+#map-select {
+    margin-left: 5px;
+}
