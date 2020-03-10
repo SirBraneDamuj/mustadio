@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 const favicon = require('serve-favicon')
 const path = require('path');
 const bodyParser = require('body-parser');
