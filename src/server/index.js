@@ -78,6 +78,10 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
     }
 });
 
+app.use((_, res) => {
+    res.status(404);
+});
+
 module.exports = {
     async start() {
         await Promise.all([items, abilities, statuses, classes, monsterSkills, zodiacs].map((it) => it.reload()));
