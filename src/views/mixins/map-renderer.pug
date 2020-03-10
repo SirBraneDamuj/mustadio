@@ -12,6 +12,17 @@ mixin map_renderer(mapNumber)
             | Not every map is perfect. Most textures are not perfect.<br/>
             | This is an experimental feature.
           div#map-renderer-target(data-map-number=mapNumber)= ""
+          div
+            label(for="map-select")= "Choose a Map: "
+            select#map-select
+              each _, mapOption in Array(118)
+                - const selected = (mapOption + 1).toString() === mapNumber
+                - const mapName = `MAP${(mapOption + 1).toString().padStart(3, '0')}`;
+                option(value=mapName, selected=selected)= mapName
+              option(value="MAP125", selected=(mapNumber === '125'))= "MAP125"
+          div
+            label(for="map-material-checkbox")= "Use Normal Material: "
+            input#map-material-checkbox(type="checkbox")
           p
             | Please leave a comment #[a(href="https://github.com/SirBraneDamuj/mustadio/issues/12")= "here"] if you see an ugly map.<br/>
             | If you don't see #[i= "any map"], then your browser might not be able to handle this. Sorry.
