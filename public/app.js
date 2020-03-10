@@ -64,7 +64,7 @@ $(() => {
         myScene.remove(skirt);
       }
 
-      if (badMaps.has(mapNumber)) {
+      if (materialCheckbox.prop('checked')) {
         terrain.material = new THREE.MeshNormalMaterial();
       }
 
@@ -88,20 +88,37 @@ $(() => {
   const unloadMap = () => {
     cancelAnimationFrame(animationId);
     myScene.remove.apply(myScene, myScene.children);
-  }
+  };
+
+  const materialCheckbox = $('#map-material-checkbox');
   
   $('#map-renderer-modal').on('shown.bs.modal', () => {
+    unloadMap();
     const mapNumber = `MAP${domElement.dataset.mapNumber.padStart(3, '0')}`;
+    if (badMaps.has(mapNumber)) {
+      materialCheckbox.prop('checked', true);
+    }
     renderMap(mapNumber);
   });
 
   $('#map-renderer-modal').on('hidden.bs.modal', (e) => {
+    unloadMap();
+  });
+
+  $('#map-material-checkbox').on('change', () => {
+    unloadMap();
+    const mapNumber = mapSelect[0].value;
+    renderMap(mapNumber);
   });
 
   const mapSelect = $('#map-select');
 
   mapSelect.on('change', () => {
     unloadMap();
-    renderMap(mapSelect[0].value);
+    const mapNumber = mapSelect[0].value;
+    if (badMaps.has(mapNumber)) {
+      materialCheckbox.prop('checked', true);
+    }
+    renderMap(mapNumber);
   });
 });
