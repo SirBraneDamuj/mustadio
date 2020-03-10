@@ -1,0 +1,34 @@
+.unit-row > * {
+    padding: 0.5rem;
+}
+
+.unit-row > *:not(:last-child) {
+    border-right: 1px solid #dee2e6;
+}
+
+.unit-row > *:not(:first-child) {
+    flex-grow: 1;
+}
+
+.unit-basic {
+    width: 8.4rem;
+    overflow: hidden;
+}
+
+.gear-icon {
+    padding: 0.25rem;
+}
+
+.ability-icon {
+    width: 2.5rem;
+    padding: 0.5rem;
+}
+
+.compat-icon {
+    width: 100%;
+    padding: 1px;
+}
+
+.notable {
+    font-weight: bold;
+}

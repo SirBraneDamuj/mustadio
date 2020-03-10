@@ -1,0 +1,15 @@
+#layout:not(.dark-theme) .team-table {
+    border: 1px solid black;
+}
+
+#layout.dark-theme .team-table {
+    border: 1px solid #dee2e6;
+}
+
+#layout:not(.dark-theme) .team-table > *:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+#layout.dark-theme .team-table > *:not(:last-child) {
+    border-bottom: 1px solid #dee2e6;
+}
