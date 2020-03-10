@@ -95,9 +95,7 @@ $(() => {
   $('#map-renderer-modal').on('shown.bs.modal', () => {
     unloadMap();
     const mapNumber = `MAP${domElement.dataset.mapNumber.padStart(3, '0')}`;
-    if (badMaps.has(mapNumber)) {
-      materialCheckbox.prop('checked', true);
-    }
+    materialCheckbox.prop('checked', badMaps.has(mapNumber));
     renderMap(mapNumber);
   });
 
@@ -116,9 +114,7 @@ $(() => {
   mapSelect.on('change', () => {
     unloadMap();
     const mapNumber = mapSelect[0].value;
-    if (badMaps.has(mapNumber)) {
-      materialCheckbox.prop('checked', true);
-    }
+    materialCheckbox.prop('checked', badMaps.has(mapNumber));
     renderMap(mapNumber);
   });
 });

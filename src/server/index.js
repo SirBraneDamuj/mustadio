@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 const favicon = require('serve-favicon')
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -76,6 +77,10 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
         };
         res.render('match', context);
     }
+});
+
+app.use((_, res) => {
+    res.status(404);
 });
 
 module.exports = {
