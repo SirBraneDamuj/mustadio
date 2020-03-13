@@ -155,3 +155,10 @@
     background-color: rgb(56, 56, 56);
     color: white;
 }
+.notable {
+    font-weight: bold;
+}
+
+#map-select, #map-material-checkbox {
+    margin-left: 5px;
+} 
