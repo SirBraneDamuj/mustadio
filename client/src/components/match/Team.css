@@ -1,9 +1,8 @@
-.team-table > * {
-    border-bottom: 1px solid black;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.team-table {
+    border: 1px solid black;
+    margin: 5px;
 }
 
-.team-table:first-child {
-    border-top: 1px solid black;
+.team-table > *:not(:last-child) {
+    border-bottom: 1px solid black;
 }

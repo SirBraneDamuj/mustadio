@@ -1,7 +1,39 @@
 .unit-row > * {
-    padding-right: 1rem;
+    padding: 0.7rem;
 }
 
-.unit-row > * {
-    border-right: 1px black solid;
+.unit-row > *:not(:last-child) {
+    border-right: 1px solid #dee2e6;
+}
+
+.unit-basic {
+    width: 6.6rem;
+    overflow: hidden;
+}
+
+/*
+.unit-stats {
+    width: 14rem;
+}
+
+.unit-equipment {
+    width: 15rem;
+}
+
+.unit-abilities {
+    width: 12rem;
+}
+
+.unit-actives {
+    width: 12rem;
+} */
+
+.gear-icon {
+    padding: 5px;
+}
+
+.ability-icon {
+    width: 32px;
+    height: 32px;
+    padding: 5px;
 }

@@ -1,5 +1,8 @@
+.map-preview-container {
+    margin-top: 3px;
+}
 .map-preview {
-    height: 100px;
+    height: 6rem;
     width: auto;
     padding-right: 5px;
 }

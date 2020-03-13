@@ -11,7 +11,6 @@ export default function Team({
             {
                 team.units.map((unit, index) => (
                     <div
-                        className='flex-grow-1'
                         key={`${team.name}/${index}`}
                     >
                         <Unit

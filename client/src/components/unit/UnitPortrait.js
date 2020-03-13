@@ -1,8 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import images from '../../constants/images';
 import './UnitPortrait.css';
-
-const imageUrlBase = 'https://mustadio-images.s3.amazonaws.com';
 
 export default function UnitPortrait({
     job,
@@ -17,7 +16,7 @@ export default function UnitPortrait({
 
     const teamString = team === 'champion' ? '' : `_${team.replace(/^\w/, c => c.toUpperCase())}`;
     const fileName = gender === 'Monster' ? job : (job + gender.charAt(0) + teamString);
-    const url =`${imageUrlBase}/units/${fileName}.gif`;
+    const url =`${images.units}/${fileName}.gif`;
 
     return (
         <img

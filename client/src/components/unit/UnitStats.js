@@ -8,7 +8,7 @@ export default function UnitStats({ stats }) {
         <li key={status}>{status}</li>
     ));
     return (
-        <div className='d-flex flex-column'>
+        <div className='d-flex flex-column unit-stats'>
             <span>HP: {stats.hp} / MP: {stats.mp}</span>
             <span>Speed: {stats.speed}</span>
             <span>Move: {stats.move} / Jump: {stats.jump}</span>

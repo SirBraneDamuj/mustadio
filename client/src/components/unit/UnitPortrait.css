@@ -1,10 +1,10 @@
 .unit-portrait-right {
     align-self: start;
-    height: 96 !important;
+    height: 4.5rem !important;
 }
 
 .unit-portrait-left {
     align-self: start;
     transform: scaleX(-1);
-    height: 96 !important;
+    height: 4.5rem !important;
 }
