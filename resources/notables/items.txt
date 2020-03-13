@@ -5,6 +5,7 @@ Koga Knife
 Nagrarock
 Materia Blade
 Blood Sword
+Rune Blade
 Excalibur
 Ragnarok
 Chaos Blade
@@ -34,6 +35,8 @@ Star Bag
 Ryozan Silk
 Venetian Shield
 Hero Shield
+Genji Shield
+Kaiser Plate
 Genji Helmet
 Grand Helmet
 Cachusha
@@ -42,6 +45,7 @@ Ribbon
 Black Hood
 Twist Headband
 Flash Hat
+Genji Armor
 Reflect Mail
 Maximillian
 Wizard Outfit
