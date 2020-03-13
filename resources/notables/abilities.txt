@@ -14,7 +14,7 @@ Carbunkle
 Bahamut
 Zodiac
 Kiyomori
-Kikuichimonji
+Kikuichimoji
 Chirijiraden
 Last Song
 Wiznaibus
@@ -54,3 +54,9 @@ Equip Axe
 Equip Gun
 Doublehand
 Galaxy Stop
+Elixir
+Attack UP
+Magic Attack UP
+Martial Arts
+Lucavi Skill
+Limit
