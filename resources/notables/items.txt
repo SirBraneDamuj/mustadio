@@ -36,6 +36,7 @@ Ryozan Silk
 Venetian Shield
 Hero Shield
 Genji Shield
+Kaiser Plate
 Genji Helmet
 Grand Helmet
 Cachusha
