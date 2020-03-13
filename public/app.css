@@ -147,10 +147,11 @@
     color: white;
 }
 
-.notable {
-    font-weight: bold;
+.layout-dark .team {
+    background-color: rgb(56, 56, 56);
 }
 
-#map-select, #map-material-checkbox {
-    margin-left: 5px;
+.layout-dark .modal-content {
+    background-color: rgb(56, 56, 56);
+    color: white;
 }
