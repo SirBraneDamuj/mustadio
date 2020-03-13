@@ -53,3 +53,4 @@ Equip Polearm
 Equip Axe
 Equip Gun
 Doublehand
+Galaxy Stop
