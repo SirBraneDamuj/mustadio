@@ -15,9 +15,9 @@ export default function Unit({
         <div className='d-flex unit-row'>
             <UnitBasic unit={unit} job={unit.class.name} side={side} team={team.name} />
             <UnitStats stats={unit.stats} />
-            <UnitEquipment equipmentList={unit.equipment} />
-            <UnitAbilities {...unit.abilities} gender={unit.gender} unitClass={unit.class.name} />
-            <UnitActives ability={unit.abilities.mainActive} />
+            <UnitEquipment equipmentList={unit.equipment} side={side} />
+            <UnitAbilities {...unit.abilities} gender={unit.gender} unitClass={unit.class.name} side={side} />
+            <UnitActives ability={unit.abilities.mainActive} side={side} />
             {unit.abilities.subActive.name !== '' && <UnitActives ability={unit.abilities.subActive} />}
         </div>
     );
