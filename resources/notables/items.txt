@@ -6,6 +6,7 @@ Nagrarock
 Materia Blade
 Blood Sword
 Rune Blade
+Save the Queen
 Excalibur
 Ragnarok
 Chaos Blade
@@ -58,6 +59,7 @@ Genji Gauntlet
 Magic Gauntlet
 Bracer
 Cursed Ring
+Angel Ring
 Setiemson
 Chantage
 Serpentarius
