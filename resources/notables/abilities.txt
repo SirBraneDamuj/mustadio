@@ -2,6 +2,7 @@ Cure 4
 Raise
 Raise 2
 Holy
+Dark Holy
 Fire 4
 Bolt 4
 Ice 4
@@ -10,9 +11,11 @@ Flare
 Demi 2
 Meteor
 Petrify
+Moogle
 Carbunkle
 Bahamut
 Zodiac
+Cyclops
 Kiyomori
 Kikuichimoji
 Chirijiraden
@@ -21,6 +24,7 @@ Wiznaibus
 Nameless Dance
 Earth Slash
 Revive
+Purification
 Steal Heart
 Invitation
 Death Sentence
@@ -62,3 +66,4 @@ Lucavi Skill
 Limit
 Arm Aim
 Gil Taking
+Magic Barrier
