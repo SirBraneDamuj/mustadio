@@ -6,4 +6,5 @@ export default {
     items: url('items'),
     maps: url('maps'),
     units: url('units'),
+    zodiac: url('zodiac'),
 };

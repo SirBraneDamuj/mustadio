@@ -4,6 +4,7 @@ import './Team.css';
 
 export default function Team({
     team,
+    otherTeam,
     side,
 }) {
     return (
@@ -16,6 +17,7 @@ export default function Team({
                         <Unit
                             unit={unit}
                             team={team}
+                            otherTeam={otherTeam}
                             side={side}
                         />
                     </div>

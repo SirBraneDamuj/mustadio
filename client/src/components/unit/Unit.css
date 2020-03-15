@@ -7,26 +7,9 @@
 }
 
 .unit-basic {
-    width: 6.6rem;
+    width: 9rem;
     overflow: hidden;
 }
-
-/*
-.unit-stats {
-    width: 14rem;
-}
-
-.unit-equipment {
-    width: 15rem;
-}
-
-.unit-abilities {
-    width: 12rem;
-}
-
-.unit-actives {
-    width: 12rem;
-} */
 
 .gear-icon {
     padding: 5px;
@@ -36,4 +19,10 @@
     width: 32px;
     height: 32px;
     padding: 5px;
+}
+
+.compat-icon {
+    width: 32px;
+    height: 32px;
+    padding: 1px;
 }

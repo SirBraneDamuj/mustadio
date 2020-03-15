@@ -16,12 +16,12 @@ export default function Match() {
             <MapPreview mapNumber='1' />
             <div className='d-flex match-container mt-3'>
                 <div className='align-self-start'>
-                    <h2>{context.match.team1.name} team</h2>
-                    <Team team={context.match.team1} side='left' />
+                    <h2>{team1.name} team</h2>
+                    <Team team={team1} side='left' otherTeam={team2} />
                 </div>
                 <div className='align-self-start'>
-                    <h2>{context.match.team2.name} team</h2>
-                    <Team team={context.match.team2} side='right' />
+                    <h2>{team2.name} team</h2>
+                    <Team team={team2} side='right' otherTeam={team1} />
                 </div>
             </div>
         </>

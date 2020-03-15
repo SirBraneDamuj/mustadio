@@ -10,10 +10,11 @@ export default function Unit({
     side,
     unit,
     team,
+    otherTeam,
 }) {
     return (
         <div className='d-flex unit-row'>
-            <UnitBasic unit={unit} job={unit.class.name} side={side} team={team.name} />
+            <UnitBasic unit={unit} job={unit.class.name} side={side} team={team} otherTeam={otherTeam} />
             <UnitStats stats={unit.stats} />
             <UnitEquipment equipmentList={unit.equipment} side={side} />
             <UnitAbilities {...unit.abilities} gender={unit.gender} unitClass={unit.class.name} side={side} />
