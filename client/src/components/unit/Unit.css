@@ -7,8 +7,8 @@
 }
 
 .unit-basic {
-    width: 9rem;
-    overflow: hidden;
+    width: 9.4rem;
+    /* overflow: hidden; */
 }
 
 .gear-icon {
@@ -16,13 +16,15 @@
 }
 
 .ability-icon {
-    width: 32px;
-    height: 32px;
-    padding: 5px;
+    width: 2.5rem;
+    padding: 0.5rem;
 }
 
 .compat-icon {
-    width: 32px;
-    height: 32px;
+    width: 100%;
     padding: 1px;
+}
+
+.notable {
+    font-weight: bold;
 }

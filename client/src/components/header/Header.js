@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import ContactModal from './ContactModal';
 import MatchupModal from './MatchupModal';
@@ -23,22 +24,28 @@ function Header() {
             <Navbar bg='light' expand='lg'>
                 <Navbar.Brand>Mustadio</Navbar.Brand>
                 <Nav>
-                    {navLink('API Docs', '/api/swagger')}
-                    {navLink('Github', 'https://github.com/sirbranedamuj/mustadio')}
-                    <Nav.Item>
-                        <Nav.Link onClick={showContact}>Contact</Nav.Link>
-                    </Nav.Item>
+                    <NavDropdown title='Links'>
+                        {navLink('API Docs', '/api/swagger')}
+                        {navLink('Github', 'https://github.com/sirbranedamuj/mustadio')}
+                        <Nav.Item>
+                            <Nav.Link onClick={showContact}>Contact</Nav.Link>
+                        </Nav.Item>
+                    </NavDropdown>
                 </Nav>
-                <Button
-                    variant='outline-secondary'
-                    className='ml-5 mr-5'
-                    onClick={showMatchups}
-                >
-                    Choose Matchup...
-                </Button>
-                <Button variant='outline-secondary'>
-                    Dark Mode
-                </Button>
+                <Nav>
+                    <Button
+                        variant='outline-secondary'
+                        className='ml-5 mr-5'
+                        onClick={showMatchups}
+                    >
+                        Choose Matchup...
+                    </Button>
+                </Nav>
+                <Nav>
+                    <Button variant='outline-secondary'>
+                        Dark Mode
+                    </Button>
+                </Nav>
             </Navbar>
             <ContactModal show={contactShouldShow} onHide={hideContact} />
             <MatchupModal show={matchupsShouldShow} onHide={hideMatchups} />

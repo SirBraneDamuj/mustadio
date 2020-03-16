@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import MustadioTooltip from '../util/MustadioTooltip';
 import images from '../../constants/images';
 import FftbgContext from '../../contexts/FftbgContext';
+import notables from '../../constants/notables';
+import classnames from 'classnames';
 
 const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
 
@@ -10,12 +12,16 @@ function Ability({
     slot,
     info,
     side,
+    highlightNotables = false,
 }) {
     const abilityNameDisplay = name.length > 0 ? name : '(none)';
+    const textClasses = classnames({
+        notable: highlightNotables && notables.abilities.has(name),
+    });
     const line = (
         <div className='d-inline-flex align-items-center'>
             <img className='ability-icon' src={`${images.icons}/${slot}.png`} alt={slot} />
-            <div>{abilityNameDisplay}</div>
+            <div className={textClasses}>{abilityNameDisplay}</div>
         </div>
     );
 
@@ -42,11 +48,11 @@ function NonInnates({
 }) {
     return (
         <>
-            <Ability name={mainActive.name} slot='active' info={infoGetter(mainActive.name)} side={side} />
-            <Ability name={subActive.name} slot='active' info={infoGetter(subActive.name)} side={side} />
-            <Ability name={react.name} slot='react' info={infoGetter(react.name)} side={side} />
-            <Ability name={support.name} slot='support' info={infoGetter(support.name)} side={side} />
-            <Ability name={move.name} slot='move' info={infoGetter(move.name)} side={side} />
+            <Ability name={mainActive.name} slot='active' info={infoGetter(mainActive.name)} side={side} highlightNotables />
+            <Ability name={subActive.name} slot='active' info={infoGetter(subActive.name)} side={side} highlightNotables />
+            <Ability name={react.name} slot='react' info={infoGetter(react.name)} side={side} highlightNotables />
+            <Ability name={support.name} slot='support' info={infoGetter(support.name)} side={side} highlightNotables />
+            <Ability name={move.name} slot='move' info={infoGetter(move.name)} side={side} highlightNotables />
         </>
     );
 }
