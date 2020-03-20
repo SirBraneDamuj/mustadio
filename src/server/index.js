@@ -68,6 +68,7 @@ app.get('/:tournamentId/:team1/:team2', async (req, res) => {
             maps,
             items: items.getItems(),
             abilities: abilities.getAbilities(),
+            actives: abilities.activeAbilities,
             classes: classes.getClasses(),
             statuses: statuses.getStatuses(),
             monsterSkills,
