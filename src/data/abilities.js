@@ -50,3 +50,4 @@ module.exports.getAbilities = () => myLoader.getData();
 module.exports.getAbility = (abilityName) => myLoader.getData()[abilityName];
 module.exports.reload = async (version) => myLoader.reload(version);
 module.exports.mainActiveForClass = (className) => actives[className] || null;
+module.exports.activeAbilities = new Set(Object.values(actives));
