@@ -23,6 +23,7 @@ const FftbgContext = React.createContext({
     statuses: {},
     monsterSkills: {},
   },
+  loadLatestMatch: () => {},
 });
 
 export default FftbgContext;

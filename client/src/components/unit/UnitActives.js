@@ -11,8 +11,8 @@ export default function UnitActives({
     side,
 }) {
     const { data: { abilities } } = useContext(FftbgContext);
-    const learnedChildren = learned.sort().map(({ name }) => {
-        const { info } = abilities[name];
+    const learnedChildren = learned.map(({ name }) => {
+        const { info } = abilities[name] || {};
         if (info) {
             return (
                 <MustadioTooltip key={name} side={tooltipSide(side)} content={info}>

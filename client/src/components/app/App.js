@@ -3,10 +3,12 @@ import axios from 'axios';
 import FftbgContext from '../../contexts/FftbgContext';
 import Header from '../header/Header';
 import Match from '../match/Match';
+import Spinner from 'react-bootstrap/Spinner';
 
 const mustadioApiClient = axios.create({
   baseURL: 'http://localhost:3001/api'
 });
+
 
 function App() {
   const [currentMatch, setCurrentMatch] = useState({});
@@ -14,28 +16,27 @@ function App() {
   const [data, setData] = useState({});
   const [dataReady, setDataReady] = useState(false);
 
-  useEffect(() => {
-    async function fetchCurrentMatch() {
-      const matchResult = await mustadioApiClient.get('/match');
-      setCurrentMatch(matchResult.data);
-      setMatchReady(true);
-    }
-    fetchCurrentMatch();
-  }, [setCurrentMatch]);
+  async function fetchCurrentMatch() {
+    setMatchReady(false);
+    const matchResult = await mustadioApiClient.get('/match');
+    setCurrentMatch(matchResult.data);
+    setMatchReady(true);
+  }
 
-  useEffect(() => {
-    async function fetchData() {
-      const dataResult = await mustadioApiClient.get('/data');
-      setData(dataResult.data);
-      setDataReady(true);
-    }
-    fetchData();
-  }, [setData]);
+  async function fetchData() {
+    const dataResult = await mustadioApiClient.get('/data');
+    setData(dataResult.data);
+    setDataReady(true);
+  }
+
+  useEffect(() => { fetchCurrentMatch(); }, []); 
+  useEffect(() => { fetchData(); }, []); 
 
   const buildContext = () => ({
     match: currentMatch.match,
     tournament: currentMatch.tournament,
     data, 
+    loadLatestMatch: fetchCurrentMatch,
   });
   if (matchReady && dataReady) {
     return (
@@ -49,7 +50,9 @@ function App() {
       </div>
     );
   } else {
-    return null;
+    return (
+      <Spinner animation="grow" />
+    );
   }
 }
 

@@ -18,7 +18,7 @@ export default function UnitZodiac({
         );
     });
     return (
-        <MustadioTooltip side={'right'} content={zodiacInfo(word)}>
+        <MustadioTooltip side={'right'} content={zodiacInfo(word) || ''}>
             <div className='d-flex flex-column justify-content-center'>
                 {starComponents}
             </div>

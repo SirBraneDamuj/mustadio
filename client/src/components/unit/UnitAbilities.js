@@ -14,7 +14,7 @@ function Ability({
     side,
     highlightNotables = false,
 }) {
-    const abilityNameDisplay = name.length > 0 ? name : '(none)';
+    const abilityNameDisplay = name && name.length > 0 ? name : '(none)';
     const textClasses = classnames({
         notable: highlightNotables && notables.abilities.has(name),
     });

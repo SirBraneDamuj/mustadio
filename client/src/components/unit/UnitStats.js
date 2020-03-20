@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import MustadioTooltip from '../util/MustadioTooltip';
+import FftbgContext from '../../contexts/FftbgContext'
 
-export default function UnitStats({ stats }) {
+const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
+
+export default function UnitStats({ side, stats }) {
+    const { data: { statuses } } = useContext(FftbgContext);
     const initialStatuses = stats.initialStatuses && stats.initialStatuses.map((status) => (
-        <li key={status}>{status}</li>
+        <li key={status}>
+            <MustadioTooltip side={tooltipSide(side)} content={statuses[status]?.info || ''}>
+                <div>{status}</div>
+            </MustadioTooltip>
+        </li>
     ));
     const permStatuses = stats.permStatuses && stats.permStatuses.map((status) => (
-        <li key={status}>{status}</li>
+        <li key={status}>
+            <MustadioTooltip side={tooltipSide(side)} content={statuses[status]?.info || ''}>
+                <div>{status}</div>
+            </MustadioTooltip>
+        </li>
     ));
     return (
         <div className='d-flex flex-column unit-stats'>
@@ -20,13 +33,19 @@ export default function UnitStats({ stats }) {
                 <li>A-EV {stats.aPhysEvPercent}% / {stats.aMagEvPercent}%</li>
             </ul>
             {initialStatuses && initialStatuses.length > 0 && 
-                <ul>
-                    {initialStatuses}
-                </ul>}
+                <>
+                    <span>Initial:</span>
+                    <ul>
+                        {initialStatuses}
+                    </ul>
+                </>}
             {permStatuses && permStatuses.length > 0 && 
-                <ul>
-                    {permStatuses}
-                </ul>}
+                <>
+                    <span>Permanent:</span>
+                    <ul>
+                        {permStatuses}
+                    </ul>
+                </>}
         </div>
     );
 }

@@ -14,6 +14,7 @@ const [
     LIBRA,
     SCORPIO,
     SAGITTARIUS,
+    SERPENTARIUS,
 ] = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Serpentarius'];
 
 export const zodiacMapping = {
@@ -62,7 +63,7 @@ export const zodiacMapping = {
     [CANCER]: {
         [CAPRICORN]: MINMAX,
         [SCORPIO]: GOOD,
-        [LEO]: GOOD,
+        [PISCES]: GOOD,
         [LIBRA]: BAD,
         [ARIES]: BAD,
     },
@@ -101,6 +102,7 @@ export const zodiacMapping = {
         [PISCES]: BAD,
         [VIRGO]: BAD,
     },
+    [SERPENTARIUS]: {},
 };
 
 export function compareZodiac(z1, gender1, z2, gender2) {

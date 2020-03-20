@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import ContactModal from './ContactModal';
 import MatchupModal from './MatchupModal';
+import LatestMatchButton from './LatestMatchButton';
 
 function Header() {
     const [contactShouldShow, setContactShouldShow] = useState(false);
@@ -31,6 +32,9 @@ function Header() {
                             <Nav.Link onClick={showContact}>Contact</Nav.Link>
                         </Nav.Item>
                     </NavDropdown>
+                </Nav>
+                <Nav>
+                    <LatestMatchButton />
                 </Nav>
                 <Nav>
                     <Button

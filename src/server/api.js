@@ -106,10 +106,8 @@ router.get('/data', (_, res) => {
   })
 });
 
-router.get('/match', async (_, res) => {
+const responseFor = async (tournamentId, team1, team2) => {
   const formatter = new ApiFormatter(false, false);
-  const tournamentId = await data.getLatestTournamentId();
-  const [team1, team2] = await data.getLatestMatchForTournamentId(tournamentId);
   const maps = await data.getMapsForTournament(tournamentId);
   const [team1Record, team2Record] = await data.getTeamsForTournament(tournamentId, team1, team2);
   const unitFormatter = (team) => (unit) => {
@@ -122,8 +120,8 @@ router.get('/match', async (_, res) => {
       stats: totalStats,
     }
   }
-  
-  res.json({
+
+  return {
     match: {
       team1: {
         name: team1,
@@ -138,8 +136,25 @@ router.get('/match', async (_, res) => {
     tournament: {
       tournamentId,
       maps: maps.map(({ number, title, order }) => ({ number, title, order })),
-    },
-  });
+    }
+  };
+}
+
+router.get('/match', async (_, res) => {
+  const tournamentId = await data.getLatestTournamentId();
+  const [team1, team2] = await data.getLatestMatchForTournamentId(tournamentId);
+  res.json(
+    await responseFor(tournamentId, team1, team2),
+  );
+});
+
+router.get('/match/:tournamentId/:team1/:team2', async (req, res) => {
+  const {
+    tournamentId, team1, team2
+  } = req.params;
+  res.json(
+    await responseFor(tournamentId, team1, team2),
+  );
 });
 
 module.exports = router;

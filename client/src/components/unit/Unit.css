@@ -6,9 +6,13 @@
     border-right: 1px solid #dee2e6;
 }
 
+.unit-row > *:not(:first-child) {
+    flex-grow: 1;
+}
+
 .unit-basic {
     width: 9.4rem;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .gear-icon {
