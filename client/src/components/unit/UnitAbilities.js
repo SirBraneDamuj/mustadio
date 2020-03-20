@@ -60,7 +60,7 @@ function NonInnates({
 export default function UnitAbilities(props) {
     const { data: { classes, abilities } } = useContext(FftbgContext);
     const { innates } = classes[props.unitClass][props.gender];
-    const abilityInfoGetter = (name) => abilities[name]?.info;
+    const abilityInfoGetter = (name) => abilities[name]?.info || abilities[name.replace(/ /g, '')]?.info;
 
     const innatesChildren = (() => {
         if (!innates) { 

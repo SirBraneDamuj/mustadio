@@ -37,6 +37,7 @@ function App() {
     tournament: currentMatch.tournament,
     data, 
     loadLatestMatch: fetchCurrentMatch,
+    renderedMap: 'MAP043',
   });
   if (matchReady && dataReady) {
     return (
