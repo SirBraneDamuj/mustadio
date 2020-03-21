@@ -1,4 +1,5 @@
 #!/bin/sh
 
 (cd client && npm install && npm run build)
-cp client/build/* public/
+mkdir public
+cp -R client/build/* public/
