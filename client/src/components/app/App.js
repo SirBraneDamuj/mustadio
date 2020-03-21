@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
 import FftbgContext from '../../contexts/FftbgContext';
 import Header from '../header/Header';
 import Match from '../match/Match';
-import Spinner from 'react-bootstrap/Spinner';
-
-const mustadioApiClient = axios.create({
-  baseURL: 'http://localhost:3001/api'
-});
+import mustadioApiClient from '../../api/mustadio-client';
 
 function App({
   tournamentId,
@@ -22,12 +18,8 @@ function App({
   useEffect(() => {
     async function fetchCurrentMatch() {
       setMatchReady(false);
-      let path = '/match';
-      if (tournamentId) {
-        path += `/${tournamentId}/${team1}/${team2}`
-      }
-      const matchResult = await mustadioApiClient.get(path);
-      setCurrentMatch(matchResult.data);
+      const matchResult = await mustadioApiClient.getMatch(tournamentId, team1, team2);
+      setCurrentMatch(matchResult);
       setMatchReady(true);
     }
     fetchCurrentMatch();
@@ -35,8 +27,8 @@ function App({
 
   useEffect(() => {
     async function fetchData() {
-      const dataResult = await mustadioApiClient.get('/data');
-      setData(dataResult.data);
+      const dataResult = await mustadioApiClient.getData()
+      setData(dataResult);
       setDataReady(true);
     }
     fetchData();

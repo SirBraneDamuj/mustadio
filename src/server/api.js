@@ -107,7 +107,7 @@ router.get('/data', (_, res) => {
         monsterName.replace(/ /g, ''),
         skills
       ];
-    }),
+    })),
   })
 });
 
@@ -148,9 +148,11 @@ const responseFor = async (tournamentId, team1, team2) => {
 router.get('/match', async (_, res) => {
   const tournamentId = await data.getLatestTournamentId();
   const [team1, team2] = await data.getLatestMatchForTournamentId(tournamentId);
-  res.json(
-    await responseFor(tournamentId, team1, team2),
-  );
+  res.json({
+    tournamentId,
+    team1,
+    team2,
+  });
 });
 
 router.get('/match/:tournamentId/:team1/:team2', async (req, res) => {

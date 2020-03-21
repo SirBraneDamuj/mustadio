@@ -1,19 +1,8 @@
-import React, { useContext } from 'react';
-import FftbgContext from '../../contexts/FftbgContext';
-import Button from 'react-bootstrap/Button';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LatestMatchButton() {
-    const context = useContext(FftbgContext);
-    function clickHandler() {
-        context.loadLatestMatch();
-    }
     return (
-        <Button
-            variant='primary'
-            className='ml-5 mr-5'
-            onClick={clickHandler}
-        >
-            Latest Match
-        </Button>
-    )
+        <Link className='btn btn-primary ml-5 mr-5' to='/'>Latest Match</Link>
+    );
 }

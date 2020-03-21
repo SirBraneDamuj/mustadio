@@ -89,6 +89,7 @@ export default function MapRenderer({
             controls.current.update();
             animate();
         });
+        return () => cancelAnimationFrame(animationId.current);
     });
 
     return (
