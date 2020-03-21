@@ -49,7 +49,6 @@ export default function MapRenderer({
         if(renderTarget.current) {
             renderTarget.current.append(renderer.current.domElement);
             controls.current = new OrbitControls(camera.current, renderTarget.current);
-            controls.current.screenSpacePanning = true;
         }
     });
 
@@ -75,6 +74,7 @@ export default function MapRenderer({
             }
 
             controls.current.target = terrain.position.clone();
+            controls.current.screenSpacePanning = true;
 
             const box = new THREE.Box3().setFromObject(terrain);
             const center = box.getCenter(new THREE.Vector3());
