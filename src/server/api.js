@@ -102,7 +102,12 @@ router.get('/data', (_, res) => {
       ];
     })),
     statuses: statuses.getStatuses(),
-    monsterSkills: monsterSkills.getAllMonsterSkills(),
+    monsterSkills: Object.fromEntries(toPairs(monsterSkills.getAllMonsterSkills()).map(([monsterName, skills]) => {
+      return [
+        monsterName.replace(/ /g, ''),
+        skills
+      ];
+    }),
   })
 });
 
