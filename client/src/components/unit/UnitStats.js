@@ -6,14 +6,14 @@ const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
 
 export default function UnitStats({ side, stats }) {
     const { data: { statuses } } = useContext(FftbgContext);
-    const initialStatuses = stats.initialStatuses && stats.initialStatuses.map((status) => (
+    const initialStatuses = stats.initialStatuses && [...new Set(stats.initialStatuses)].map((status) => (
         <li key={status}>
             <MustadioTooltip side={tooltipSide(side)} content={statuses[status]?.info || ''}>
                 <div>{status}</div>
             </MustadioTooltip>
         </li>
     ));
-    const permStatuses = stats.permStatuses && stats.permStatuses.map((status) => (
+    const permStatuses = stats.permStatuses && [...new Set(stats.permStatuses)].map((status) => (
         <li key={status}>
             <MustadioTooltip side={tooltipSide(side)} content={statuses[status]?.info || ''}>
                 <div>{status}</div>

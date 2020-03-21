@@ -24,7 +24,9 @@ export default function UnitBasic({
     );
     return (
         <div className='d-flex flex-column unit-basic'>
-            <a title={name} href={`https://fftbg.bryanching.net/player/${name}`} target='_blank'>{name}</a>
+            <a title={name} href={`https://fftbg.bryanching.net/player/${name}`} target='_blank' rel="noopener noreferrer">
+                {name}
+            </a>
             <span>{gender}</span>
             <BraveFaith brave={brave} faith={faith} />
             <div className='font-weight-bold'>{job}</div>

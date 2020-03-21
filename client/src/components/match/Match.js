@@ -13,7 +13,7 @@ export default function Match() {
     return (
         <>
             <h2>{`${team1.name} vs ${team2.name}`}</h2>
-            <MapPreview mapNumber='1' />
+            <MapPreview mapNumber={context.currentMap} />
             <div className='d-flex match-container mt-3'>
                 <div className='align-self-start'>
                     <h2>{team1.name} team</h2>

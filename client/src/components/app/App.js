@@ -9,7 +9,6 @@ const mustadioApiClient = axios.create({
   baseURL: 'http://localhost:3001/api'
 });
 
-
 function App() {
   const [currentMatch, setCurrentMatch] = useState({});
   const [matchReady, setMatchReady] = useState(false);
@@ -32,12 +31,16 @@ function App() {
   useEffect(() => { fetchCurrentMatch(); }, []); 
   useEffect(() => { fetchData(); }, []); 
 
+  const currentMap = (matchNumber, maps) => {
+    return maps.sort(({ order1 }, { order2 }) => order1 - order2)[matchNumber].number;
+  };
+
   const buildContext = () => ({
     match: currentMatch.match,
     tournament: currentMatch.tournament,
     data, 
     loadLatestMatch: fetchCurrentMatch,
-    renderedMap: 'MAP043',
+    currentMap: currentMap(currentMatch.match.matchNumber, currentMatch.tournament.maps),
   });
   if (matchReady && dataReady) {
     return (
