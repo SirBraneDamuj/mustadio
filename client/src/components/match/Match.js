@@ -12,9 +12,11 @@ export default function Match() {
     }
     return (
         <>
-            <h2>{context.tournament.tournamentId}</h2>
-            <h2>{`${team1.name} vs ${team2.name}`}</h2>
-            {context.currentMap && <MapPreview mapNumber={context.currentMap} />}
+            <div className='d-flex flex-column'>
+                <h2>{context.tournament.tournamentId}</h2>
+                <h2>{`${team1.name} vs ${team2.name}`}</h2>
+                {context.currentMap && <MapPreview mapNumber={context.currentMap} />}
+            </div>
             <div className='d-flex match-container mt-3'>
                 <div className='align-self-start'>
                     <h2>{team1.name} team</h2>

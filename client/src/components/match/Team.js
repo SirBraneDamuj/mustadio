@@ -11,16 +11,13 @@ export default function Team({
         <div className='d-flex flex-column team-table'>
             {
                 team.units.map((unit, index) => (
-                    <div
+                    <Unit
                         key={`${team.name}/${index}`}
-                    >
-                        <Unit
-                            unit={unit}
-                            team={team}
-                            otherTeam={otherTeam}
-                            side={side}
-                        />
-                    </div>
+                        unit={unit}
+                        team={team}
+                        otherTeam={otherTeam}
+                        side={side}
+                    />
                 ))
             }
         </div>

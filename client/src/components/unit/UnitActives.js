@@ -11,7 +11,7 @@ export default function UnitActives({
     side,
 }) {
     const { data: { abilities } } = useContext(FftbgContext);
-    const learnedChildren = learned.map((name) => {
+    const learnedChildren = learned?.map((name) => {
         const { info } = abilities[name.replace('*', '')] || {};
         const classNames = classnames({
             notable: notables.abilities.has(name),
@@ -28,9 +28,13 @@ export default function UnitActives({
             );
         }
     });
-    return (
-        <div className='d-flex flex-column unit-actives'>
-            {learnedChildren}
-        </div>
-    );
+    if (learnedChildren && learnedChildren.length > 0) {
+        return (
+            <div className='d-flex flex-column unit-actives'>
+                {learnedChildren}
+            </div>
+        );
+    } else {
+        return null;
+    }
 }

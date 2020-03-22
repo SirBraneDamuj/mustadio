@@ -1,6 +1,5 @@
 .team-table {
     border: 1px solid black;
-    margin: 5px;
 }
 
 .team-table > *:not(:last-child) {
