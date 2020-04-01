@@ -1,5 +1,5 @@
 .unit-row > * {
-    padding: 0.7rem;
+    padding: 0.5rem;
 }
 
 .unit-row > *:not(:last-child) {
@@ -11,12 +11,12 @@
 }
 
 .unit-basic {
-    width: 9.4rem;
+    width: 8.4rem;
     overflow: hidden;
 }
 
 .gear-icon {
-    padding: 5px;
+    padding: 0.25rem;
 }
 
 .ability-icon {

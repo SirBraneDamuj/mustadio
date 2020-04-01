@@ -24,8 +24,8 @@ export default function Unit({
             <UnitStats stats={unit.stats} side={side} />
             {equipment && <UnitEquipment equipmentList={unit.equipment} side={side} />}
             <UnitAbilities {...unit.abilities} gender={unit.gender} unitClass={unit.class.name} side={side} />
-            {mainActives && <UnitActives learned={mainActivesList} side={side} />}
-            {subActives && <UnitActives learned={unit.abilities.subActive.learned.map(({ name }) => name)} side={'left'}/>}
+            {mainActives && <UnitActives learned={mainActivesList} side={unit.gender === 'Monster' ? 'right' : side} />}
+            {subActives && <UnitActives learned={unit.abilities.subActive.learned.map(({ name }) => name)} side={'right'}/>}
         </div>
     );
 }

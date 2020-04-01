@@ -1,24 +1,14 @@
 import React, { useContext } from 'react';
-import MustadioTooltip from '../util/MustadioTooltip';
 import FftbgContext from '../../contexts/FftbgContext'
-
-const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
+import { Ability } from './UnitAbilities';
 
 export default function UnitStats({ side, stats }) {
     const { data: { statuses } } = useContext(FftbgContext);
     const initialStatuses = stats.initialStatuses && [...new Set(stats.initialStatuses)].map((status) => (
-        <li key={status}>
-            <MustadioTooltip side={tooltipSide(side)} content={statuses[status]?.info || ''}>
-                <div>{status}</div>
-            </MustadioTooltip>
-        </li>
+        <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} />
     ));
     const permStatuses = stats.permStatuses && [...new Set(stats.permStatuses)].map((status) => (
-        <li key={status}>
-            <MustadioTooltip side={tooltipSide(side)} content={statuses[status]?.info || ''}>
-                <div>{status}</div>
-            </MustadioTooltip>
-        </li>
+        <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} />
     ));
     return (
         <div className='d-flex flex-column unit-stats'>
@@ -27,24 +17,18 @@ export default function UnitStats({ side, stats }) {
             <span>Move: {stats.move} / Jump: {stats.jump}</span>
             <span>PA: {stats.pa} / MA: {stats.ma}</span>
             <span>Evasion:</span>
-            <ul>
-                <li>C-EV {stats.cEvPercent}%</li>
-                <li>S-EV {stats.sPhysEvPercent}% / {stats.sMagEvPercent}%</li>
-                <li>A-EV {stats.aPhysEvPercent}% / {stats.aMagEvPercent}%</li>
-            </ul>
+            <span><strong>C</strong> {stats.cEvPercent}%</span>
+            <span><strong>S</strong> {stats.sPhysEvPercent}% / {stats.sMagEvPercent}%</span>
+            <span><strong>A</strong> {stats.aPhysEvPercent}% / {stats.aMagEvPercent}%</span>
             {initialStatuses && initialStatuses.length > 0 && 
                 <>
-                    <span>Initial:</span>
-                    <ul>
-                        {initialStatuses}
-                    </ul>
+                    <strong>Initial Status:</strong>
+                    {initialStatuses}
                 </>}
             {permStatuses && permStatuses.length > 0 && 
                 <>
-                    <span>Permanent:</span>
-                    <ul>
-                        {permStatuses}
-                    </ul>
+                    <strong>Perm Status:</strong>
+                    {permStatuses}
                 </>}
         </div>
     );

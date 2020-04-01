@@ -7,7 +7,7 @@ import classnames from 'classnames';
 
 const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
 
-function Ability({
+export function Ability({
     name,
     slot,
     info,

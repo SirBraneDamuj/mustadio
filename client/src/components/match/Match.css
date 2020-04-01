@@ -1,9 +1,0 @@
-.match-container {
-    flex-direction: column;
-}
-
-@media (min-width: 1920px) {
-    .match-container {
-        flex-direction: row!important;
-    }
-}
