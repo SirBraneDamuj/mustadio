@@ -7,7 +7,10 @@ import ContactModal from './ContactModal';
 import MatchupModal from './MatchupModal';
 import LatestMatchButton from './LatestMatchButton';
 
-function Header() {
+function Header({
+    useDarkTheme,
+    handleDarkThemeToggle,
+}) {
     const [contactShouldShow, setContactShouldShow] = useState(false);
     const hideContact = () => setContactShouldShow(false);
     const showContact = () => setContactShouldShow(true);
@@ -46,8 +49,8 @@ function Header() {
                     </Button>
                 </Nav>
                 <Nav>
-                    <Button variant='outline-secondary'>
-                        Dark Mode
+                    <Button variant='outline-secondary' onClick={handleDarkThemeToggle}>
+                        {useDarkTheme ? 'Light Mode' : 'Dark Mode'}
                     </Button>
                 </Nav>
             </Navbar>

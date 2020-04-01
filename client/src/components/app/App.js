@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import classnames from 'classnames';
 import Spinner from 'react-bootstrap/Spinner';
 import FftbgContext from '../../contexts/FftbgContext';
 import Header from '../header/Header';
 import Match from '../match/Match';
 import mustadioApiClient from '../../api/mustadio-client';
+import './App.css';
 
 function App({
     tournamentId,
@@ -14,6 +16,12 @@ function App({
     const [matchReady, setMatchReady] = useState(false);
     const [data, setData] = useState({});
     const [dataReady, setDataReady] = useState(false);
+    const [useDarkTheme, setUseDarkTheme] = useState(localStorage.getItem('darkTheme'));
+
+    function toggleDarkTheme() {
+        setUseDarkTheme(!useDarkTheme);
+        localStorage.setItem('darkTheme', useDarkTheme);
+    }
 
     useEffect(() => {
         async function fetchCurrentMatch() {
@@ -44,11 +52,18 @@ function App({
         data,
         currentMap: currentMap(currentMatch.match.matchNumber, currentMatch.tournament.maps),
     });
+
+    const appClasses = classnames({
+        'dark-theme': useDarkTheme,
+    });
+
     if (matchReady && dataReady) {
         return (
             <FftbgContext.Provider value={buildContext()}>
-                <Header />
-                <Match />
+                <div id='layout' className={appClasses}>
+                    <Header useDarkTheme={useDarkTheme} handleDarkThemeToggle={toggleDarkTheme} />
+                    <Match />
+                </div>
             </FftbgContext.Provider>
         );
     } else {
