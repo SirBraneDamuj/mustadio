@@ -14,6 +14,7 @@ const badMaps = new Set([
   'MAP033',
   'MAP056',
   'MAP095',
+  'MAP104',
   'MAP111',
   'MAP113',
   'MAP114',
