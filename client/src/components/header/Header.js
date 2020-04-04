@@ -23,12 +23,14 @@ function Header({
             <Nav.Link href={href}>{text}</Nav.Link>
         </Nav.Item>
     );
+
     return (
         <>
             <Navbar bg='light' expand='lg'>
                 <Navbar.Brand>Mustadio</Navbar.Brand>
                 <Nav>
                     <NavDropdown title='Links'>
+                        {navLink('FFTBattleground', 'https://twitch.tv/fftbattleground')}
                         {navLink('API Docs', '/api/swagger')}
                         {navLink('Github', 'https://github.com/sirbranedamuj/mustadio')}
                         <Nav.Item>
