@@ -5,10 +5,10 @@ import { Ability } from './UnitAbilities';
 export default function UnitStats({ side, stats }) {
     const { data: { statuses } } = useContext(FftbgContext);
     const initialStatuses = stats.initialStatuses && [...new Set(stats.initialStatuses)].map((status) => (
-        <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} />
+        <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} side={side} />
     ));
     const permStatuses = stats.permStatuses && [...new Set(stats.permStatuses)].map((status) => (
-        <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} />
+        <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} side={side} />
     ));
     return (
         <div className='d-flex flex-column unit-stats'>
