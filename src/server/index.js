@@ -1,5 +1,6 @@
 const express = require('express');
 require('express-async-errors');
+const favicon = require('serve-favicon')
 const path = require('path');
 const bodyParser = require('body-parser');
 const items = require('../data/items');
@@ -13,6 +14,12 @@ const apiRouter = require('./api');
 const app = express();
 
 const port = config.PORT || 3000;
+
+try {
+    app.use(favicon(path.join(__dirname, '..', '..', 'public', 'favicon.ico')));
+} catch (e) {
+    console.log(e);
+}
 
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
