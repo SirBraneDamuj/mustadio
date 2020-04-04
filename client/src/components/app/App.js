@@ -68,7 +68,9 @@ function App({
         );
     } else {
         return (
-            <Spinner animation="grow" />
+            <div id='layout' className={appClasses}>
+                <Spinner animation="grow" variant={useDarkTheme ? 'light' : 'dark'}/>
+            </div>
         );
     }
 }
