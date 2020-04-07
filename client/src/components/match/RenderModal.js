@@ -23,7 +23,7 @@ const badMaps = new Set([
 
 export default function RenderModal({ show, onHide }) {
     const { currentMap } = useContext(FftbgContext);
-    const [renderedMap, setRenderedMap] = useState(`MAP${currentMap.padStart(3, '0')}`);
+    const [renderedMap, setRenderedMap] = useState(`MAP${currentMap.number.padStart(3, '0')}`);
     const [normalMaterial, setNormalMaterial] = useState(badMaps.has(renderedMap));
 
     function handleMaterialCheckbox(event) {

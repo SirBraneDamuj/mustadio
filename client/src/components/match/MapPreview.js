@@ -4,7 +4,7 @@ import RenderModal from './RenderModal';
 import images from '../../constants/images';
 import './MapPreview.css';
 
-export default function MapPreview({ mapNumber }) {
+export default function MapPreview({ mapNumber, mapTitle }) {
     const [shouldShowRender, setShouldShowRender] = useState(false);
     const showRender = () => setShouldShowRender(true);
     const hideRender = () => setShouldShowRender(false);
@@ -21,6 +21,9 @@ export default function MapPreview({ mapNumber }) {
 
     return (
         <>
+            <h3>
+                <a href={`http://ffhacktics.com/maps.php?id=${mapNumber}`} target='_blank'>{`${mapNumber}) ${mapTitle}`}</a>
+            </h3>
             <span className='map-preview-container'>
                 {imgs}
                 <Button

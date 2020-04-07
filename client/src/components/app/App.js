@@ -46,7 +46,7 @@ function App({
     }, []);
 
     const currentMap = (matchNumber, maps) => {
-        return maps.sort(({ order1 }, { order2 }) => order1 - order2)[matchNumber]?.number;
+        return maps.sort(({ order1 }, { order2 }) => order1 - order2)[matchNumber];
     };
 
     const buildContext = () => ({
