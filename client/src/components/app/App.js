@@ -16,7 +16,7 @@ function App({
     const [matchReady, setMatchReady] = useState(false);
     const [data, setData] = useState({});
     const [dataReady, setDataReady] = useState(false);
-    const [useDarkTheme, setUseDarkTheme] = useState(localStorage.getItem('darkTheme'));
+    const [useDarkTheme, setUseDarkTheme] = useState(localStorage.getItem('darkTheme') === 'true');
 
     function toggleDarkTheme() {
         setUseDarkTheme(!useDarkTheme);
