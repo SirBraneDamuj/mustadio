@@ -20,8 +20,11 @@ function App({
 
     function toggleDarkTheme() {
         setUseDarkTheme(!useDarkTheme);
-        localStorage.setItem('darkTheme', useDarkTheme);
     }
+
+    useEffect(() => {
+        localStorage.setItem('darkTheme', useDarkTheme);
+    }, [useDarkTheme])
 
     useEffect(() => {
         async function fetchCurrentMatch() {
