@@ -24,6 +24,11 @@ function App({
 
     useEffect(() => {
         localStorage.setItem('darkTheme', useDarkTheme);
+        if (useDarkTheme) {
+            document.body.classList.add('dark-theme');
+        } else {
+            document.body.classList.remove('dark-theme');
+        }
     }, [useDarkTheme])
 
     useEffect(() => {

@@ -22,7 +22,7 @@ export default function MapPreview({ mapNumber, mapTitle }) {
     return (
         <>
             <h3>
-                <a href={`http://ffhacktics.com/maps.php?id=${mapNumber}`} target='_blank'>{`${mapNumber}) ${mapTitle}`}</a>
+                <a href={`http://ffhacktics.com/maps.php?id=${mapNumber}`} target='_blank' rel='noopener noreferrer'>{`${mapNumber}) ${mapTitle}`}</a>
             </h3>
             <span className='map-preview-container'>
                 {imgs}
