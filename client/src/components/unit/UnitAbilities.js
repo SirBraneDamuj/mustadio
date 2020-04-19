@@ -71,7 +71,7 @@ export default function UnitAbilities(props) {
             return innates
                 .filter(({ type }) => type !== 'active')
                 .map(({ name, type }) => (
-                    <Ability key={name} name={name} slot={type} info={abilityInfoGetter(name)} side={props.side} />
+                    <Ability key={name} name={name} slot={type || 'status'} info={abilityInfoGetter(name)} side={props.side} />
                 ));
         }
     })();
