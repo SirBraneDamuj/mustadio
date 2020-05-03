@@ -13,8 +13,8 @@ export default function UnitStats({ side, stats }) {
     return (
         <div className='d-flex flex-column unit-stats'>
             <span>HP: {stats.hp} / MP: {stats.mp}</span>
-            <span>Speed: {stats.speed}</span>
             <span>Move: {stats.move} / Jump: {stats.jump}</span>
+            <span>Speed: {stats.speed}</span>
             <span>PA: {stats.pa} / MA: {stats.ma}</span>
             <span>Evasion:</span>
             <span><strong>C</strong> {stats.cEvPercent}%</span>
