@@ -10,13 +10,14 @@
     "start:loader:debug": "node --inspect src/loader/index.js",
     "start:debug": "node --inspect src/main.js",
     "test": "mocha test --recursive",
-    "build": "npm test && npx eslint src test",
+    "build": "npm test && npx eslint src test && ./scripts/buildClient.sh",
     "loadMapImages": "node src/script/map-thumbs-loader.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "jsdom": "^16.1.0",

@@ -5,6 +5,7 @@ teams.json
 /mustadio-*
 *.zip
 *.sqlite
+public/
 
 
 ### Auto generated gitignore below

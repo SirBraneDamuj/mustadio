@@ -1,0 +1,12 @@
+.unit-portrait-right {
+    align-self: start;
+    flex-shrink: 1;
+    width: 66%;
+}
+
+.unit-portrait-left {
+    align-self: start;
+    transform: scaleX(-1);
+    flex-shrink: 1;
+    width: 66%;
+}

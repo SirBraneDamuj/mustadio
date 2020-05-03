@@ -129,7 +129,7 @@ class ApiFormatter {
             tournamentId,
             teamName,
             class: this.formatUnitClassForApiResponse(unit.class, unit.gender),
-            abilties: unit.gender === 'Monster' ? {} : this.formatUnitAbilitiesForApiResponse(unit),
+            abilities: unit.gender === 'Monster' ? {} : this.formatUnitAbilitiesForApiResponse(unit),
             equipment: unit.gender === 'Monster' ? [] : this.formatUnitEquipmentForApiResponse(unit.UnitEquipments),
         };
     }
