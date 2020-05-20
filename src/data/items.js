@@ -33,6 +33,10 @@ const getPermStatuses = (effect) => {
 }
 
 const parseDumpLine = (items, itemLine) => {
+    const regexMatch = theBigRegex.exec(itemLine);
+    if (!regexMatch) {
+        return;
+    }
     const {
         itemName,
         wp,
@@ -47,7 +51,7 @@ const parseDumpLine = (items, itemLine) => {
         itemType,
         element,
         effect,
-    } = theBigRegex.exec(itemLine).groups;
+    } = regexMatch.groups;
     if (itemType === 'Shuriken' || itemType === 'Bomb' || itemType === 'Consumable') {
         return;
     }
