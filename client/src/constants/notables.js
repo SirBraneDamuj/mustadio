@@ -90,6 +90,7 @@ const abilities = new Set([
     'Kiyomori',
     'Kikuichimoji',
     'Chirijiraden',
+    'Masamune',
     'Last Song',
     'Wiznaibus',
     'Nameless Dance',
