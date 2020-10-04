@@ -23,8 +23,7 @@ const monstersLoader = new DumpLoader(client.monsters, parseMonstersLine);
 module.exports.getSkillsForMonster = (monsterName) => {
     const { monsters } = monstersLoader.getData();
     const { skills } = skillsLoader.getData();
-    const realMonsterName = monsterName === 'Serpentarius' ? 'Ophiuchus' : monsterName;
-    const index = monsters.indexOf(realMonsterName);
+    const index = monsters.indexOf(monsterName);
     return skills[index];
 }
 
@@ -33,8 +32,7 @@ module.exports.getAllMonsterSkills = () => {
     const { skills } = skillsLoader.getData();
     const skillsMap = {};
     for (const [index, monster] of monsters.entries()) {
-        const realMonsterName = monster === 'Serpentarius' ? 'Ophiuchus' : monster;
-        skillsMap[realMonsterName] = skills[index];
+        skillsMap[monster] = skills[index];
     }
     return skillsMap;
 }

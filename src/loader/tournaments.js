@@ -85,13 +85,17 @@ module.exports.loadTournamentById = async (tournamentId) => {
 
 module.exports.loadCurrentTournament = async () => {
     const latest = await getCurrentTournamentId();
+    console.log(`THE LOADER WANTS TO LOAD: ${latest}`);
     const tournament = await Tournament.findOne({
         where: {
             label: latest,
         },
     });
     if (!tournament) {
+        console.log(`TOURNAMENT ${latest} NOT FOUND. LOADING FROM DUMP!`);
         await this.loadTournamentById(latest);
+    } else {
+        console.log(`TOURNAMENT ${latest} FOUND.`);
     }
 };
 
@@ -99,7 +103,7 @@ const monitor = async () => {
     try {
         await this.loadCurrentTournament();
     } catch (err) {
-        console.log(err);
+        console.log(`Encountered error loading tournament! ${err}`);
     }
     setTimeout(monitor, CADENCE);
 }
