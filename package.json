@@ -22,7 +22,7 @@
     "express-async-errors": "^3.1.1",
     "jsdom": "^16.4.0",
     "lodash": "^4.17.20",
-    "moment": "^2.27.0",
+    "moment": "^2.29.0",
     "pg": "^7.18.2",
     "pug": "^2.0.4",
     "sequelize": "^5.22.3",
