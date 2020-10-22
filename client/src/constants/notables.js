@@ -47,6 +47,7 @@ const items = new Set([
     'Black Hood',
     'Twist Headband',
     'Flash Hat',
+    'Thief Hat',
     'Genji Armor',
     'Reflect Mail',
     'Maximillian',
