@@ -119,8 +119,11 @@ class ApiFormatter {
     formatUnitEquipmentForApiResponse(equipments) {
         return equipments.map((equipment) => {
             const item = items.getItem(equipment.name)
+            if (!item) {
+                return null;
+            }
             return this.formatItemForApiResponse(item);
-        });
+        }).filter((i) => i !== null)
     }
 
     formatUnitForApiResponse(tournamentId, teamName, unit) {
