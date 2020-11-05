@@ -118,7 +118,7 @@ const responseFor = async (tournamentId, team1, team2) => {
   const unitFormatter = (team) => (unit) => {
     const spacelessClassName = unit.class.replace(' ', '');
     const className = spacelessClassName.startsWith('Calculator') ? 'Calculator' : spacelessClassName;
-    const unitItems = unit.UnitEquipments.map((e) => items.getItems()[e.name]).filter((i) => i === undefined);
+    const unitItems = unit.UnitEquipments.map((e) => items.getItems()[e.name]).filter((i) => i !== undefined);
     const totalStats = stats.totalStatsForClassAndEquipment(classes.getClasses()[className][unit.gender].baseStats, unitItems, unit.moveSkill);
     return {
       ...formatter.formatUnitForApiResponse(tournamentId, team, unit),
