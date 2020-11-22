@@ -17,6 +17,7 @@ const items = new Set([
     'Faith Rod',
     'Dragon Rod',
     'Healing Staff',
+    'Sage Staff',
     'Mace of Zeus',
     'Scorpion Tail',
     'Stone Gun',
