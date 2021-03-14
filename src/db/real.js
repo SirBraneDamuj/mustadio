@@ -6,16 +6,12 @@ if (url.startsWith("postgres")) {
   url += "?sslmode=require";
 }
 
-console.log(url);
-
 module.exports = new Sequelize(url, {
   dialect: 'postgres',
-  ssl: true,
   dialectOptions: {
     ssl: {
       rejectUnauthorized: false, // very important
     }
   },
-
 });
 
