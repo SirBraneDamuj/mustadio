@@ -31,7 +31,7 @@ export default function MapPreview({ mapNumber, mapTitle }) {
             />
         )
     );
-    const wikiString = customMaps[mapNumber] || mapNumber;
+    const wikiString = customMaps[mapNumber] || `MAP${mapNumber}`;
 
     return (
         <>
