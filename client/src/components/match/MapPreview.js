@@ -4,6 +4,19 @@ import RenderModal from './RenderModal';
 import images from '../../constants/images';
 import './MapPreview.css';
 
+const customMaps = {
+    0: 'Garmichael_End_Of_Time',
+    118: 'Kokojo_Silas_Swamp',
+    119: 'Kokojo_Tchechene_Bridge',
+    120: 'ArmoredKori_Prison',
+    121: 'ArmoredKori_Prison',
+    122: 'ArmoredKori_Floating_Castle_Battleground',
+    123: 'Garmichael_Mako_Reactor',
+    124: 'ArmoredKori_Phantom_Train',
+    126: 'Garmichael_Enhasa_Zeal_City',
+    127: 'Garmichael_Arris_Dome',
+};
+
 export default function MapPreview({ mapNumber, mapTitle }) {
     const [shouldShowRender, setShouldShowRender] = useState(false);
     const showRender = () => setShouldShowRender(true);
@@ -18,11 +31,12 @@ export default function MapPreview({ mapNumber, mapTitle }) {
             />
         )
     );
+    const wikiString = customMaps[mapNumber] || mapNumber;
 
     return (
         <>
             <h3>
-                <a href={`http://ffhacktics.com/maps.php?id=${mapNumber}`} target='_blank' rel='noopener noreferrer'>{`${mapNumber}) ${mapTitle}`}</a>
+                <a href={`https://ffhacktics.com/wiki/${wikiString}`} target='_blank' rel='noopener noreferrer'>{`${mapNumber}) ${mapTitle}`}</a>
             </h3>
             <span className='map-preview-container'>
                 {imgs}
