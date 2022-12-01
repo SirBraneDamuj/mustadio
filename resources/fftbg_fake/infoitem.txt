@@ -139,22 +139,22 @@ Yagyu Shuriken: 9 WP, Shuriken. Element: Dark.
 Burst Bomb: 8 WP, Bomb. Element: Fire.
 Torrent Bomb: 8 WP, Bomb. Element: Water.
 Spark Bomb: 8 WP, Bomb. Element: Lightning.
-Escutcheon: 10% phys evade, 5% magic evade, Shield. Effect: +1 Speed.
-Buckler: 13% phys evade, 35% magic evade, Shield. Effect: +1 PA.
-Bronze Shield: 16% phys evade, 4% magic evade, Shield. 
-Round Shield: 19% phys evade, 3% magic evade, Shield. 
-Mythril Shield: 22% phys evade, 5% magic evade, Shield. Effect: +1 Speed.
-Gold Shield: 25% phys evade, 12% magic evade, Shield. 
-Ice Shield: 28% phys evade, 4% magic evade, Shield. Effect: Absorb Ice; Half Fire; Weak Lightning.
-Flame Shield: 31% phys evade, 2% magic evade, Shield. Effect: Absorb Fire; Half Ice; Weak Water.
-Aegis Shield: 10% phys evade, 50% magic evade, Shield. Effect: +1 MA.
-Diamond Shield: 34% phys evade, 15% magic evade, Shield. 
-Platinum Shield: 37% phys evade, 10% magic evade, Shield. 
-Crystal Shield: 40% phys evade, 15% magic evade, Shield. 
-Genji Shield: 46% phys evade, 1% magic evade, Shield. 
-Kaiser Plate: 43% phys evade, 25% magic evade, Shield. Effect: Strengthen Fire, Lightning, Ice.
-Venetian Shield: 50% phys evade, 20% magic evade, Shield. Effect: Half Fire, Lightning, Ice.
-Hero Shield: 60% phys evade, 35% magic evade, Shield. 
+Escutcheon: 10% physical evade, 5% magic evade, Shield. Effect: +1 Speed.
+Buckler: 13% physical evade, 35% magic evade, Shield. Effect: +1 PA.
+Bronze Shield: 16% physical evade, 4% magic evade, Shield. 
+Round Shield: 19% physical evade, 3% magic evade, Shield. 
+Mythril Shield: 22% physical evade, 5% magic evade, Shield. Effect: +1 Speed.
+Gold Shield: 25% physical evade, 12% magic evade, Shield. 
+Ice Shield: 28% physical evade, 4% magic evade, Shield. Effect: Absorb Ice; Half Fire; Weak Lightning.
+Flame Shield: 31% physical evade, 2% magic evade, Shield. Effect: Absorb Fire; Half Ice; Weak Water.
+Aegis Shield: 10% physical evade, 50% magic evade, Shield. Effect: +1 MA.
+Diamond Shield: 34% physical evade, 15% magic evade, Shield. 
+Platinum Shield: 37% physical evade, 10% magic evade, Shield. 
+Crystal Shield: 40% physical evade, 15% magic evade, Shield. 
+Genji Shield: 46% physical evade, 1% magic evade, Shield. 
+Kaiser Plate: 43% physical evade, 25% magic evade, Shield. Effect: Strengthen Fire, Lightning, Ice.
+Venetian Shield: 50% physical evade, 20% magic evade, Shield. Effect: Half Fire, Lightning, Ice.
+Hero Shield: 60% physical evade, 35% magic evade, Shield. 
 Leather Helmet: +34 HP, +0 MP, Helmet. Effect: +1 Speed.
 Bronze Helmet: +40 HP, +0 MP, Helmet. 
 Iron Helmet: +46 HP, +0 MP, Helmet. Effect: +1 PA.
@@ -240,13 +240,13 @@ Jade Armlet: Accessory. Effect: Half Wind; Strengthen Earth; Immune Petrify, Sto
 108 Gems: Accessory. Effect: Strengthen Fire, Lightning, Ice, Wind, Earth, Water, Holy, Dark; Immune Undead, Blood Suck, Frog, Poison.
 N-Kai Armlet: Accessory. Effect: Half Dark; Strengthen Holy; Immune Confusion, Charm.
 Defense Armlet: Accessory. Effect: Half Earth; Strengthen Wind; Immune Don't Move, Don't Act.
-Small Mantle: 10% phys evade, 10% magic evade, Accessory. Effect: +1 Speed.
-Leather Mantle: 15% phys evade, 15% magic evade, Accessory. Effect: Half Fire.
-Wizard Mantle: 18% phys evade, 18% magic evade, Accessory. Effect: +1 MA.
-Elf Mantle: 30% phys evade, 15% magic evade, Accessory.
-Dracula Mantle: 15% phys evade, 30% magic evade, Accessory.
-Feather Mantle: 25% phys evade, 25% magic evade, Accessory.
-Vanish Mantle: 35% phys evade, 0% magic evade, Accessory. Effect: Strengthen Dark; Initial Transparent.
+Small Mantle: 10% physical evade, 10% magic evade, Accessory. Effect: +1 Speed.
+Leather Mantle: 15% physical evade, 15% magic evade, Accessory. Effect: Half Fire.
+Wizard Mantle: 18% physical evade, 18% magic evade, Accessory. Effect: +1 MA.
+Elf Mantle: 30% physical evade, 15% magic evade, Accessory.
+Dracula Mantle: 15% physical evade, 30% magic evade, Accessory.
+Feather Mantle: 25% physical evade, 25% magic evade, Accessory.
+Vanish Mantle: 35% physical evade, 0% magic evade, Accessory. Effect: Strengthen Dark; Initial Transparent.
 Chantage: Accessory. Effect: Permanent Regen; Initial Reraise.
 Cherche: Accessory. Effect: +1 PA; Permanent Float, Reflect.
 Setiemson: Accessory. Effect: +1 MA; Permanent Haste.
