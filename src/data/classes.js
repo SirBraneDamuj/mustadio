@@ -18,7 +18,7 @@ const classAndGenderForLine = (line) => {
 const baseStatsRegex = /: (?<hp>\d+) HP, (?<mp>\d+) MP, (?<move>\d+) Move, (?<jump>\d+) Jump, (?<speed>\d+) Speed, (?<pa>\d+) PA, (?<ma>\d+) MA, (?<cEvPercent>\d+)% C-EV./
 const baseStatsForLine = (line) => mapValues({ ...baseStatsRegex.exec(line).groups }, (val) => parseInt(val, 10));
 
-const innatesRegex = /Innates: (?<innatesString>[A-Z].+)\. .*$/
+const innatesRegex = /Innate: (?<innatesString>[A-Z].+)\. .*$/
 const innatesForLine = (line) => {
     const { innatesString } = innatesRegex.exec(line).groups;
     return innatesString.split(', ');

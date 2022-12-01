@@ -15,7 +15,7 @@ class DumpLoader {
         if (data.indexOf(delimiter) == -1) {
             delimiter = '\n';
         }
-        data.split(delimiter).forEach((line) => {
+        data.trim().split(delimiter).forEach((line) => {
             this.parseDumpFn(this.data, line);
         });
         this.lastVersion = version
