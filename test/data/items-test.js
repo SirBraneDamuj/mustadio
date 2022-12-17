@@ -64,6 +64,7 @@ describe('ITEMS', () => {
     });
 
     it('loads hats correctly', () => {
+        console.log(subject('Thief Hat'));
         expect(subject('Thief Hat')).to.deep.eq({
             name: 'Thief Hat',
             slot: 'head',
@@ -73,6 +74,22 @@ describe('ITEMS', () => {
                 ...defaultStats,
                 hp: 64,
                 speed: 2,
+            },
+        });
+    });
+
+    it('loads lances correctly', () => {
+        expect(subject('Holy Lance')).to.deep.eq({
+            name: 'Holy Lance',
+            slot: 'hand',
+            type: 'Spear',
+            info: "14 WP, 2 range (line), 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.",
+            stats: {
+                ...defaultStats,
+                wp: 14,
+                range: 2,
+                evadePercent: 10,
+                element: 'Holy',
             },
         });
     });

@@ -113,9 +113,9 @@ Madlemgen: 11 WP, 3 range, 13% evade, Book. Element: Dark. Effect: Chance to cas
 Javelin: 8 WP, 2 range, 12% evade, Spear.
 Spear: 9 WP, 2 range, 14% evade, Spear.
 Mythril Spear: 10 WP, 2 range, 10% evade, Spear. Effect: +1 Speed.
-Partisan: 11 WP, 2 range, 10% evade, Spear.
-Obelisk: 12 WP, 2 range, 10% evade, Spear. Element: Water.
-Holy Lance: 14 WP, 2 range, 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.
+Partisan: 11 WP, 2 range (line), 10% evade, Spear.
+Obelisk: 12 WP, 2 range (line), 10% evade, Spear. Element: Water.
+Holy Lance: 14 WP, 2 range (line), 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.
 Dragon Whisker: 16 WP, 2 range, 10% evade, Spear. Effect: Permanent Protect.
 Gungnir: 18 WP, 2 range, 10% evade, Spear. Element: Wind.
 Cypress Rod: 6 WP, 2 range, 25% evade, Pole.
