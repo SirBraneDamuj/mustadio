@@ -121,6 +121,23 @@ describe('ITEMS', () => {
         });
     });
 
+    // Small Mantle: 10% physical evade, 10% magic evade, Accessory (mantle). Effect: +1 Speed.
+
+    it('loads mantles correctly', () => {
+        expect(subject('Small Mantle')).to.deep.eq({
+            name: 'Small Mantle',
+            slot: 'accessory',
+            type: 'Accessory (mantle)',
+            info: '10% physical evade, 10% magic evade, Accessory (mantle). Effect: +1 Speed.',
+            stats: {
+                ...defaultStats,
+                physEvadePercent: 10,
+                magicEvadePercent: 10,
+                speed: 1,
+            },
+        });
+    });
+
     it('loads hunting bow correctly', () => {
         expect(subject('Hunting Bow')).to.deep.eq({
             name: 'Hunting Bow',

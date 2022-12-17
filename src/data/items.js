@@ -62,7 +62,7 @@ const parseDumpLine = (items, itemLine) => {
         pa,
         ma
     } = statsRegex.exec(effect).groups;
-    const slot = SLOTS_FOR_EQUIPMENT_TYPES[itemType];
+    const slot = SLOTS_FOR_EQUIPMENT_TYPES[itemType.split('(')[0].trim()];
     const firstColon = itemLine.indexOf(':');
     const info = itemLine.slice(firstColon + 2);
     items[itemName] = { 
