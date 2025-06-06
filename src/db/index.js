@@ -1,7 +1,5 @@
-const config = require('../config');
+const config = require("../config");
 
-if (config.DB_DATA_STRATEGY === 'real') {
-    module.exports = require('./real');
-} else {
-    module.exports = require('./fake');
+if (config.DB_DATA_STRATEGY === "real") {
+  module.exports = require("./real");
 }
