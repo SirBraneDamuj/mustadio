@@ -13,6 +13,9 @@
     "build": "npm test && npx eslint src test && ./scripts/buildClient.sh",
     "loadMapImages": "node src/script/map-thumbs-loader.js"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "author": "",
   "license": "MIT",
   "dependencies": {
