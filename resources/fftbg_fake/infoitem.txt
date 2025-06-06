@@ -113,9 +113,9 @@ Madlemgen: 11 WP, 3 range, 13% evade, Book. Element: Dark. Effect: Chance to cas
 Javelin: 8 WP, 2 range, 12% evade, Spear.
 Spear: 9 WP, 2 range, 14% evade, Spear.
 Mythril Spear: 10 WP, 2 range, 10% evade, Spear. Effect: +1 Speed.
-Partisan: 11 WP, 2 range, 10% evade, Spear.
-Obelisk: 12 WP, 2 range, 10% evade, Spear. Element: Water.
-Holy Lance: 14 WP, 2 range, 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.
+Partisan: 11 WP, 2 range (line), 10% evade, Spear.
+Obelisk: 12 WP, 2 range (line), 10% evade, Spear. Element: Water.
+Holy Lance: 14 WP, 2 range (line), 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.
 Dragon Whisker: 16 WP, 2 range, 10% evade, Spear. Effect: Permanent Protect.
 Gungnir: 18 WP, 2 range, 10% evade, Spear. Element: Wind.
 Cypress Rod: 6 WP, 2 range, 25% evade, Pole.
@@ -240,13 +240,13 @@ Jade Armlet: Accessory. Effect: Half Wind; Strengthen Earth; Immune Petrify, Sto
 108 Gems: Accessory. Effect: Strengthen Fire, Lightning, Ice, Wind, Earth, Water, Holy, Dark; Immune Undead, Blood Suck, Frog, Poison.
 N-Kai Armlet: Accessory. Effect: Half Dark; Strengthen Holy; Immune Confusion, Charm.
 Defense Armlet: Accessory. Effect: Half Earth; Strengthen Wind; Immune Don't Move, Don't Act.
-Small Mantle: 10% physical evade, 10% magic evade, Accessory. Effect: +1 Speed.
-Leather Mantle: 15% physical evade, 15% magic evade, Accessory. Effect: Half Fire.
-Wizard Mantle: 18% physical evade, 18% magic evade, Accessory. Effect: +1 MA.
-Elf Mantle: 30% physical evade, 15% magic evade, Accessory.
-Dracula Mantle: 15% physical evade, 30% magic evade, Accessory.
-Feather Mantle: 25% physical evade, 25% magic evade, Accessory.
-Vanish Mantle: 35% physical evade, 0% magic evade, Accessory. Effect: Strengthen Dark; Initial Transparent.
+Small Mantle: 10% physical evade, 10% magic evade, Accessory (mantle). Effect: +1 Speed.
+Leather Mantle: 15% physical evade, 15% magic evade, Accessory (mantle). Effect: Half Fire.
+Wizard Mantle: 18% physical evade, 18% magic evade, Accessory (mantle). Effect: +1 MA.
+Elf Mantle: 30% physical evade, 15% magic evade, Accessory (mantle).
+Dracula Mantle: 15% physical evade, 30% magic evade, Accessory (mantle).
+Feather Mantle: 25% physical evade, 25% magic evade, Accessory (mantle).
+Vanish Mantle: 35% physical evade, 0% magic evade, Accessory (mantle). Effect: Strengthen Dark; Initial Transparent.
 Chantage: Accessory. Effect: Permanent Regen; Initial Reraise.
 Cherche: Accessory. Effect: +1 PA; Permanent Float, Reflect.
 Setiemson: Accessory. Effect: +1 MA; Permanent Haste.

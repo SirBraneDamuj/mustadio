@@ -11,7 +11,7 @@ const number = (s) => {
     return parseInt(s, 10);
 }
 
-const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal(?:ing)?\), )?(?:(?<absorbWp>\d+) WP \(absorb(?:ing)?\), )?(?:(?<range>\d+) range, )?(?:(?<evadePercent>\d+%?) evade, )?(?:(?<physEvadePercent>\d+%) physical evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+). ?)(?:Element: (?<element>[A-Z]\w+)\. ?)?(?:Effect: (?<effect>.*))?$/;
+const theBigRegex = /^(?<itemName>[A-Z\d][\w\d \-']+): (?:(?<wp>\d+) WP, )?(?:(?<healWp>\d+) WP \(heal(?:ing)?\), )?(?:(?<absorbWp>\d+) WP \(absorb(?:ing)?\), )?(?:(?<range>\d+) (?:range|range \(\w+\)), )?(?:(?<evadePercent>\d+%?) evade, )?(?:(?<physEvadePercent>\d+%) physical evade, )?(?:(?<magicEvadePercent>\d+%) magic evade, )?(?:\+(?<hp>\d+) HP, )?(?:\+(?<mp>\d+) MP, )?(?:(?<itemType>[A-Z][\w -]+(?: \((?:\w|\s)+\))?). ?)(?:Element: (?<element>[A-Z]\w+)\. ?)?(?:Effect: (?<effect>.*))?$/;
 const statsRegex = /[^+]*(?:(?<pa>\+\d+) PA(?:, |\.|;))?(?:(?<ma>\+\d+) MA(?:, |\.|;))?(?:(?<speed>\+\d+) Speed(?:, |\.|;))?(?:(?<move>\+\d+) Move(?:, |\.|;))?(?:(?<jump>\+\d+) Jump(?:, |\.|;))?/;
 const initialStatusRegex = /Initial (?<initialStatuses>[A-Z][^;.]+)(?:; |\.)/;
 const permanentStatusRegex = /(?:Permanent|Always) (?<permStatuses>[A-Z][^;.]+)(?:; |\.)/;
@@ -62,7 +62,7 @@ const parseDumpLine = (items, itemLine) => {
         pa,
         ma
     } = statsRegex.exec(effect).groups;
-    const slot = SLOTS_FOR_EQUIPMENT_TYPES[itemType];
+    const slot = SLOTS_FOR_EQUIPMENT_TYPES[itemType.split('(')[0].trim()];
     const firstColon = itemLine.indexOf(':');
     const info = itemLine.slice(firstColon + 2);
     items[itemName] = { 

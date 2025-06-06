@@ -64,6 +64,7 @@ describe('ITEMS', () => {
     });
 
     it('loads hats correctly', () => {
+        console.log(subject('Thief Hat'));
         expect(subject('Thief Hat')).to.deep.eq({
             name: 'Thief Hat',
             slot: 'head',
@@ -73,6 +74,22 @@ describe('ITEMS', () => {
                 ...defaultStats,
                 hp: 64,
                 speed: 2,
+            },
+        });
+    });
+
+    it('loads lances correctly', () => {
+        expect(subject('Holy Lance')).to.deep.eq({
+            name: 'Holy Lance',
+            slot: 'hand',
+            type: 'Spear',
+            info: "14 WP, 2 range (line), 10% evade, Spear. Element: Holy. Effect: Chance to cast Holy.",
+            stats: {
+                ...defaultStats,
+                wp: 14,
+                range: 2,
+                evadePercent: 10,
+                element: 'Holy',
             },
         });
     });
@@ -100,6 +117,23 @@ describe('ITEMS', () => {
             stats: {
                 ...defaultStats,
                 permStatuses: ['Protect', 'Shell'],
+            },
+        });
+    });
+
+    // Small Mantle: 10% physical evade, 10% magic evade, Accessory (mantle). Effect: +1 Speed.
+
+    it('loads mantles correctly', () => {
+        expect(subject('Small Mantle')).to.deep.eq({
+            name: 'Small Mantle',
+            slot: 'accessory',
+            type: 'Accessory (mantle)',
+            info: '10% physical evade, 10% magic evade, Accessory (mantle). Effect: +1 Speed.',
+            stats: {
+                ...defaultStats,
+                physEvadePercent: 10,
+                magicEvadePercent: 10,
+                speed: 1,
             },
         });
     });
