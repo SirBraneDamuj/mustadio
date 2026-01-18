@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tournament {
+  id        Int                @id @default(autoincrement())
+  label     String             @unique
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  teams     Team[]
+  maps      TournamentMap[]
+  winners   TournamentWinner[]
+
+  @@map("tournaments")
+}
+
+model Team {
+  id           Int        @id @default(autoincrement())
+  name         String
+  tournamentId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  units        Unit[]
+
+  @@unique([tournamentId, name])
+  @@map("teams")
+}
+
+model Unit {
+  id           Int             @id @default(autoincrement())
+  name         String
+  gender       String
+  zodiac       String
+  brave        String
+  faith        String
+  className    String          @map("class")
+  subSkill     String?
+  reactSkill   String?
+  supportSkill String?
+  moveSkill    String?
+  order        Int
+  teamId       Int
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  team         Team            @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  abilities    UnitAbility[]
+  equipment    UnitEquipment[]
+
+  @@map("units")
+}
+
+model UnitAbility {
+  id        Int      @id @default(autoincrement())
+  name      String
+  mainOrSub String
+  unitId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  unit      Unit     @relation(fields: [unitId], references: [id], onDelete: Cascade)
+
+  @@map("unit_abilities")
+}
+
+model UnitEquipment {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slot      String
+  unitId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  unit      Unit     @relation(fields: [unitId], references: [id], onDelete: Cascade)
+
+  @@map("unit_equipment")
+}
+
+model TournamentMap {
+  id           Int        @id @default(autoincrement())
+  number       String
+  title        String
+  order        Int
+  tournamentId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+
+  @@map("tournament_maps")
+}
+
+model TournamentWinner {
+  id           Int        @id @default(autoincrement())
+  name         String
+  matchNum     Int
+  tournamentId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+
+  @@unique([tournamentId, matchNum])
+  @@map("tournament_winners")
+}

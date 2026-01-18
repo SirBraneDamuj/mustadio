@@ -1,0 +1,79 @@
+Player: !Purple
+Team: Purple Team
+Palettes: Purple/Yellow
+
+
+
+Howplausible
+Monster
+Aries
+73
+49
+Cockatrice
+
+
+
+
+
+
+
+
+
+
+Super Robo Mg
+Female
+Gemini
+40
+60
+Thief
+Basic Skill
+Blade Grasp
+Magic Defense UP
+Lava Walking
+
+Broad Sword
+
+Headgear
+Judo Outfit
+Leather Mantle
+
+Steal Weapon, Steal Status, Arm Aim
+Throw Stone, Heal, Tickle, Wish
+
+
+
+Grandpataylor
+Monster
+Virgo
+47
+70
+Tiamat
+
+
+
+
+
+
+
+
+
+
+Masan001
+Male
+Taurus
+80
+80
+Archer
+Punch Art
+Faith Up
+Equip Sword
+Fly
+
+Heaven's Cloud
+Crystal Shield
+Flash Hat
+Brigandine
+N-Kai Armlet
+
+Charge+1, Charge+2, Charge+4, Charge+5
+Spin Fist, Pummel, Wave Fist, Secret Fist, Purification, Revive

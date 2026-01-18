@@ -1,0 +1,79 @@
+Player: !Brown
+Team: Brown Team
+Palettes: Brown/Green
+
+
+
+Ragnarok784
+Monster
+Aquarius
+74
+55
+Ultima Demon
+
+
+
+
+
+
+
+
+
+
+MaouDono
+Male
+Taurus
+76
+50
+Squire
+Sing
+Blade Grasp
+Beastmaster
+Move+1
+
+Cross Bow
+
+Black Hood
+Chain Vest
+108 Gems
+
+Accumulate, Throw Stone, Heal, Tickle
+Life Song, Cheer Song, Nameless Song, Space Storage
+
+
+
+SweetHat
+Female
+Cancer
+74
+62
+Chemist
+Charge
+Absorb Used MP
+Dual Wield
+Ignore Terrain
+
+Cute Bag
+Cultist Dagger
+Green Beret
+Leather Outfit
+Germinas Boots
+
+Potion, Holy Water
+Charge+2, Charge+5, Charge+7, Charge+10
+
+
+
+Namillus
+Monster
+Gemini
+43
+59
+Steel Giant
+
+
+
+
+
+
+

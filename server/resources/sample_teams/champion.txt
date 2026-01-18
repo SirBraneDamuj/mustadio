@@ -1,0 +1,91 @@
+Player: !zChamp
+Team: Champion Team
+Palettes: Black/Red
+
+
+
+Roamer31
+Male
+Scorpio
+45
+72
+Archer
+Basic Skill
+Distribute
+Magic Attack UP
+Ignore Terrain
+
+Blaze Gun
+Crystal Shield
+Flash Hat
+Power Sleeve
+Feather Mantle
+
+Charge+4, Charge+10, Charge+20
+Accumulate, Dash, Heal, Scream
+
+
+
+Koryiaki
+Female
+Cancer
+70
+63
+Chemist
+Time Magic
+PA Save
+Halve MP
+Levitate
+
+Hydra Bag
+
+Twist Headband
+Power Sleeve
+Feather Mantle
+
+Potion, X-Potion, Hi-Ether, Antidote, Eye Drop, Maiden's Kiss, Soft, Phoenix Down
+Haste, Haste 2, Slow, Immobilize, Quick, Demi, Demi 2, Stabilize Time
+
+
+
+Wackman3000
+Female
+Libra
+56
+73
+Knight
+Charge
+Abandon
+Sicken
+Move+1
+
+Defender
+
+Genji Helmet
+Linen Robe
+Leather Mantle
+
+Weapon Break, Speed Break, Mind Break, Stasis Sword
+Charge+2, Charge+3, Charge+5
+
+
+
+Grininda
+Male
+Gemini
+54
+65
+Ninja
+Charge
+Hamedo
+Equip Sword
+Move+3
+
+Asura Knife
+Kikuichimoji
+Red Hood
+Mythril Vest
+Germinas Boots
+
+Shuriken
+Charge+1, Charge+3, Charge+4, Charge+10

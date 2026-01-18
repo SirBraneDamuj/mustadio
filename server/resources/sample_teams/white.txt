@@ -1,0 +1,85 @@
+Player: !White
+Team: White Team
+Palettes: White/Blue
+
+
+
+Jarekx123
+Monster
+Libra
+59
+63
+Ultima Demon
+
+
+
+
+
+
+
+
+
+
+AniZero
+Male
+Gemini
+63
+53
+Lancer
+Summon Magic
+Critical Quick
+Doublehand
+Levitate
+
+Dragon Whisker
+
+Barbuta
+Wizard Robe
+Elf Mantle
+
+Level Jump8, Vertical Jump8
+Moogle, Carbunkle, Bahamut, Salamander, Fairy
+
+
+
+Glennfk
+Male
+Virgo
+72
+47
+Bard
+Throw
+Critical Quick
+Equip Axe
+Ignore Height
+
+Flame Whip
+
+Headgear
+Brigandine
+Reflect Ring
+
+Cheer Song, Battle Song, Hydra Pit
+Hammer, Staff, Spear
+
+
+
+Alaylle
+Male
+Scorpio
+69
+42
+Archer
+Talk Skill
+Mana Shield
+Monster Talk
+Waterwalking
+
+Hunting Bow
+Diamond Shield
+Feather Hat
+Clothes
+Small Mantle
+
+Charge+1, Charge+2, Charge+7, Charge+10
+Invitation, Threaten, Solution, Negotiate, Refute, Rehabilitate

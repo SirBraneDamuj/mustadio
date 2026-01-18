@@ -1,0 +1,73 @@
+Player: !Red
+Team: Red Team
+Palettes: Red/Brown
+
+
+
+KIYOMORI
+Monster
+Pisces
+72
+44
+Porky
+
+
+
+
+
+
+
+
+
+
+Zmobie
+Monster
+Capricorn
+62
+64
+Ultima Demon
+
+
+
+
+
+
+
+
+
+
+ShintaroNayaka
+Monster
+Capricorn
+42
+50
+Sekhret
+
+
+
+
+
+
+
+
+
+
+Cyuub
+Male
+Gemini
+65
+68
+Priest
+Time Magic
+Absorb Used MP
+Beastmaster
+Jump+3
+
+Oak Staff
+
+Thief Hat
+Leather Vest
+Dracula Mantle
+
+Cure 2, Raise, Regen, Esuna
+Slow 2, Stop, Stabilize Time, Galaxy Stop
