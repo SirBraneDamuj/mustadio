@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { reloadAllGameData } from './game-data/index.js';
 import { monitorTournaments } from './loader/tournament-loader.js';
 import { monitorWinners } from './loader/winners-loader.js';
