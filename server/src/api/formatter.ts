@@ -111,7 +111,7 @@ export class ApiFormatter {
     learned: { name: string }[]
   ): ApiActiveAbility {
     return {
-      name: abilityName,
+      name: abilityName ?? '',
       learned: learned.map((learnedAbility) => {
         const ability = getAbility(learnedAbility.name);
         return {

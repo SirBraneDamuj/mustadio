@@ -19,6 +19,7 @@ async function loadTournamentWinners(tournament: { id: number; label: string }):
   const { data } = await fftbgClient.tournamentWinners(tournament.label);
   const winners = parseWinners(data);
 
+  // Upsert current winners
   for (const [index, winner] of winners.entries()) {
     await prisma.tournamentWinner.upsert({
       where: {
@@ -37,14 +38,36 @@ async function loadTournamentWinners(tournament: { id: number; label: string }):
       },
     });
   }
+
+  // Delete stale winners if source has fewer than DB
+  // This handles cases where DB has incorrect/stale data
+  await prisma.tournamentWinner.deleteMany({
+    where: {
+      tournamentId: tournament.id,
+      matchNum: { gte: winners.length },
+    },
+  });
 }
 
 async function checkWinners(): Promise<void> {
   try {
-    // Find tournaments with fewer than 8 winners (incomplete tournaments)
+    // Always reload the latest tournament's winners (in case data was stale)
+    const latestTournament = await prisma.tournament.findFirst({
+      where: {
+        label: { gte: MIN_TOURNAMENT_LABEL },
+      },
+      orderBy: { label: 'desc' },
+    });
+
+    if (latestTournament) {
+      await loadTournamentWinners(latestTournament);
+    }
+
+    // Also check any other tournaments with fewer than 8 winners
     const tournaments = await prisma.tournament.findMany({
       where: {
         label: { gte: MIN_TOURNAMENT_LABEL },
+        id: { not: latestTournament?.id },
       },
       include: {
         _count: {

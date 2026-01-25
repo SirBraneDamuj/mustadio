@@ -31,7 +31,7 @@ export interface ApiUnitAbilities {
 }
 
 export interface ApiActiveAbility {
-  name: string | null;
+  name: string;
   learned: ApiLearnedAbility[];
 }
 
