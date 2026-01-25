@@ -1,6 +1,7 @@
 import React from 'react';
+import type { FftbgContextValue } from '../types';
 
-const FftbgContext = React.createContext({
+const defaultValue: FftbgContextValue = {
   match: {
     team1: {
       name: '',
@@ -23,7 +24,10 @@ const FftbgContext = React.createContext({
     statuses: {},
     monsterSkills: {},
   },
+  currentMap: undefined,
   loadLatestMatch: () => {},
-});
+};
+
+const FftbgContext = React.createContext<FftbgContextValue>(defaultValue);
 
 export default FftbgContext;

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import ModalDialog from 'react-bootstrap/ModalDialog';
 import Button from 'react-bootstrap/Button';
@@ -7,7 +7,7 @@ import FftbgContext from '../../contexts/FftbgContext';
 import teams from '../../constants/teams';
 
 function MatchupModal({ show, onHide }) {
-    const history = useHistory();
+    const navigate = useNavigate();
     const { tournament: { tournamentId } } = useContext(FftbgContext);
     const [leftTeam, setLeftTeam] = useState(teams[0]);
     const [rightTeam, setRightTeam] = useState(teams[0]);
@@ -22,7 +22,7 @@ function MatchupModal({ show, onHide }) {
     };
 
     function handleButton() {
-        history.push(`/${tournamentId}/${leftTeam}/${rightTeam}`);
+        navigate(`/${tournamentId}/${leftTeam}/${rightTeam}`);
     }
 
     function teamSelector(id, side) {

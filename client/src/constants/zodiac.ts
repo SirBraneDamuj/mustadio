@@ -1,23 +1,31 @@
-const [
-    MINMAX, GOOD, BAD
-] = ['minmax', 'good', 'bad'];
-const [
-    CAPRICORN,
-    AQUARIUS,
-    PISCES,
-    ARIES,
-    TAURUS,
-    GEMINI,
-    CANCER,
-    LEO,
-    VIRGO,
-    LIBRA,
-    SCORPIO,
-    SAGITTARIUS,
-    SERPENTARIUS,
-] = ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Serpentarius'];
+type Compatibility = 'minmax' | 'good' | 'bad';
+type Gender = 'Male' | 'Female' | 'Monster';
 
-export const zodiacMapping = {
+const MINMAX: Compatibility = 'minmax';
+const GOOD: Compatibility = 'good';
+const BAD: Compatibility = 'bad';
+
+const CAPRICORN = 'Capricorn';
+const AQUARIUS = 'Aquarius';
+const PISCES = 'Pisces';
+const ARIES = 'Aries';
+const TAURUS = 'Taurus';
+const GEMINI = 'Gemini';
+const CANCER = 'Cancer';
+const LEO = 'Leo';
+const VIRGO = 'Virgo';
+const LIBRA = 'Libra';
+const SCORPIO = 'Scorpio';
+const SAGITTARIUS = 'Sagittarius';
+const SERPENTARIUS = 'Serpentarius';
+
+type ZodiacSign = typeof CAPRICORN | typeof AQUARIUS | typeof PISCES | typeof ARIES | typeof TAURUS |
+    typeof GEMINI | typeof CANCER | typeof LEO | typeof VIRGO | typeof LIBRA |
+    typeof SCORPIO | typeof SAGITTARIUS | typeof SERPENTARIUS;
+
+type ZodiacMapping = Record<string, Record<string, Compatibility>>;
+
+export const zodiacMapping: ZodiacMapping = {
     [CAPRICORN]: {
         [CANCER]: MINMAX,
         [TAURUS]: GOOD,
@@ -105,9 +113,9 @@ export const zodiacMapping = {
     [SERPENTARIUS]: {},
 };
 
-export function compareZodiac(z1, gender1, z2, gender2) {
-    const compat = zodiacMapping[z1][z2];
-    if (compat !== zodiacMapping[z2][z1]) {
+export function compareZodiac(z1: string, gender1: Gender, z2: string, gender2: Gender): number {
+    const compat = zodiacMapping[z1]?.[z2];
+    if (compat !== zodiacMapping[z2]?.[z1]) {
         throw new Error(`zodiac compatibility issue: ${z1} ${z2}`);
     }
     if (!compat) {
@@ -129,4 +137,4 @@ export function compareZodiac(z1, gender1, z2, gender2) {
     }
 }
 
-export const zodiacInfo = (word) => `Zodiac compatibility with ${word}. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`;
+export const zodiacInfo = (word: string): string => `Zodiac compatibility with ${word}. 1 = worst, 2 = bad, 3 = neutral, 4 = good, 5 = best`;

@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   useParams,
-  useHistory,
+  useNavigate,
 } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
 import mustadioApiClient from '../../api/mustadio-client';
 import App from './App';
 
 function LatestMatch() {
-    const history = useHistory();
+    const navigate = useNavigate();
     useEffect(() => {
         async function fetchCurrentMatch() {
             const { tournamentId, team1, team2 } = await mustadioApiClient.getLatestMatch();
-            history.push(`/${tournamentId}/${team1}/${team2}`);
+            navigate(`/${tournamentId}/${team1}/${team2}`);
         }
         fetchCurrentMatch();
-    }, [history]);
+    }, [navigate]);
     return (
         <Spinner animation="grow" />
     );
@@ -34,14 +34,10 @@ function ConfiguredApp() {
 export default function MustadioRouter() {
     return (
         <Router>
-            <Switch>
-                <Route path='/:tournamentId/:team1/:team2'>
-                    <ConfiguredApp />
-                </Route>
-                <Route path='/'>
-                    <LatestMatch />
-                </Route>
-            </Switch>
+            <Routes>
+                <Route path='/:tournamentId/:team1/:team2' element={<ConfiguredApp />} />
+                <Route path='/' element={<LatestMatch />} />
+            </Routes>
         </Router>
     );
 }
