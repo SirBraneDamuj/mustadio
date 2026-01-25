@@ -2,4 +2,5 @@ node_modules/
 dist/
 .env
 *.log
+*.pid
 .DS_Store
