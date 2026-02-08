@@ -46,7 +46,7 @@ function Header({ useDarkTheme, handleDarkThemeToggle }: HeaderProps) {
                 <Nav>
                     <Button
                         variant='outline-secondary'
-                        className='ml-5 mr-5'
+                        className='ms-5 me-5'
                         onClick={showMatchups}
                     >
                         Choose Matchup...

@@ -106,7 +106,7 @@ export default function UnitAbilities({ abilities: unitAbilities, gender, unitCl
                     side={side}
                 />
             )}
-            {innatesChildren.length > 0 && <div className='font-weight-bold'>Innates:</div>}
+            {innatesChildren.length > 0 && <div className='fw-bold'>Innates:</div>}
             {innatesChildren.length > 0 && innatesChildren}
         </div>
     );

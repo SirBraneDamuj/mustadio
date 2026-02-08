@@ -14,7 +14,7 @@ export default function Match() {
                 <MapPreview mapNumber={context.currentMap.number} mapTitle={context.currentMap.title} />
             </div>
             <div className='d-flex match-container mt-3'>
-                <div className='align-self-start mr-1'>
+                <div className='align-self-start me-1'>
                     <h2>{team1.name} team</h2>
                     <Team team={team1} side='left' otherTeam={team2} />
                 </div>

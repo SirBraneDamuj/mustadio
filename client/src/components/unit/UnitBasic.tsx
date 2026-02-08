@@ -37,7 +37,7 @@ export default function UnitBasic({ unit, job, team, otherTeam, side }: UnitBasi
             <span>{gender}</span>
             <BraveFaith brave={brave} faith={faith} />
             <MustadioTooltip side='right' content={classRaw || 'Class info unavailable'}>
-                <div className='font-weight-bold'>{job}</div>
+                <div className='fw-bold'>{job}</div>
             </MustadioTooltip>
             <div>{zodiac}</div>
             <div className='d-flex'>
