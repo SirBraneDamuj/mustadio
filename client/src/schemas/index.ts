@@ -1,5 +1,8 @@
 import { z } from 'zod';
 
+// Helper for coercing string/number to number (API sometimes returns strings)
+const coerceNumber = z.coerce.number();
+
 // ============ Basic Types ============
 
 export const GenderSchema = z.enum(['Male', 'Female', 'Monster']);
@@ -52,25 +55,25 @@ export const ClassGenderSchema = z.object({
   gender: GenderSchema,
   raw: z.string().optional(),
   innates: z.array(InnateSchema).optional(),
-  baseStats: z.record(z.string(), z.number()).optional(),
+  baseStats: z.record(z.string(), coerceNumber).optional(),
 });
 export type ClassGender = z.infer<typeof ClassGenderSchema>;
 
 // ============ Stats Schema ============
 
 export const UnitStatsSchema = z.object({
-  hp: z.number(),
-  mp: z.number(),
-  speed: z.number(),
-  pa: z.number(),
-  ma: z.number(),
-  move: z.number(),
-  jump: z.number(),
-  cEvPercent: z.number(),
-  sPhysEvPercent: z.number(),
-  sMagEvPercent: z.number(),
-  aPhysEvPercent: z.number(),
-  aMagEvPercent: z.number(),
+  hp: coerceNumber,
+  mp: coerceNumber,
+  speed: coerceNumber,
+  pa: coerceNumber,
+  ma: coerceNumber,
+  move: coerceNumber,
+  jump: coerceNumber,
+  cEvPercent: coerceNumber,
+  sPhysEvPercent: coerceNumber,
+  sMagEvPercent: coerceNumber,
+  aPhysEvPercent: coerceNumber,
+  aMagEvPercent: coerceNumber,
   initialStatuses: z.array(z.string()).optional(),
   permStatuses: z.array(z.string()).optional(),
 });
@@ -83,7 +86,7 @@ export const EquipmentItemSchema = z.object({
   info: z.string().optional(),
   slot: z.string().optional(),
   type: z.string().optional(),
-  stats: z.record(z.string(), z.union([z.number(), z.array(z.unknown())])).optional(),
+  stats: z.record(z.string(), z.union([coerceNumber, z.array(z.unknown())])).optional(),
 });
 export type EquipmentItem = z.infer<typeof EquipmentItemSchema>;
 
@@ -93,8 +96,8 @@ export const UnitSchema = z.object({
   name: z.string(),
   gender: GenderSchema,
   zodiac: z.string(),
-  brave: z.number(),
-  faith: z.number(),
+  brave: coerceNumber,
+  faith: coerceNumber,
   tournamentId: z.string(),
   teamName: z.string(),
   class: ClassGenderSchema,
@@ -117,7 +120,7 @@ export type Team = z.infer<typeof TeamSchema>;
 export const MatchSchema = z.object({
   team1: TeamSchema,
   team2: TeamSchema,
-  matchNumber: z.number(),
+  matchNumber: coerceNumber,
 });
 export type Match = z.infer<typeof MatchSchema>;
 
@@ -126,7 +129,7 @@ export type Match = z.infer<typeof MatchSchema>;
 export const MapInfoSchema = z.object({
   number: z.string(),
   title: z.string(),
-  order: z.number(),
+  order: coerceNumber,
 });
 export type MapInfo = z.infer<typeof MapInfoSchema>;
 

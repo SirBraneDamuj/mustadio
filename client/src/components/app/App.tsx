@@ -50,7 +50,10 @@ function App({ tournamentId, team1, team2 }: AppProps) {
     }, []);
 
     const getCurrentMap = (matchNumber: number, maps: MapInfo[]): MapInfo => {
-        return [...maps].sort((a, b) => a.order - b.order)[matchNumber];
+        const sortedMaps = [...maps].sort((a, b) => a.order - b.order);
+        // Clamp to valid index range (handles championship/tournament over state)
+        const index = Math.min(matchNumber, sortedMaps.length - 1);
+        return sortedMaps[Math.max(0, index)] ?? { number: '1', title: 'Unknown', order: 0 };
     };
 
     const buildContext = (): FftbgContextValue => ({
