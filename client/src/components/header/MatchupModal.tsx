@@ -1,8 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Modal from 'react-bootstrap/Modal';
-import ModalDialog from 'react-bootstrap/ModalDialog';
-import Button from 'react-bootstrap/Button';
+import { Modal, Button } from '../ui';
 import { useFftbgContext } from '../../hooks/useFftbgContext';
 import teams from '../../constants/teams';
 
@@ -28,36 +26,37 @@ function MatchupModal({ show, onHide }: MatchupModalProps) {
 
     function handleButton() {
         navigate(`/${tournamentId}/${leftTeam}/${rightTeam}`);
+        onHide();
     }
 
     function teamSelector(id: string, side: 'left' | 'right') {
         return (
-            <select id={id} defaultValue={teams[0]} onChange={handleTeamSelection(side)}>
-                {
-                    teams.map((team) => (
-                        <option value={team} key={team}>{team}</option>
-                    ))
-                }
+            <select
+                id={id}
+                defaultValue={teams[0]}
+                onChange={handleTeamSelection(side)}
+                className="ml-2 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                {teams.map((team) => (
+                    <option value={team} key={team}>{team}</option>
+                ))}
             </select>
         );
     }
 
     return (
-        <Modal show={show} onHide={onHide}>
-            <ModalDialog size='lg'>
-                <Modal.Header closeButton>
-                    <h1>Tournament Navigation</h1>
-                </Modal.Header>
-                <Modal.Body>
-                    <label htmlFor='team-one-selector'>Left Team: </label>
+        <Modal show={show} onHide={onHide} title="Tournament Navigation" size="lg">
+            <div className="space-y-4">
+                <div>
+                    <label htmlFor='team-one-selector' className="text-gray-700">Left Team:</label>
                     {teamSelector('team-one-selector', 'left')}
-                    <br />
-                    <label htmlFor='team-two-selector'>Right Team: </label>
+                </div>
+                <div>
+                    <label htmlFor='team-two-selector' className="text-gray-700">Right Team:</label>
                     {teamSelector('team-two-selector', 'right')}
-                    <br />
-                    <Button variant='primary' onClick={handleButton}>Go!</Button>
-                </Modal.Body>
-            </ModalDialog>
+                </div>
+                <Button onClick={handleButton}>Go!</Button>
+            </div>
         </Modal>
     );
 }

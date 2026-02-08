@@ -1,7 +1,5 @@
-import classnames from 'classnames';
 import images from '../../constants/images';
 import type { Gender, Side } from '../../schemas';
-import './UnitPortrait.css';
 
 interface UnitPortraitProps {
     job: string;
@@ -11,10 +9,7 @@ interface UnitPortraitProps {
 }
 
 export default function UnitPortrait({ job, gender, team, side }: UnitPortraitProps) {
-    const classes = classnames({
-        'unit-portrait-left': side === 'left',
-        'unit-portrait-right': side === 'right',
-    });
+    const classes = side === 'left' ? 'unit-portrait-left' : 'unit-portrait-right';
 
     const teamString = team === 'champion' ? '' : `_${team.replace(/^\w/, c => c.toUpperCase())}`;
     const fileName = gender === 'Monster' ? job : (job + gender.charAt(0) + teamString);

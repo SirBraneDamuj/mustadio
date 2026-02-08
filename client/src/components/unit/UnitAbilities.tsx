@@ -3,7 +3,6 @@ import MustadioTooltip from '../util/MustadioTooltip';
 import images from '../../constants/images';
 import { useFftbgContext } from '../../hooks/useFftbgContext';
 import notables from '../../constants/notables';
-import classnames from 'classnames';
 import type { UnitAbilities as UnitAbilitiesType, Gender, Side } from '../../schemas';
 
 const tooltipSide = (side: Side): Side => side === 'left' ? 'right' : 'left';
@@ -18,13 +17,11 @@ interface AbilityProps {
 
 export function Ability({ name, slot, info, side, highlightNotables = false }: AbilityProps) {
     const abilityNameDisplay = name && name.length > 0 ? name : '(none)';
-    const textClasses = classnames({
-        notable: highlightNotables && notables.abilities.has(name),
-    });
+    const isNotable = highlightNotables && notables.abilities.has(name);
     const line = (
-        <div className='d-inline-flex align-items-center'>
+        <div className='inline-flex items-center'>
             <img className='ability-icon' src={`${images.icons}/${slot}.png`} alt={slot} />
-            <div className={textClasses}>{abilityNameDisplay}</div>
+            <div className={isNotable ? 'font-bold' : ''}>{abilityNameDisplay}</div>
         </div>
     );
 
@@ -94,7 +91,7 @@ export default function UnitAbilities({ abilities: unitAbilities, gender, unitCl
         unitAbilities.move;
 
     return (
-        <div className='d-flex flex-column unit-abilities'>
+        <div className='flex flex-col unit-abilities'>
             {hasNonInnates && (
                 <NonInnates
                     mainActive={unitAbilities.mainActive!}
@@ -106,7 +103,7 @@ export default function UnitAbilities({ abilities: unitAbilities, gender, unitCl
                     side={side}
                 />
             )}
-            {innatesChildren.length > 0 && <div className='fw-bold'>Innates:</div>}
+            {innatesChildren.length > 0 && <div className='font-bold'>Innates:</div>}
             {innatesChildren.length > 0 && innatesChildren}
         </div>
     );

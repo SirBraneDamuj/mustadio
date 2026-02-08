@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
+import { Button, Dropdown, DropdownItem } from '../ui';
 import ContactModal from './ContactModal';
 import MatchupModal from './MatchupModal';
 import LatestMatchButton from './LatestMatchButton';
@@ -20,44 +17,28 @@ function Header({ useDarkTheme, handleDarkThemeToggle }: HeaderProps) {
     const hideMatchups = () => setMatchupsShouldShow(false);
     const showMatchups = () => setMatchupsShouldShow(true);
 
-    const navLink = (text: string, href: string) => (
-        <Nav.Item key={text}>
-            <Nav.Link href={href}>{text}</Nav.Link>
-        </Nav.Item>
-    );
-
     return (
         <>
-            <Navbar bg='light' expand='lg'>
-                <Navbar.Brand>Mustadio</Navbar.Brand>
-                <Nav>
-                    <NavDropdown title='Links' id='links-dropdown'>
-                        {navLink('FFTBattleground', 'https://twitch.tv/fftbattleground')}
-                        {navLink('API Docs', '/api/swagger')}
-                        {navLink('Github', 'https://github.com/sirbranedamuj/mustadio')}
-                        <Nav.Item>
-                            <Nav.Link onClick={showContact}>Contact</Nav.Link>
-                        </Nav.Item>
-                    </NavDropdown>
-                </Nav>
-                <Nav>
-                    <LatestMatchButton />
-                </Nav>
-                <Nav>
-                    <Button
-                        variant='outline-secondary'
-                        className='ms-5 me-5'
-                        onClick={showMatchups}
-                    >
-                        Choose Matchup...
-                    </Button>
-                </Nav>
-                <Nav>
-                    <Button variant='outline-secondary' onClick={handleDarkThemeToggle}>
-                        {useDarkTheme ? 'Light Mode' : 'Dark Mode'}
-                    </Button>
-                </Nav>
-            </Navbar>
+            <nav className="flex items-center gap-4 px-4 py-3 bg-gray-100 dark-theme:bg-zinc-800">
+                <span className="text-xl font-semibold">Mustadio</span>
+
+                <Dropdown trigger="Links">
+                    <DropdownItem href="https://twitch.tv/fftbattleground">FFTBattleground</DropdownItem>
+                    <DropdownItem href="/api/swagger">API Docs</DropdownItem>
+                    <DropdownItem href="https://github.com/sirbranedamuj/mustadio">Github</DropdownItem>
+                    <DropdownItem onClick={showContact}>Contact</DropdownItem>
+                </Dropdown>
+
+                <LatestMatchButton />
+
+                <Button variant="outline" onClick={showMatchups} className="mx-4">
+                    Choose Matchup...
+                </Button>
+
+                <Button variant="outline" onClick={handleDarkThemeToggle}>
+                    {useDarkTheme ? 'Light Mode' : 'Dark Mode'}
+                </Button>
+            </nav>
             <ContactModal show={contactShouldShow} onHide={hideContact} />
             <MatchupModal show={matchupsShouldShow} onHide={hideMatchups} />
         </>

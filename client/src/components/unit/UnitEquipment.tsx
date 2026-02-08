@@ -2,7 +2,6 @@ import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MustadioTooltip from '../util/MustadioTooltip';
 import images from '../../constants/images';
 import notables from '../../constants/notables';
-import classnames from 'classnames';
 import type { EquipmentItem, Side } from '../../schemas';
 
 const tooltipSide = (side: Side): Side => side === 'left' ? 'right' : 'left';
@@ -15,14 +14,12 @@ interface EquipmentProps {
 }
 
 function Equipment({ name, slot, info, side }: EquipmentProps) {
-    const textClasses = classnames({
-        notable: notables.items.has(name),
-    });
+    const isNotable = notables.items.has(name);
     const line = (
-        <div className='d-inline-flex align-items-center'>
+        <div className='inline-flex items-center'>
             <img className='ability-icon' src={`${images.icons}/${slot}.png`} alt={slot} />
             <img className='gear-icon' src={`${images.items}/${name.replace(' ', '+')}.png`} alt={name} />
-            <span className={textClasses}>{name}</span>
+            <span className={isNotable ? 'font-bold' : ''}>{name}</span>
         </div>
     );
     if (info) {
@@ -56,7 +53,7 @@ export default function UnitEquipment({ equipmentList, side }: UnitEquipmentProp
         );
     });
     return (
-        <div className='d-flex flex-column unit-equipment'>
+        <div className='flex flex-col unit-equipment'>
             {gear}
         </div>
     );

@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MustadioTooltip from '../util/MustadioTooltip';
 import notables from '../../constants/notables';
@@ -16,24 +15,22 @@ export default function UnitActives({ learned, side }: UnitActivesProps) {
     const learnedChildren = learned?.map((name) => {
         const ability = abilities[name.replace('*', '')];
         const info = ability?.info;
-        const classNames = classnames({
-            notable: notables.abilities.has(name),
-        });
+        const isNotable = notables.abilities.has(name);
         if (info) {
             return (
                 <MustadioTooltip key={name} side={tooltipSide(side)} content={info}>
-                    <div className={classNames}>{name}</div>
+                    <div className={isNotable ? 'font-bold' : ''}>{name}</div>
                 </MustadioTooltip>
             );
         } else {
             return (
-                <div key={name}>{name}</div>
+                <div key={name} className={isNotable ? 'font-bold' : ''}>{name}</div>
             );
         }
     });
     if (learnedChildren && learnedChildren.length > 0) {
         return (
-            <div className='d-flex flex-column unit-actives'>
+            <div className='flex flex-col unit-actives'>
                 {learnedChildren}
             </div>
         );

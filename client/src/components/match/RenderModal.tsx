@@ -1,6 +1,5 @@
 import { useState, ChangeEvent } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import ModalDialog from 'react-bootstrap/ModalDialog';
+import { Modal } from '../ui';
 import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MapRenderer from './MapRenderer';
 
@@ -46,36 +45,40 @@ export default function RenderModal({ show, onHide }: RenderModalProps) {
     }
 
     return (
-        <Modal show={show} onHide={onHide} size='lg'>
-            <ModalDialog size='lg'>
-                <Modal.Header closeButton>
-                    <h1>Map Renderer</h1>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>
-                        LMB+Drag to rotate. RMB+Drag to pan. Scroll Wheel to scroll.<br/>
-                        Not every map is perfect. Most textures are not perfect.<br/>
-                        This is an experimental feature.
-                    </p>
-                    <MapRenderer mapNumber={renderedMap} normalMaterial={normalMaterial} />
-                    <div>
-                        <label htmlFor='map-select'>Choose a Map:</label>
-                        <select id='map-select' defaultValue={renderedMap} onChange={handleMapSelector}>
-                            {
-                                mapNumbers.map((mapName) => (
-                                    <option value={mapName} key={mapName}>
-                                        {mapName}
-                                    </option>
-                                ))
-                            }
-                        </select>
-                    </div>
-                    <div>
-                        <label htmlFor='map-material-checkbox'>Use Normal Material: </label>
-                        <input id='map-material-checkbox' type='checkbox' checked={normalMaterial} onChange={handleMaterialCheckbox} />
-                    </div>
-                </Modal.Body>
-            </ModalDialog>
+        <Modal show={show} onHide={onHide} title="Map Renderer" size="lg">
+            <p className="text-gray-600 mb-4">
+                LMB+Drag to rotate. RMB+Drag to pan. Scroll Wheel to scroll.<br/>
+                Not every map is perfect. Most textures are not perfect.<br/>
+                This is an experimental feature.
+            </p>
+            <MapRenderer mapNumber={renderedMap} normalMaterial={normalMaterial} />
+            <div className="mt-4 space-y-2">
+                <div>
+                    <label htmlFor='map-select' className="text-gray-700">Choose a Map: </label>
+                    <select
+                        id='map-select'
+                        defaultValue={renderedMap}
+                        onChange={handleMapSelector}
+                        className="ml-2 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        {mapNumbers.map((mapName) => (
+                            <option value={mapName} key={mapName}>
+                                {mapName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="flex items-center">
+                    <label htmlFor='map-material-checkbox' className="text-gray-700">Use Normal Material: </label>
+                    <input
+                        id='map-material-checkbox'
+                        type='checkbox'
+                        checked={normalMaterial}
+                        onChange={handleMaterialCheckbox}
+                        className="ml-2 h-4 w-4"
+                    />
+                </div>
+            </div>
         </Modal>
     );
 }

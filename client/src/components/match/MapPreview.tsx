@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import { Button } from '../ui';
 import RenderModal from './RenderModal';
 import images from '../../constants/images';
-import './MapPreview.css';
 
 const customMaps: Record<number, string> = {
     0: 'Garmichael_End_Of_Time',
@@ -28,27 +27,32 @@ export default function MapPreview({ mapNumber, mapTitle }: MapPreviewProps) {
     const hideRender = () => setShouldShowRender(false);
 
     const imgs = [1, 2, 3, 4].map((index) => (
-            <img
-                key={`${mapNumber}/${index}`}
-                className='map-preview'
-                src={`${images.maps}/${mapNumber}_${index}.gif`}
-                alt='Map images courtesy of https://ffthacktics.com'
-            />
-        )
-    );
+        <img
+            key={`${mapNumber}/${index}`}
+            className='map-preview'
+            src={`${images.maps}/${mapNumber}_${index}.gif`}
+            alt='Map images courtesy of https://ffthacktics.com'
+        />
+    ));
     const mapNumberInt = parseInt(mapNumber, 10);
     const wikiString = customMaps[mapNumberInt] || `MAP${mapNumber}`;
 
     return (
         <>
             <h3>
-                <a href={`https://ffhacktics.com/wiki/${wikiString}`} target='_blank' rel='noopener noreferrer'>{`${mapNumber}) ${mapTitle}`}</a>
+                <a
+                    href={`https://ffhacktics.com/wiki/${wikiString}`}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className="text-blue-600 hover:underline"
+                >
+                    {`${mapNumber}) ${mapTitle}`}
+                </a>
             </h3>
-            <span className='map-preview-container'>
+            <span className='map-preview-container flex items-center gap-2'>
                 {imgs}
                 <Button
-                    variant='outline-info'
-                    className='render-button'
+                    variant="outline"
                     title='Ladies and Gentlemen, please put on your 3D glasses now.'
                     onClick={showRender}
                 >

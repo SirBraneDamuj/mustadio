@@ -6,7 +6,7 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner';
+import { Spinner } from '../ui';
 import mustadioApiClient from '../../api/mustadio-client';
 import App from './App';
 
@@ -20,7 +20,9 @@ function LatestMatch() {
         fetchCurrentMatch();
     }, [navigate]);
     return (
-        <Spinner animation="grow" />
+        <div className="flex items-center justify-center min-h-screen">
+            <Spinner size="lg" />
+        </div>
     );
 }
 

@@ -30,17 +30,23 @@ export default function UnitBasic({ unit, job, team, otherTeam, side }: UnitBasi
     );
 
     return (
-        <div className='d-flex flex-column unit-basic'>
-            <a title={name} href={`https://fftbg.bryanching.net/player/${name}`} target='_blank' rel="noopener noreferrer">
+        <div className='flex flex-col unit-basic'>
+            <a
+                title={name}
+                href={`https://fftbg.bryanching.net/player/${name}`}
+                target='_blank'
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+            >
                 {name}
             </a>
             <span>{gender}</span>
             <BraveFaith brave={brave} faith={faith} />
             <MustadioTooltip side='right' content={classRaw || 'Class info unavailable'}>
-                <div className='fw-bold'>{job}</div>
+                <div className='font-bold cursor-help'>{job}</div>
             </MustadioTooltip>
             <div>{zodiac}</div>
-            <div className='d-flex'>
+            <div className='flex'>
                 {side === 'left' ? allyZodiac : enemyZodiac}
                 <UnitPortrait
                     job={job}

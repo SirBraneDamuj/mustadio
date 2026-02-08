@@ -16,23 +16,23 @@ export default function UnitStats({ side, stats }: UnitStatsProps) {
         <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} side={side} />
     ));
     return (
-        <div className='d-flex flex-column unit-stats'>
+        <div className='flex flex-col unit-stats'>
             <span>HP: {stats.hp} / MP: {stats.mp}</span>
             <span>Move: {stats.move} / Jump: {stats.jump}</span>
             <span>Speed: {stats.speed}</span>
             <span>PA: {stats.pa} / MA: {stats.ma}</span>
             <span>Evasion:</span>
-            <span><strong>C</strong> {stats.cEvPercent}%</span>
-            <span><strong>S</strong> {stats.sPhysEvPercent}% / {stats.sMagEvPercent}%</span>
-            <span><strong>A</strong> {stats.aPhysEvPercent}% / {stats.aMagEvPercent}%</span>
+            <span><span className="font-bold">C</span> {stats.cEvPercent}%</span>
+            <span><span className="font-bold">S</span> {stats.sPhysEvPercent}% / {stats.sMagEvPercent}%</span>
+            <span><span className="font-bold">A</span> {stats.aPhysEvPercent}% / {stats.aMagEvPercent}%</span>
             {initialStatuses && initialStatuses.length > 0 &&
                 <>
-                    <strong>Initial Status:</strong>
+                    <span className="font-bold">Initial Status:</span>
                     {initialStatuses}
                 </>}
             {permStatuses && permStatuses.length > 0 &&
                 <>
-                    <strong>Perm Status:</strong>
+                    <span className="font-bold">Perm Status:</span>
                     {permStatuses}
                 </>}
         </div>

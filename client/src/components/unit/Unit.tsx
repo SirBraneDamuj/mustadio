@@ -5,7 +5,6 @@ import UnitAbilities from './UnitAbilities';
 import UnitActives from './UnitActives';
 import { useFftbgContext } from '../../hooks/useFftbgContext';
 import type { Unit as UnitType, Team, Side } from '../../schemas';
-import './Unit.css';
 
 interface UnitProps {
     side: Side;
@@ -23,7 +22,7 @@ export default function Unit({ side, unit, team, otherTeam }: UnitProps) {
     const subActives = unit.abilities.subActive?.learned && unit.abilities.subActive.learned.length > 0;
     const equipment = unit.gender !== 'Monster';
     return (
-        <div className='d-flex unit-row'>
+        <div className='flex unit-row'>
             <UnitBasic unit={unit} job={unit.class.name} side={side} team={team} otherTeam={otherTeam} />
             <UnitStats stats={unit.stats} side={side} />
             {equipment && <UnitEquipment equipmentList={unit.equipment} side={side} />}

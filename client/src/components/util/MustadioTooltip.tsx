@@ -1,8 +1,7 @@
 import { ReactElement } from 'react';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import { Tooltip } from '../ui';
 
-type Placement = 'auto' | 'top' | 'bottom' | 'left' | 'right';
+type Placement = 'top' | 'bottom' | 'left' | 'right';
 
 interface MustadioTooltipProps {
     side: Placement;
@@ -11,13 +10,9 @@ interface MustadioTooltipProps {
 }
 
 export default function MustadioTooltip({ side, content, children }: MustadioTooltipProps) {
-    const tooltip = <Tooltip id={`tooltip-${content.slice(0, 20)}`}>{content}</Tooltip>;
     return (
-        <OverlayTrigger
-            placement={side}
-            overlay={tooltip}
-        >
+        <Tooltip placement={side} content={content}>
             {children}
-        </OverlayTrigger>
+        </Tooltip>
     );
 }

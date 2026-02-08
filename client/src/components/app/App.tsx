@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import classnames from 'classnames';
-import Spinner from 'react-bootstrap/Spinner';
+import { Spinner } from '../ui';
 import FftbgContext from '../../contexts/FftbgContext';
 import Header from '../header/Header';
 import Match from '../match/Match';
 import mustadioApiClient from '../../api/mustadio-client';
 import type { FullMatchResponse, GameDataResponse, MapInfo, FftbgContextValue } from '../../schemas';
-import './App.css';
 
 interface AppProps {
     tournamentId: string;
@@ -64,9 +62,7 @@ function App({ tournamentId, team1, team2 }: AppProps) {
         loadLatestMatch: () => {},
     });
 
-    const appClasses = classnames({
-        'dark-theme': useDarkTheme,
-    });
+    const appClasses = useDarkTheme ? 'dark-theme' : '';
 
     if (currentMatch && data) {
         return (
@@ -79,8 +75,8 @@ function App({ tournamentId, team1, team2 }: AppProps) {
         );
     } else {
         return (
-            <div id='layout' className={appClasses}>
-                <Spinner animation="grow" variant={useDarkTheme ? 'light' : 'dark'}/>
+            <div id='layout' className={`${appClasses} flex items-center justify-center min-h-screen`}>
+                <Spinner variant={useDarkTheme ? 'light' : 'dark'} size="lg" />
             </div>
         );
     }
