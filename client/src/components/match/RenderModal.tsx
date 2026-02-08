@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import ModalDialog from 'react-bootstrap/ModalDialog';
-import FftbgContext from '../../contexts/FftbgContext';
+import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MapRenderer from './MapRenderer';
 
 const mapNumbers = new Array(118).fill(0).map((_, index) => `MAP${(index + 1).toString().padStart(3, '0')}`);
@@ -20,17 +20,22 @@ const badMaps = new Set([
   'MAP114',
 ]);
 
+interface RenderModalProps {
+    show: boolean;
+    onHide: () => void;
+}
 
-export default function RenderModal({ show, onHide }) {
-    const { currentMap } = useContext(FftbgContext);
-    const [renderedMap, setRenderedMap] = useState(`MAP${currentMap.number.padStart(3, '0')}`);
-    const [normalMaterial, setNormalMaterial] = useState(badMaps.has(renderedMap));
+export default function RenderModal({ show, onHide }: RenderModalProps) {
+    const { currentMap } = useFftbgContext();
+    const initialMap = `MAP${currentMap.number.padStart(3, '0')}`;
+    const [renderedMap, setRenderedMap] = useState(initialMap);
+    const [normalMaterial, setNormalMaterial] = useState(badMaps.has(initialMap));
 
-    function handleMaterialCheckbox(event) {
+    function handleMaterialCheckbox(event: ChangeEvent<HTMLInputElement>) {
         setNormalMaterial(event.target.checked);
     }
 
-    function handleMapSelector(event) {
+    function handleMapSelector(event: ChangeEvent<HTMLSelectElement>) {
         const newMap = event.target.value;
         setRenderedMap(newMap);
         if (badMaps.has(newMap)) {
@@ -66,7 +71,7 @@ export default function RenderModal({ show, onHide }) {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor='map-material-checkbox'>Use Normal Material: </label> 
+                        <label htmlFor='map-material-checkbox'>Use Normal Material: </label>
                         <input id='map-material-checkbox' type='checkbox' checked={normalMaterial} onChange={handleMaterialCheckbox} />
                     </div>
                 </Modal.Body>

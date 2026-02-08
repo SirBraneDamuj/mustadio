@@ -1,18 +1,21 @@
-import React, { useContext } from 'react';
 import classnames from 'classnames';
-import FftbgContext from '../../contexts/FftbgContext';
+import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MustadioTooltip from '../util/MustadioTooltip';
 import notables from '../../constants/notables';
+import type { Side } from '../../schemas';
 
-const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
+const tooltipSide = (side: Side): Side => side === 'left' ? 'right' : 'left';
 
-export default function UnitActives({
-    learned,
-    side,
-}) {
-    const { data: { abilities } } = useContext(FftbgContext);
+interface UnitActivesProps {
+    learned: string[];
+    side: Side;
+}
+
+export default function UnitActives({ learned, side }: UnitActivesProps) {
+    const { data: { abilities } } = useFftbgContext();
     const learnedChildren = learned?.map((name) => {
-        const { info } = abilities[name.replace('*', '')] || {};
+        const ability = abilities[name.replace('*', '')];
+        const info = ability?.info;
         const classNames = classnames({
             notable: notables.abilities.has(name),
         });

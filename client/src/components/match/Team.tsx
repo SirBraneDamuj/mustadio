@@ -1,12 +1,14 @@
-import React from 'react';
 import Unit from '../unit/Unit';
+import type { Team as TeamType, Side } from '../../schemas';
 import './Team.css';
 
-export default function Team({
-    team,
-    otherTeam,
-    side,
-}) {
+interface TeamProps {
+    team: TeamType;
+    otherTeam: TeamType;
+    side: Side;
+}
+
+export default function Team({ team, otherTeam, side }: TeamProps) {
     return (
         <div className='d-flex flex-column team-table'>
             {

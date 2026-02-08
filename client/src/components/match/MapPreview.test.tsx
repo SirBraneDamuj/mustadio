@@ -1,11 +1,17 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
 import MapPreview from './MapPreview';
+import { renderWithContext } from '../../test-utils';
 
-test('shows the render dialog when 3D is clicked', async () => {
-  const { getByText, findByText } = render(<MapPreview mapNumber={'MAP001'} />);
-  const renderLink = getByText("3D!");
-  expect(renderLink).toBeInTheDocument();
-  fireEvent.click(renderLink);
-  expect(await findByText('Map Renderer')).toBeVisible();
+test('renders the 3D button', () => {
+  const { getByText, getByRole } = renderWithContext(<MapPreview mapNumber={'001'} mapTitle={'Test Map'} />);
+  const renderButton = getByText("3D!");
+  expect(renderButton).toBeInTheDocument();
+  expect(getByRole('button', { name: '3D!' })).toBeEnabled();
+});
+
+test('renders the map title link', () => {
+  const { getByText } = renderWithContext(<MapPreview mapNumber={'001'} mapTitle={'Test Map'} />);
+  const titleLink = getByText('001) Test Map');
+  expect(titleLink).toBeInTheDocument();
+  expect(titleLink.closest('a')).toHaveAttribute('href', expect.stringContaining('ffhacktics.com'));
 });

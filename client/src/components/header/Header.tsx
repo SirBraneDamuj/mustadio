@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -7,10 +7,12 @@ import ContactModal from './ContactModal';
 import MatchupModal from './MatchupModal';
 import LatestMatchButton from './LatestMatchButton';
 
-function Header({
-    useDarkTheme,
-    handleDarkThemeToggle,
-}) {
+interface HeaderProps {
+    useDarkTheme: boolean;
+    handleDarkThemeToggle: () => void;
+}
+
+function Header({ useDarkTheme, handleDarkThemeToggle }: HeaderProps) {
     const [contactShouldShow, setContactShouldShow] = useState(false);
     const hideContact = () => setContactShouldShow(false);
     const showContact = () => setContactShouldShow(true);
@@ -18,8 +20,8 @@ function Header({
     const hideMatchups = () => setMatchupsShouldShow(false);
     const showMatchups = () => setMatchupsShouldShow(true);
 
-    const navLink = (text, href) => (
-        <Nav.Item>
+    const navLink = (text: string, href: string) => (
+        <Nav.Item key={text}>
             <Nav.Link href={href}>{text}</Nav.Link>
         </Nav.Item>
     );
@@ -29,7 +31,7 @@ function Header({
             <Navbar bg='light' expand='lg'>
                 <Navbar.Brand>Mustadio</Navbar.Brand>
                 <Nav>
-                    <NavDropdown title='Links'>
+                    <NavDropdown title='Links' id='links-dropdown'>
                         {navLink('FFTBattleground', 'https://twitch.tv/fftbattleground')}
                         {navLink('API Docs', '/api/swagger')}
                         {navLink('Github', 'https://github.com/sirbranedamuj/mustadio')}

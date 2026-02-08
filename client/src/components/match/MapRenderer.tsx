@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -6,17 +6,28 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 const width = 640;
 const height = 480;
 
-export default function MapRenderer({
-    mapNumber,
-    normalMaterial,
-}) {
-    const renderTarget = useRef(null);
-    const myScene = useRef(null);
-    const camera = useRef(null);
-    const loader = useRef(null);
-    const controls = useRef(null);
-    const animationId = useRef(null);
-    const renderer = useRef(null);
+// Extend window for debugging Three.js objects
+declare global {
+    interface Window {
+        scene: THREE.Scene;
+        camera: THREE.OrthographicCamera;
+    }
+}
+
+interface MapRendererProps {
+    mapNumber: string;
+    normalMaterial: boolean;
+}
+
+export default function MapRenderer({ mapNumber, normalMaterial }: MapRendererProps) {
+    // Using any for Three.js refs as their types are complex and this is experimental code
+    const renderTarget = useRef<HTMLDivElement>(null);
+    const myScene = useRef<any>(null);
+    const camera = useRef<any>(null);
+    const loader = useRef<any>(null);
+    const controls = useRef<any>(null);
+    const animationId = useRef<number | null>(null);
+    const renderer = useRef<any>(null);
 
     function animate() {
         animationId.current = requestAnimationFrame(animate);
@@ -24,7 +35,9 @@ export default function MapRenderer({
     }
 
     function unloadMap() {
-        cancelAnimationFrame(animationId.current);
+        if (animationId.current) {
+            cancelAnimationFrame(animationId.current);
+        }
         myScene.current.remove.apply(myScene.current, myScene.current.children);
     }
 
@@ -54,7 +67,7 @@ export default function MapRenderer({
 
     useEffect(() => {
         unloadMap();
-        loader.current.load(`https://mustadio-maps.s3.amazonaws.com/${mapNumber}/${mapNumber}.gltf`, (result) => {
+        loader.current.load(`https://mustadio-maps.s3.amazonaws.com/${mapNumber}/${mapNumber}.gltf`, (result: any) => {
             myScene.current.add.apply(myScene.current, result.scene.children);
             let [skirt, terrain] = myScene.current.children;
             if (!terrain) {
@@ -89,7 +102,11 @@ export default function MapRenderer({
             controls.current.update();
             animate();
         });
-        return () => cancelAnimationFrame(animationId.current);
+        return () => {
+            if (animationId.current) {
+                cancelAnimationFrame(animationId.current);
+            }
+        };
     });
 
     return (

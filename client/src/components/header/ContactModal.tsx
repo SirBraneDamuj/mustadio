@@ -1,8 +1,12 @@
-import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import ModalDialog from 'react-bootstrap/ModalDialog';
 
-function ContactModal({ show, onHide }) {
+interface ContactModalProps {
+    show: boolean;
+    onHide: () => void;
+}
+
+function ContactModal({ show, onHide }: ContactModalProps) {
     return (
         <Modal show={show} onHide={onHide}>
             <ModalDialog size='lg'>

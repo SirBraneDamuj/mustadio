@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import RenderModal from './RenderModal';
 import images from '../../constants/images';
 import './MapPreview.css';
 
-const customMaps = {
+const customMaps: Record<number, string> = {
     0: 'Garmichael_End_Of_Time',
     118: 'Kokojo_Silas_Swamp',
     119: 'Kokojo_Tchechene_Bridge',
@@ -17,7 +17,12 @@ const customMaps = {
     127: 'Garmichael_Arris_Dome',
 };
 
-export default function MapPreview({ mapNumber, mapTitle }) {
+interface MapPreviewProps {
+    mapNumber: string;
+    mapTitle: string;
+}
+
+export default function MapPreview({ mapNumber, mapTitle }: MapPreviewProps) {
     const [shouldShowRender, setShouldShowRender] = useState(false);
     const showRender = () => setShouldShowRender(true);
     const hideRender = () => setShouldShowRender(false);
@@ -31,7 +36,8 @@ export default function MapPreview({ mapNumber, mapTitle }) {
             />
         )
     );
-    const wikiString = customMaps[mapNumber] || `MAP${mapNumber}`;
+    const mapNumberInt = parseInt(mapNumber, 10);
+    const wikiString = customMaps[mapNumberInt] || `MAP${mapNumber}`;
 
     return (
         <>

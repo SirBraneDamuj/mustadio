@@ -1,14 +1,16 @@
-import React from 'react';
 import classnames from 'classnames';
 import images from '../../constants/images';
+import type { Gender, Side } from '../../schemas';
 import './UnitPortrait.css';
 
-export default function UnitPortrait({
-    job,
-    gender,
-    team,
-    side,
-}) {
+interface UnitPortraitProps {
+    job: string;
+    gender: Gender;
+    team: string;
+    side: Side;
+}
+
+export default function UnitPortrait({ job, gender, team, side }: UnitPortraitProps) {
     const classes = classnames({
         'unit-portrait-left': side === 'left',
         'unit-portrait-right': side === 'right',

@@ -1,33 +1,8 @@
-import React from 'react';
-import type { FftbgContextValue } from '../types';
+import { createContext } from 'react';
+import type { FftbgContextValue } from '../schemas';
 
-const defaultValue: FftbgContextValue = {
-  match: {
-    team1: {
-      name: '',
-      units: [],
-    },
-    team2: {
-      name: '',
-      units: [],
-    },
-    matchNumber: 0,
-  },
-  tournament: {
-    tournamentId: '',
-    maps: [],
-  },
-  data: {
-    items: {},
-    abilities: {},
-    classes: {},
-    statuses: {},
-    monsterSkills: {},
-  },
-  currentMap: undefined,
-  loadLatestMatch: () => {},
-};
-
-const FftbgContext = React.createContext<FftbgContextValue>(defaultValue);
+// Note: This default value is only used when a component doesn't have a Provider above it.
+// In practice, App.tsx always provides a real value, so this is just for type satisfaction.
+const FftbgContext = createContext<FftbgContextValue | null>(null);
 
 export default FftbgContext;

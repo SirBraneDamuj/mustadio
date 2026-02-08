@@ -1,19 +1,22 @@
-import React, { useContext } from 'react';
+import { ReactNode } from 'react';
 import MustadioTooltip from '../util/MustadioTooltip';
 import images from '../../constants/images';
-import FftbgContext from '../../contexts/FftbgContext';
+import { useFftbgContext } from '../../hooks/useFftbgContext';
 import notables from '../../constants/notables';
 import classnames from 'classnames';
+import type { UnitAbilities as UnitAbilitiesType, Gender, Side } from '../../schemas';
 
-const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
+const tooltipSide = (side: Side): Side => side === 'left' ? 'right' : 'left';
 
-export function Ability({
-    name,
-    slot,
-    info,
-    side,
-    highlightNotables = false,
-}) {
+interface AbilityProps {
+    name: string;
+    slot: string;
+    info?: string;
+    side: Side;
+    highlightNotables?: boolean;
+}
+
+export function Ability({ name, slot, info, side, highlightNotables = false }: AbilityProps) {
     const abilityNameDisplay = name && name.length > 0 ? name : '(none)';
     const textClasses = classnames({
         notable: highlightNotables && notables.abilities.has(name),
@@ -34,18 +37,19 @@ export function Ability({
     } else {
         return line;
     }
-
 }
 
-function NonInnates({
-    mainActive,
-    subActive,
-    react,
-    support,
-    move,
-    infoGetter,
-    side,
-}) {
+interface NonInnatesProps {
+    mainActive: { name: string };
+    subActive: { name: string };
+    react: { name: string };
+    support: { name: string };
+    move: { name: string };
+    infoGetter: (name: string) => string | undefined;
+    side: Side;
+}
+
+function NonInnates({ mainActive, subActive, react, support, move, infoGetter, side }: NonInnatesProps) {
     return (
         <>
             <Ability name={mainActive.name} slot='active' info={infoGetter(mainActive.name)} side={side} highlightNotables />
@@ -57,28 +61,51 @@ function NonInnates({
     );
 }
 
-export default function UnitAbilities(props) {
-    const { data: { classes, abilities } } = useContext(FftbgContext);
-    const { innates } = classes[props.unitClass][props.gender];
-    const abilityInfoGetter = (name) => abilities[name]?.info || abilities[name.replace(/ /g, '')]?.info;
+interface UnitAbilitiesProps {
+    abilities: Partial<UnitAbilitiesType>;
+    gender: Gender;
+    unitClass: string;
+    side: Side;
+}
 
-    const innatesChildren = (() => {
-        if (!innates) { 
+export default function UnitAbilities({ abilities: unitAbilities, gender, unitClass, side }: UnitAbilitiesProps) {
+    const { data: { classes, abilities } } = useFftbgContext();
+    const classData = classes[unitClass]?.[gender];
+    const innates = classData?.innates;
+    const abilityInfoGetter = (name: string): string | undefined =>
+        abilities[name]?.info || abilities[name?.replace(/ /g, '')]?.info;
+
+    const innatesChildren: ReactNode[] = (() => {
+        if (!innates || innates.length === 0) {
             return [];
-        } else if (innates.length === 0) {
-            return [];
-        }  else {
-            return innates
-                .filter(({ type }) => type !== 'active')
-                .map(({ name, type }) => (
-                    <Ability key={name} name={name} slot={type || 'status'} info={abilityInfoGetter(name)} side={props.side} />
-                ));
         }
+        return innates
+            .filter((innate) => innate.type !== 'active')
+            .map((innate) => (
+                <Ability key={innate.name} name={innate.name} slot={innate.type || 'status'} info={abilityInfoGetter(innate.name)} side={side} />
+            ));
     })();
+
+    const hasNonInnates = gender !== 'Monster' &&
+        unitAbilities.mainActive &&
+        unitAbilities.subActive &&
+        unitAbilities.react &&
+        unitAbilities.support &&
+        unitAbilities.move;
 
     return (
         <div className='d-flex flex-column unit-abilities'>
-            {props.gender !== 'Monster' && <NonInnates {...props} infoGetter={abilityInfoGetter} />}
+            {hasNonInnates && (
+                <NonInnates
+                    mainActive={unitAbilities.mainActive!}
+                    subActive={unitAbilities.subActive!}
+                    react={unitAbilities.react!}
+                    support={unitAbilities.support!}
+                    move={unitAbilities.move!}
+                    infoGetter={abilityInfoGetter}
+                    side={side}
+                />
+            )}
             {innatesChildren.length > 0 && <div className='font-weight-bold'>Innates:</div>}
             {innatesChildren.length > 0 && innatesChildren}
         </div>

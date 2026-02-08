@@ -1,9 +1,14 @@
-import React, { useContext } from 'react';
-import FftbgContext from '../../contexts/FftbgContext'
+import { useFftbgContext } from '../../hooks/useFftbgContext';
 import { Ability } from './UnitAbilities';
+import type { UnitStats as UnitStatsType, Side } from '../../schemas';
 
-export default function UnitStats({ side, stats }) {
-    const { data: { statuses } } = useContext(FftbgContext);
+interface UnitStatsProps {
+    side: Side;
+    stats: UnitStatsType;
+}
+
+export default function UnitStats({ side, stats }: UnitStatsProps) {
+    const { data: { statuses } } = useFftbgContext();
     const initialStatuses = stats.initialStatuses && [...new Set(stats.initialStatuses)].map((status) => (
         <Ability key={status} name={status} slot='status' info={statuses[status]?.info || ''} side={side} />
     ));
@@ -20,12 +25,12 @@ export default function UnitStats({ side, stats }) {
             <span><strong>C</strong> {stats.cEvPercent}%</span>
             <span><strong>S</strong> {stats.sPhysEvPercent}% / {stats.sMagEvPercent}%</span>
             <span><strong>A</strong> {stats.aPhysEvPercent}% / {stats.aMagEvPercent}%</span>
-            {initialStatuses && initialStatuses.length > 0 && 
+            {initialStatuses && initialStatuses.length > 0 &&
                 <>
                     <strong>Initial Status:</strong>
                     {initialStatuses}
                 </>}
-            {permStatuses && permStatuses.length > 0 && 
+            {permStatuses && permStatuses.length > 0 &&
                 <>
                     <strong>Perm Status:</strong>
                     {permStatuses}

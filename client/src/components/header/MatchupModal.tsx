@@ -1,18 +1,23 @@
-import React, { useState, useContext } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import ModalDialog from 'react-bootstrap/ModalDialog';
 import Button from 'react-bootstrap/Button';
-import FftbgContext from '../../contexts/FftbgContext';
+import { useFftbgContext } from '../../hooks/useFftbgContext';
 import teams from '../../constants/teams';
 
-function MatchupModal({ show, onHide }) {
+interface MatchupModalProps {
+    show: boolean;
+    onHide: () => void;
+}
+
+function MatchupModal({ show, onHide }: MatchupModalProps) {
     const navigate = useNavigate();
-    const { tournament: { tournamentId } } = useContext(FftbgContext);
+    const { tournament: { tournamentId } } = useFftbgContext();
     const [leftTeam, setLeftTeam] = useState(teams[0]);
     const [rightTeam, setRightTeam] = useState(teams[0]);
 
-    const handleTeamSelection = (side) => (e) => {
+    const handleTeamSelection = (side: 'left' | 'right') => (e: ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value;
         if (side === 'left') {
             setLeftTeam(value);
@@ -25,7 +30,7 @@ function MatchupModal({ show, onHide }) {
         navigate(`/${tournamentId}/${leftTeam}/${rightTeam}`);
     }
 
-    function teamSelector(id, side) {
+    function teamSelector(id: string, side: 'left' | 'right') {
         return (
             <select id={id} defaultValue={teams[0]} onChange={handleTeamSelection(side)}>
                 {

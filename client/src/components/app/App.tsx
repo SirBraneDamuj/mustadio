@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import Spinner from 'react-bootstrap/Spinner';
 import FftbgContext from '../../contexts/FftbgContext';
 import Header from '../header/Header';
 import Match from '../match/Match';
 import mustadioApiClient from '../../api/mustadio-client';
+import type { FullMatchResponse, GameDataResponse, MapInfo, FftbgContextValue } from '../../schemas';
 import './App.css';
 
-function App({
-    tournamentId,
-    team1,
-    team2,
-}) {
-    const [currentMatch, setCurrentMatch] = useState({});
-    const [matchReady, setMatchReady] = useState(false);
-    const [data, setData] = useState({});
-    const [dataReady, setDataReady] = useState(false);
+interface AppProps {
+    tournamentId: string;
+    team1: string;
+    team2: string;
+}
+
+function App({ tournamentId, team1, team2 }: AppProps) {
+    const [currentMatch, setCurrentMatch] = useState<FullMatchResponse | null>(null);
+    const [data, setData] = useState<GameDataResponse | null>(null);
     const [useDarkTheme, setUseDarkTheme] = useState(localStorage.getItem('darkTheme') === 'true');
 
     function toggleDarkTheme() {
@@ -23,7 +24,7 @@ function App({
     }
 
     useEffect(() => {
-        localStorage.setItem('darkTheme', useDarkTheme);
+        localStorage.setItem('darkTheme', String(useDarkTheme));
         if (useDarkTheme) {
             document.body.classList.add('dark-theme');
         } else {
@@ -33,10 +34,9 @@ function App({
 
     useEffect(() => {
         async function fetchCurrentMatch() {
-            setMatchReady(false);
+            setCurrentMatch(null);
             const matchResult = await mustadioApiClient.getMatch(tournamentId, team1, team2);
             setCurrentMatch(matchResult);
-            setMatchReady(true);
         }
         fetchCurrentMatch();
     }, [tournamentId, team1, team2]);
@@ -45,27 +45,27 @@ function App({
         async function fetchData() {
             const dataResult = await mustadioApiClient.getData()
             setData(dataResult);
-            setDataReady(true);
         }
         fetchData();
     }, []);
 
-    const currentMap = (matchNumber, maps) => {
-        return maps.sort(({ order1 }, { order2 }) => order1 - order2)[matchNumber];
+    const getCurrentMap = (matchNumber: number, maps: MapInfo[]): MapInfo => {
+        return [...maps].sort((a, b) => a.order - b.order)[matchNumber];
     };
 
-    const buildContext = () => ({
-        match: currentMatch.match,
-        tournament: currentMatch.tournament,
-        data,
-        currentMap: currentMap(currentMatch.match.matchNumber, currentMatch.tournament.maps),
+    const buildContext = (): FftbgContextValue => ({
+        match: currentMatch!.match,
+        tournament: currentMatch!.tournament,
+        data: data!,
+        currentMap: getCurrentMap(currentMatch!.match.matchNumber, currentMatch!.tournament.maps),
+        loadLatestMatch: () => {},
     });
 
     const appClasses = classnames({
         'dark-theme': useDarkTheme,
     });
 
-    if (matchReady && dataReady) {
+    if (currentMatch && data) {
         return (
             <FftbgContext.Provider value={buildContext()}>
                 <div id='layout' className={appClasses}>

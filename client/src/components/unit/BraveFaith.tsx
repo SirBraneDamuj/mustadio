@@ -1,11 +1,12 @@
-import React from 'react';
 import classnames from 'classnames';
 
-export default function BraveFaith({
-    brave,
-    faith,
-}) {
-    const bfClasses = (val) => classnames({
+interface BraveFaithProps {
+    brave: number;
+    faith: number;
+}
+
+export default function BraveFaith({ brave, faith }: BraveFaithProps) {
+    const bfClasses = (val: number) => classnames({
         notable: val < 50 || val > 70,
     });
 

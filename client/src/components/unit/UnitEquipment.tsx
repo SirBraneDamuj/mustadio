@@ -1,18 +1,20 @@
-import React, { useContext } from 'react';
+import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MustadioTooltip from '../util/MustadioTooltip';
-import FftbgContext from '../../contexts/FftbgContext';
 import images from '../../constants/images';
 import notables from '../../constants/notables';
 import classnames from 'classnames';
+import type { EquipmentItem, Side } from '../../schemas';
 
-const tooltipSide = (side) => side === 'left' ? 'right' : 'left';
+const tooltipSide = (side: Side): Side => side === 'left' ? 'right' : 'left';
 
-function Equipment({
-    name,
-    slot,
-    info,
-    side,
-}) {
+interface EquipmentProps {
+    name: string;
+    slot: string;
+    info?: string;
+    side: Side;
+}
+
+function Equipment({ name, slot, info, side }: EquipmentProps) {
     const textClasses = classnames({
         notable: notables.items.has(name),
     });
@@ -34,15 +36,23 @@ function Equipment({
     }
 }
 
-export default function UnitEquipment({
-    equipmentList,
-    side,
-}) {
-    const { data: { items } } = useContext(FftbgContext);
-    const gear = equipmentList.map(({ name }, index) => {
-        const gearInfo = items[name] || { name, info: '', slot: '' };
+interface UnitEquipmentProps {
+    equipmentList: EquipmentItem[];
+    side: Side;
+}
+
+export default function UnitEquipment({ equipmentList, side }: UnitEquipmentProps) {
+    const { data: { items } } = useFftbgContext();
+    const gear = equipmentList.map((equipment, index) => {
+        const gearInfo = items[equipment.name] || { name: equipment.name, info: '', slot: '' };
         return (
-            <Equipment {...gearInfo} key={index} side={side} />
+            <Equipment
+                key={index}
+                name={gearInfo.name}
+                slot={gearInfo.slot || ''}
+                info={gearInfo.info}
+                side={side}
+            />
         );
     });
     return (

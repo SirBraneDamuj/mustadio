@@ -1,31 +1,34 @@
-import React, { useContext } from 'react';
-import FftbgContext from '../../contexts/FftbgContext';
+import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MustadioTooltip from '../util/MustadioTooltip';
 import UnitPortrait from './UnitPortrait';
 import UnitZodiac from './UnitZodiac';
 import BraveFaith from './BraveFaith';
+import type { Unit, Team, Side } from '../../schemas';
 
-export default function UnitBasic({
-    unit: {
-        name,
-        gender,
-        brave,
-        faith,
-        zodiac,
-    },
-    job,
-    team,
-    otherTeam,
-    side,
-}) {
-    const { data: { classes } } = useContext(FftbgContext);
+interface UnitBasicProps {
+    unit: Unit;
+    job: string;
+    team: Team;
+    otherTeam: Team;
+    side: Side;
+}
+
+export default function UnitBasic({ unit, job, team, otherTeam, side }: UnitBasicProps) {
+    const { name, gender, brave, faith, zodiac } = unit;
+    const { data: { classes } } = useFftbgContext();
+    const classData = classes[job]?.[gender];
+    const classRaw = classData?.raw;
+
+    const allyZodiacData = team.units.map(u => ({ zodiac: u.zodiac, gender: u.gender }));
+    const enemyZodiacData = otherTeam.units.map(u => ({ zodiac: u.zodiac, gender: u.gender }));
+
     const allyZodiac = (
-        <UnitZodiac myZodiac={zodiac} myGender={gender} others={team.units} side={side} word={'allies'} />
+        <UnitZodiac myZodiac={zodiac} myGender={gender} others={allyZodiacData} word='allies' />
     );
     const enemyZodiac = (
-        <UnitZodiac myZodiac={zodiac} myGender={gender} others={otherTeam.units} side={side} word={'enemies'} />
+        <UnitZodiac myZodiac={zodiac} myGender={gender} others={enemyZodiacData} word='enemies' />
     );
-    const classRaw = classes[job] && classes[job][gender]?.raw;
+
     return (
         <div className='d-flex flex-column unit-basic'>
             <a title={name} href={`https://fftbg.bryanching.net/player/${name}`} target='_blank' rel="noopener noreferrer">

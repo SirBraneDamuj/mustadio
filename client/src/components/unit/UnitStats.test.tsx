@@ -1,8 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import UnitStats from './UnitStats';
+import { renderWithContext } from '../../test-utils';
+import type { UnitStats as UnitStatsType, Side } from '../../schemas';
 
-const defaults = {
+const defaultStats: UnitStatsType = {
     hp: 33,
     mp: 45,
     speed: 8,
@@ -23,13 +24,14 @@ const defaults = {
     ],
 };
 
-const mount = (overrides) => {
-    return render(
+const mount = (statsOverrides: Partial<UnitStatsType> = {}) => {
+    const stats = { ...defaultStats, ...statsOverrides };
+    return renderWithContext(
         <UnitStats
-            {...defaults}
-            {...overrides}
+            side={'left' as Side}
+            stats={stats}
         />
-    )
+    );
 };
 
 test('does not render initial statuses when not present', () => {
