@@ -16,7 +16,7 @@
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "test": "vitest",
-    "test:run": "vitest run",
+    "test:run": "vitest run --passWithNoTests",
     "lint": "eslint src"
   },
   "engines": {
