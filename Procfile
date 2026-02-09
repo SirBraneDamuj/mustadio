@@ -1,2 +1,2 @@
-web: npm start
-worker: npm run start:loader
+web: cd server && npm start
+worker: cd server && npm run start:loader

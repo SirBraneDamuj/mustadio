@@ -67,7 +67,7 @@ async function checkWinners(): Promise<void> {
     const tournaments = await prisma.tournament.findMany({
       where: {
         label: { gte: MIN_TOURNAMENT_LABEL },
-        id: { not: latestTournament?.id },
+        ...(latestTournament ? { id: { not: latestTournament.id } } : {}),
       },
       include: {
         _count: {
@@ -76,7 +76,7 @@ async function checkWinners(): Promise<void> {
       },
     });
 
-    const unfinishedTournaments = tournaments.filter((t) => t._count.winners < 8);
+    const unfinishedTournaments = tournaments.filter((t) => t._count?.winners < 8);
 
     for (const tournament of unfinishedTournaments) {
       await loadTournamentWinners(tournament);

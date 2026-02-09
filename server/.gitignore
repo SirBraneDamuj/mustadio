@@ -1,5 +1,7 @@
 node_modules/
 dist/
+src/generated/
+public/
 .env
 *.log
 *.pid

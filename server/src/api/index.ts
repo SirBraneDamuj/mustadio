@@ -1,8 +1,9 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
+import { serveStatic } from '@hono/node-server/serve-static';
 import { swaggerUI } from '@hono/swagger-ui';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
@@ -12,6 +13,7 @@ import { tournamentRoutes } from './routes/tournaments.js';
 import { matchRoutes } from './routes/match.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const publicDir = join(__dirname, '..', '..', 'public');
 
 // Load OpenAPI spec
 let openApiSpec: object;
@@ -51,6 +53,19 @@ export function createApp(): Hono {
 
   // Health check
   app.get('/health', (c) => c.json({ status: 'ok' }));
+
+  // Serve static files from public directory (client build)
+  app.use('/*', serveStatic({ root: './public' }));
+
+  // Fallback to index.html for client-side routing
+  app.get('*', (c) => {
+    const indexPath = join(publicDir, 'index.html');
+    if (existsSync(indexPath)) {
+      const html = readFileSync(indexPath, 'utf-8');
+      return c.html(html);
+    }
+    return c.text('Not Found', 404);
+  });
 
   return app;
 }

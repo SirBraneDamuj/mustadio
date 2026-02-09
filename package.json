@@ -1,0 +1,16 @@
+{
+  "name": "mustadio",
+  "version": "1.0.0",
+  "description": "Mustadio - FFT Battleground companion app",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "cd server && npm install && npm run db:generate && npm run build",
+    "build:client": "cd client && npm install && npm run build",
+    "start": "cd server && npm start",
+    "start:loader": "cd server && npm run start:loader"
+  }
+}

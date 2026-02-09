@@ -12,7 +12,8 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'build',
+    outDir: '../server/public',
+    emptyOutDir: true,
   },
   test: {
     globals: true,
