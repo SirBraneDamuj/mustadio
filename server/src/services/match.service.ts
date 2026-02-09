@@ -1,5 +1,5 @@
 import { getTeamsForTournament, getMapsForTournament } from './tournament.service.js';
-import { getItems, getItem } from '../game-data/items.js';
+import { getItem } from '../game-data/items.js';
 import { getClasses } from '../game-data/classes.js';
 import { totalStatsForClassAndEquipment } from '../game-data/stats.js';
 import { matchNumberForMatchup } from '../game-data/constants.js';

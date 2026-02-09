@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { createFormatter, ApiFormatter } from '../formatter.js';
 import { getItems } from '../../game-data/items.js';
-import { getAbilities, getAbility } from '../../game-data/abilities.js';
+import { getAbilities } from '../../game-data/abilities.js';
 import { getClasses } from '../../game-data/classes.js';
 import { getStatuses } from '../../game-data/statuses.js';
 import { getAllMonsterSkills } from '../../game-data/monster-skills.js';

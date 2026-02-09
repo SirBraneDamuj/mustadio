@@ -1,6 +1,6 @@
-import { getClasses, getClass } from '../game-data/classes.js';
+import { getClass } from '../game-data/classes.js';
 import { getAbility, mainActiveForClass } from '../game-data/abilities.js';
-import { getItem, getItems } from '../game-data/items.js';
+import { getItem } from '../game-data/items.js';
 import { getStatus } from '../game-data/statuses.js';
 import type { Item, ClassGender, Ability, Status, Gender } from '../types/game-data.js';
 import type {
@@ -47,11 +47,6 @@ interface UnitRecord {
 interface TeamRecord {
   name: string;
   units: UnitRecord[];
-}
-
-interface TournamentRecord {
-  id: string;
-  teams: TeamRecord[];
 }
 
 export class ApiFormatter {
