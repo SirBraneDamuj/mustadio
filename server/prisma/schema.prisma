@@ -16,6 +16,7 @@ model Tournament {
   maps      TournamentMap[]
   winners   TournamentWinner[]
 
+  @@index([createdAt])
   @@map("tournaments")
 }
 
@@ -31,6 +32,8 @@ model Team {
   @@unique([tournamentId, name])
   @@map("teams")
 }
+
+// Note: Team.tournamentId is already indexed via @@unique([tournamentId, name])
 
 model Unit {
   id           Int             @id @default(autoincrement())
@@ -52,6 +55,7 @@ model Unit {
   abilities    UnitAbility[]
   equipment    UnitEquipment[]
 
+  @@index([teamId])
   @@map("units")
 }
 
@@ -64,6 +68,7 @@ model UnitAbility {
   updatedAt DateTime @updatedAt
   unit      Unit     @relation(fields: [unitId], references: [id], onDelete: Cascade)
 
+  @@index([unitId])
   @@map("unit_abilities")
 }
 
@@ -76,6 +81,7 @@ model UnitEquipment {
   updatedAt DateTime @updatedAt
   unit      Unit     @relation(fields: [unitId], references: [id], onDelete: Cascade)
 
+  @@index([unitId])
   @@map("unit_equipment")
 }
 
@@ -89,6 +95,7 @@ model TournamentMap {
   updatedAt    DateTime   @updatedAt
   tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
 
+  @@index([tournamentId])
   @@map("tournament_maps")
 }
 
@@ -104,3 +111,5 @@ model TournamentWinner {
   @@unique([tournamentId, matchNum])
   @@map("tournament_winners")
 }
+
+// Note: TournamentWinner.tournamentId is already indexed via @@unique([tournamentId, matchNum])

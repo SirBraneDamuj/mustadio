@@ -149,9 +149,25 @@ export async function loadCurrentTournament(): Promise<void> {
   }
 }
 
+const CLEANUP_MAX_AGE_DAYS = 14;
+
+async function cleanupOldTournaments(): Promise<void> {
+  const twoWeeksAgo = new Date();
+  twoWeeksAgo.setDate(twoWeeksAgo.getDate() - CLEANUP_MAX_AGE_DAYS);
+
+  const result = await prisma.tournament.deleteMany({
+    where: { createdAt: { lt: twoWeeksAgo } },
+  });
+
+  if (result.count > 0) {
+    console.log(`Cleaned up ${result.count} tournament(s) older than ${CLEANUP_MAX_AGE_DAYS} days.`);
+  }
+}
+
 async function monitor(): Promise<void> {
   try {
     await loadCurrentTournament();
+    await cleanupOldTournaments();
   } catch (err) {
     console.error(`Encountered error loading tournament!`, err);
   }
