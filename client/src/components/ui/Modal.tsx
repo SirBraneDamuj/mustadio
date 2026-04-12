@@ -47,7 +47,7 @@ export default function Modal({ show, onHide, title, children, size = 'md' }: Mo
                                     <DialogTitle className="text-xl font-semibold">{title}</DialogTitle>
                                     <button
                                         onClick={onHide}
-                                        className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
+                                        className="text-gray-400 hover:text-gray-600 dark-theme:hover:text-gray-200 text-2xl leading-none"
                                     >
                                         &times;
                                     </button>

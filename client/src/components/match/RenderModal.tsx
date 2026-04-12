@@ -46,7 +46,7 @@ export default function RenderModal({ show, onHide }: RenderModalProps) {
 
     return (
         <Modal show={show} onHide={onHide} title="Map Renderer" size="lg">
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark-theme:text-gray-300 mb-4">
                 LMB+Drag to rotate. RMB+Drag to pan. Scroll Wheel to scroll.<br/>
                 Not every map is perfect. Most textures are not perfect.<br/>
                 This is an experimental feature.
@@ -54,12 +54,12 @@ export default function RenderModal({ show, onHide }: RenderModalProps) {
             <MapRenderer mapNumber={renderedMap} normalMaterial={normalMaterial} />
             <div className="mt-4 space-y-2">
                 <div>
-                    <label htmlFor='map-select' className="text-gray-700">Choose a Map: </label>
+                    <label htmlFor='map-select' className="text-gray-700 dark-theme:text-gray-200">Choose a Map: </label>
                     <select
                         id='map-select'
                         defaultValue={renderedMap}
                         onChange={handleMapSelector}
-                        className="ml-2 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="ml-2 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark-theme:bg-zinc-700 dark-theme:border-gray-600 dark-theme:text-white"
                     >
                         {mapNumbers.map((mapName) => (
                             <option value={mapName} key={mapName}>
@@ -69,7 +69,7 @@ export default function RenderModal({ show, onHide }: RenderModalProps) {
                     </select>
                 </div>
                 <div className="flex items-center">
-                    <label htmlFor='map-material-checkbox' className="text-gray-700">Use Normal Material: </label>
+                    <label htmlFor='map-material-checkbox' className="text-gray-700 dark-theme:text-gray-200">Use Normal Material: </label>
                     <input
                         id='map-material-checkbox'
                         type='checkbox'

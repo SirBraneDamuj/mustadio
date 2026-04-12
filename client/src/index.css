@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark-theme (&:where(.dark-theme, .dark-theme *));
+
 /* Dark theme */
 .dark-theme {
     @apply bg-zinc-700 text-white;
@@ -50,7 +52,7 @@
 }
 
 .unit-basic {
-    @apply w-[8.4rem] overflow-hidden self-start;
+    @apply w-[8.4rem] overflow-hidden;
 }
 
 .gear-icon {

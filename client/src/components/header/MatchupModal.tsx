@@ -35,7 +35,7 @@ function MatchupModal({ show, onHide }: MatchupModalProps) {
                 id={id}
                 defaultValue={teams[0]}
                 onChange={handleTeamSelection(side)}
-                className="ml-2 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="ml-2 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark-theme:bg-zinc-700 dark-theme:border-gray-600 dark-theme:text-white"
             >
                 {teams.map((team) => (
                     <option value={team} key={team}>{team}</option>
@@ -48,11 +48,11 @@ function MatchupModal({ show, onHide }: MatchupModalProps) {
         <Modal show={show} onHide={onHide} title="Tournament Navigation" size="lg">
             <div className="space-y-4">
                 <div>
-                    <label htmlFor='team-one-selector' className="text-gray-700">Left Team:</label>
+                    <label htmlFor='team-one-selector' className="text-gray-700 dark-theme:text-gray-200">Left Team:</label>
                     {teamSelector('team-one-selector', 'left')}
                 </div>
                 <div>
-                    <label htmlFor='team-two-selector' className="text-gray-700">Right Team:</label>
+                    <label htmlFor='team-two-selector' className="text-gray-700 dark-theme:text-gray-200">Right Team:</label>
                     {teamSelector('team-two-selector', 'right')}
                 </div>
                 <Button onClick={handleButton}>Go!</Button>
