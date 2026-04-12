@@ -26,7 +26,7 @@ export default function Tooltip({ content, placement = 'top', children }: Toolti
             })}
             {isVisible && (
                 <div
-                    className={`absolute z-50 px-2 py-1 text-sm text-white bg-gray-900 rounded shadow-lg whitespace-pre-wrap max-w-xl ${placementClasses[placement]}`}
+                    className={`absolute z-50 px-2 py-1 text-sm text-white bg-gray-900 rounded shadow-lg whitespace-pre-wrap w-80 ${placementClasses[placement]}`}
                     role="tooltip"
                 >
                     {content}
