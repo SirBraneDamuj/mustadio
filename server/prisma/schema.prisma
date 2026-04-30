@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Tournament {
+  id        Int                @id @default(autoincrement())
+  label     String             @unique
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+  teams     Team[]
+  maps      TournamentMap[]
+  winners   TournamentWinner[]
+
+  @@index([createdAt])
+  @@map("tournaments")
+}
+
+model Team {
+  id           Int        @id @default(autoincrement())
+  name         String
+  tournamentId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  units        Unit[]
+
+  @@unique([tournamentId, name])
+  @@map("teams")
+}
+
+// Note: Team.tournamentId is already indexed via @@unique([tournamentId, name])
+
+model Unit {
+  id           Int             @id @default(autoincrement())
+  name         String
+  gender       String
+  zodiac       String
+  brave        String
+  faith        String
+  className    String          @map("class")
+  subSkill     String?
+  reactSkill   String?
+  supportSkill String?
+  moveSkill    String?
+  order        Int
+  teamId       Int
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  team         Team            @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  abilities    UnitAbility[]
+  equipment    UnitEquipment[]
+
+  @@index([teamId])
+  @@map("units")
+}
+
+model UnitAbility {
+  id        Int      @id @default(autoincrement())
+  name      String
+  mainOrSub String
+  unitId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  unit      Unit     @relation(fields: [unitId], references: [id], onDelete: Cascade)
+
+  @@index([unitId])
+  @@map("unit_abilities")
+}
+
+model UnitEquipment {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slot      String
+  unitId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  unit      Unit     @relation(fields: [unitId], references: [id], onDelete: Cascade)
+
+  @@index([unitId])
+  @@map("unit_equipment")
+}
+
+model TournamentMap {
+  id           Int        @id @default(autoincrement())
+  number       String
+  title        String
+  order        Int
+  tournamentId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+
+  @@index([tournamentId])
+  @@map("tournament_maps")
+}
+
+model TournamentWinner {
+  id           Int        @id @default(autoincrement())
+  name         String
+  matchNum     Int
+  tournamentId Int
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+
+  @@unique([tournamentId, matchNum])
+  @@map("tournament_winners")
+}
+
+// Note: TournamentWinner.tournamentId is already indexed via @@unique([tournamentId, matchNum])

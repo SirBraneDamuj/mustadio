@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@variant dark-theme (&:where(.dark-theme, .dark-theme *));
+
+/* Dark theme */
+.dark-theme {
+    @apply bg-zinc-700 text-white;
+}
+
+/* Match layout */
+.match-container {
+    @apply flex-col 2xl:flex-row;
+}
+
+/* Map preview */
+.map-preview-container {
+    @apply mt-1;
+}
+
+.map-preview {
+    @apply h-24 w-auto pr-1;
+}
+
+/* Team table */
+#layout:not(.dark-theme) .team-table {
+    @apply border border-black;
+}
+
+#layout.dark-theme .team-table {
+    @apply border border-gray-300;
+}
+
+#layout:not(.dark-theme) .team-table > *:not(:last-child) {
+    @apply border-b border-black;
+}
+
+#layout.dark-theme .team-table > *:not(:last-child) {
+    @apply border-b border-gray-300;
+}
+
+/* Unit styles */
+.unit-row > * {
+    @apply p-2;
+}
+
+.unit-row > *:not(:last-child) {
+    @apply border-r border-gray-300;
+}
+
+.unit-row > *:not(:first-child) {
+    @apply grow;
+}
+
+.unit-basic {
+    @apply w-[8.4rem] overflow-hidden;
+}
+
+.gear-icon {
+    @apply p-1;
+}
+
+.ability-icon {
+    @apply w-10 p-2;
+}
+
+.compat-icon {
+    @apply w-full p-px;
+}
+
+.notable {
+    @apply font-bold;
+}
+
+/* Unit portrait */
+.unit-portrait-right {
+    @apply self-start shrink w-2/3;
+}
+
+.unit-portrait-left {
+    @apply self-start shrink w-2/3 -scale-x-100;
+}
