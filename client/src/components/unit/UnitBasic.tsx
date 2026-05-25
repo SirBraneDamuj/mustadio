@@ -36,7 +36,7 @@ export default function UnitBasic({ unit, job, team, otherTeam, side }: UnitBasi
                 href={`https://fftbg.bryanching.net/player/${name}`}
                 target='_blank'
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
+                className="block max-w-full truncate text-blue-600 hover:underline"
             >
                 {name}
             </a>

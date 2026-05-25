@@ -52,7 +52,7 @@
 }
 
 .unit-basic {
-    @apply w-[8.4rem] overflow-hidden;
+    @apply w-[8.4rem] overflow-visible;
 }
 
 .gear-icon {
