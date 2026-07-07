@@ -49,7 +49,9 @@ function writeUserNotables(notables: UserNotables) {
 
 function subscribe(listener: NotablesListener) {
     listeners.add(listener);
-    return () => listeners.delete(listener);
+    return () => {
+        listeners.delete(listener);
+    };
 }
 
 export function useUserNotables() {
