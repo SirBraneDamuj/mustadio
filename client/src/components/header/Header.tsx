@@ -3,6 +3,7 @@ import { Button, Dropdown, DropdownItem } from '../ui';
 import ContactModal from './ContactModal';
 import MatchupModal from './MatchupModal';
 import LatestMatchButton from './LatestMatchButton';
+import ChangelogModal from './ChangelogModal';
 
 interface HeaderProps {
     useDarkTheme: boolean;
@@ -16,6 +17,9 @@ function Header({ useDarkTheme, handleDarkThemeToggle }: HeaderProps) {
     const [matchupsShouldShow, setMatchupsShouldShow] = useState(false);
     const hideMatchups = () => setMatchupsShouldShow(false);
     const showMatchups = () => setMatchupsShouldShow(true);
+    const [changelogShouldShow, setChangelogShouldShow] = useState(false);
+    const hideChangelog = () => setChangelogShouldShow(false);
+    const showChangelog = () => setChangelogShouldShow(true);
 
     return (
         <>
@@ -38,9 +42,14 @@ function Header({ useDarkTheme, handleDarkThemeToggle }: HeaderProps) {
                 <Button variant="outline" onClick={handleDarkThemeToggle}>
                     {useDarkTheme ? 'Light Mode' : 'Dark Mode'}
                 </Button>
+
+                <Button variant="primary" onClick={showChangelog} className="ms-auto">
+                    New!
+                </Button>
             </nav>
             <ContactModal show={contactShouldShow} onHide={hideContact} />
             <MatchupModal show={matchupsShouldShow} onHide={hideMatchups} />
+            <ChangelogModal show={changelogShouldShow} onHide={hideChangelog} />
         </>
     );
 }

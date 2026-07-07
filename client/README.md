@@ -4,6 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run dev:remote`
+
+Runs the local Vite dev server on [http://localhost:3001](http://localhost:3001) and proxies `/api` requests to `https://mustad.io`.
+
+### `npm run dev`
+
+Runs the local Vite dev server on [http://localhost:3001](http://localhost:3001) and proxies `/api` requests to a local server on [http://localhost:3000](http://localhost:3000).
+
 ### `npm start`
 
 Runs the app in the development mode.<br />

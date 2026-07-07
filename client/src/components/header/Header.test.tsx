@@ -33,3 +33,15 @@ test('shows the matchup modal when Choose Matchup is clicked', async () => {
   fireEvent.click(matchupLink);
   expect(await findByText(/Tournament Navigation/)).toBeVisible();
 });
+
+test('shows the changelog modal when New is clicked', async () => {
+  const { getByText, findByText } = renderWithProviders(
+    <Header {...defaultProps} />,
+    { withRouter: true }
+  );
+  const newButton = getByText('New!');
+  expect(newButton).toBeInTheDocument();
+  fireEvent.click(newButton);
+  expect(await findByText('July 7, 2026')).toBeVisible();
+  expect(await findByText(/The "Notables" feature/)).toBeVisible();
+});

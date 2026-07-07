@@ -24,6 +24,8 @@ The maintainer of the stream graciously provides a data dump of the tournament t
 
 Once started, visit http://localhost:3000. 
 
+To run the Vite client locally against the hosted API, run `npm run dev:remote` and visit http://localhost:3001. The Vite dev server keeps client requests on `/api`, but proxies them to `https://mustad.io` instead of a local server.
+
 ### Using
 
 Click the "Latest Match" button to view the currently live matchup. There may be about a 10 second delay between matches.

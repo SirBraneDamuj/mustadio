@@ -32,6 +32,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:remote": "vite --mode remote",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",

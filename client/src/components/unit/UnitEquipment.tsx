@@ -1,7 +1,7 @@
 import { useFftbgContext } from '../../hooks/useFftbgContext';
 import MustadioTooltip from '../util/MustadioTooltip';
 import images from '../../constants/images';
-import notables from '../../constants/notables';
+import { useUserNotables } from '../../hooks/useUserNotables';
 import type { EquipmentItem, Side } from '../../schemas';
 
 const tooltipSide = (side: Side): Side => side === 'left' ? 'right' : 'left';
@@ -14,13 +14,18 @@ interface EquipmentProps {
 }
 
 function Equipment({ name, slot, info, side }: EquipmentProps) {
-    const isNotable = notables.items.has(name);
+    const { isNotable, toggleNotable } = useUserNotables();
+    const isMarkedNotable = isNotable(name);
     const line = (
-        <div className='inline-flex items-center'>
+        <button
+            type='button'
+            className={`inline-flex items-center cursor-pointer border-0 bg-transparent p-0 text-inherit ${isMarkedNotable ? 'font-bold' : ''}`}
+            onClick={() => toggleNotable(name)}
+        >
             <img className='ability-icon' src={`${images.icons}/${slot}.png`} alt={slot} />
             <img className='gear-icon' src={`${images.items}/${name.replace(' ', '+')}.png`} alt={name} />
-            <span className={isNotable ? 'font-bold' : ''}>{name}</span>
-        </div>
+            <span>{name}</span>
+        </button>
     );
     if (info) {
         return (

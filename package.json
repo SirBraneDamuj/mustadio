@@ -10,6 +10,8 @@
     "build": "npm run build:server && npm run build:client",
     "build:server": "cd server && npm install && npm run db:generate && npm run build",
     "build:client": "cd client && npm install && npm run build",
+    "dev:client": "cd client && npm run dev --",
+    "dev:remote": "cd client && npm run dev:remote --",
     "start": "cd server && npm start",
     "start:loader": "cd server && npm run start:loader"
   }
