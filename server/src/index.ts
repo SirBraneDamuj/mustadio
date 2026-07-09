@@ -2,14 +2,14 @@ import 'dotenv/config';
 import { serve } from '@hono/node-server';
 import { config } from './config.js';
 import { createApp } from './api/index.js';
-import { reloadAllGameData } from './game-data/index.js';
+import { refreshGameDataForVersion } from './services/game-data-refresh.service.js';
 
 async function main(): Promise<void> {
   console.log('Starting Mustadio server...');
 
   // Load game data
   console.log('Loading game data...');
-  await reloadAllGameData('initial');
+  await refreshGameDataForVersion('initial');
   console.log('Game data loaded.');
 
   // Create app

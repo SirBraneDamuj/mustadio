@@ -4,6 +4,7 @@ import { parseIndex } from './index-parser.js';
 import { parseTeam } from './team-parser.js';
 import { getMaps } from './maps-parser.js';
 import { TEAM_NAMES } from '../game-data/constants.js';
+import { refreshGameDataForVersion } from '../services/game-data-refresh.service.js';
 import type { ParsedUnit, ParsedMap, TeamName } from '../types/game-data.js';
 
 const CADENCE = 10 * 1000;
@@ -136,6 +137,7 @@ export async function loadTournamentById(tournamentId: string): Promise<void> {
 export async function loadCurrentTournament(): Promise<void> {
   const latest = await getCurrentTournamentId();
   console.log(`THE LOADER WANTS TO LOAD: ${latest}`);
+  await refreshGameDataForVersion(latest);
 
   const tournament = await prisma.tournament.findFirst({
     where: { label: latest },

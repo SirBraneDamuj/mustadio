@@ -19,6 +19,7 @@ export class DumpLoader<T> {
       return;
     }
     const { data } = await this.getDumpFn();
+    const nextData: Record<string, T> = {};
     let delimiter = '\r\n';
     if (!data.includes(delimiter)) {
       delimiter = '\n';
@@ -27,8 +28,9 @@ export class DumpLoader<T> {
       .trim()
       .split(delimiter)
       .forEach((line) => {
-        this.parseDumpFn(this.data, line);
+        this.parseDumpFn(nextData, line);
       });
+    this.data = nextData;
     this.lastVersion = version;
   }
 

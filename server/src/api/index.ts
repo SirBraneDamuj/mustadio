@@ -11,6 +11,7 @@ import { parse as parseYaml } from 'yaml';
 import { dataRoutes } from './routes/data.js';
 import { tournamentRoutes } from './routes/tournaments.js';
 import { matchRoutes } from './routes/match.js';
+import { refreshGameDataForLatestTournament } from '../services/game-data-refresh.service.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicDir = join(__dirname, '..', '..', 'public');
@@ -38,6 +39,11 @@ export function createApp(): Hono {
   // Swagger UI
   api.get('/swagger', swaggerUI({ url: '/api/openapi.json' }));
   api.get('/openapi.json', (c) => c.json(openApiSpec));
+
+  api.use('*', async (_c, next) => {
+    await refreshGameDataForLatestTournament();
+    await next();
+  });
 
   // Data routes
   api.route('/', dataRoutes);
